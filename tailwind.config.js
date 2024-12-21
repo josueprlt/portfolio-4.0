@@ -13,6 +13,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        bgPrimary: "var(--bg-primary)",
+        bgSecondary: "var(--bg-secondary)",
       },
     },
   },
