@@ -1,9 +1,7 @@
-import Image from "next/image";
+import Home from '@/app/components/ui/home/page';
 
-export default function Home() {
+export default function Page() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <Home />
   );
 }
