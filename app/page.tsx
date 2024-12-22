@@ -1,5 +1,6 @@
 import Home from '@/app/components/ui/home/page';
 import AboutMe from '@/app/components/ui/aboutme/page';
+import MyWork from '@/app/components/ui/mywork/page';
 
 export default function Page() {
   return (
@@ -7,6 +8,7 @@ export default function Page() {
       <Home />
       <main className='px-4 md:px-8'>
         <AboutMe />
+        <MyWork />
       </main>
     </div>
   );

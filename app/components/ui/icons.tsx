@@ -16,4 +16,20 @@ function ArrowIcon(props: SVGAttributes<SVGElement>) {
     );
 }
 
-export { LogoIcon, ArrowIcon };
+function ButtonArrowIcon({
+    fill = 'currentColor',
+    ...props
+}: { fill?: string } & SVGAttributes<SVGElement>) {
+    return (
+        <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M2.40311 11.3906C1.88189 11.9118 1.03682 11.9118 0.515601 11.3906C-0.0056205 10.8694 -0.00562032 10.0243 0.515601 9.50309L7.70104 2.31765L1.06542 2.31765C0.475727 2.31765 -0.00231492 1.83961 -0.00231497 1.24992C-0.00231502 0.660222 0.475727 0.182181 1.06542 0.18218L10.4073 0.182179C10.4923 0.182179 10.5751 0.192117 10.6543 0.210894C11.2392 0.216528 11.7116 0.692388 11.7116 1.27858L11.7116 10.8286C11.7116 11.4183 11.2335 11.8963 10.6438 11.8963C10.0541 11.8963 9.5761 11.4183 9.5761 10.8286L9.5761 4.21761L2.40311 11.3906Z"
+                fill={fill}
+            />
+        </svg>
+    );
+}
+
+export { LogoIcon, ArrowIcon, ButtonArrowIcon };
