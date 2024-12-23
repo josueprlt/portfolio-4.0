@@ -14,12 +14,11 @@ export default function Home() {
             <NavBar />
 
             <section className="h-96 flex justify-center items-center relative overflow-hidden mt-20 rounded-2xl after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-foreground after:to-transparent after:z-5">
-                <h1 className="relative z-10 text-background text-3xl">Project 1</h1>
-                <div className="absolute bottom-0 left-0 z-10">
+                <h1 className="relative z-10 text-background text-4xl">Project 1</h1>
+                <div className="absolute flex flex-wrap-reverse gap-2 bottom-0 left-0 z-10 p-2 text-xs">
                     <span className="bg-background text-foreground px-4 py-2 rounded-full">Scolaire</span>
-                    <span>Dev Web</span>
-                    <span>test</span>
-                    <span>retest</span>
+                    <span className="bg-background text-foreground px-4 py-2 rounded-full">Dev Web</span>
+                    <span className="bg-background text-foreground px-4 py-2 rounded-full">test</span>
                 </div>
                 <Image width={5000} height={5000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full absolute top-0 left-0 z-0 object-cover" />
             </section>
