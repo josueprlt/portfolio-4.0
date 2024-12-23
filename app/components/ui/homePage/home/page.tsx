@@ -1,4 +1,5 @@
-import { LogoIcon, ArrowIcon } from "@/app/components/ui/icons";
+import { ArrowIcon } from "@/app/components/ui/icons";
+import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis } from 'next/font/google';
 
 const ClimateCrisis = Climate_Crisis({
@@ -9,16 +10,8 @@ const ClimateCrisis = Climate_Crisis({
 export default function Home() {
     return (
         <header className={`${ClimateCrisis.className} flex flex-col justify-between h-screen p-4 md:p-8`}>
-            <nav className="flex justify-between items-center">
-                <LogoIcon />
-                <div className="flex items-end flex-col gap-2 h-full cursor-pointer">
-                    {/* <span className="block w-8 h-1 bg-foreground relative before:content-[''] before:block before:w-12 before:bg-foreground before:h-1 before:absolute before:-top-3 before:right-0 after:content-[''] after:block after:w-5 after:bg-foreground after:h-1 after:absolute after:top-3 after:right-0"></span> */}
-                    <span className="block w-12 h-1 bg-foreground rounded-full"></span>
-                    <span className="block w-8 h-1 bg-foreground rounded-full"></span>
-                    <span className="block w-5 h-1 bg-foreground rounded-full"></span>
-                </div>
-            </nav>
-
+            <NavBar />
+            
             <section className="flex flex-col justify-center items-center gap-16">
                 <div className="flex items-center flex-col gap-7">
                     <h1 className="text-3xl text-center md:text-7xl">Josué Perrault</h1>

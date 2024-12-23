@@ -1,7 +1,8 @@
-import Home from '@/app/components/ui/home/page';
-import AboutMe from '@/app/components/ui/aboutme/page';
-import MyWork from '@/app/components/ui/mywork/page';
-import ContactMe from '@/app/components/ui/contactme/page';
+import Home from '@/app/components/ui/homePage/home/page';
+import AboutMe from '@/app/components/ui/homePage/aboutme/page';
+import MyWork from '@/app/components/ui/homePage/mywork/page';
+import ContactMe from '@/app/components/ui/homePage/contactme/page';
+import Footer from "@/app/components/ui/homePage/footer/page";
 
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
         <MyWork />
         <ContactMe />
       </main>
+      <Footer />
     </div>
   );
 }

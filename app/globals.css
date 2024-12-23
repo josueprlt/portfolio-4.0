@@ -19,3 +19,7 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.toggle-checkbox:checked+.toggle-label .toggle-span {
+  transform: translateX(24px);
+}
