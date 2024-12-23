@@ -20,6 +20,8 @@ module.exports = {
         whatsapp: "var(--bg-text-whatsapp)",
         linkedin: "var(--bg-text-linkedin)",
         instagram: "var(--bg-text-instagram)",
+
+        materialui: "var(--bg-text-materialui)",
       },
     },
   },

@@ -12,12 +12,13 @@
   --bg-text-whatsapp: #25D366;
   --bg-text-linkedin: #0A66C2;
   --bg-text-instagram: #E4405F;
+
+  --bg-text-materialui: #007FFF;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .toggle-checkbox:checked+.toggle-label .toggle-span {
