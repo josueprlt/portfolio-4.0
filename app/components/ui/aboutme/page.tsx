@@ -25,17 +25,17 @@ export default function AboutMe() {
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
                         <p>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
 
-                        <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start">
-                            <button className="relative bg-background text-foreground px-3 py-2 rounded-full pr-12">
+                        <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
+                        <button className="relative bg-background text-foreground px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
                                 Télécharger mon CV
-                                <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-foreground">
-                                    <ButtonArrowIcon fill="#FEEFDD" />
+                                <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-foreground md:top-[6px] md:right-[6px] md:w-10 md:h-10">
+                                    <ButtonArrowIcon fill="#FEEFDD" className="md:w-4" />
                                 </div>
                             </button>
-                            <button className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12">
+                            <button className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
                                 Voir plus
-                                <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background">
-                                    <ButtonArrowIcon fill="#262330" />
+                                <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
+                                    <ButtonArrowIcon fill="#262330" className="md:w-4" />
                                 </div>
                             </button>
                         </div>

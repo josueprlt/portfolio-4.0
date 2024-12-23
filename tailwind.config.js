@@ -16,6 +16,10 @@ module.exports = {
         primary: "var(--bg-primary)",
         secondary: "var(--bg-secondary)",
         titleSecondary: "var(--bg-title-secondary)",
+
+        whatsapp: "var(--bg-text-whatsapp)",
+        linkedin: "var(--bg-text-linkedin)",
+        instagram: "var(--bg-text-instagram)",
       },
     },
   },
