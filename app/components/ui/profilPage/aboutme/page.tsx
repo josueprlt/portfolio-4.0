@@ -40,8 +40,8 @@ export default function AboutMe() {
                     <p>Et quand je ne suis ni derrière mon clavier ni en train d’explorer de nouveaux concepts, je passe souvent du temps à la salle, appréciant le défi personnel que la musculation apporte.</p>
                 </div>
 
-                <div className="md:order-1 relative h-72 mt-5 md:mt-0 md:h-full">
-                    <HalteresIcon className="w-full max-w-lg max-h-32" />
+                <div className="md:order-1 flex justify-center items-center relative h-72 mt-14 md:mt-0 md:h-full">
+                    <HalteresIcon className="max-h-56" />
                 </div>
             </div>
         </section>
