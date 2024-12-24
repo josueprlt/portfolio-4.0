@@ -153,4 +153,44 @@ function BootstrapIcon(props: SVGAttributes<SVGElement>) {
     );
 }
 
-export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, WhatsappIcon, LinkedinIcon, InstagramIcon, BretagneIcon, HtmlIcon, MuiIcon, ReactIcon, BootstrapIcon };
+function HalteresIcon(props: SVGAttributes<SVGElement>) {
+    return (
+        <svg className="w-6 h-6" viewBox="0 0 429 312" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <circle cx="97.6634" cy="213.901" r="97.6634" fill="url(#paint0_linear_233_676)" />
+            <path fillRule="evenodd" clipRule="evenodd" d="M97.6634 176.891C77.2238 176.891 60.6541 193.46 60.6541 213.9C60.6541 234.34 77.2238 250.909 97.6634 250.909C118.103 250.909 134.673 234.34 134.673 213.9C134.673 193.46 118.103 176.891 97.6634 176.891ZM97.6634 185.8C82.1444 185.8 69.5637 198.381 69.5637 213.9C69.5637 229.419 82.1444 241.999 97.6634 241.999C113.182 241.999 125.763 229.419 125.763 213.9C125.763 198.381 113.182 185.8 97.6634 185.8Z" fill="url(#paint1_linear_233_676)" />
+            <rect x="233.673" y="232.476" width="195.327" height="71.8994" rx="5" fill="url(#paint2_linear_233_676)" />
+            <rect x="233.673" y="7.18945" width="195.327" height="71.8994" rx="5" fill="url(#paint3_linear_233_676)" />
+            <path d="M293.415 7.66807C293.415 3.43311 296.848 0 301.083 0H361.73C365.965 0 369.398 3.43311 369.398 7.66807H293.415Z" fill="url(#paint4_linear_233_676)" />
+            <path d="M293.415 303.935H369.398C369.398 308.17 365.965 311.603 361.73 311.603H301.083C296.848 311.603 293.415 308.17 293.415 303.935Z" fill="url(#paint5_linear_233_676)" />
+            <rect x="349.911" y="79.0889" width="153.385" height="37.148" transform="rotate(90 349.911 79.0889)" fill="#262330" />
+            <defs>
+                <linearGradient id="paint0_linear_233_676" x1="97.6634" y1="116.237" x2="97.6634" y2="311.564" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#226CE0" />
+                    <stop offset="1" stopColor="#FF4000" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_233_676" x1="97.6634" y1="250.909" x2="97.6634" y2="176.891" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#226CE0" />
+                    <stop offset="1" stopColor="#FF4000" />
+                </linearGradient>
+                <linearGradient id="paint2_linear_233_676" x1="233.673" y1="268.425" x2="429" y2="268.425" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#006EFF" />
+                    <stop offset="1" stopColor="#FF4000" />
+                </linearGradient>
+                <linearGradient id="paint3_linear_233_676" x1="233.673" y1="43.1392" x2="429" y2="43.1392" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#006EFF" />
+                    <stop offset="1" stopColor="#FF4000" />
+                </linearGradient>
+                <linearGradient id="paint4_linear_233_676" x1="293.415" y1="3.83403" x2="369.398" y2="3.83403" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FF4000" />
+                    <stop offset="1" stopColor="#226CE0" />
+                </linearGradient>
+                <linearGradient id="paint5_linear_233_676" x1="293.415" y1="307.769" x2="369.398" y2="307.769" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FF4000" />
+                    <stop offset="1" stopColor="#226CE0" />
+                </linearGradient>
+            </defs>
+        </svg>
+    );
+}
+
+export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, WhatsappIcon, LinkedinIcon, InstagramIcon, BretagneIcon, HtmlIcon, MuiIcon, ReactIcon, BootstrapIcon, HalteresIcon };
