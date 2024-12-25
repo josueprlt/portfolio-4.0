@@ -20,8 +20,8 @@ export default function Home() {
             <NavBar />
 
             <section className={`${DelaGothicOne.className} mt-20 md:px-10`}>
-                <p className="md:text-4xl">Je suis actuellement en 3ème année d’un BUT MMI (Métiers du Multimédia et de l'Internet), en route pour devenir <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">développeur web</span> et toujours curieux de découvrir de nouvelles technologies !</p>
-                <p className="mt-8 text-sm md:text-3xl md:mt-16">Je navigue entre les lignes de code et les pixels, jonglant avec le front et le back pour créer des expériences qui ont du sens et qui captivent.</p>
+                <p className="md:text-4xl text-justify">Je suis actuellement en 3ème année d’un BUT MMI (Métiers du Multimédia et de l'Internet), en route pour devenir <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">développeur web</span> et toujours curieux de découvrir de nouvelles technologies !</p>
+                <p className="mt-8 text-sm md:text-3xl md:mt-16 text-justify">Je navigue entre les lignes de code et les pixels, jonglant avec le front et le back pour créer des expériences qui ont du sens et qui captivent.</p>
 
                 <div className="flex justify-center my-20">
                     <button className="relative bg-gradient-to-r from-primary to-secondary text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14 md:text-xl">
