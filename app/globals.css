@@ -24,3 +24,16 @@ body {
 .toggle-checkbox:checked+.toggle-label .toggle-span {
   transform: translateX(24px);
 }
+
+/* styles/globals.css */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.hover\\:rotate-y-12:hover {
+  transform: rotateY(12deg);
+}
+
+.hover\\:rotate-x-6:hover {
+  transform: rotateX(6deg);
+}
