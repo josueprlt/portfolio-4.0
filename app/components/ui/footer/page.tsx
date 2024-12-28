@@ -31,7 +31,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center gap-4 text-background mt-10 md:flex-row md:justify-between md:mt-20">
+            <div className="flex flex-col items-center gap-4 text-background mt-10 text-center md:flex-row md:justify-between md:mt-20">
                 <p>Josué PERRAULT</p>
                 <p>Portfolio © 2024 - Tous droits réservés.</p>
                 <p>Version 0.1</p>

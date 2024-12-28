@@ -37,15 +37,6 @@ export default function MyJourney() {
                     <Image width={5000} height={5000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full object-cover" />
                 </div>
             </section>
-
-            <div className="relative w-full h-64 mt-10 perspective-1000">
-                <div className="w-full h-full bg-red-500 rounded-xl shadow-lg transform transition-transform duration-500 hover:rotate-y-12 hover:rotate-x-6">
-                    <div className="p-6">
-                        <h3 className="text-2xl font-bold mb-2">Compétence 3D</h3>
-                        <p className="text-gray-700">Voici une description de la compétence en 3D. Cette carte se déplace en fonction de la position de la souris.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 }

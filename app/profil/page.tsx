@@ -2,6 +2,7 @@ import Home from '@/app/components/ui/profilPage/home/page';
 import AboutMe from "@/app/components/ui/profilPage/aboutme/page";
 import MyJourney from "@/app/components/ui/profilPage/myjourney/page";
 import MyCompetences from "@/app/components/ui/profilPage/mycompetences/page";
+import BusinessCard from "@/app/components/ui/profilPage/businesscard/page";
 
 export default function Page() {
     return (
@@ -11,6 +12,7 @@ export default function Page() {
                 <AboutMe />
                 <MyJourney />
                 <MyCompetences />
+                <BusinessCard />
             </main>
         </>
     );
