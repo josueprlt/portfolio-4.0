@@ -22,8 +22,8 @@ export default function MyWork() {
 
             <ul className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project) => (
-                    <li key={project.id} className="flex justify-between items-center py-5 px-5 border-b-2 border-foreground md:py-10 cursor-pointer">
-                        <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full">
+                    <li key={project.id} className="flex justify-between items-center border-b-2 border-foreground cursor-pointer">
+                        <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
                             <p>{project.title}</p>
                             <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
                         </Link>

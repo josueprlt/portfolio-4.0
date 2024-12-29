@@ -15,6 +15,8 @@ module.exports = {
         foreground: "var(--foreground)",
         primary: "var(--bg-primary)",
         secondary: "var(--bg-secondary)",
+        primaryGray: "var(--bg-primary-gray)",
+        secondaryGray: "var(--bg-secondary-gray)",
         titleSecondary: "var(--bg-title-secondary)",
 
         whatsapp: "var(--bg-text-whatsapp)",
