@@ -9,7 +9,21 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: "var(--bg-primary)",
+        secondary: "var(--bg-secondary)",
+        titleSecondary: "var(--bg-title-secondary)",
+
+        whatsapp: "var(--bg-text-whatsapp)",
+        linkedin: "var(--bg-text-linkedin)",
+        instagram: "var(--bg-text-instagram)",
+
+        materialui: "var(--bg-text-materialui)",
+      },
+    },
   },
   plugins: [],
 }
