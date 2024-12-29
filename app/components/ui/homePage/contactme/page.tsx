@@ -51,7 +51,7 @@ export default function ContactMe() {
                 </div>
                 <div className="relative bg-gradient-to-r from-primary to-secondary h-48 rounded-2xl">
                     <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center gap-6">
-                        <PhoneIcon className="w-11" />
+                        <PhoneIcon className="w-11 text-background" />
                         <p className="text-background">07 57 49 21 89</p>
                     </div>
                 </div>
