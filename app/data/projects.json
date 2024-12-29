@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "title": "Challenge BenjaminCode",
+    "date": "2021-06-01",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "html",
+      "css",
+      "js"
+    ],
+    "description": "Dans le cadre personnel, le but était de retranscrire en html, css et js la template de la page qui nous était donnée par BenjaminCode.",
+    "image": [
+      "BenjaminCode/projetaccueil.png",
+      "BenjaminCode/projetfinis.png",
+      "BenjaminCode/template.png"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Site OnePage",
+    "date": "2021-06-01",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "html",
+      "css",
+      "js"
+    ],
+    "description": "Dans le contexte scolaire, il m'a été demandé de créer un site OnePage en utilisant trois langages de programmation : le HTML, le CSS et le JavaScript. J'ai dû me familiariser avec un environnement de développement intégré tel que Visual Studio Code. Ce site n'est plus disponible.",
+    "image": [
+      "SiteOnePage/screen1.png",
+      "SiteOnePage/screen2.png",
+      "SiteOnePage/screen3.png",
+      "SiteOnePage/visual1.png",
+      "SiteOnePage/visual2.png",
+      "SiteOnePage/visual3.png"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Site de trailer de films",
+    "date": "2021-06-01",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "html",
+      "css",
+      "js",
+      "php",
+      "mysql"
+    ],
+    "description": "Dans le cadre scolaire, nous devions concevoir un site intégrant une base de données. La structure du projet était divisée en plusieurs parties nommées 'itérations'.",
+    "image": [
+      "Sae203/website1.png",
+      "Sae203/website2.png",
+      "Sae203/website3.png",
+      "Sae203/website4.png",
+      "Sae203/website5.png",
+      "Sae203/website6.png",
+      "Sae203/website7.png",
+      "Sae203/website8.png",
+      "Sae203/website9.png",
+      "Sae203/code1.png",
+      "Sae203/code2.png",
+      "Sae203/code3.png",
+      "Sae203/code4.png",
+      "Sae203/code5.png"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Intégration composant vidéo",
+    "date": "2021-06-01",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "react",
+      "sass"
+    ],
+    "description": "Personnellement, j'ai découvert une maquette de ce composant sur Internet. Cela m'a donné l'idée de l'intégrer en utilisant React et Sass.",
+    "image": [
+      "ComposantVideo/component-video-img-1.png",
+      "ComposantVideo/component-video-img-2.png",
+      "ComposantVideo/component-video-img-3.png",
+      "ComposantVideo/component-video-img-4.png",
+      "ComposantVideo/component-video-img-5.png",
+      "ComposantVideo/component-video-img-6.png"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Ancien Portfolio Web",
+    "date": "2021-06-01",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "html",
+      "css",
+      "js",
+      "php",
+      "mysql"
+    ],
+    "description": "Mon ancien portfolio.",
+    "image": [
+      "Portfolio2023/portfolio1.png",
+      "Portfolio2023/portfolio2.png",
+      "Portfolio2023/portfolio3.png",
+      "Portfolio2023/portfolio4.png",
+      "Portfolio2023/portfolio5.png"
+    ]
+  }
+]
