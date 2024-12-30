@@ -1,7 +1,12 @@
+"use client"
+
+import { useEffect, useRef } from "react";
 import { ButtonArrowIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
+import { gsap, Power2 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -15,16 +20,39 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 export default function AboutMe() {
+    gsap.registerPlugin(ScrollTrigger);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const textRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        const titleElement = titleRef.current;
+        const textElement = textRef.current;
+
+        if (titleElement) {
+            gsap.fromTo(
+                titleElement,
+                { opacity: 0, x: -300 },
+                {
+                    opacity: 1, x: 0, duration: 1, ease: Power2.easeOut, scrollTrigger: {
+                        trigger: titleElement,
+                        start: "top 80%",
+                        markers: true
+                    }
+                }
+            );
+        }
+    }, []);
+
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 className="text-xl text-center relative z-10 md:text-7xl">A propos de moi</h2>
+            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">A propos de moi</h2>
             {/* <span className="absolute -top-1 left-0 -z-1 text-3xl text-titleSecondary">A propos de moi</span> */}
 
             <section className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
 
                 <div className="md:grid md:grid-cols-2 md:gap-24">
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
-                        <p>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
+                        <p ref={textRef}>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
 
                         <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
                             <button className="relative bg-background text-foreground px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
@@ -48,7 +76,7 @@ export default function AboutMe() {
 
                 <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                     <div className="md:order-2 mt-10 md:mt-0 md:text-right">
-                        <p>Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
+                        <p className="box">Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
                         <p className="mt-6">Agréable visite !</p>
                     </div>
 
