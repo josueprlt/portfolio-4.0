@@ -18,7 +18,7 @@ export default function MyJourney() {
             <h2 className="text-xl text-center relative z-10 md:text-7xl">Mon Parcours</h2>
 
             <section className={`${DelaGothicOne.className} text-lg pt-14 md:pt-40 text-center`}>
-                <div className="relative flex justify-center items-center flex-col before:absolute before:-top-[31px] before:w-8 before:h-8 before:bg-foreground before:rounded-full after:absolute after:-bottom-[31px] after:w-8 after:h-8 after:bg-foreground after:rounded-full">
+                <div className="relative flex justify-center items-center flex-col before:absolute before:-top-[31px] before:w-8 before:h-8 before:bg-foreground before:rounded-full after:absolute after:-bottom-[31px] after:w-8 after:h-8 after:bg-foreground after:rounded-full">                    
                     <span className="block w-2 h-96 bg-foreground"></span>
                     <div className="relative px-6 py-4 rounded-full text-background bg-foreground">
                         <p>Septembre 2019</p>

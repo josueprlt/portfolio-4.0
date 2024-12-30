@@ -1,20 +1,58 @@
 [
   {
     "id": 1,
-    "title": "Challenge BenjaminCode",
-    "date": "2021-06-01",
-    "category": [
-      "Personnel",
-      "Dev Web",
-      "html",
-      "css",
-      "js"
-    ],
-    "description": "Dans le cadre personnel, le but était de retranscrire en html, css et js la template de la page qui nous était donnée par BenjaminCode.",
-    "image": [
-      "BenjaminCode/projetaccueil.png",
-      "BenjaminCode/projetfinis.png",
-      "BenjaminCode/template.png"
-    ]
+    "title": "html"
+  },
+  {
+    "id": 2,
+    "title": "css"
+  },
+  {
+    "id": 3,
+    "title": "js"
+  },
+  {
+    "id": 4,
+    "title": "sass"
+  },
+  {
+    "id": 5,
+    "title": "php"
+  },
+  {
+    "id": 6,
+    "title": "react"
+  },
+  {
+    "id": 7,
+    "title": "symfony"
+  },
+  {
+    "id": 8,
+    "title": "bootstrap"
+  },
+  {
+    "id": 9,
+    "title": "materialui"
+  },
+  {
+    "id": 10,
+    "title": "tailwindcss"
+  },
+  {
+    "id": 11,
+    "title": "nextjs"
+  },
+  {
+    "id": 12,
+    "title": "docker"
+  },
+  {
+    "id": 13,
+    "title": "github"
+  },
+  {
+    "id": 14,
+    "title": "vscode"
   }
 ]

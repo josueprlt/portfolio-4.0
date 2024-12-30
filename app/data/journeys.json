@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "date": "Septembre 2019",
+    "title": "Baccalauréat Technologique",
+    "description": "Après avoir obtenu mon brevet, j'ai choisi de poursuivre mes études au lycée La Mennais de Ploërmel.",
+    "image": "/img/lamennais.png"
+  },
+  {
+    "id": 1,
+    "date": "Juillet 2022",
+    "title": "Obtention du BAC Technologique",
+    "description": "Originaire de Bretagne, j'ai obtenu mon bac STI2D au lycée La Mennais de Ploërmel.",
+    "image": "/img/lamennais2.png"
+  },
+  {
+    "id": 2,
+    "date": "Septembre 2022",
+    "title": "BUT MMI",
+    "description": "Après avoir obtenu mon brevet, j'ai choisi de poursuivre mes études au lycée La Mennais de Ploërmel.",
+    "image": "/img/lamennais.png"
+  },
+  {
+    "id": 3,
+    "date": "Septembre 2019",
+    "title": "Baccalauréat Technologique",
+    "description": "Après avoir obtenu mon BAC et souhaitant approfondir mes connaissances sur le web, je me suis inscrit à cette formation à Limoges.",
+    "image": "/img/mmi.png"
+  },
+  {
+    "id": 4,
+    "date": "Avril 2024",
+    "title": "Stage chez M. Etienne Leriche",
+    "description": "Ce stage s'est déroulé du 8 avril au 31 mai 2024. J’ai beaucoup appris sur la création web et j’ai amélioré mes compétences en développement web.",
+    "image": "/img/etienne.png"
+  },
+  {
+    "id": 5,
+    "date": "Juillet 2024",
+    "title": "Obtention du DUT MMI",
+    "description": "J’ai obtenu le DUT MMI à la fin de la deuxième année universitaire.",
+    "image": "/img/butmmi.png"
+  }
+]
