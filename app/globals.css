@@ -7,13 +7,25 @@
   --foreground: #262330;
   --bg-primary: #226CE0;
   --bg-secondary: #FF4000;
+  --bg-primary-gray: #6c6c6c;
+  --bg-secondary-gray: #b2b2b2;
   --bg-title-secondary: #E8DBCC;
 
   --bg-text-whatsapp: #25D366;
   --bg-text-linkedin: #0A66C2;
   --bg-text-instagram: #E4405F;
 
+  --bg-text-html: #E34F26;
+  --bg-text-css: #1572B6;
+  --bg-text-js: #F7DF1E;
+  --bg-text-sass: #CC6699;
+  --bg-text-php: #777BB4;
+  --bg-text-react: #61DAFB;
+  --bg-text-symfony: #000000;
+  --bg-text-bootstrap: #7952B3;
   --bg-text-materialui: #007FFF;
+  --bg-text-tailwind: #06B6D4;
+  --bg-text-github: #181717;
 }
 
 body {

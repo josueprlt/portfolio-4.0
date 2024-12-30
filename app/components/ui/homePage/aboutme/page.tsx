@@ -1,6 +1,7 @@
 import { ButtonArrowIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -32,12 +33,12 @@ export default function AboutMe() {
                                     <ButtonArrowIcon fill="#FEEFDD" className="w-3 md:w-5" />
                                 </div>
                             </button>
-                            <button className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
+                            <Link href="/profil" className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
                                 Voir plus
                                 <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
                                     <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
                                 </div>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full">
