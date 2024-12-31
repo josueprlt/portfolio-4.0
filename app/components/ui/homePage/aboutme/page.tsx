@@ -25,6 +25,7 @@ export default function AboutMe() {
     const titleRef = useRef<HTMLHeadingElement>(null);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const linkRefs = useRef<HTMLLinkElement[]>([]);
+    const imageRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
         const titleElement = titleRef.current;
@@ -63,16 +64,31 @@ export default function AboutMe() {
         if (linkRefs.current.length > 0) {
             gsap.from(linkRefs.current, {
                 opacity: 0,
-                y: 20,
+                x: -50,
                 duration: 1,
                 ease: Power2.easeOut,
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: linkRefs.current[0],
                     start: "top 80%",
-                    markers: true,
                 },
             });
+        }
+
+        if (imageRef.current) {
+            gsap.fromTo(
+                imageRef.current,
+                { filter: "grayscale(100%) blur(5px)" },
+                {
+                    filter: "grayscale(0%) blur(0px)",
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    scrollTrigger: {
+                        trigger: imageRef.current,
+                        start: "top 80%",
+                    },
+                }
+            );
         }
     }, []);
 
@@ -103,7 +119,7 @@ export default function AboutMe() {
                         </div>
                     </div>
                     <div className="w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full">
-                        <Image width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full object-cover" />
+                        <Image ref={imageRef} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full object-cover" />
                     </div>
                 </div>
 

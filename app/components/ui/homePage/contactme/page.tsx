@@ -1,5 +1,10 @@
+"use client"
+
+import { useEffect, useRef } from "react";
 import { PhoneIcon, EmailIcon, WhatsappIcon, LinkedinIcon, InstagramIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
+import { gsap, Power2, Power3, Power4 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -13,13 +18,32 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 export default function ContactMe() {
+    gsap.registerPlugin(ScrollTrigger);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+
+    useEffect(() => {
+        const titleElement = titleRef.current;
+
+        if (titleElement) {
+            gsap.from(
+                titleElement, {
+                opacity: 0,
+                x: -300,
+                scrollTrigger: {
+                    trigger: titleElement,
+                    start: "top 80%",
+                },
+            });
+        }
+
+    }, []);
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 className="text-xl text-center relative z-10 md:text-7xl">Contactez moi</h2>
+            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">Contactez moi</h2>
 
             <section className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-48 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
                 <div className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-24 rounded-2xl">
-                    <PhoneIcon className="w-6 md:w-11" />
+                    <PhoneIcon className="w-6 md:w-11 text-background" />
                     <p className="text-background">07 57 49 21 89</p>
                 </div>
                 <div className="flex justify-center h-24 items-center gap-6 rounded-2xl">
