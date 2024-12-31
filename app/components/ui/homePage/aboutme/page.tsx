@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from 'split-type';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -22,11 +23,12 @@ const ClimateCrisis = Climate_Crisis({
 export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
     const titleRef = useRef<HTMLHeadingElement>(null);
-    const textRef = useRef<HTMLParagraphElement>(null);
+    const textRefs = useRef<HTMLParagraphElement[]>([]);
+    const linkRefs = useRef<HTMLLinkElement[]>([]);
 
     useEffect(() => {
         const titleElement = titleRef.current;
-        const textElement = textRef.current;
+        const textsElement = textRefs.current;
 
         if (titleElement) {
             gsap.fromTo(
@@ -36,10 +38,41 @@ export default function AboutMe() {
                     opacity: 1, x: 0, duration: 1, ease: Power2.easeOut, scrollTrigger: {
                         trigger: titleElement,
                         start: "top 80%",
-                        markers: true
                     }
                 }
             );
+        }
+
+        textsElement.forEach((textElement) => {
+            if (textElement) {
+                const split = new SplitType(textElement, { types: 'lines' });
+                gsap.from(split.lines, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: textElement,
+                        start: "top 80%",
+                    },
+                });
+            }
+        });
+
+        if (linkRefs.current.length > 0) {
+            gsap.from(linkRefs.current, {
+                opacity: 0,
+                y: 20,
+                duration: 1,
+                ease: Power2.easeOut,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: linkRefs.current[0],
+                    start: "top 80%",
+                    markers: true,
+                },
+            });
         }
     }, []);
 
@@ -52,16 +85,16 @@ export default function AboutMe() {
 
                 <div className="md:grid md:grid-cols-2 md:gap-24">
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
-                        <p ref={textRef}>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
+                        <p ref={(el) => textRefs.current[0] = el!}>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
 
                         <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                            <button className="relative bg-background text-foreground px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
+                            <Link href="/" ref={(el) => linkRefs.current[0] = el!} className="relative bg-background text-foreground px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
                                 Télécharger mon CV
                                 <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-foreground md:top-[6px] md:right-[6px] md:w-10 md:h-10">
                                     <ButtonArrowIcon fill="#FEEFDD" className="w-3 md:w-5" />
                                 </div>
-                            </button>
-                            <Link href="/profil" className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
+                            </Link>
+                            <Link href="/profil" ref={(el) => linkRefs.current[1] = el!} className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
                                 Voir plus
                                 <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
                                     <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
@@ -76,7 +109,7 @@ export default function AboutMe() {
 
                 <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                     <div className="md:order-2 mt-10 md:mt-0 md:text-right">
-                        <p className="box">Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
+                        <p ref={(el) => textRefs.current[1] = el!}>Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
                         <p className="mt-6">Agréable visite !</p>
                     </div>
 

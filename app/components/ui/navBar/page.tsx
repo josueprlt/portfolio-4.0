@@ -1,7 +1,9 @@
+"use client"
+
 import { useEffect, useRef } from "react";
 import { LogoIcon } from "@/app/components/ui/icons";
 import Link from 'next/link';
-import { gsap, Power2, Circ } from "gsap";
+import { gsap, Power2 } from "gsap";
 
 export default function NavBar() {
     const logoIconRef = useRef<HTMLLinkElement>(null);
