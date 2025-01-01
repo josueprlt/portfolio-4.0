@@ -24,7 +24,7 @@ export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
-    const linkRefs = useRef<HTMLLinkElement[]>([]);
+    const linkRefs = useRef<HTMLAnchorElement[]>([]);
     const imageRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {

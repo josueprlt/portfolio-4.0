@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { gsap, Power2 } from "gsap";
 
 export default function NavBar() {
-    const logoIconRef = useRef<HTMLLinkElement>(null);
+    const logoIconRef = useRef<HTMLAnchorElement>(null);
     const divNavbarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -18,6 +18,28 @@ export default function NavBar() {
             { opacity: 0, y: -50 },
             { opacity: 1, y: 0, duration: 0.25, stagger: 0.35, ease: Power2.easeOut, delay: 1 }
         );
+
+        if (logoIcon) {
+            const handleMouseEnter = () => {
+
+                gsap.from(
+                    logoIcon,
+                    { scale: 0.9, duration: .75 }
+                );
+            };
+
+            const handleMouseLeave = () => {
+                gsap.to(logoIcon, { scale: 1, duration: .75 });
+            };
+
+            logoIcon.addEventListener("mouseenter", handleMouseEnter);
+            logoIcon.addEventListener("mouseleave", handleMouseLeave);
+
+            return () => {
+                logoIcon.removeEventListener("mouseenter", handleMouseEnter);
+                logoIcon.removeEventListener("mouseleave", handleMouseLeave);
+            };
+        }
     }, []);
     return (
         <nav className="flex justify-between items-center">
