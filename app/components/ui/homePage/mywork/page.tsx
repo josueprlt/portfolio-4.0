@@ -40,7 +40,7 @@ export default function MyWork() {
                 x: -300,
                 scrollTrigger: {
                     trigger: titleElement,
-                    start: "top 80%",
+                    start: "top center",
                 },
             });
         }
@@ -49,7 +49,7 @@ export default function MyWork() {
             const timelineLi = gsap.timeline({
                 scrollTrigger: {
                     trigger: ulElement,
-                    start: "top 60%"
+                    start: "top center"
                 },
             });
 

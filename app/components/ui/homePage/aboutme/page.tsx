@@ -38,7 +38,8 @@ export default function AboutMe() {
                 {
                     opacity: 1, x: 0, duration: 1, ease: Power2.easeOut, scrollTrigger: {
                         trigger: titleElement,
-                        start: "top 80%",
+                        start: "top center",
+                        markers: true,
                     }
                 }
             );
@@ -55,7 +56,7 @@ export default function AboutMe() {
                     stagger: 0.1,
                     scrollTrigger: {
                         trigger: textElement,
-                        start: "top 80%",
+                        start: "top center",
                     },
                 });
             }
@@ -70,7 +71,7 @@ export default function AboutMe() {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: linkRefs.current[0],
-                    start: "top 80%",
+                    start: "top center",
                 },
             });
         }
@@ -85,7 +86,7 @@ export default function AboutMe() {
                     ease: Power2.easeOut,
                     scrollTrigger: {
                         trigger: imageRef.current,
-                        start: "top 80%",
+                        start: "top center",
                     },
                 }
             );
