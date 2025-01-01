@@ -37,15 +37,9 @@ body {
   transform: translateX(24px);
 }
 
-/* styles/globals.css */
-.perspective-1000 {
-  perspective: 1000px;
+.linear-gradient-one {
+  background: linear-gradient(-135deg, transparent 0%, var(--bg-secondary) 100%);
 }
-
-.hover\\:rotate-y-12:hover {
-  transform: rotateY(12deg);
-}
-
-.hover\\:rotate-x-6:hover {
-  transform: rotateX(6deg);
+.linear-gradient-two {
+  background: linear-gradient(-135deg, var(--bg-primary) 0%, transparent 100%);
 }

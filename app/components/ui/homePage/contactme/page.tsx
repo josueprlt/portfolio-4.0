@@ -43,7 +43,8 @@ export default function ContactMe() {
             const timelineContact = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRefs.current[0],
-                    start: "top center"
+                    start: "top center",
+                    markers: true,
                 },
             });
 
@@ -76,7 +77,7 @@ export default function ContactMe() {
     }, []);
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">Contact Me</h2>
+            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">Contactez moi</h2>
 
             <section ref={(el) => sectionRefs.current[0] = el!} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-48 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
                 <div ref={(el) => contactRefs.current[0] = el!} className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-24 rounded-2xl">
