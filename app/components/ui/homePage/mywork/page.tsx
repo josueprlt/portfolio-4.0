@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ButtonArrowIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import projects from "@/app/data/projects.json";
 import { gsap, Power2, Power3, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from 'next/link'
+import SplitType from 'split-type';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -28,16 +29,21 @@ export default function MyWork() {
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const arrowIconRefs = useRef<HTMLDivElement[]>([]);
 
+    const [animationsPlayed, setAnimationsPlayed] = useState(false);
+
     useEffect(() => {
+        if (animationsPlayed) return;
+
         const titleElement = titleRef.current;
         const ulElement = ulRef.current;
 
-
         if (titleElement) {
-            gsap.from(
-                titleElement, {
-                opacity: 0,
-                x: -300,
+            const split = new SplitType(titleElement, { types: 'chars' });
+            gsap.from(split.chars, {
+                y: -100,
+                duration: 0.75,
+                ease: Power2.easeOut,
+                stagger: 0.1,
                 scrollTrigger: {
                     trigger: titleElement,
                     start: "top center",
@@ -100,12 +106,12 @@ export default function MyWork() {
                 };
             }
         });
-
-    }, []);
+        setAnimationsPlayed(true);
+    }, [animationsPlayed]);
 
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">Mon travail</h2>
+            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Mon travail</h2>
 
             <ul ref={ulRef} className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project) => (

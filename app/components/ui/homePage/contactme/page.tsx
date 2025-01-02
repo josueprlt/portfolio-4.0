@@ -5,6 +5,7 @@ import { PhoneIcon, EmailIcon, WhatsappIcon, LinkedinIcon, InstagramIcon } from 
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from 'split-type';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -28,10 +29,12 @@ export default function ContactMe() {
         const titleElement = titleRef.current;
 
         if (titleElement) {
-            gsap.from(
-                titleElement, {
-                opacity: 0,
-                x: -300,
+            const split = new SplitType(titleElement, { types: 'chars' });
+            gsap.from(split.chars, {
+                y: -100,
+                duration: 0.75,
+                ease: Power2.easeOut,
+                stagger: 0.1,
                 scrollTrigger: {
                     trigger: titleElement,
                     start: "top center",
@@ -77,7 +80,7 @@ export default function ContactMe() {
     }, []);
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">Contactez moi</h2>
+            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Contactez moi</h2>
 
             <section ref={(el) => sectionRefs.current[0] = el!} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-48 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
                 <div ref={(el) => contactRefs.current[0] = el!} className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-24 rounded-2xl">

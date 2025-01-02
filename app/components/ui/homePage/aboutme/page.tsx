@@ -35,7 +35,7 @@ export default function AboutMe() {
             const split = new SplitType(titleElement, { types: 'chars' });
             gsap.from(split.chars, {
                 y: -100,
-                duration: 1,
+                duration: 0.75,
                 ease: Power2.easeOut,
                 stagger: 0.1,
                 scrollTrigger: {
