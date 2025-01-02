@@ -32,17 +32,17 @@ export default function AboutMe() {
         const textsElement = textRefs.current;
 
         if (titleElement) {
-            gsap.fromTo(
-                titleElement,
-                { opacity: 0, x: -300 },
-                {
-                    opacity: 1, x: 0, duration: 1, ease: Power2.easeOut, scrollTrigger: {
-                        trigger: titleElement,
-                        start: "top center",
-                        markers: true,
-                    }
-                }
-            );
+            const split = new SplitType(titleElement, { types: 'chars' });
+            gsap.from(split.chars, {
+                y: -100,
+                duration: 1,
+                ease: Power2.easeOut,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: titleElement,
+                    start: "top center",
+                },
+            });
         }
 
         textsElement.forEach((textElement) => {
@@ -64,13 +64,14 @@ export default function AboutMe() {
 
         if (linkRefs.current.length > 0) {
             gsap.from(linkRefs.current, {
+                delay: 1.25,
                 opacity: 0,
-                x: -50,
+                x: -25,
                 duration: 1,
                 ease: Power2.easeOut,
-                stagger: 0.2,
+                stagger: 0.5,
                 scrollTrigger: {
-                    trigger: linkRefs.current[0],
+                    trigger: textsElement[0],
                     start: "top center",
                 },
             });
@@ -95,7 +96,7 @@ export default function AboutMe() {
 
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl">A propos de moi</h2>
+            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">A propos de moi</h2>
             {/* <span className="absolute -top-1 left-0 -z-1 text-3xl text-titleSecondary">A propos de moi</span> */}
 
             <section className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>

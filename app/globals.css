@@ -37,6 +37,10 @@ body {
   transform: translateX(24px);
 }
 
+.clip-path {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
 .linear-gradient-one {
   background: linear-gradient(-135deg, transparent 0%, var(--bg-secondary) 100%);
 }
