@@ -29,7 +29,21 @@ export default function MyWork() {
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const arrowIconRefs = useRef<HTMLDivElement[]>([]);
 
-    const [animationsPlayed, setAnimationsPlayed] = useState(false);
+    const [animationsPlayed, setAnimationsPlayed] = useState(() => {
+        return localStorage.getItem('animationsPlayed') === 'true';
+    });
+
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('animationsPlayed');
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     useEffect(() => {
         if (animationsPlayed) return;
@@ -106,9 +120,9 @@ export default function MyWork() {
                 };
             }
         });
-        console.log(animationsPlayed);
+
         setAnimationsPlayed(true);
-        console.log(animationsPlayed);
+        localStorage.setItem('animationsPlayed', 'true');
     }, [animationsPlayed]);
 
     return (

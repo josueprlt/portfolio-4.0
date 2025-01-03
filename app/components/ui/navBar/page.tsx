@@ -39,7 +39,7 @@ export default function NavBar() {
                 });
                 gsap.to('#gradient', {
                     rotate: '360deg',
-                    duration: 7,
+                    duration: 10,
                     ease: "none",
                     repeat: -1,
                 });
