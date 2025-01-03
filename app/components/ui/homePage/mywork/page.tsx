@@ -106,7 +106,9 @@ export default function MyWork() {
                 };
             }
         });
+        console.log(animationsPlayed);
         setAnimationsPlayed(true);
+        console.log(animationsPlayed);
     }, [animationsPlayed]);
 
     return (
