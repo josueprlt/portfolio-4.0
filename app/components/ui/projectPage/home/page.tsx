@@ -55,7 +55,7 @@ export default function Home({ project }: HomeProps) {
                         ))}
                     </div>
                 </div>
-                <Image width={5000} height={5000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full absolute top-0 left-0 z-0 object-cover" />
+                <Image width={5000} height={5000} src={project.image[0]} alt="Description of the image" className="w-full h-full absolute top-0 left-0 z-0 object-cover" />
             </section>
         </header>
     );

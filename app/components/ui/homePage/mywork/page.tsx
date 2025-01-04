@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { ButtonArrowIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import projects from "@/app/data/projects.json";
-import { gsap, Power2, Power3, Power4 } from "gsap";
+import { gsap, Power2, Power3, Power4, Elastic } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from 'next/link'
 import SplitType from 'split-type';
@@ -58,14 +58,18 @@ export default function MyWork() {
                         duration: 0.75,
                         ease: Power2.easeOut,
                     });
+                    gsap.from(imageDivRef.current, {
+                        filter: "blur(2px)",
+                        duration: 0.5,
+                        ease: Power2.easeOut,
+                    });
                     gsap.to(imageDivRef.current, {
+                        filter: "blur(0px)",
                         opacity: 1,
                         duration: 0.5,
                         ease: Power2.easeOut,
                     });
-                    console.log(projects[i-1].image);
-                    
-                    imageDivRef.current!.style.backgroundImage = `url(${projects[i-1].image[0]})`;
+                    imageDivRef.current!.style.backgroundImage = `url(${projects[i - 1].image[0]})`;
                 };
 
                 const handleMouseLeave = () => {
@@ -81,12 +85,22 @@ export default function MyWork() {
                     });
                 };
 
+                const handleMouseMove = (e: MouseEvent) => {
+                    gsap.to(imageDivRef.current, {
+                        y: e.clientY + window.scrollY - 3500,
+                        duration: 1,
+                        ease: Elastic.easeOut.config(1, 0.3),
+                    });
+                };
+
                 liRefs.current[i].addEventListener("mouseenter", handleMouseEnter);
                 liRefs.current[i].addEventListener("mouseleave", handleMouseLeave);
+                liRefs.current[i].addEventListener("mousemove", handleMouseMove);
 
                 return () => {
                     liRefs.current[i].removeEventListener("mouseenter", handleMouseEnter);
                     liRefs.current[i].removeEventListener("mouseleave", handleMouseLeave);
+                    liRefs.current[i].removeEventListener("mousemove", handleMouseMove);
                 };
             });
         }
@@ -143,31 +157,6 @@ export default function MyWork() {
             });
         }
 
-        liRefs.current.forEach(li => {
-            if (li) {
-                const handleMouseEnter = () => {
-
-                    gsap.from(
-                        arrowIconRefs, {
-                        rotate: '90deg',
-                        duration: .75
-                    });
-                };
-
-                const handleMouseLeave = () => {
-                    gsap.to(arrowIconRefs, { rotate: '0deg', duration: 1 });
-                };
-
-                li.addEventListener("mouseenter", handleMouseEnter);
-                li.addEventListener("mouseleave", handleMouseLeave);
-
-                return () => {
-                    li.removeEventListener("mouseenter", handleMouseEnter);
-                    li.removeEventListener("mouseleave", handleMouseLeave);
-                };
-            }
-        });
-
         setAnimationsPlayed(true);
         localStorage.setItem('animationsPlayedWork', 'true');
     }, [animationsPlayed]);
@@ -189,7 +178,7 @@ export default function MyWork() {
                     </li>
                 ))}
 
-                <div ref={imageDivRef} className="absolute top-0 right-0 w-64 h-64 bg-cover bg-center opacity-0 pointer-events-none"></div>
+                <div ref={imageDivRef} className="absolute right-20 w-[400px] h-64 bg-cover bg-center rounded-lg opacity-0 pointer-events-none"></div>
             </ul>
         </div>
     );

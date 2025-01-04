@@ -47,3 +47,9 @@ body {
 .linear-gradient-two {
   background: linear-gradient(-135deg, var(--bg-primary) 0%, transparent 100%);
 }
+
+.bg-gradient-text {
+  background: linear-gradient(to right, var(--bg-primary), var(--bg-secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+}
