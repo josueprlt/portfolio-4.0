@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PhoneIcon, EmailIcon, WhatsappIcon, LinkedinIcon, InstagramIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";
@@ -25,7 +25,28 @@ export default function ContactMe() {
     const socialRefs = useRef<HTMLDivElement[]>([]);
     const contactRefs = useRef<HTMLDivElement[]>([]);
 
+    const [animationsPlayed, setAnimationsPlayed] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('animationsPlayedContact') === 'true';
+        }
+        return false;
+    });
+
     useEffect(() => {
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('animationsPlayedContact');
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (animationsPlayed) return;
+
         const titleElement = titleRef.current;
 
         if (titleElement) {
@@ -47,7 +68,6 @@ export default function ContactMe() {
                 scrollTrigger: {
                     trigger: sectionRefs.current[0],
                     start: "top center",
-                    markers: true,
                 },
             });
 
@@ -77,7 +97,9 @@ export default function ContactMe() {
             });
         }
 
-    }, []);
+        setAnimationsPlayed(true);
+        localStorage.setItem('animationsPlayedContact', 'true');
+    }, [animationsPlayed]);
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Contactez moi</h2>

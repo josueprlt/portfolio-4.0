@@ -28,14 +28,18 @@ export default function MyWork() {
     const lineRefs = useRef<HTMLDivElement[]>([]);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const arrowIconRefs = useRef<HTMLDivElement[]>([]);
+    const imageDivRef = useRef<HTMLDivElement>(null);
 
     const [animationsPlayed, setAnimationsPlayed] = useState(() => {
-        return localStorage.getItem('animationsPlayed') === 'true';
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('animationsPlayedWork') === 'true';
+        }
+        return false;
     });
 
     useEffect(() => {
         const handleBeforeUnload = () => {
-            localStorage.removeItem('animationsPlayed');
+            localStorage.removeItem('animationsPlayedWork');
         };
 
         window.addEventListener('beforeunload', handleBeforeUnload);
@@ -44,6 +48,49 @@ export default function MyWork() {
             window.removeEventListener('beforeunload', handleBeforeUnload);
         };
     }, []);
+
+    useEffect(() => {
+        if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0) {
+            liRefs.current.forEach((_, i) => {
+                const handleMouseEnter = () => {
+                    gsap.to(arrowIconRefs.current[i], {
+                        rotate: '45deg',
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                    gsap.to(imageDivRef.current, {
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: Power2.easeOut,
+                    });
+                    console.log(projects[i-1].image);
+                    
+                    imageDivRef.current!.style.backgroundImage = `url(${projects[i-1].image[0]})`;
+                };
+
+                const handleMouseLeave = () => {
+                    gsap.to(arrowIconRefs.current[i], {
+                        rotate: '0deg',
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                    gsap.to(imageDivRef.current, {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: Power2.easeOut,
+                    });
+                };
+
+                liRefs.current[i].addEventListener("mouseenter", handleMouseEnter);
+                liRefs.current[i].addEventListener("mouseleave", handleMouseLeave);
+
+                return () => {
+                    liRefs.current[i].removeEventListener("mouseenter", handleMouseEnter);
+                    liRefs.current[i].removeEventListener("mouseleave", handleMouseLeave);
+                };
+            });
+        }
+    })
 
     useEffect(() => {
         if (animationsPlayed) return;
@@ -122,14 +169,14 @@ export default function MyWork() {
         });
 
         setAnimationsPlayed(true);
-        localStorage.setItem('animationsPlayed', 'true');
+        localStorage.setItem('animationsPlayedWork', 'true');
     }, [animationsPlayed]);
 
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Mon travail</h2>
 
-            <ul ref={ulRef} className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
+            <ul ref={ulRef} className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project) => (
                     <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} className="relative flex justify-between items-center cursor-pointer">
                         <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
@@ -141,6 +188,8 @@ export default function MyWork() {
                         <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground"></span>
                     </li>
                 ))}
+
+                <div ref={imageDivRef} className="absolute top-0 right-0 w-64 h-64 bg-cover bg-center opacity-0 pointer-events-none"></div>
             </ul>
         </div>
     );
