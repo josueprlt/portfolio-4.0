@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon } from '@/app/components/ui/icons';
 
+
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
     weight: ['400'],
