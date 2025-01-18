@@ -53,3 +53,12 @@ body {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+
+.scale__elt {
+  transition: transform 0.2s ease-in-out;
+}
+
+.scale__elt:hover {
+  transform: scale(1.1);
+}

@@ -104,14 +104,14 @@ export default function Description({ project }: HomeProps) {
                 <div className='flex justify-center my-10 md:my-32'>
                     {projet.link == null ? (
                         <>
-                            <Link href="/" className="relative bg-gradient-to-r from-primaryGray to-secondaryGray text-base text-background cursor-not-allowed px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl">
+                            <div className="relative bg-gradient-to-r from-primaryGray to-secondaryGray text-base text-background cursor-not-allowed px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl">
                                 <span className="relative z-30">Ce projet n'est pas disponible</span>
                                 <div className="absolute top-1 right-1 w-8 h-8 rounded-full bg-foreground md:top-[6px] md:right-[6px] md:w-10 md:h-10">
                                 </div>
                                 <div className="absolute top-[14px] right-[14px] md:top-4 md:right-4">
                                     <ButtonArrowIcon fill="#FEEFDD" className="w-3 md:w-5" />
                                 </div>
-                            </Link>
+                            </div>
                         </>
                     ) : (
                         <>

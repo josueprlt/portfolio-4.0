@@ -58,7 +58,7 @@ export default function Home({ project }: HomeProps) {
                             <span key={index} className="bg-background text-foreground px-4 py-2 rounded-full">{cat}</span>
                         ))}
                         {remainingCount > 0 && (
-                            <Tooltip content={projet.category.slice(numberOfItem).join(', ')} className={`${DelaGothicOne.className} bg-background color-foreground text-xs`}>
+                            <Tooltip content={projet.category.slice(numberOfItem).join(', ')} className={`${DelaGothicOne.className} bg-background color-foreground text-xs`} showArrow={true}>
                                 <span className="bg-background text-foreground px-4 py-2 rounded-full">+ {remainingCount}</span>
                             </Tooltip>
                         )}

@@ -1,17 +1,25 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
-import Link from "next/link";
-import Image from 'next/image';
+import { Dela_Gothic_One, Climate_Crisis } from "next/font/google";
+import Image from "next/image";
+import {
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    useDisclosure,
+} from "@heroui/modal";
+import { Pagination } from "@heroui/pagination";
 
 const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
+    subsets: ["latin"],
+    weight: ["400"],
 });
 
 const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
+    subsets: ["latin"],
 });
 
 interface Project {
@@ -30,10 +38,25 @@ interface HomeProps {
 
 export default function Images({ project }: HomeProps) {
     const [projet, setProjet] = useState<Project | null>(null);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+    const [currentPage, setCurrentPage] = useState<number>(1); // État pour la pagination
 
     useEffect(() => {
         setProjet(project);
     }, [project]);
+
+    const handleOpenModal = (index: number) => {
+        setCurrentIndex(index); // Met à jour l'index de l'image actuelle
+        setCurrentPage(index + 1); // Synchronise la pagination
+        onOpen(); // Ouvre la modal
+    };
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page); // Met à jour la page actuelle
+        setCurrentIndex(page - 1); // Met à jour l'image affichée
+    };
 
     if (!projet) {
         return <div>Loading...</div>;
@@ -43,13 +66,51 @@ export default function Images({ project }: HomeProps) {
         <div>
             <h2 className={`${ClimateCrisis.className} text-xl md:text-7xl`}>Images</h2>
 
-            <section className={`${DelaGothicOne.className} flex flex-col gap-4 mt-5 md:mt-10 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
+            <section
+                className={`${DelaGothicOne.className} flex flex-col gap-4 mt-5 md:mt-10 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}
+            >
                 {projet.image.map((img, index) => (
-                    <div key={index} className='w-full h-48 rounded-xl overflow-hidden cursor-pointer'>
-                        <Image width={5000} height={5000} src={img} alt="Description of the image" className="w-full h-full object-cover" />
+                    <div
+                        key={index}
+                        onClick={() => handleOpenModal(index)}
+                        className="w-full h-48 rounded-xl overflow-hidden cursor-pointer scale__elt"
+                    >
+                        <Image
+                            width={5000}
+                            height={5000}
+                            src={img}
+                            alt={`Image ${index}`}
+                            className="w-full h-full object-cover"
+                        />
                     </div>
                 ))}
             </section>
+
+            {/* Modal en dehors de la boucle */}
+            <Modal isOpen={isOpen} onOpenChange={(isOpen) => !isOpen && onClose()} size="5xl" backdrop="blur" className="bg-background">
+                <ModalContent>
+                    <>
+                        <ModalHeader className="flex flex-col gap-1">Image {currentIndex + 1}</ModalHeader>
+                        <ModalBody>
+                            <Image
+                                width={5000}
+                                height={5000}
+                                src={projet.image[currentIndex]} // Affiche l'image basée sur l'index actuel
+                                alt={`Modal Image ${currentIndex}`}
+                                className="w-full h-full object-cover"
+                            />
+                        </ModalBody>
+                        <ModalFooter className="flex justify-center">
+                            <Pagination
+                                page={currentPage} // Page contrôlée par l'état
+                                total={project.image.length}
+                                onChange={handlePageChange} // Met à jour l'état quand la page change
+                                variant="light"
+                            />
+                        </ModalFooter>
+                    </>
+                </ModalContent>
+            </Modal>
         </div>
     );
 }
