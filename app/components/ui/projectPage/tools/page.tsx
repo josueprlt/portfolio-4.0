@@ -23,16 +23,15 @@ interface Project {
 }
 
 interface HomeProps {
-    project: Project;
+    project: Project | null;
 }
 
 export default function Tools({ project }: HomeProps) {
     gsap.registerPlugin(ScrollTrigger);
-
+    const h1Ref = useRef<HTMLHeadingElement>(null);
+    const sectionRef = useRef<HTMLElement>(null);
     const [projet, setProjet] = useState<Project | null>(null);
     const [filteredTechnos, setFilteredTechnos] = useState<string[]>([]);
-    const toolDivRefs = useRef<HTMLDivElement[]>([]);
-    const h1Ref = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
         if (project) {
@@ -42,46 +41,75 @@ export default function Tools({ project }: HomeProps) {
         }
     }, [project]);
 
+    const [animationsPlayed, setAnimationsPlayed] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('animationsPlayedTools') === 'true';
+        }
+        return false;
+    });
+
     useEffect(() => {
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('animationsPlayedTools');
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (animationsPlayed) return;
+
         if (document.fonts) {
             document.fonts.ready.then(() => {
-                const titleElement = h1Ref.current;
-                const divElements = toolDivRefs.current;
-
-                // Animation du titre avec SplitType
-                if (titleElement) {
-                    const split = new SplitType(titleElement, { types: "chars" });
+                if (h1Ref.current) {
+                    const split = new SplitType(h1Ref.current, { types: "chars" });
                     gsap.from(split.chars, {
                         y: -100,
                         duration: 0.75,
                         ease: Power2.easeOut,
                         stagger: 0.1,
                         scrollTrigger: {
-                            trigger: titleElement,
+                            trigger: h1Ref.current,
                             start: "top center",
                         },
                     });
                 }
 
-                // Animation des icônes
-                if (divElements.length > 0) {
-                    gsap.from(divElements, {
-                        opacity: 0,
-                        x: 50,
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                        stagger: 0.25,
-                        scrollTrigger: {
-                            trigger: divElements[0],
-                            start: "top center",
-                        },
-                    });
-                }
+                const observer = new MutationObserver(() => {
+                    if (sectionRef.current) {
+                        const divElements = sectionRef.current.querySelectorAll("div");
+                        if (divElements.length > 0) {
+                            gsap.from(divElements, {
+                                opacity: 0,
+                                x: 50,
+                                duration: 0.75,
+                                ease: Power2.easeOut,
+                                stagger: 0.25,
+                                scrollTrigger: {
+                                    trigger: sectionRef.current,
+                                    start: "top center",
+                                },
+                            });
+                            observer.disconnect();
+                        }
+                    }
+                });
+
+                observer.observe(sectionRef.current as HTMLElement, { childList: true, subtree: true });
             });
         }
-    }, [filteredTechnos]);
 
-    if (!projet) return <div>Loading...</div>;
+        setAnimationsPlayed(true);
+        localStorage.setItem("animationsPlayedTools", "true");
+    }, [animationsPlayed]);
+
+    if (!project) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="pt-10 md:pt-30">
@@ -89,12 +117,9 @@ export default function Tools({ project }: HomeProps) {
                 Outils
             </h2>
 
-            <section className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
+            <section ref={sectionRef} className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
                 {filteredTechnos.map((tech, index) => (
                     <div
-                        ref={(el) => {
-                            if (el) toolDivRefs.current[index] = el;
-                        }}
                         key={index}
                         className="flex items-center gap-2 outline p-2 md:p-4 rounded-lg"
                     >

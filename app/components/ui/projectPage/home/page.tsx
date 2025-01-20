@@ -6,6 +6,7 @@ import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
 import Image from "next/image";
 import { Tooltip } from "@nextui-org/tooltip";
 import { gsap, Power2 } from "gsap";
+import { useRouter } from "next/router";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ["latin"],
@@ -33,6 +34,7 @@ interface HomeProps {
 }
 
 export default function Home({ project }: HomeProps) {
+    const router = useRouter();
     const numberOfItem = 2;
     const sectionRef = useRef<HTMLDivElement>(null);
     const h1Ref = useRef<HTMLHeadingElement>(null);
@@ -60,8 +62,20 @@ export default function Home({ project }: HomeProps) {
     }, []);
 
     useEffect(() => {
-        if (animationsPlayed) return;
+        const handleRouteChange = () => {
+            setAnimationsPlayed(false);
+            localStorage.removeItem('animationsPlayedHome');
+        };
 
+        router.events.on('routeChangeStart', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeStart', handleRouteChange);
+        };
+    }, [router]);
+
+    useEffect(() => {
+        if (animationsPlayed) return;
+        
         if (document.fonts) {
             document.fonts.ready.then(() => {
                 const spanElements = spanRefs.current;
@@ -114,7 +128,6 @@ export default function Home({ project }: HomeProps) {
         localStorage.setItem('animationsPlayedHome', 'true');
     }, [animationsPlayed]);
 
-    // Afficher un état de chargement si project est null
     if (!project) {
         return <div>Loading...</div>;
     }
