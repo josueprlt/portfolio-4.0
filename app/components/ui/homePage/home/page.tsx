@@ -5,6 +5,7 @@ import { ArrowIcon } from "@/app/components/ui/icons";
 import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";
+import Link from "next/link";
 
 const ClimateCrisis = Climate_Crisis({
     subsets: ['latin'],
@@ -107,9 +108,9 @@ export default function Home() {
                     </h1>
                     <span ref={spanLinearRef} className="w-52 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full md:w-96 md:h-3"></span>
                 </div>
-                <div ref={arrowRef}>
+                <Link href="#aboutme" ref={arrowRef}>
                     <ArrowIcon className="cursor-pointer" />
-                </div>
+                </Link>
             </section>
 
             <section className="flex justify-left items-center gap-3">

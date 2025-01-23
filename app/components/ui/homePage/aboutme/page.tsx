@@ -171,7 +171,7 @@ export default function AboutMe() {
     }, [animationsPlayed]);
 
     return (
-        <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
+        <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">A propos de moi</h2>
             {/* <span className="absolute -top-1 left-0 -z-1 text-3xl text-titleSecondary">A propos de moi</span> */}
 

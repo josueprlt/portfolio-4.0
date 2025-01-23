@@ -6,6 +6,7 @@ import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
 import Image from "next/image";
 import { Tooltip } from "@nextui-org/tooltip";
 import { gsap, Power2 } from "gsap";
+import { ArrowIcon } from '@/app/components/ui/icons';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ["latin"],
@@ -125,9 +126,14 @@ export default function Home({ project }: HomeProps) {
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8`}>
             <NavBar />
 
+            <button className="flex items-center mt-20 w-auto">
+                <ArrowIcon className="h-3 rotate-90 md:h-5" />
+                <span className={`${DelaGothicOne.className}`}>Retour</span>
+            </button>
+
             <section
                 ref={sectionRef}
-                className="h-96 flex justify-center items-center relative overflow-hidden mt-20 rounded-2xl after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-foreground after:to-transparent after:z-5 md:justify-start md:items-end md:px-10 md:pb-8 md:after:h-full"
+                className="h-96 flex justify-center items-center relative overflow-hidden mt-10 rounded-2xl after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-foreground after:to-transparent after:z-5 md:justify-start md:items-end md:px-10 md:pb-8 md:after:h-full"
             >
                 <div className="md:flex md:flex-row md:justify-between md:items-end md:w-full">
                     <h1
