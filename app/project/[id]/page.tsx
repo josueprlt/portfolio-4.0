@@ -17,6 +17,24 @@ export default function Page({ params }) {
         setProject(filteredProject);
     }, [id]);
 
+    useEffect(() => {
+        const hasReloaded = localStorage.getItem('hasReloaded');
+        if (!hasReloaded) {
+            localStorage.setItem('hasReloaded', 'true');
+            window.location.reload();
+        }
+
+        const handlePopState = () => {
+            localStorage.removeItem('hasReloaded');
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [id]);
+
     return (
         <>
             <Home project={project} />

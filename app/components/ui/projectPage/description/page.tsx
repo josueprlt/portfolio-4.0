@@ -34,7 +34,7 @@ interface HomeProps {
 export default function Description({ project }: HomeProps) {
     gsap.registerPlugin(ScrollTrigger);
     const [projet, setProjet] = useState<Project | null>(null);
-    const linkRefs = useRef<HTMLAnchorElement[]>([]);
+    const linkRefs = useRef<HTMLElement[]>([]);
     const divRefs = useRef<HTMLDivElement[]>([]);
     const arrowRefs = useRef<HTMLDivElement[]>([]);
     const h1Ref = useRef<HTMLHeadingElement>(null);
@@ -88,6 +88,18 @@ export default function Description({ project }: HomeProps) {
                 stagger: 0.1,
                 scrollTrigger: {
                     trigger: descRef.current,
+                    start: "top center",
+                },
+            });
+
+            gsap.from(linkRefs.current, {
+                opacity: 0,
+                y: 50,
+                duration: 0.75,
+                ease: Power2.easeOut,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: linkRefs.current,
                     start: "top center",
                 },
             });
@@ -163,7 +175,7 @@ export default function Description({ project }: HomeProps) {
                 <div className='flex justify-center my-10 md:my-32'>
                     {projet.link == null ? (
                         <>
-                            <div className="relative bg-gradient-to-r from-primaryGray to-secondaryGray text-base text-background cursor-not-allowed px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl">
+                            <div ref={(el) => linkRefs.current[0] = el!} className="relative bg-gradient-to-r from-primaryGray to-secondaryGray text-base text-background cursor-not-allowed px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl">
                                 <span className="relative z-30">Ce projet n'est pas disponible</span>
                                 <div className="absolute top-1 right-1 w-8 h-8 rounded-full bg-foreground md:top-[6px] md:right-[6px] md:w-10 md:h-10">
                                 </div>
