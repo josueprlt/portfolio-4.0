@@ -33,6 +33,7 @@ html {
 }
 
 body {
+  position: relative;
   color: var(--foreground);
   background: var(--background);
 }

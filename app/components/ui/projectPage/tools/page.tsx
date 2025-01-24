@@ -125,17 +125,17 @@ export default function Tools({ project }: HomeProps) {
                     >
                         {tech === "html" && (
                             <>
-                                <HtmlIcon className="w-8 h-8" /> <span className="text-html">{tech}</span>
+                                <HtmlIcon className="w-8 h-8 z-0" /> <span className="text-html">{tech}</span>
                             </>
                         )}
                         {tech === "css" && (
                             <>
-                                <CssIcon className="w-8 h-8" /> <span className="text-css">{tech}</span>
+                                <CssIcon className="w-8 h-8 z-0" /> <span className="text-css">{tech}</span>
                             </>
                         )}
                         {tech === "js" && (
                             <>
-                                <JsIcon className="w-8 h-8" /> <span className="text-js">{tech}</span>
+                                <JsIcon className="w-8 h-8 z-0" /> <span className="text-js">{tech}</span>
                             </>
                         )}
                         {tech === "sass" && (
