@@ -49,6 +49,7 @@ body {
 .linear-gradient-one {
   background: linear-gradient(-135deg, transparent 0%, var(--bg-secondary) 100%);
 }
+
 .linear-gradient-two {
   background: linear-gradient(-135deg, var(--bg-primary) 0%, transparent 100%);
 }
@@ -66,4 +67,9 @@ body {
 
 .scale__elt:hover {
   transform: scale(1.1);
+}
+
+
+.img-toolbar, .border-toolbar {
+  filter: grayscale(100%);
 }

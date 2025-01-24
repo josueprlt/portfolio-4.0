@@ -8,13 +8,23 @@ import Description from "@/app/components/ui/projectPage/description/page";
 import Images from "@/app/components/ui/projectPage/images/page";
 import projects from "@/app/data/projects.json";
 import Image from "next/image";
-import { gsap } from 'gsap';
+import { gsap, Power2 } from 'gsap';
+import Link from 'next/link';
+import { Tooltip } from "@nextui-org/tooltip";
+import { Dela_Gothic_One } from "next/font/google";
+
+const DelaGothicOne = Dela_Gothic_One({
+    subsets: ["latin"],
+    weight: ["400"],
+    display: "swap",
+});
 
 export default function Page({ params }) {
     const { id } = use(params);
     const [project, setProject] = useState(null);
     const [randomProjects, setRandomProjects] = useState([]);
     const divRefs = useRef([]);
+    const spanRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const filteredProject = projects.find(project => project.id === parseInt(id));
@@ -50,18 +60,20 @@ export default function Page({ params }) {
 
     useEffect(() => {
         divRefs.current.forEach((div, index) => {
-            gsap.from(div, {
-                opacity: 0.5,
-                duration: 0.5,
-                ease: "power2.out",
-            });
             const handleMouseEnter = () => {
                 gsap.to(div, {
                     width: "400px",
-                    height: "179px",
+                    height: "120px",
+                    filter: "grayscale(0%)",
                     opacity: 1,
                     duration: 0.5,
-                    ease: "power2.out",
+                    ease: Power2.easeOut,
+                });
+                gsap.to(spanRef.current, {
+                    opacity: 1,
+                    filter: "grayscale(0%)",
+                    duration: 0.5,
+                    ease: Power2.easeOut,
                 });
             };
 
@@ -69,9 +81,16 @@ export default function Page({ params }) {
                 gsap.to(div, {
                     width: "110px",
                     height: "70px",
+                    filter: "grayscale(100%)",
                     opacity: 0.5,
                     duration: 0.5,
-                    ease: "power2.out",
+                    ease: Power2.easeOut,
+                });
+                gsap.to(spanRef.current, {
+                    opacity: 0.25,
+                    filter: "grayscale(100%)",
+                    duration: 0.5,
+                    ease: Power2.easeOut,
                 });
             };
 
@@ -88,26 +107,33 @@ export default function Page({ params }) {
     return (
         <>
             <Home project={project} />
-            <div className="fixed flex justify-center items-end w-full h-40 z-50">
+            <div className="fixed flex justify-center items-end w-full h-auto mt-16 z-50">
                 <div className="relative w-[455px] h-[70px] mb-4 flex flex-col items-end">
                     <div className="w-full h-full flex items-end flex-row gap-1.5">
                         {randomProjects.map((proj, index) => (
-                            <div
-                                className="w-[110px] h-full opacity-50"
+                            <Tooltip
                                 key={index}
-                                ref={el => divRefs.current[index] = el}
+                                content={`${proj.title}`}
+                                className={`${DelaGothicOne.className} bg-foreground text-background text-xs`}
+                                showArrow={true}
                             >
-                                <Image
-                                    width={1000}
-                                    height={1000}
-                                    src={proj.image[0]}
-                                    alt={`Image ${index}`}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
+                                <Link
+                                    href={`/project/${proj.id}`}
+                                    className="backdrop-grayscale w-[110px] h-full opacity-50 img-toolbar"
+                                    ref={el => divRefs.current[index] = el}
+                                >
+                                    <Image
+                                        width={1000}
+                                        height={1000}
+                                        src={proj.image[0]}
+                                        alt={`Image ${index}`}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </Link>
+                            </Tooltip>
                         ))}
                     </div>
-                    <span className="absolute left-0 -bottom-[4px] w-full h-1 bg-gradient-to-r from-primary to-secondary"></span>
+                    <span ref={spanRef} className="absolute left-0 -bottom-[4px] w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-50 border-toolbar"></span>
                 </div>
             </div>
             <main className="px-4 md:px-8">
