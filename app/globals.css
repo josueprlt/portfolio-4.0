@@ -70,6 +70,13 @@ body {
 }
 
 
-.img-toolbar, .border-toolbar {
+.img-toolbar,
+.border-toolbar {
+  filter: grayscale(100%);
+}
+
+
+.img-toolbar,
+.border-toolbar {
   filter: grayscale(100%);
 }

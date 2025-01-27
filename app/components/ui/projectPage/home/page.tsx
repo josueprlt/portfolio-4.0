@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Tooltip } from "@nextui-org/tooltip";
 import { gsap, Power2 } from "gsap";
 import { ArrowIcon } from '@/app/components/ui/icons';
+import Link from 'next/link';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function Home({ project }: HomeProps) {
     const spanRefs = useRef<HTMLSpanElement[]>([]);
     const spanRef2 = useRef<HTMLSpanElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
+    const retourRef = useRef<HTMLLinkElement>(null);
 
     const [animationsPlayed, setAnimationsPlayed] = useState(() => {
         if (typeof window !== 'undefined') {
@@ -69,6 +71,7 @@ export default function Home({ project }: HomeProps) {
                 const spanElement2 = spanRef2.current;
                 const h1Element = h1Ref.current;
                 const imgElement = imageRef.current;
+                const retourElement = retourRef.current;
 
                 if (spanElements.length > 0) {
                     gsap.from(spanElements, {
@@ -102,8 +105,18 @@ export default function Home({ project }: HomeProps) {
 
                 if (imgElement) {
                     gsap.from(imgElement, {
-                        delay: 2,
+                        delay: 2.5,
                         filter: "grayscale(100%) blur(5px)",
+                        duration: 1,
+                        ease: Power2.easeOut,
+                    });
+                }
+
+                if (retourElement) {
+                    gsap.from(retourElement, {
+                        delay: 2,
+                        opacity: 0,
+                        x: -50,
                         duration: 1,
                         ease: Power2.easeOut,
                     });
@@ -126,16 +139,15 @@ export default function Home({ project }: HomeProps) {
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8`}>
             <NavBar />
 
-            <button className="flex items-center mt-20 w-auto">
-                <ArrowIcon className="h-3 rotate-90 md:h-5" />
-                <span className={`${DelaGothicOne.className}`}>Retour</span>
-            </button>
-
             <section
                 ref={sectionRef}
                 className="h-96 flex justify-center items-center relative overflow-hidden mt-10 rounded-2xl after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-foreground after:to-transparent after:z-5 md:justify-start md:items-end md:px-10 md:pb-8 md:after:h-full"
             >
                 <div className="md:flex md:flex-row md:justify-between md:items-end md:w-full">
+                    <Link ref={retourRef} href="/#competences" className="absolute top-8 start-10 bg-background px-4 py-2 rounded-full z-10">
+                        <ArrowIcon className="h-3 rotate-90 md:h-5" />
+                    </Link>
+
                     <h1
                         ref={h1Ref}
                         className="relative z-10 text-background text-4xl text-center md:text-7xl md:text-left"

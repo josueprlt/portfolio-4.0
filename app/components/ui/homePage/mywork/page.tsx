@@ -50,6 +50,9 @@ export default function MyWork() {
     }, []);
 
     useEffect(() => {
+        let ul = document.querySelector('#ul-list');
+        console.dir(ul?.offsetTop);
+        
         if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0) {
             liRefs.current.forEach((_, i) => {
                 const handleMouseEnter = () => {
@@ -87,7 +90,7 @@ export default function MyWork() {
 
                 const handleMouseMove = (e: MouseEvent) => {
                     gsap.to(imageDivRef.current, {
-                        y: e.clientY + window.scrollY - 3500,
+                        y: e.clientY - imageDivRef.current!.offsetTop,
                         duration: 1,
                         ease: Elastic.easeOut.config(1, 0.3),
                     });
@@ -162,10 +165,10 @@ export default function MyWork() {
     }, [animationsPlayed]);
 
     return (
-        <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
+        <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="competences">
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Mon travail</h2>
 
-            <ul ref={ulRef} className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
+            <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project) => (
                     <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} className="relative flex justify-between items-center cursor-pointer">
                         <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">

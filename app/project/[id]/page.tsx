@@ -25,6 +25,7 @@ export default function Page({ params }) {
     const [randomProjects, setRandomProjects] = useState([]);
     const divRefs = useRef([]);
     const spanRef = useRef<HTMLElement>(null);
+    const fixedDivRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const filteredProject = projects.find(project => project.id === parseInt(id));
@@ -51,7 +52,8 @@ export default function Page({ params }) {
 
     useEffect(() => {
         const getRandomProjects = () => {
-            const shuffled = projects.sort(() => 0.5 - Math.random());
+            const filteredProjects = projects.filter(project => project.id !== parseInt(id));
+            const shuffled = filteredProjects.sort(() => 0.5 - Math.random());
             return shuffled.slice(0, 4);
         };
 
@@ -104,23 +106,46 @@ export default function Page({ params }) {
         });
     }, [randomProjects]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const footer = document.querySelector('footer');
+            const fixedDiv = fixedDivRef.current;
+            if (footer && fixedDiv) {
+                const footerRect = footer.getBoundingClientRect();
+                if (footerRect.top <= window.innerHeight) {
+                    fixedDiv.style.position = 'absolute';
+                    fixedDiv.style.bottom = `354px`;
+                } else {
+                    fixedDiv.style.position = 'fixed';
+                    fixedDiv.style.bottom = `0`;
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <>
             <Home project={project} />
-            <div className="fixed flex justify-center items-end w-full h-auto mt-16 z-50">
+            <div ref={fixedDivRef} className="fixed bottom-0 flex justify-center items-end w-full h-auto mt-16 z-50">
                 <div className="relative w-[455px] h-[70px] mb-4 flex flex-col items-end">
                     <div className="w-full h-full flex items-end flex-row gap-1.5">
                         {randomProjects.map((proj, index) => (
-                            <Tooltip
+                            <Link
                                 key={index}
-                                content={`${proj.title}`}
-                                className={`${DelaGothicOne.className} bg-foreground text-background text-xs`}
-                                showArrow={true}
+                                href={`/project/${proj.id}`}
+                                className="backdrop-grayscale w-[110px] h-full opacity-50 img-toolbar"
+                                ref={el => divRefs.current[index] = el}
                             >
-                                <Link
-                                    href={`/project/${proj.id}`}
-                                    className="backdrop-grayscale w-[110px] h-full opacity-50 img-toolbar"
-                                    ref={el => divRefs.current[index] = el}
+                                <Tooltip
+                                    content={`${proj.title}`}
+                                    className={`${DelaGothicOne.className} bg-foreground text-background text-xs`}
+                                    showArrow={true}
                                 >
                                     <Image
                                         width={1000}
@@ -129,8 +154,8 @@ export default function Page({ params }) {
                                         alt={`Image ${index}`}
                                         className="w-full h-full object-cover"
                                     />
-                                </Link>
-                            </Tooltip>
+                                </Tooltip>
+                            </Link>
                         ))}
                     </div>
                     <span ref={spanRef} className="absolute left-0 -bottom-[4px] w-full h-1 bg-gradient-to-r from-primary to-secondary opacity-50 border-toolbar"></span>

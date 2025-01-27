@@ -136,10 +136,13 @@ export default function Images({ project }: HomeProps) {
                         </ModalBody>
                         <ModalFooter className="flex justify-center">
                             <Pagination
+                                className="text-background"
                                 page={currentPage}
                                 total={project.image.length}
                                 onChange={handlePageChange}
                                 variant="light"
+                                key={"#262330"}
+                                color={"#262330"}
                             />
                         </ModalFooter>
                     </>
