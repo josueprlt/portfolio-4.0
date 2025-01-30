@@ -29,6 +29,7 @@ export default function MyWork() {
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const arrowIconRefs = useRef<HTMLDivElement[]>([]);
     const imageDivRef = useRef<HTMLDivElement>(null);
+    const [triggerWork, setTriggerWork] = useState<number>(115);
 
     const [animationsPlayed, setAnimationsPlayed] = useState(() => {
         if (typeof window !== 'undefined') {
@@ -51,10 +52,9 @@ export default function MyWork() {
 
     useEffect(() => {
         let ul = document.querySelector('#ul-list');
-        console.dir(ul?.offsetTop);
-        
+
         if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0) {
-            liRefs.current.forEach((_, i) => {
+            liRefs.current.forEach((li, i) => {
                 const handleMouseEnter = () => {
                     gsap.to(arrowIconRefs.current[i], {
                         rotate: '45deg',
@@ -89,21 +89,23 @@ export default function MyWork() {
                 };
 
                 const handleMouseMove = (e: MouseEvent) => {
+                    const y = i * triggerWork;
+
                     gsap.to(imageDivRef.current, {
-                        y: e.clientY - imageDivRef.current!.offsetTop,
+                        y: y,
                         duration: 1,
                         ease: Elastic.easeOut.config(1, 0.3),
                     });
                 };
 
-                liRefs.current[i].addEventListener("mouseenter", handleMouseEnter);
-                liRefs.current[i].addEventListener("mouseleave", handleMouseLeave);
-                liRefs.current[i].addEventListener("mousemove", handleMouseMove);
+                li.addEventListener("mouseenter", handleMouseEnter);
+                li.addEventListener("mouseleave", handleMouseLeave);
+                li.addEventListener("mousemove", handleMouseMove);
 
                 return () => {
-                    liRefs.current[i].removeEventListener("mouseenter", handleMouseEnter);
-                    liRefs.current[i].removeEventListener("mouseleave", handleMouseLeave);
-                    liRefs.current[i].removeEventListener("mousemove", handleMouseMove);
+                    li.removeEventListener("mouseenter", handleMouseEnter);
+                    li.removeEventListener("mouseleave", handleMouseLeave);
+                    li.removeEventListener("mousemove", handleMouseMove);
                 };
             });
         }
@@ -165,12 +167,12 @@ export default function MyWork() {
     }, [animationsPlayed]);
 
     return (
-        <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="competences">
+        <div className={`${ClimateCrisis.className} relative mt-20 md:mt-60`} id="competences">
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Mon travail</h2>
 
             <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
-                {projects.map((project) => (
-                    <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} className="relative flex justify-between items-center cursor-pointer">
+                {projects.map((project, index) => (
+                    <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} id={`li-work-${index}`} className="relative flex justify-between items-center cursor-pointer">
                         <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
                             <p ref={(el) => textRefs.current[project.id] = el!}>{project.title}</p>
                             <div ref={(el) => arrowIconRefs.current[project.id] = el!}>
@@ -181,7 +183,7 @@ export default function MyWork() {
                     </li>
                 ))}
 
-                <div ref={imageDivRef} className="absolute right-20 w-[400px] h-64 bg-cover bg-center rounded-lg opacity-0 pointer-events-none"></div>
+                <div ref={imageDivRef} className="absolute top-0 right-20 w-[400px] h-64 bg-cover bg-center rounded-lg opacity-0 pointer-events-none"></div>
             </ul>
         </div>
     );
