@@ -104,12 +104,12 @@ export default function ContactMe() {
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Contactez moi</h2>
 
-            <section ref={(el) => sectionRefs.current[0] = el!} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-48 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
-                <div ref={(el) => contactRefs.current[0] = el!} className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-24 rounded-2xl">
+            <section ref={(el) => sectionRefs.current[0] = el!} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
+                <div ref={(el) => contactRefs.current[0] = el!} className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-1/2 rounded-2xl">
                     <PhoneIcon className="w-6 md:w-11 text-background" />
                     <p className="text-background">07 57 49 21 89</p>
                 </div>
-                <div ref={(el) => contactRefs.current[1] = el!} className="flex justify-center h-24 items-center gap-6 rounded-2xl">
+                <div ref={(el) => contactRefs.current[1] = el!} className="flex justify-center h-1/2 items-center gap-6 rounded-2xl">
                     <EmailIcon className="w-6 md:w-11" />
                     <p className="text-foreground">josue.perrault@etu.unilim.fr</p>
                 </div>

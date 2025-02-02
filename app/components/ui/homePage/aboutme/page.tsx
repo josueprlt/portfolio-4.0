@@ -23,6 +23,7 @@ const ClimateCrisis = Climate_Crisis({
 export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
     const titleRef = useRef<HTMLHeadingElement>(null);
+    const visiteRef = useRef<HTMLParagraphElement>(null);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const linkRefs = useRef<HTMLAnchorElement[]>([]);
     const divRefs = useRef<HTMLDivElement[]>([]);
@@ -166,6 +167,23 @@ export default function AboutMe() {
             );
         }
 
+        if (visiteRef.current) {
+            gsap.from(
+                visiteRef.current,
+                {
+                    y: 100,
+                    opacity: 0,
+                    scale: 0.5,
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    scrollTrigger: {
+                        trigger: visiteRef.current,
+                        start: "top center",
+                    },
+                }
+            );
+        }
+
         setAnimationsPlayed(true);
         localStorage.setItem('animationsPlayedAbout', 'true');
     }, [animationsPlayed]);
@@ -208,7 +226,7 @@ export default function AboutMe() {
                 <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                     <div className="md:order-2 mt-10 md:mt-0 md:text-right">
                         <p ref={(el) => textRefs.current[1] = el!}>Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
-                        <p className="mt-12">Agréable visite !</p>
+                        <p ref={visiteRef} className="mt-12 text-right bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Agréable visite !</p>
                     </div>
 
                     <div className="md:order-1 relative h-72 mt-5 md:mt-0 md:h-full">
