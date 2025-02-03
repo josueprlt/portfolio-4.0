@@ -8,6 +8,7 @@ import { gsap, Power2, Power3, Power4, Elastic } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from 'next/link'
 import SplitType from 'split-type';
+import Image from "next/image";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -182,6 +183,16 @@ export default function MyWork() {
                         <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground"></span>
                     </li>
                 ))}
+                {/* <li ref={(el) => liRefs.current[projects[0].id] = el!} className="relative h-[120px] flex justify-between items-center cursor-pointer">
+                    <Link href={`/project/${projects[0].id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
+                        <p ref={(el) => textRefs.current[projects[0].id] = el!} className="z-10">{projects[0].title}</p>
+                        <div ref={(el) => arrowIconRefs.current[projects[0].id] = el!} className="z-10">
+                            <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
+                        </div>
+                    </Link>
+                    <Image width={1000} height={1000} alt="image de test" src={projects[0].image[0]} className="absolute top-0 right-0 w-2/3 h-full object-cover z-0" />
+                    <span ref={(el) => lineRefs.current[projects[0].id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground"></span>
+                </li> */}
 
                 <div ref={imageDivRef} className="absolute top-0 right-20 w-[400px] h-64 bg-cover bg-center rounded-lg opacity-0 pointer-events-none"></div>
             </ul>
