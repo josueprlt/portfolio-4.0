@@ -26,11 +26,10 @@ export default function MyWork() {
     const titleRef = useRef<HTMLHeadingElement>(null);
     const ulRef = useRef<HTMLUListElement>(null);
     const liRefs = useRef<HTMLLIElement[]>([]);
+    const imgRefs = useRef<HTMLImageElement[]>([]);
     const lineRefs = useRef<HTMLDivElement[]>([]);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const arrowIconRefs = useRef<HTMLDivElement[]>([]);
-    const imageDivRef = useRef<HTMLDivElement>(null);
-    const [triggerWork, setTriggerWork] = useState<number>(115);
 
     const [animationsPlayed, setAnimationsPlayed] = useState(() => {
         if (typeof window !== 'undefined') {
@@ -54,59 +53,55 @@ export default function MyWork() {
     useEffect(() => {
         let ul = document.querySelector('#ul-list');
 
-        if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0) {
+        if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0 && imgRefs.current.length > 0) {
             liRefs.current.forEach((li, i) => {
                 const handleMouseEnter = () => {
                     gsap.to(arrowIconRefs.current[i], {
                         rotate: '45deg',
+                        padding: '1rem 1rem',
                         duration: 0.75,
                         ease: Power2.easeOut,
                     });
-                    gsap.from(imageDivRef.current, {
-                        filter: "blur(2px)",
-                        duration: 0.5,
-                        ease: Power2.easeOut,
-                    });
-                    gsap.to(imageDivRef.current, {
-                        filter: "blur(0px)",
+                    gsap.to(imgRefs.current[i], {
+                        filter: "grayscale(0%) blur(0px) brightness(75%)",
                         opacity: 1,
-                        duration: 0.5,
+                        duration: 0.75,
                         ease: Power2.easeOut,
                     });
-                    imageDivRef.current!.style.backgroundImage = `url(${projects[i - 1].image[0]})`;
+                    gsap.to(textRefs.current[i], {
+                        padding: '0.5rem 1rem',
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
                 };
-
+                
                 const handleMouseLeave = () => {
                     gsap.to(arrowIconRefs.current[i], {
+                        padding: '0rem 0rem',
                         rotate: '0deg',
                         duration: 0.75,
                         ease: Power2.easeOut,
                     });
-                    gsap.to(imageDivRef.current, {
+                    gsap.to(imgRefs.current[i], {
+                        filter: "grayscale(100%) blur(5px) brightness(100%)",
                         opacity: 0,
-                        duration: 0.5,
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                    gsap.to(textRefs.current[i], {
+                        padding: '0rem 0rem',
+                        duration: 0.75,
                         ease: Power2.easeOut,
                     });
                 };
 
-                const handleMouseMove = (e: MouseEvent) => {
-                    const y = i * triggerWork;
-
-                    gsap.to(imageDivRef.current, {
-                        y: y,
-                        duration: 1,
-                        ease: Elastic.easeOut.config(1, 0.3),
-                    });
-                };
 
                 li.addEventListener("mouseenter", handleMouseEnter);
                 li.addEventListener("mouseleave", handleMouseLeave);
-                li.addEventListener("mousemove", handleMouseMove);
 
                 return () => {
                     li.removeEventListener("mouseenter", handleMouseEnter);
                     li.removeEventListener("mouseleave", handleMouseLeave);
-                    li.removeEventListener("mousemove", handleMouseMove);
                 };
             });
         }
@@ -173,18 +168,17 @@ export default function MyWork() {
 
             <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project, index) => (
-                    <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} id={`li-work-${index}`} className="relative flex justify-between items-center cursor-pointer">
+                    <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} id={`li-work-${index}`} className="relative flex justify-between items-center cursor-pointer overflow-hidden">
                         <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
-                            <p ref={(el) => textRefs.current[project.id] = el!}>{project.title}</p>
-                            <div ref={(el) => arrowIconRefs.current[project.id] = el!}>
+                            <p ref={(el) => textRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">{project.title}</p>
+                            <div ref={(el) => arrowIconRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">
                                 <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
                             </div>
                         </Link>
-                        <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground"></span>
+                        <Image ref={(el) => imgRefs.current[project.id] = el!} width={1000} height={1000} alt="image de test" src={project.image[0]} className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0" />
+                        <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground z-10"></span>
                     </li>
                 ))}
-
-                <div ref={imageDivRef} className="absolute top-0 right-20 w-[400px] h-64 bg-cover bg-center rounded-lg opacity-0 pointer-events-none"></div>
             </ul>
         </div>
     );
