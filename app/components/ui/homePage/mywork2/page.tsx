@@ -74,7 +74,7 @@ export default function MyWork() {
                         ease: Power2.easeOut,
                     });
                 };
-                
+
                 const handleMouseLeave = () => {
                     gsap.to(arrowIconRefs.current[i], {
                         padding: '0rem 0rem',
@@ -174,9 +174,9 @@ export default function MyWork() {
                             <div ref={(el) => arrowIconRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">
                                 <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
                             </div>
+                            <Image ref={(el) => imgRefs.current[project.id] = el!} width={1000} height={1000} alt="image de test" src={project.image[0]} className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0" />
+                            <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground z-10"></span>
                         </Link>
-                        <Image ref={(el) => imgRefs.current[project.id] = el!} width={1000} height={1000} alt="image de test" src={project.image[0]} className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0" />
-                        <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground z-10"></span>
                     </li>
                 ))}
             </ul>

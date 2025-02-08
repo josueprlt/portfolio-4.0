@@ -80,3 +80,22 @@ body {
 .border-toolbar {
   filter: grayscale(100%);
 }
+
+
+.card {
+  font-weight: bold;
+  box-shadow: 0 1px 5px #00000099;
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+}
+
+.card:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #00000044;
+}
+
+.card .glow {
+  background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);
+}

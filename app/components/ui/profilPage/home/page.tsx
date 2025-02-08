@@ -1,7 +1,7 @@
+"use client"
 import NavBar from "@/app/components/ui/navBar/page";
-import { ButtonArrowIcon } from '@/app/components/ui/icons';
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
-import Image from 'next/image';
+import Button from "@/app/components/ui/button/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -24,12 +24,7 @@ export default function Home() {
                 <p className="mt-8 text-sm md:text-3xl md:mt-16 text-justify">Je navigue entre les lignes de code et les pixels, jonglant avec le front et le back pour créer des expériences qui ont du sens et qui captivent.</p>
 
                 <div className="flex justify-center my-20">
-                    <button className="relative bg-gradient-to-r from-primary to-secondary text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14 md:text-xl">
-                        Voir mes projets
-                        <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
-                            <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
-                        </div>
-                    </button>
+                    <Button href="/#competences" theme="gradient">Voir mes projets</Button>
                 </div>
             </section>
         </header>
