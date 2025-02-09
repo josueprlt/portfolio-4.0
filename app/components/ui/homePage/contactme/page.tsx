@@ -101,7 +101,7 @@ export default function ContactMe() {
         localStorage.setItem('animationsPlayedContact', 'true');
     }, [animationsPlayed]);
     return (
-        <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
+        <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="contact">
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Contactez moi</h2>
 
             <section ref={(el) => sectionRefs.current[0] = el!} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>

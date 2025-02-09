@@ -56,9 +56,12 @@ export default function MyWork() {
         if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0 && imgRefs.current.length > 0) {
             liRefs.current.forEach((li, i) => {
                 const handleMouseEnter = () => {
+                    const isMobile = window.innerWidth <= 768;
+                    const paddingValue = isMobile ? '0.25rem 0.25rem' : '1rem 1rem';
+
                     gsap.to(arrowIconRefs.current[i], {
                         rotate: '45deg',
-                        padding: '1rem 1rem',
+                        padding: paddingValue,
                         duration: 0.75,
                         ease: Power2.easeOut,
                     });
@@ -69,7 +72,7 @@ export default function MyWork() {
                         ease: Power2.easeOut,
                     });
                     gsap.to(textRefs.current[i], {
-                        padding: '0.5rem 1rem',
+                        padding: paddingValue,
                         duration: 0.75,
                         ease: Power2.easeOut,
                     });
@@ -163,7 +166,7 @@ export default function MyWork() {
     }, [animationsPlayed]);
 
     return (
-        <div className={`${ClimateCrisis.className} relative mt-20 md:mt-60`} id="competences">
+        <div className={`${ClimateCrisis.className} relative mt-20 md:mt-60`} id="works">
             <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Mon travail</h2>
 
             <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>

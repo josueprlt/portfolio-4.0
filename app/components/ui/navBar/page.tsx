@@ -1,16 +1,34 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react";
-import { LogoIcon } from "@/app/components/ui/icons";
+import { LogoIcon, ButtonArrowIcon, WhatsappIcon, LinkedinIcon, InstagramIcon } from "@/app/components/ui/icons";
 import Link from 'next/link';
 import { gsap, Power2 } from "gsap";
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/drawer";
+import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
+
+const DelaGothicOne = Dela_Gothic_One({
+    subsets: ['latin'],
+    weight: ['400'],
+    display: 'swap',
+});
+
+const ClimateCrisis = Climate_Crisis({
+    subsets: ['latin'],
+    display: 'swap',
+});
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
     const logoIconRef = useRef<HTMLAnchorElement>(null);
     const divNavbarRef = useRef<HTMLDivElement>(null);
+    const [arrayOfLinks, setArrayOfLinks] = useState([
+        { href: '/', label: 'Accueil' },
+        { href: '/profil', label: 'Mon Profil' },
+        { href: '/#works', label: 'Mon Travail' },
+        { href: '/#contact', label: 'Contact' },
+    ]);
 
     const onOpenChange = (open) => {
         setIsOpen(open);
@@ -73,6 +91,7 @@ export default function NavBar() {
             };
         }
     }, []);
+
     return (
         <nav className="flex justify-between items-center">
             <Link href="/" ref={linkRef} className="relative flex justify-center items-center p-2">
@@ -89,14 +108,34 @@ export default function NavBar() {
             </div>
 
             <Drawer className="h-full rounded-se-none rounded-ee-none bg-background" backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
-                <DrawerContent>
-                    {(onClose) => (
-                        <>
-                            <DrawerHeader className="flex flex-col gap-1">Header</DrawerHeader>
-                            <DrawerBody>body</DrawerBody>
-                            <DrawerFooter>footer</DrawerFooter>
-                        </>
-                    )}
+                <DrawerContent className="p-5">
+                    <DrawerHeader className="flex flex-row items-right gap-4">
+                        <LogoIcon ref={logoIconRef} className="relative w-6 h-6 z-20" />
+                        <h2 className={`${ClimateCrisis.className}`}>Menu</h2>
+                    </DrawerHeader>
+                    <DrawerBody>
+                        <ul className={`${DelaGothicOne.className} flex flex-col gap-4 mt-8`}>
+                            {arrayOfLinks.map((link, index) => (
+                                <li key={index}>
+                                    <Link href={link.href} className="flex flex-row justify-between items-center py-4 border-b border-foreground">
+                                        <p>{link.label}</p>
+                                        <ButtonArrowIcon className="w-4 h-4" />
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </DrawerBody>
+                    <DrawerFooter className="flex flex-row justify-start items-center gap-4">
+                        <Link href="#">
+                            <WhatsappIcon className="w-10 h-10" />
+                        </Link>
+                        <Link href="#">
+                            <LinkedinIcon className="w-10 h-10" />
+                        </Link>
+                        <Link href="#">
+                            <InstagramIcon className="w-10 h-10" />
+                        </Link>
+                    </DrawerFooter>
                 </DrawerContent>
             </Drawer>
         </nav>

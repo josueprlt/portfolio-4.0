@@ -17,7 +17,7 @@ export default function Home() {
     const spanFirstnameRef = useRef<HTMLSpanElement>(null);
     const spanNameRef = useRef<HTMLSpanElement>(null);
     const spanLinearRef = useRef<HTMLSpanElement>(null);
-    const arrowRef = useRef<HTMLDivElement>(null);
+    const arrowRef = useRef<HTMLAnchorElement>(null);
     const hiddenSpanRef = useRef<HTMLSpanElement>(null);
     const portfolioRef = useRef<HTMLHeadingElement>(null);
     const lineRef = useRef<HTMLSpanElement>(null);
@@ -73,7 +73,6 @@ export default function Home() {
 
         if (h1Element && hiddenSpan) {
             const handleMouseEnter = () => {
-
                 gsap.fromTo(
                     hiddenSpan,
                     { width: 0, height: 0 },
