@@ -1,6 +1,7 @@
 import { BretagneIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One } from 'next/font/google';
 import Link from "next/link";
+import information from "@/app/data/version.json";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -26,15 +27,15 @@ export default function Footer() {
 
                 <div className="flex flex-col items-center gap-4 text-background mt-10 md:justify-between md:items-start md:mt-0 md:gap-8">
                     <Link href="https://portfolio-josue.fr/competences/vitrine/index.html" className="underline">Portfolio de compétences</Link>
-                    <p>Site développé avec NEXTJS et TAILWIND</p>
+                    <p>{information.tools}</p>
                     <BretagneIcon className="w-10 md:w-28" />
                 </div>
             </div>
 
             <div className="flex flex-col items-center gap-4 text-background mt-10 text-center md:flex-row md:justify-between md:mt-20">
-                <p>Josué PERRAULT</p>
-                <p>Portfolio © 2024 - Tous droits réservés.</p>
-                <p>Version 0.1</p>
+                <p>{information.creator}</p>
+                <p>{information.right}</p>
+                <p>Version {information.version}</p>
             </div>
         </footer>
     );

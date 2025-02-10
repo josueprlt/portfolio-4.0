@@ -26,12 +26,12 @@ export default function Page({ params }) {
     const divRefs = useRef([]);
     const spanRef = useRef<HTMLElement>(null);
     const fixedDivRef = useRef<HTMLElement>(null);
-
+    
     useEffect(() => {
         const filteredProject = projects.find(project => project.id === parseInt(id));
         setProject(filteredProject);
     }, [id]);
-
+    
     useEffect(() => {
         const hasReloaded = localStorage.getItem('hasReloaded');
         if (!hasReloaded) {
@@ -61,11 +61,15 @@ export default function Page({ params }) {
     }, [id]);
 
     useEffect(() => {
-        divRefs.current.forEach((div, index) => {
+        const isMobile = window.innerWidth <= 768;
+        
+        divRefs.current.forEach((div) => {
+            const widthValueEnter = isMobile ? '200px' : '400px';
+            const heightValueEnter = isMobile ? '60px' : '120px';
             const handleMouseEnter = () => {
                 gsap.to(div, {
-                    width: "400px",
-                    height: "120px",
+                    width: widthValueEnter,
+                    height: heightValueEnter,
                     filter: "grayscale(0%)",
                     opacity: 1,
                     duration: 0.5,
@@ -78,11 +82,13 @@ export default function Page({ params }) {
                     ease: Power2.easeOut,
                 });
             };
-
+            
             const handleMouseLeave = () => {
+                const widthValueLeave = isMobile ? '75px' : '110px';
+                const heightValueLeave = isMobile ? '35px' : '70px';
                 gsap.to(div, {
-                    width: "110px",
-                    height: "70px",
+                    width: widthValueLeave,
+                    height: heightValueLeave,
                     filter: "grayscale(100%)",
                     opacity: 0.5,
                     duration: 0.5,
@@ -107,6 +113,8 @@ export default function Page({ params }) {
     }, [randomProjects]);
 
     useEffect(() => {
+        const isMobile = window.innerWidth <= 768;
+
         const handleScroll = () => {
             const footer = document.querySelector('footer');
             const fixedDiv = fixedDivRef.current;
@@ -114,7 +122,7 @@ export default function Page({ params }) {
                 const footerRect = footer.getBoundingClientRect();
                 if (footerRect.top <= window.innerHeight) {
                     fixedDiv.style.position = 'absolute';
-                    fixedDiv.style.bottom = `354px`;
+                    fixedDiv.style.bottom =  isMobile ? `450px` : '354px';
                 } else {
                     fixedDiv.style.position = 'fixed';
                     fixedDiv.style.bottom = `0`;
@@ -133,7 +141,7 @@ export default function Page({ params }) {
         <>
             <Home project={project} />
             <div ref={fixedDivRef} className="fixed bottom-0 flex justify-center items-end w-full h-auto mt-16 z-50">
-                <div className="relative w-[455px] h-[70px] mb-4 flex flex-col items-end">
+                <div className="relative w-[300px] h-[35px] mb-4 flex flex-col items-end md:w-[455px] md:h-[70px]">
                     <div className="w-full h-full flex items-end flex-row gap-1.5">
                         {randomProjects.map((proj, index) => (
                             <Link

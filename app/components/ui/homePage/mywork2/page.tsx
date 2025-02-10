@@ -171,7 +171,7 @@ export default function MyWork() {
 
             <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project, index) => (
-                    <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} id={`li-work-${index}`} className="relative flex justify-between items-center cursor-pointer overflow-hidden">
+                    <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} id={`li-work-${index}`} className="relative flex justify-between items-center cursor-pointer overflow-hidden cursor-pointer">
                         <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
                             <p ref={(el) => textRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">{project.title}</p>
                             <div ref={(el) => arrowIconRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">

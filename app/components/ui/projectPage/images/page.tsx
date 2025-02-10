@@ -15,6 +15,7 @@ import { Pagination } from "@heroui/pagination";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import SplitType from "split-type";
+import Button from "@/app/components/ui/button/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ["latin"],
@@ -45,11 +46,16 @@ export default function Images({ project }: HomeProps) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [visibleImages, setVisibleImages] = useState<number>(2);
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const divRefs = useRef<HTMLDivElement[]>([]);
 
     useEffect(() => {
         setProjet(project);
+        window.innerWidth >= 768 && setVisibleImages(3);
+        window.innerWidth >= 1024 && setVisibleImages(4);
+        window.innerWidth >= 1280 && setVisibleImages(5);
+        window.innerWidth >= 1536 && setVisibleImages(6);
     }, [project]);
 
     const handleOpenModal = (index: number) => {
@@ -61,6 +67,10 @@ export default function Images({ project }: HomeProps) {
     const handlePageChange = (page: number) => {
         setCurrentPage(page); // Met à jour la page actuelle
         setCurrentIndex(page - 1); // Met à jour l'image affichée
+    };
+
+    const handleLoadMore = () => {
+        setVisibleImages((prev) => prev + visibleImages);
     };
 
     useEffect(() => {
@@ -97,13 +107,13 @@ export default function Images({ project }: HomeProps) {
     }
 
     return (
-        <div>
+        <div className="mb-28 md:mb-0">
             <h2 ref={h1Ref} className={`${ClimateCrisis.className} text-xl md:text-7xl clip-path`}>Images</h2>
 
             <section
                 className={`${DelaGothicOne.className} flex flex-col gap-4 mt-5 md:mt-10 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}
             >
-                {projet.image.map((img, index) => (
+                {projet.image.slice(0, visibleImages).map((img, index) => (
                     <div
                         ref={(el) => divRefs.current[index] = el!}
                         key={index}
@@ -120,6 +130,12 @@ export default function Images({ project }: HomeProps) {
                     </div>
                 ))}
             </section>
+
+            {visibleImages < projet.image.length && (
+                <div className={`${DelaGothicOne.className} flex justify-center mt-4 md:mt-16`}>
+                    <Button onClick={handleLoadMore} theme="primary">Voir plus</Button>
+                </div>
+            )}
 
             <Modal isOpen={isOpen} onOpenChange={(isOpen) => !isOpen && onClose()} size="5xl" backdrop="blur" className="bg-background">
                 <ModalContent>

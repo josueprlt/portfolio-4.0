@@ -144,7 +144,7 @@ export default function Home({ project }: HomeProps) {
                 className="h-96 flex justify-center items-center relative overflow-hidden mt-10 rounded-2xl after:absolute after:bottom-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-foreground after:to-transparent after:z-5 md:justify-start md:items-end md:px-10 md:pb-8 md:after:h-full"
             >
                 <div className="md:flex md:flex-row md:justify-between md:items-end md:w-full">
-                    <Link ref={retourRef} href="/#works" className="absolute top-8 start-10 bg-background px-4 py-2 rounded-full z-10">
+                    <Link ref={retourRef} href="/#works" className="absolute top-2 start-2 bg-background px-4 py-2 rounded-full z-10 md:top-8 md:start-10">
                         <ArrowIcon className="h-3 rotate-90 md:h-5" />
                     </Link>
 
