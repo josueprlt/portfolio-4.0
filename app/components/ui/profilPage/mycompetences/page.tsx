@@ -1,6 +1,8 @@
+"use client"
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon } from '@/app/components/ui/icons';
 import competences from '@/app/data/competences.json';
+import Title from '@/app/components/ui/title/page';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -18,7 +20,7 @@ const technos = ["html", "css", "js", "sass", "php", "react", "symfony", "bootst
 export default function MyJourney() {
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 className="text-xl text-center relative z-10 md:text-7xl">Mes compétences</h2>
+            <Title className='text-center'>Mon compétences</Title>
 
             <section className={`${DelaGothicOne.className} flex flex-col gap-4 pt-14 md:pt-40 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
                 {competences.map((competence) => (

@@ -1,6 +1,7 @@
 "use client"
 import { HalteresIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One } from 'next/font/google';
+import Paragraph from "@/app/components/ui/paragraph/page";
 import Button from "@/app/components/ui/button/page";
 import Image from 'next/image';
 
@@ -16,7 +17,10 @@ export default function AboutMe() {
 
             <div className="md:grid md:grid-cols-2 md:gap-24">
                 <div className="md:flex md:flex-col md:justify-between md:text-left">
-                    <p>En perpétuelle quête de défis, je suis un <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">passionné de code</span>, mais aussi d’univers captivants comme ceux des jeux vidéo.</p>
+                    <Paragraph
+                        text="En perpétuelle quête de défis, je suis un passionné de code, mais aussi d’univers captivants comme ceux des jeux vidéo."
+                        highlightedText="passionné de code"
+                    />
 
                     <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
                         <Button href="/" theme="primary">Télécharger mon CV</Button>
@@ -29,7 +33,9 @@ export default function AboutMe() {
 
             <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                 <div className="md:order-2 mt-10 md:mt-0 md:text-right">
-                    <p>Et quand je ne suis ni derrière mon clavier ni en train d’explorer de nouveaux concepts, je passe souvent du temps à la salle, appréciant le défi personnel que la musculation apporte.</p>
+                    <Paragraph
+                        text="Et quand je ne suis ni derrière mon clavier ni en train d’explorer de nouveaux concepts, je passe souvent du temps à la salle, appréciant le défi personnel que la musculation apporte."
+                    />
                 </div>
 
                 <div className="md:order-1 flex justify-center items-center relative h-72 mt-14 md:mt-0 md:h-full">

@@ -5,7 +5,7 @@ import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
 import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon } from "@/app/components/ui/icons";
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
+import Title from "@/app/components/ui/title/page";
 
 const DelaGothicOne = Dela_Gothic_One({ subsets: ["latin"], weight: ["400"], display: "swap" });
 const ClimateCrisis = Climate_Crisis({ subsets: ["latin"], display: "swap" });
@@ -28,7 +28,6 @@ interface HomeProps {
 
 export default function Tools({ project }: HomeProps) {
     gsap.registerPlugin(ScrollTrigger);
-    const h1Ref = useRef<HTMLHeadingElement>(null);
     const sectionRef = useRef<HTMLElement>(null);
     const [projet, setProjet] = useState<Project | null>(null);
     const [filteredTechnos, setFilteredTechnos] = useState<string[]>([]);
@@ -65,19 +64,6 @@ export default function Tools({ project }: HomeProps) {
 
         if (document.fonts) {
             document.fonts.ready.then(() => {
-                if (h1Ref.current) {
-                    const split = new SplitType(h1Ref.current, { types: "chars" });
-                    gsap.from(split.chars, {
-                        y: -100,
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                        stagger: 0.1,
-                        scrollTrigger: {
-                            trigger: h1Ref.current,
-                            start: "top center",
-                        },
-                    });
-                }
 
                 const observer = new MutationObserver(() => {
                     if (sectionRef.current) {
@@ -113,9 +99,7 @@ export default function Tools({ project }: HomeProps) {
 
     return (
         <div className="pt-10 md:pt-30">
-            <h2 ref={h1Ref} className={`${ClimateCrisis.className} text-xl md:text-7xl clip-path`}>
-                Outils
-            </h2>
+            <Title className="text-start">Outils</Title>
 
             <section ref={sectionRef} className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
                 {filteredTechnos.map((tech, index) => (

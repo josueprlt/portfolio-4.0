@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import Image from 'next/image';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from 'split-type';
+import Title from "@/app/components/ui/title/page";
+import Paragraph from "@/app/components/ui/paragraph/page";
 import Button from "@/app/components/ui/button/page";
 
 const DelaGothicOne = Dela_Gothic_One({
@@ -21,67 +22,13 @@ const ClimateCrisis = Climate_Crisis({
 
 export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
-    const titleRef = useRef<HTMLHeadingElement>(null);
     const visiteRef = useRef<HTMLParagraphElement>(null);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
     const linkRefs = useRef<HTMLAnchorElement[]>([]);
     const imageRef = useRef<HTMLImageElement>(null);
 
-    const [animationsPlayed, setAnimationsPlayed] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('animationsPlayedAbout') === 'true';
-        }
-        return false;
-    });
-
     useEffect(() => {
-        const handleBeforeUnload = () => {
-            localStorage.removeItem('animationsPlayedAbout');
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (animationsPlayed) return;
-
-        const titleElement = titleRef.current;
         const textsElement = textRefs.current;
-
-        if (titleElement) {
-            const split = new SplitType(titleElement, { types: 'chars' });
-            gsap.from(split.chars, {
-                y: -100,
-                duration: 0.75,
-                ease: Power2.easeOut,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: titleElement,
-                    start: "top center",
-                },
-            });
-        }
-
-        textsElement.forEach((textElement) => {
-            if (textElement) {
-                const split = new SplitType(textElement, { types: 'lines' });
-                gsap.from(split.lines, {
-                    opacity: 0,
-                    y: 20,
-                    duration: 1,
-                    ease: Power2.easeOut,
-                    stagger: 0.1,
-                    scrollTrigger: {
-                        trigger: textElement,
-                        start: "top center",
-                    },
-                });
-            }
-        });
 
         if (linkRefs.current.length > 0) {
             gsap.from(linkRefs.current, {
@@ -130,20 +77,20 @@ export default function AboutMe() {
                 }
             );
         }
-
-        setAnimationsPlayed(true);
-        localStorage.setItem('animationsPlayedAbout', 'true');
-    }, [animationsPlayed]);
+    }, []);
 
     return (
         <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
-            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">A propos de moi</h2>
+            <Title className="text-center">A propos de moi</Title>
 
             <section className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
 
                 <div className="md:grid md:grid-cols-2 md:gap-24">
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
-                        <p ref={(el) => textRefs.current[0] = el!}>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
+                        <Paragraph
+                            text="Je m'appelle Josué Perrault, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges."
+                            highlightedText="Josué Perrault"
+                        />
 
                         <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
                             <Button href="/" theme="secondary">Télécharger mon CV</Button>
@@ -157,8 +104,15 @@ export default function AboutMe() {
 
                 <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                     <div className="md:order-2 mt-10 md:mt-0 md:text-right">
-                        <p ref={(el) => textRefs.current[1] = el!}>Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
-                        <p ref={visiteRef} className="mt-12 text-right bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Agréable visite !</p>
+                        <Paragraph
+                            text="Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail."
+                            className="text-end"
+                        />
+                        <Paragraph
+                            text="Agréable visite !"
+                            highlightedText="Agréable visite !"
+                            className="mt-10 text-right"
+                        />
                     </div>
 
                     <div className="md:order-1 relative h-72 mt-5 md:mt-0 md:h-full">

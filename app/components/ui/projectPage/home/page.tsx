@@ -123,10 +123,6 @@ export default function Home({ project }: HomeProps) {
                 }
             });
         }
-
-
-        setAnimationsPlayed(true);
-        localStorage.setItem('animationsPlayedHome', 'true');
     }, [animationsPlayed]);
 
     if (!project) {

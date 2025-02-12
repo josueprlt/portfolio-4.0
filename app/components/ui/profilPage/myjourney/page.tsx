@@ -1,5 +1,7 @@
+"use client"
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import Image from 'next/image';
+import Title from '@/app/components/ui/title/page';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -15,7 +17,7 @@ const ClimateCrisis = Climate_Crisis({
 export default function MyJourney() {
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 className="text-xl text-center relative z-10 md:text-7xl">Mon Parcours</h2>
+            <Title className='text-center'>Mon Parcours</Title>
 
             <section className={`${DelaGothicOne.className} text-lg pt-14 md:pt-40 text-center`}>
                 <div className="relative flex justify-center items-center flex-col before:absolute before:-top-[31px] before:w-8 before:h-8 before:bg-foreground before:rounded-full after:absolute after:-bottom-[31px] after:w-8 after:h-8 after:bg-foreground after:rounded-full">                    

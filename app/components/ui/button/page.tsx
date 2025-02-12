@@ -75,13 +75,8 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
         primary: 'bg-foreground text-background',
         secondary: 'bg-background text-foreground',
         gradient: 'bg-gradient-to-r from-primary to-secondary text-background',
-        disabled: 'bg-gradient-to-r from-primaryGray to-secondaryGray cursor-not-allowed',
+        disabled: 'bg-gradient-to-r from-primaryGray to-secondaryGray text-background cursor-not-allowed',
     };
-
-    if (!href && !onClick) {
-        console.error("Button component requires either 'href' or 'onClick' prop.");
-        return null;
-    }
 
     return href ? (
         <Link href={href} ref={linkRef} className={`relative ${themeClasses[theme]} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>

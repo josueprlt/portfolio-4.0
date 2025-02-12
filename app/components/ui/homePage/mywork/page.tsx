@@ -8,7 +8,7 @@ import { gsap, Power2, Power3, Power4, Elastic } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from 'next/link'
 import SplitType from 'split-type';
-import Image from "next/image";
+import Title from "@/app/components/ui/title/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -23,7 +23,6 @@ const ClimateCrisis = Climate_Crisis({
 
 export default function MyWork() {
     gsap.registerPlugin(ScrollTrigger);
-    const titleRef = useRef<HTMLHeadingElement>(null);
     const ulRef = useRef<HTMLUListElement>(null);
     const liRefs = useRef<HTMLLIElement[]>([]);
     const lineRefs = useRef<HTMLDivElement[]>([]);
@@ -115,22 +114,7 @@ export default function MyWork() {
     useEffect(() => {
         if (animationsPlayed) return;
 
-        const titleElement = titleRef.current;
         const ulElement = ulRef.current;
-
-        if (titleElement) {
-            const split = new SplitType(titleElement, { types: 'chars' });
-            gsap.from(split.chars, {
-                y: -100,
-                duration: 0.75,
-                ease: Power2.easeOut,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: titleElement,
-                    start: "top center",
-                },
-            });
-        }
 
         if (ulElement && lineRefs.current.length > 0 && arrowIconRefs.current.length > 0 && textRefs.current.length > 0) {
             const timelineLi = gsap.timeline({
@@ -169,7 +153,7 @@ export default function MyWork() {
 
     return (
         <div className={`${ClimateCrisis.className} relative mt-20 md:mt-60`} id="competences">
-            <h2 ref={titleRef} className="text-xl text-center relative z-10 md:text-7xl clip-path">Mon travail</h2>
+            <Title className="text-center">Mon travail</Title>
 
             <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.map((project, index) => (
