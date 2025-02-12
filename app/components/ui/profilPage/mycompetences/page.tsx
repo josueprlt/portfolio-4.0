@@ -20,7 +20,7 @@ const technos = ["html", "css", "js", "sass", "php", "react", "symfony", "bootst
 export default function MyJourney() {
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <Title className='text-center'>Mon compétences</Title>
+            <Title className='text-center'>Mes compétences</Title>
 
             <section className={`${DelaGothicOne.className} flex flex-col gap-4 pt-14 md:pt-40 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
                 {competences.map((competence) => (

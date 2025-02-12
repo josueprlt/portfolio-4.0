@@ -1,129 +1,132 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ButtonArrowIcon } from "@/app/components/ui/icons";
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
-import projects from "@/app/data/projects.json";
 import { gsap, Power2, Power3, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from 'next/link'
-import SplitType from 'split-type';
+import Link from 'next/link';
 import Image from "next/image";
 
-
-interface TitleProps {
-    children: React.ReactNode;
-    className?: string;
+interface Project {
+    id: number;
+    title: string;
+    image: string[];
 }
 
-const Title: React.FC<TitleProps> = ({ children, className }) => {
-    const titleRef = useRef<HTMLHeadingElement>(null);
+interface ProjectListProps {
+    project: Project;
+}
+
+const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
+    const liRef = useRef<HTMLLIElement>(null);
+    const arrowIconRef = useRef<HTMLDivElement>(null);
+    const imgRef = useRef<HTMLImageElement>(null);
+    const textRef = useRef<HTMLParagraphElement>(null);
+    const lineRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
-        if (liRefs.current.length > 0 && arrowIconRefs.current.length > 0 && imgRefs.current.length > 0) {
-            liRefs.current.forEach((li, i) => {
-                const handleMouseEnter = () => {
-                    const isMobile = window.innerWidth <= 768;
-                    const paddingValue = isMobile ? '0.25rem 0.25rem' : '1rem 1rem';
+        gsap.registerPlugin(ScrollTrigger);
 
-                    gsap.to(arrowIconRefs.current[i], {
-                        rotate: '45deg',
-                        padding: paddingValue,
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                    });
-                    gsap.to(imgRefs.current[i], {
-                        filter: "grayscale(0%) blur(0px) brightness(75%)",
-                        opacity: 1,
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                    });
-                    gsap.to(textRefs.current[i], {
-                        padding: paddingValue,
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                    });
-                };
+        const handleMouseEnter = () => {
+            const isMobile = window.innerWidth <= 768;
+            const paddingValue = isMobile ? '0.25rem 0.25rem' : '1rem 1rem';
 
-                const handleMouseLeave = () => {
-                    gsap.to(arrowIconRefs.current[i], {
-                        padding: '0rem 0rem',
-                        rotate: '0deg',
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                    });
-                    gsap.to(imgRefs.current[i], {
-                        filter: "grayscale(100%) blur(5px) brightness(100%)",
-                        opacity: 0,
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                    });
-                    gsap.to(textRefs.current[i], {
-                        padding: '0rem 0rem',
-                        duration: 0.75,
-                        ease: Power2.easeOut,
-                    });
-                };
-
-
-                li.addEventListener("mouseenter", handleMouseEnter);
-                li.addEventListener("mouseleave", handleMouseLeave);
-
-                return () => {
-                    li.removeEventListener("mouseenter", handleMouseEnter);
-                    li.removeEventListener("mouseleave", handleMouseLeave);
-                };
+            gsap.to(arrowIconRef.current, {
+                rotate: '45deg',
+                padding: paddingValue,
+                duration: 0.75,
+                ease: Power2.easeOut,
             });
+            gsap.to(imgRef.current, {
+                filter: "grayscale(0%) blur(0px) brightness(75%)",
+                opacity: 1,
+                duration: 0.75,
+                ease: Power2.easeOut,
+            });
+            gsap.to(textRef.current, {
+                padding: paddingValue,
+                duration: 0.75,
+                ease: Power2.easeOut,
+            });
+        };
+
+        const handleMouseLeave = () => {
+            gsap.to(arrowIconRef.current, {
+                padding: '0rem 0rem',
+                rotate: '0deg',
+                duration: 0.75,
+                ease: Power2.easeOut,
+            });
+            gsap.to(imgRef.current, {
+                filter: "grayscale(100%) blur(5px) brightness(100%)",
+                opacity: 0,
+                duration: 0.75,
+                ease: Power2.easeOut,
+            });
+            gsap.to(textRef.current, {
+                padding: '0rem 0rem',
+                duration: 0.75,
+                ease: Power2.easeOut,
+            });
+        };
+
+        const liElement = liRef.current;
+        if (liElement) {
+            liElement.addEventListener("mouseenter", handleMouseEnter);
+            liElement.addEventListener("mouseleave", handleMouseLeave);
+
+            return () => {
+                liElement.removeEventListener("mouseenter", handleMouseEnter);
+                liElement.removeEventListener("mouseleave", handleMouseLeave);
+            };
         }
-    })
+    }, []);
 
     useEffect(() => {
-        const ulElement = ulRef.current;
+        const liElement = liRef.current;
 
-        if (ulElement && lineRefs.current.length > 0 && arrowIconRefs.current.length > 0 && textRefs.current.length > 0) {
+        if (liElement && lineRef.current && arrowIconRef.current && textRef.current) {
             const timelineLi = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ulElement,
+                    trigger: liElement,
                     start: "top center"
                 },
             });
 
-            textRefs.current.forEach((_, i) => {
-                timelineLi.from(textRefs.current[i], {
-                    opacity: 0,
-                    x: 100,
-                    duration: 0.5,
-                    ease: Power2.easeOut,
-                }, i * 0.5);
+            timelineLi.clear();
 
-                timelineLi.from(arrowIconRefs.current[i], {
-                    opacity: 0,
-                    rotate: '180deg',
-                    duration: 0.5,
-                    ease: Power4.easeOut,
-                }, i * 0.5 + 0.5);
-
-                timelineLi.from(lineRefs.current[i], {
-                    width: '0%',
-                    duration: 0.5,
-                    ease: Power3.easeOut,
-                }, i * 0.5 + 0.25);
+            timelineLi.from(textRef.current, {
+                opacity: 0,
+                x: 100,
+                duration: 0.5,
+                ease: Power2.easeOut,
             });
+
+            timelineLi.from(arrowIconRef.current, {
+                opacity: 0,
+                rotate: '180deg',
+                duration: 0.5,
+                ease: Power4.easeOut,
+            }, 0.5);
+
+            timelineLi.from(lineRef.current, {
+                width: '0%',
+                duration: 0.5,
+                ease: Power3.easeOut,
+            }, 0.25);
         }
     }, []);
 
     return (
-        <ul ref={ulRef} id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
-            {projects.map((project, index) => (
-                <li ref={(el) => liRefs.current[project.id] = el!} key={project.id} id={`li-work-${index}`} className="relative flex justify-between items-center cursor-pointer overflow-hidden cursor-pointer">
-                    <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
-                        <p ref={(el) => textRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">{project.title}</p>
-                        <div ref={(el) => arrowIconRefs.current[project.id] = el!} className="z-10 p-0 rounded-full bg-background">
-                            <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
-                        </div>
-                        <Image ref={(el) => imgRefs.current[project.id] = el!} width={1000} height={1000} alt="image de test" src={project.image[0]} className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0" />
-                        <span ref={(el) => lineRefs.current[project.id] = el!} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground z-10"></span>
-                    </Link>
-                </li>
-            ))}
-        </ul>
+        <li ref={liRef} className="relative flex justify-between items-center cursor-pointer overflow-hidden">
+            <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
+                <p ref={textRef} className="z-10 p-0 rounded-full bg-background">{project.title}</p>
+                <div ref={arrowIconRef} className="z-10 p-0 rounded-full bg-background">
+                    <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
+                </div>
+                <Image ref={imgRef} width={1000} height={1000} alt="image de test" src={project.image[0]} className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0" />
+                <span ref={lineRef} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground z-10"></span>
+            </Link>
+        </li>
     );
-}
+};
+
+export default ProjectList;
