@@ -24,25 +24,28 @@ export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
     const visiteRef = useRef<HTMLParagraphElement>(null);
     const textRefs = useRef<HTMLParagraphElement[]>([]);
-    const linkRefs = useRef<HTMLAnchorElement[]>([]);
+    const btnRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
         const textsElement = textRefs.current;
 
-        if (linkRefs.current.length > 0) {
-            gsap.from(linkRefs.current, {
-                delay: 1.25,
-                opacity: 0,
-                x: -25,
-                duration: 1,
-                ease: Power2.easeOut,
-                stagger: 0.5,
-                scrollTrigger: {
-                    trigger: textsElement[0],
-                    start: "top center",
-                },
-            });
+        if (btnRef.current) {
+            const buttons = btnRef.current.querySelectorAll('a');
+            gsap.fromTo(buttons,
+                { opacity: 0, x: -25 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    stagger: 0.5,
+                    scrollTrigger: {
+                        trigger: textsElement[0],
+                        start: "top center",
+                    },
+                }
+            );
         }
 
         if (imageRef.current) {
@@ -92,7 +95,7 @@ export default function AboutMe() {
                             highlightedText="Josué Perrault"
                         />
 
-                        <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
+                        <div ref={btnRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
                             <Button href="/" theme="secondary">Télécharger mon CV</Button>
                             <Button href="/profil" theme="primary">Voir plus</Button>
                         </div>

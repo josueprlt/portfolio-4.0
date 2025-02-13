@@ -16,6 +16,7 @@ interface ProjectListProps {
 }
 
 const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
+    gsap.registerPlugin(ScrollTrigger);
     const liRef = useRef<HTMLLIElement>(null);
     const arrowIconRef = useRef<HTMLDivElement>(null);
     const imgRef = useRef<HTMLImageElement>(null);
@@ -23,8 +24,6 @@ const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
     const lineRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
         const handleMouseEnter = () => {
             const isMobile = window.innerWidth <= 768;
             const paddingValue = isMobile ? '0.25rem 0.25rem' : '1rem 1rem';
@@ -91,29 +90,22 @@ const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
                 },
             });
 
-            timelineLi.clear();
+            timelineLi.fromTo(textRef.current,
+                { opacity: 0, x: 100, duration: 0.5, ease: Power2.easeOut },
+                { opacity: 1, x: 0, duration: 0.5, ease: Power2.easeOut }
+            );
 
-            timelineLi.from(textRef.current, {
-                opacity: 0,
-                x: 100,
-                duration: 0.5,
-                ease: Power2.easeOut,
-            });
+            timelineLi.fromTo(arrowIconRef.current, 
+                { opacity: 0, rotate: '180deg', duration: 0.5, ease: Power4.easeOut },
+                { opacity: 1, rotate: '0deg', duration: 0.5, ease: Power4.easeOut },
+            0.5);
 
-            timelineLi.from(arrowIconRef.current, {
-                opacity: 0,
-                rotate: '180deg',
-                duration: 0.5,
-                ease: Power4.easeOut,
-            }, 0.5);
-
-            timelineLi.from(lineRef.current, {
-                width: '0%',
-                duration: 0.5,
-                ease: Power3.easeOut,
-            }, 0.25);
+            timelineLi.fromTo(lineRef.current,
+                { width: '0%', duration: 0.5, ease: Power3.easeOut },
+                { width: '100%', duration: 0.5, ease: Power3.easeOut },
+            0.25);
         }
-    }, []);
+    }, [project]);
 
     return (
         <li ref={liRef} className="relative flex justify-between items-center cursor-pointer overflow-hidden">

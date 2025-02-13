@@ -43,28 +43,7 @@ export default function Home({ project }: HomeProps) {
     const imageRef = useRef<HTMLImageElement>(null);
     const retourRef = useRef<HTMLLinkElement>(null);
 
-    const [animationsPlayed, setAnimationsPlayed] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('animationsPlayedHome') === 'true';
-        }
-        return false;
-    });
-
     useEffect(() => {
-        const handleBeforeUnload = () => {
-            localStorage.removeItem('animationsPlayedHome');
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (animationsPlayed) return;
-
         if (document.fonts) {
             document.fonts.ready.then(() => {
                 const spanElements = spanRefs.current;
@@ -74,56 +53,42 @@ export default function Home({ project }: HomeProps) {
                 const retourElement = retourRef.current;
 
                 if (spanElements.length > 0) {
-                    gsap.from(spanElements, {
-                        delay: .5,
-                        opacity: 0,
-                        x: 50,
-                        duration: 1,
-                        ease: Power2.easeOut,
-                        stagger: 0.5,
-                    });
+                    gsap.fromTo(spanElements,
+                        { opacity: 0, x: 50 },
+                        { delay: .5, opacity: 1, x: 0, duration: 1, ease: Power2.easeOut, stagger: 0.5 }
+                    );
                 }
 
                 if (spanElement2) {
-                    gsap.from(spanElement2, {
-                        delay: 1.5,
-                        opacity: 0,
-                        x: 50,
-                        duration: 1,
-                        ease: Power2.easeOut,
-                    });
+                    gsap.fromTo(spanElement2,
+                        { opacity: 0, x: 50 },
+                        { delay: 1.5, opacity: 1, x: 0, duration: 1, ease: Power2.easeOut }
+                    );
                 }
 
                 if (h1Element) {
-                    gsap.from(h1Element, {
-                        opacity: 0,
-                        x: -50,
-                        duration: 1,
-                        ease: Power2.easeOut,
-                    });
+                    gsap.fromTo(h1Element,
+                        { opacity: 0, x: -50 },
+                        { opacity: 1, x: 0, duration: 1, ease: Power2.easeOut }
+                    );
                 }
 
                 if (imgElement) {
-                    gsap.from(imgElement, {
-                        delay: 2.5,
-                        filter: "grayscale(100%) blur(5px)",
-                        duration: 1,
-                        ease: Power2.easeOut,
-                    });
+                    gsap.fromTo(imgElement,
+                        { filter: "grayscale(100%) blur(5px)" },
+                        { delay: 2.5, filter: "grayscale(0%) blur(0px)", duration: 1, ease: Power2.easeOut }
+                    );
                 }
 
                 if (retourElement) {
-                    gsap.from(retourElement, {
-                        delay: 2,
-                        opacity: 0,
-                        x: -50,
-                        duration: 1,
-                        ease: Power2.easeOut,
-                    });
+                    gsap.fromTo(retourElement,
+                        { opacity: 0, x: -50 },
+                        { delay: 2, opacity: 1, x: 0, duration: 1, ease: Power2.easeOut }
+                    );
                 }
             });
         }
-    }, [animationsPlayed]);
+    }, []);
 
     if (!project) {
         return <div>Loading...</div>;

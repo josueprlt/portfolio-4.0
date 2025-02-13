@@ -39,7 +39,7 @@ export default function ContactMe() {
             icon: <LinkedinIcon className="w-6 md:w-9" />,
             link: 'https://www.linkedin.com/in/josu%C3%A9-perrault-2a663a265',
             linkTooltip: 'Josué Perrault',
-            linkProperty: 'top-1/2 -translate-y-[15px]',
+            linkProperty: 'top-[65px]',
             color: 'text-linkedin',
             bg: 'bg-linkedin',
         },
@@ -54,28 +54,7 @@ export default function ContactMe() {
         },
     ]);
 
-    const [animationsPlayed, setAnimationsPlayed] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem('animationsPlayedContact') === 'true';
-        }
-        return false;
-    });
-
     useEffect(() => {
-        const handleBeforeUnload = () => {
-            localStorage.removeItem('animationsPlayedContact');
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (animationsPlayed) return;
-
         if (sectionRefs.current.length > 0 && socialRefs.current.length > 0 && contactRefs.current.length > 0) {
             const timelineContact = gsap.timeline({
                 scrollTrigger: {
@@ -85,34 +64,27 @@ export default function ContactMe() {
             });
 
             sectionRefs.current.forEach((_, i) => {
-                timelineContact.from(sectionRefs.current[i], {
-                    opacity: 0,
-                    duration: 1,
-                    ease: Power2.easeOut,
-                });
+                timelineContact.fromTo(sectionRefs.current[i],
+                    { opacity: 0 },
+                    { opacity: 1, duration: 1, ease: Power2.easeOut }
+                );
             });
 
             contactRefs.current.forEach((_, i) => {
-                timelineContact.from(contactRefs.current[i], {
-                    scale: 0,
-                    duration: 0.5,
-                    ease: Circ.easeOut,
-                }, i * 0.5 + 0.5);
+                timelineContact.fromTo(contactRefs.current[i],
+                    { scale: 0 },
+                    { scale: 1, duration: 0.5, ease: Circ.easeOut },
+                i * 0.5 + 0.5);
             });
 
             socialRefs.current.forEach((_, i) => {
-                timelineContact.from(socialRefs.current[i], {
-                    opacity: 0,
-                    y: 50,
-                    duration: 0.5,
-                    ease: Power2.easeOut,
-                }, i * 0.5 + 1.5);
+                timelineContact.fromTo(socialRefs.current[i], 
+                    { opacity: 0, y: 50 },
+                    { opacity: 1, y: 0, duration: 0.5, ease: Power2.easeOut },
+                i * 0.5 + 1.5);
             });
         }
-
-        setAnimationsPlayed(true);
-        localStorage.setItem('animationsPlayedContact', 'true');
-    }, [animationsPlayed]);
+    }, []);
     return (
         <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="contact">
             <Title className="text-center">Contactez moi</Title>
@@ -158,7 +130,7 @@ export default function ContactMe() {
                         //     showArrow={true}
                         // >
                         // </Tooltip>
-                        <Link href={social.link} key={index} target="_blank" ref={(el) => socialRefs.current[index + 3] = el!} className={`${social.color} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
+                        <Link href={social.link} key={index} target="_blank" ref={(el) => socialRefs.current[index + 3] = el!} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
                             {social.icon}
                             <p>{social.name}</p>
                         </Link>

@@ -2,11 +2,13 @@ import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, B
 
 interface ToolProps {
     tech: string;
+    className: string;
 }
 
-const Tool: React.FC<ToolProps> = ({ tech }) => {
+const Tool: React.FC<ToolProps> = ({ tech, className }) => {
+
     return (
-        <div className="group inline-flex items-center gap-2 outline p-2 md:p-4 rounded-lg">
+        <div className={`${className} group inline-flex items-center gap-2 outline p-2 md:p-4 rounded-lg`}>
             {tech === "html" && (
                 <>
                     <HtmlIcon className="w-8 h-8 z-0" /> <span className="text-html hidden group-hover:block">{tech}</span>
