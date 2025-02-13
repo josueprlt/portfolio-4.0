@@ -115,7 +115,7 @@ export default function Home() {
             <section className="flex justify-left items-center gap-3">
                 <h2 ref={portfolioRef} className="text-xl md:text-4xl">Portfolio</h2>
                 <span ref={lineRef} className="w-full h-px bg-foreground translate-y-[7px] md:translate-y-[13px]"></span>
-                <h2 ref={yearRef} className="flex items-center gap-2 text-xl before:block before:w-2 before:h-2 before:bg-foreground before:rounded-full before:translate-y-[5px] md:text-4xl md:before:w-4 md:before:h-4 md:before:translate-y-[6px]">2024</h2>
+                <h2 ref={yearRef} className="flex items-center gap-2 text-xl before:block before:w-2 before:h-2 before:bg-foreground before:rounded-full before:translate-y-[5px] md:text-4xl md:before:w-4 md:before:h-4 md:before:translate-y-[6px]">2025</h2>
             </section>
         </header>
     );
