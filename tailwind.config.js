@@ -20,6 +20,7 @@ module.exports = {
         primaryGray: "var(--bg-primary-gray)",
         secondaryGray: "var(--bg-secondary-gray)",
         titleSecondary: "var(--bg-title-secondary)",
+        filter: "var(--bg-filter)",
 
         whatsapp: "var(--bg-text-whatsapp)",
         linkedin: "var(--bg-text-linkedin)",
