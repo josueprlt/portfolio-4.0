@@ -28,7 +28,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: dateRef.current,
-                    start: "top center",
+                    start: "bottom center",
                 },
             });
 
@@ -89,7 +89,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
     return (
         <div ref={dateRef} className="relative px-6 py-4 rounded-full text-background bg-foreground">
             <p>{date}</p>
-            <div className={`hidden md:absolute md:flex md:flex-row md:${isLeft ? '-left' : '-right'}-[270px] md:text-${isLeft ? 'end' : 'start'} md:w-64 md:text-foreground lg:w-80 lg:${isLeft ? '-left' : '-right'}-[350px] xl:w-96 xl:${isLeft ? '-left' : '-right'}-[475px] 2xl:w-[500px] 2xl:${isLeft ? '-left' : '-right'}-[600px] xl:after:absolute xl:after:top-1/2 xl:after:${isLeft ? '-right' : '-left'}-20 xl:after:w-14 xl:after:h-0.5 xl:after:bg-foreground`}>
+            <div className={`hidden md:absolute md:flex md:flex-row ${isLeft ? 'md:-left-[270px]' : 'md:-right-[270px]'} ${isLeft ? 'md:text-end' : 'md:text-start'} md:w-64 md:text-foreground lg:w-80 ${isLeft ? 'lg:-left-[350px]' : 'lg:-right-[350px]'} xl:w-96 ${isLeft ? 'xl:-left-[475px]' : 'xl:-right-[475px]'} 2xl:w-[500px] ${isLeft ? '2xl:-left-[600px]' : '2xl:-right-[600px]'} xl:after:absolute xl:after:top-1/2 ${isLeft ? 'xl:after:-right-20' : 'xl:after:-left-20'} xl:after:w-14 xl:after:h-0.5 xl:after:bg-foreground`}>
                 <span ref={spanRef} className={`absolute ${isLeft ? 'right-0' : ''} w-1 bg-gradient-to-b from-primary to-secondary h-full bg-foreground rounded-lg`}></span>
                 <div className={`relative ${isLeft ? 'pr-4' : 'pl-4'}`}>
                     <h3 ref={titleRef}>{title}</h3>

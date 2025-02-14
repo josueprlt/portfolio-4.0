@@ -29,36 +29,54 @@ function isOdd(num: number) {
 
 export default function MyJourney() {
     gsap.registerPlugin(ScrollTrigger);
-    const spansRef = useRef<HTMLSpanElement>(null);
+    const spansContainerRef = useRef<HTMLDivElement>(null);
     const beforeRef = useRef<HTMLDivElement>(null);
     const afterRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (spansRef.current) {
-            gsap.fromTo(spansRef.current,
-                { scale: 0, transformOrigin: "top" },
-                {
-                    scale: 1,
-                    duration: 1,
-                    ease: Power2.easeOut,
-                    scrollTrigger: {
-                        trigger: spansRef.current,
-                        start: "top center",
-                    },
-                }
-            );
+        if (spansContainerRef.current) {
+            const spans = spansContainerRef.current.querySelectorAll('.journey-span');
+            spans.forEach((span) => {
+                gsap.fromTo(span,
+                    { scale: 0, transformOrigin: "top" },
+                    {
+                        scale: 1,
+                        duration: 1,
+                        ease: Power2.easeOut,
+                        scrollTrigger: {
+                            trigger: span,
+                            start: "center center",
+                        },
+                    }
+                );
+            });
         }
 
-        if (beforeRef.current && afterRef.current) {
-            gsap.fromTo([beforeRef.current, afterRef.current],
+        if (beforeRef.current) {
+            gsap.fromTo(beforeRef.current,
                 { scale: 0 },
                 {
                     scale: 1,
                     duration: 1,
                     ease: Power2.easeOut,
                     scrollTrigger: {
-                        trigger: spansRef.current,
-                        start: "top center",
+                        trigger: beforeRef.current,
+                        start: "center center",
+                    },
+                }
+            );
+        }
+
+        if (afterRef.current) {
+            gsap.fromTo(afterRef.current,
+                { scale: 0 },
+                {
+                    scale: 1,
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    scrollTrigger: {
+                        trigger: afterRef.current,
+                        start: "center center",
                     },
                 }
             );
@@ -70,13 +88,12 @@ export default function MyJourney() {
             <Title className='text-center'>Mon Parcours</Title>
 
             <section className={`${DelaGothicOne.className} text-lg pt-14 md:pt-40 text-center`}>
-                <div className="relative flex justify-center items-center flex-col">
+                <div ref={spansContainerRef} className="relative flex justify-center items-center flex-col">
                     <div ref={beforeRef} className="absolute -top-[31px] w-8 h-8 bg-foreground rounded-full"></div>
-                    <span ref={spansRef} className="block w-2 h-96 bg-foreground"></span>
+                    <span className="journey-span block w-2 h-96 bg-foreground"></span>
                     {journeys.map((journey, index) => (
-                        <>
+                        <div key={index} className="flex flex-col justify-center items-center">
                             <JourneyCard
-                                key={index}
                                 date={journey.date}
                                 title={journey.title}
                                 description={journey.description}
@@ -84,8 +101,8 @@ export default function MyJourney() {
                                 imageAlt="Lycée La Mennais"
                                 position={isOdd(index)}
                             />
-                            <span ref={spansRef} className="block w-2 h-96 bg-foreground"></span>
-                        </>
+                            <span className="journey-span block w-2 h-96 bg-foreground"></span>
+                        </div>
                     ))}
                     <div ref={afterRef} className="absolute -bottom-[31px] w-8 h-8 bg-foreground rounded-full"></div>
                 </div>
