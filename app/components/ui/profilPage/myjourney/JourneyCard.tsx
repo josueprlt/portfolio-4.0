@@ -28,7 +28,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: dateRef.current,
-                    start: "bottom center",
+                    start: "center center",
                 },
             });
 

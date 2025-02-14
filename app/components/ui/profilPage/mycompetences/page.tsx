@@ -2,7 +2,7 @@
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import competences from '@/app/data/competences.json';
 import Title from '@/app/components/ui/title/page';
-import CompetenceCard from './competenceCard';
+import CompetenceCard from './CompetenceCard';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
