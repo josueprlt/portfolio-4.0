@@ -22,26 +22,25 @@ const ClimateCrisis = Climate_Crisis({
 
 export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
+    const divRef = useRef<HTMLDivElement>(null);
     const visiteRef = useRef<HTMLParagraphElement>(null);
-    const textRefs = useRef<HTMLParagraphElement[]>([]);
     const btnRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
-        const textsElement = textRefs.current;
-
-        if (btnRef.current) {
+        if (divRef.current && btnRef.current) {
             const buttons = btnRef.current.querySelectorAll('a');
             gsap.fromTo(buttons,
                 { opacity: 0, x: -25 },
                 {
+                    delay: 1.25,
                     opacity: 1,
                     x: 0,
                     duration: 1,
                     ease: Power2.easeOut,
                     stagger: 0.5,
                     scrollTrigger: {
-                        trigger: textsElement[0],
+                        trigger: divRef.current,
                         start: "top center",
                     },
                 }
@@ -88,7 +87,7 @@ export default function AboutMe() {
 
             <section className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
 
-                <div className="md:grid md:grid-cols-2 md:gap-24">
+                <div ref={divRef} className="md:grid md:grid-cols-2 md:gap-24">
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
                         <Paragraph
                             text="Je m'appelle Josué Perrault, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges."

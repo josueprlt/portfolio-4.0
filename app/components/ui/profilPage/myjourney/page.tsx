@@ -45,7 +45,7 @@ export default function MyJourney() {
                         ease: Power2.easeOut,
                         scrollTrigger: {
                             trigger: span,
-                            start: "center center",
+                            start: "center 65%",
                         },
                     }
                 );

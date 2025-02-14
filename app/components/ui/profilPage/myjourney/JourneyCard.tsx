@@ -28,7 +28,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: dateRef.current,
-                    start: "center center",
+                    start: "center 85%",
                 },
             });
 
@@ -36,7 +36,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                 { opacity: 0 },
                 {
                     opacity: 1,
-                    duration: 1,
+                    duration: 0.75,
                     ease: Power2.easeOut,
                 }
             );
@@ -46,10 +46,10 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                 {
                     opacity: 1,
                     scale: 1,
-                    duration: 1,
+                    duration: 0.75,
                     ease: Power2.easeOut,
                 },
-                "-=0.5"
+                "-=0.25"
             );
 
             timeline.fromTo(titleRef.current,
@@ -57,7 +57,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.75,
                     ease: Power2.easeOut,
                 },
                 "-=0"
@@ -70,7 +70,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                     duration: 1,
                     ease: Power2.easeOut,
                 },
-                "-=0.5"
+                "-=0.25"
             );
 
             timeline.fromTo(descriptionRef.current,
@@ -78,10 +78,10 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.75,
                     ease: Power2.easeOut,
                 },
-                "-=0.5"
+                "-=0.25"
             );
         }
     }, []);
