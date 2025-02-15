@@ -9,8 +9,10 @@ export default function Page() {
         <>
             <Home />
             <main className='px-4 md:px-8'>
-                <ResearchBar placeholder='Recherchez...' />
-                <Tags />
+                <div className='md:grid md:gap-9 md:grid-cols-5'>
+                    <ResearchBar placeholder='Recherchez...' />
+                    <Tags />
+                </div>
                 <Categories />
                 <Filtered />
             </main>
