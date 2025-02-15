@@ -2,11 +2,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { SearchIcon } from '@/app/components/ui/icons';
 
-interface ResearchBarProps {
-    placeholder: string;
+interface Project {
+    title: string;
 }
 
-const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder }) => {
+interface ResearchBarProps {
+    placeholder: string;
+    projects: Project[];
+    onProjectsFiltered: (searchTerm: string) => void;
+}
+
+const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder, projects, onProjectsFiltered }) => {
     const [inputValue, setInputValue] = useState('');
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -19,8 +25,8 @@ const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder }) => {
         }
 
         timeoutRef.current = setTimeout(() => {
-            console.log(value);
-        }, 1000);
+            onProjectsFiltered(value);
+        }, 500);
     };
 
     useEffect(() => {

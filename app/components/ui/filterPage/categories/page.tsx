@@ -3,14 +3,11 @@ import { useState } from "react";
 import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon } from "@/app/components/ui/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 
-export default function Categories() {
-    const [categories, setCategories] = useState(
-        [
-            { name: "outils", icon: <WrenchIcon className="md:w-6 md:h-6" /> },
-            { name: "cadre", icon: <CadreIcon className="md:w-6 md:h-6" /> },
-            { name: "date", icon: <CalendarIcon className="md:w-6 md:h-6" /> }
-        ]
-    );
+interface CategoriesProps {
+    onCategoriesSelected: (selectedCategories: string[]) => void;
+}
+
+export default function Categories({ onCategoriesSelected }: CategoriesProps) {
     const [tools, setTools] = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
@@ -43,58 +40,86 @@ export default function Categories() {
         ]
     );
 
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+    const handleCategoryClick = (categoryName: string) => {
+        const newSelectedCategories = [...selectedCategories, categoryName];
+        setSelectedCategories(newSelectedCategories);
+        onCategoriesSelected(newSelectedCategories);
+    };
+
+    const isCategorySelected = (categoryName: string) => {
+        return selectedCategories.includes(categoryName);
+    };
+
     return (
         <div className='flex items-center overflow-auto mt-4 px-4 gap-2 h-14 bg-filter rounded-3xl md:h-16 md:mt-9'>
             <ul className="w-full flex justify-around">
-                {categories.map((categorie, index) => (
-                    <Dropdown key={index}>
-                        <DropdownTrigger>
-                            <li key={index} className="flex items-center p-2 gap-2 cursor-pointer">
-                                {categorie.icon}
-                                <p className="font-sans font-bold md:text-xl">{categorie.name}</p>
-                            </li>
-                        </DropdownTrigger>
-                        <DropdownMenu aria-label="Static Actions">
-                            <>
-                                {index === 0 && (
-                                    <>
-                                        {tools.map((tool, toolIndex) => (
-                                            <DropdownItem key={tool.name}>
-                                                <div className="flex gap-2 my-1">
-                                                    {tool.icon}
-                                                    <p>{tool.name}</p>
-                                                </div>
-                                            </DropdownItem>
-                                        ))}
-                                    </>
-                                )}
-                                {index === 1 && (
-                                    <>
-                                        {cadres.map((cadre, cadreIndex) => (
-                                            <DropdownItem key={cadre.name}>
-                                                <div className="flex gap-2 my-1">
-                                                    {cadre.icon}
-                                                    <p>{cadre.name}</p>
-                                                </div>
-                                            </DropdownItem>
-                                        ))}
-                                    </>
-                                )}
-                                {index === 2 && (
-                                    <>
-                                        {dates.map((date, dateIndex) => (
-                                            <DropdownItem key={date.name}>
-                                                <div className="my-1">
-                                                    <p>{date.name}</p>
-                                                </div>
-                                            </DropdownItem>
-                                        ))}
-                                    </>
-                                )}
-                            </>
-                        </DropdownMenu>
-                    </Dropdown>
-                ))}
+                <Dropdown>
+                    <DropdownTrigger>
+                        <li className="flex items-center p-2 gap-2 cursor-pointer">
+                            <WrenchIcon className="md:w-6 md:h-6" />
+                            <p className="font-sans font-bold md:text-xl">Outils</p>
+                        </li>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Outils">
+                        <>
+                            {tools.map((tool) => (
+                                !isCategorySelected(tool.name) && (
+                                    <DropdownItem key={tool.name} onClick={() => handleCategoryClick(tool.name)}>
+                                        <div className="flex gap-2 my-1">
+                                            {tool.icon}
+                                            <p>{tool.name}</p>
+                                        </div>
+                                    </DropdownItem>
+                                )
+                            ))}
+                        </>
+                    </DropdownMenu>
+                </Dropdown>
+                <Dropdown>
+                    <DropdownTrigger>
+                        <li className="flex items-center p-2 gap-2 cursor-pointer">
+                            <CadreIcon className="md:w-6 md:h-6" />
+                            <p className="font-sans font-bold md:text-xl">Cadres</p>
+                        </li>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Cadres">
+                        <>
+                            {cadres.map((cadre) => (
+                                !isCategorySelected(cadre.name) && (
+                                    <DropdownItem key={cadre.name} onClick={() => handleCategoryClick(cadre.name)}>
+                                        <div className="flex gap-2 my-1">
+                                            {cadre.icon}
+                                            <p>{cadre.name}</p>
+                                        </div>
+                                    </DropdownItem>
+                                )
+                            ))}
+                        </>
+                    </DropdownMenu>
+                </Dropdown>
+                <Dropdown>
+                    <DropdownTrigger>
+                        <li className="flex items-center p-2 gap-2 cursor-pointer">
+                            <CalendarIcon className="md:w-6 md:h-6" />
+                            <p className="font-sans font-bold md:text-xl">Dates</p>
+                        </li>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="Dates">
+                        <>
+                            {dates.map((date) => (
+                                !isCategorySelected(date.name) && (
+                                    <DropdownItem key={date.name} onClick={() => handleCategoryClick(date.name)}>
+                                        <div className="my-1">
+                                            <p>{date.name}</p>
+                                        </div>
+                                    </DropdownItem>
+                                )
+                            ))}
+                        </>
+                    </DropdownMenu>
+                </Dropdown>
             </ul>
         </div>
     );
