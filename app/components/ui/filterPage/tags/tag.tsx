@@ -5,12 +5,13 @@ import { CloseIcon } from '@/app/components/ui/icons';
 
 interface TagProps {
     name: string;
+    onClick: () => void;
 }
 
-const Tag: React.FC<TagProps> = ({ name }) => {
+const Tag: React.FC<TagProps> = ({ name, onClick }) => {
 
     return (
-        <button className='flex items-center whitespace-nowrap p-[5px] pr-4 gap-2 border-2 border-foreground rounded-full'>
+        <button className='flex items-center whitespace-nowrap p-[5px] pr-4 gap-2 border-2 border-foreground rounded-full' onClick={onClick}>
             <CloseIcon className='md:w-8 md:h-8' />
             <p className='font-sans font-bold md:text-xl'>{name}</p>
         </button>

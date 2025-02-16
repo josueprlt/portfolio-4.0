@@ -14,7 +14,7 @@ export default function Home() {
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 md:pb-0`}>
             <NavBar />
 
-            <Title className='my-14 text-center'>Projects</Title>
+            <Title className='mt-2 text-center md:mb-10'>Projects</Title>
         </header>
     );
 }

@@ -1,13 +1,15 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon } from "@/app/components/ui/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
+import { gsap, Power1 } from "gsap";
 
 interface CategoriesProps {
+    selectedCategories: string[];
     onCategoriesSelected: (selectedCategories: string[]) => void;
 }
 
-export default function Categories({ onCategoriesSelected }: CategoriesProps) {
+export default function Categories({ selectedCategories, onCategoriesSelected }: CategoriesProps) {
     const [tools, setTools] = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
@@ -25,26 +27,31 @@ export default function Categories({ onCategoriesSelected }: CategoriesProps) {
             { name: "vscode", icon: <VscodeIcon className="w-6 h-6" /> }
         ]
     );
-
     const [cadres, setCadres] = useState(
         [
             { name: "Personnel", icon: <PeopleIcon className="w-6 h-6" /> },
             { name: "Scolaire", icon: <BagIcon className="w-6 h-6" /> }
         ]
     );
-
     const [dates, setDates] = useState(
         [
             { name: "Les plus récents" },
             { name: "Les moins récents" }
         ]
     );
+    const CategoriesRef = useRef<HTMLDivElement>(null);
 
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    useEffect(() => {
+        if (CategoriesRef.current) {
+            gsap.fromTo(CategoriesRef.current, 
+                { opacity: 0, y: -20 },
+                { opacity: 1, y: 0, duration: 0.5, ease: Power1.easeOut, delay: 0.9 }
+            );
+        }
+    }, []);
 
     const handleCategoryClick = (categoryName: string) => {
         const newSelectedCategories = [...selectedCategories, categoryName];
-        setSelectedCategories(newSelectedCategories);
         onCategoriesSelected(newSelectedCategories);
     };
 
@@ -53,7 +60,7 @@ export default function Categories({ onCategoriesSelected }: CategoriesProps) {
     };
 
     return (
-        <div className='flex items-center overflow-auto mt-4 px-4 gap-2 h-14 bg-filter rounded-3xl md:h-16 md:mt-9'>
+        <div ref={CategoriesRef} className='flex items-center overflow-auto mt-4 px-4 gap-2 h-14 bg-filter rounded-3xl md:h-16 md:mt-9'>
             <ul className="w-full flex justify-around">
                 <Dropdown>
                     <DropdownTrigger>

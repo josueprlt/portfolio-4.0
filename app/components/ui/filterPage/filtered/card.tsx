@@ -19,7 +19,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ img, title, href }) => {
 
     return (
-        <div className='w-full rounded-3xl border-2 border-foreground overflow-hidden'>
+        <div className='w-full rounded-3xl border-2 border-foreground overflow-hidden card-element'>
             <Link href={href} className="w-full h-full">
                 <div className='h-40 rounded-3xl md:h-56'>
                     <Image width={1000} height={1000} src={img} alt={`Image du projet ${title}`} className='w-full h-full object-cover' />

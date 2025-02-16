@@ -31,6 +31,11 @@ export default function Page() {
         setSelectedCategories(categories);
     };
 
+    const handleTagRemove = (tag: string) => {
+        const newSelectedCategories = selectedCategories.filter(category => category !== tag);
+        setSelectedCategories(newSelectedCategories);
+    };
+
     const filterProjects = () => {
         let filtered = projects;
 
@@ -63,11 +68,11 @@ export default function Page() {
                     <ResearchBar
                         projects={projects}
                         placeholder='Recherchez...'
-                        onProjectsFiltered={(filteredProjects) => setSearchTerm(filteredProjects)}
+                        onProjectsFiltered={(searchTerm) => setSearchTerm(searchTerm)}
                     />
-                    <Tags tags={selectedCategories} />
+                    <Tags tags={selectedCategories} onTagRemove={handleTagRemove} />
                 </div>
-                <Categories onCategoriesSelected={handleCategoriesSelected} />
+                <Categories selectedCategories={selectedCategories} onCategoriesSelected={handleCategoriesSelected} />
                 <Filtered projects={filteredProjects} />
             </main>
         </>
