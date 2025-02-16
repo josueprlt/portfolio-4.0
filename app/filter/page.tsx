@@ -11,6 +11,7 @@ interface Project {
     id: string;
     title: string;
     category: string[];
+    date: string;
     image: string[];
 }
 
@@ -56,6 +57,15 @@ export default function Page() {
         setFilteredProjects(filtered);
     };
 
+    const sortProjectsByDate = (order: 'asc' | 'desc') => {
+        const sortedProjects = [...filteredProjects].sort((a, b) => {
+            const dateA = new Date(a.date).getTime();
+            const dateB = new Date(b.date).getTime();
+            return order === 'asc' ? dateA - dateB : dateB - dateA;
+        });
+        setFilteredProjects(sortedProjects);
+    };
+
     useEffect(() => {
         filterProjects();
     }, [searchTerm, selectedCategories]);
@@ -72,7 +82,11 @@ export default function Page() {
                     />
                     <Tags tags={selectedCategories} onTagRemove={handleTagRemove} />
                 </div>
-                <Categories selectedCategories={selectedCategories} onCategoriesSelected={handleCategoriesSelected} />
+                <Categories
+                    selectedCategories={selectedCategories}
+                    onCategoriesSelected={handleCategoriesSelected}
+                    onSortByDate={sortProjectsByDate}
+                />
                 <Filtered projects={filteredProjects} />
             </main>
         </>

@@ -7,9 +7,10 @@ import { gsap, Power1 } from "gsap";
 interface CategoriesProps {
     selectedCategories: string[];
     onCategoriesSelected: (selectedCategories: string[]) => void;
+    onSortByDate: (order: 'asc' | 'desc') => void;
 }
 
-export default function Categories({ selectedCategories, onCategoriesSelected }: CategoriesProps) {
+export default function Categories({ selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
     const [tools, setTools] = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
@@ -27,18 +28,14 @@ export default function Categories({ selectedCategories, onCategoriesSelected }:
             { name: "vscode", icon: <VscodeIcon className="w-6 h-6" /> }
         ]
     );
+
     const [cadres, setCadres] = useState(
         [
             { name: "Personnel", icon: <PeopleIcon className="w-6 h-6" /> },
             { name: "Scolaire", icon: <BagIcon className="w-6 h-6" /> }
         ]
     );
-    const [dates, setDates] = useState(
-        [
-            { name: "Les plus récents" },
-            { name: "Les moins récents" }
-        ]
-    );
+
     const CategoriesRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -115,15 +112,16 @@ export default function Categories({ selectedCategories, onCategoriesSelected }:
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Dates">
                         <>
-                            {dates.map((date) => (
-                                !isCategorySelected(date.name) && (
-                                    <DropdownItem key={date.name} onClick={() => handleCategoryClick(date.name)}>
-                                        <div className="my-1">
-                                            <p>{date.name}</p>
-                                        </div>
-                                    </DropdownItem>
-                                )
-                            ))}
+                            <DropdownItem onClick={() => onSortByDate('desc')}>
+                                <div className="my-1">
+                                    <p>Les plus récents</p>
+                                </div>
+                            </DropdownItem>
+                            <DropdownItem onClick={() => onSortByDate('asc')}>
+                                <div className="my-1">
+                                    <p>Les moins récents</p>
+                                </div>
+                            </DropdownItem>
                         </>
                     </DropdownMenu>
                 </Dropdown>
