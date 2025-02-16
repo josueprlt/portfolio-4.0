@@ -29,7 +29,7 @@ export default function Tags({ tags, onTagRemove }: TagsProps) {
                     ))}
                 </>
             ) : (
-                <p className="text-sans text-base font-bold pl-2 text-secondaryGray italic md:text-xl md:pl-4">Aucun filtre ajouté</p>
+                <p className="text-sans text-base font-bold pl-2 text-secondaryGray italic md:text-xl md:pl-4">Aucun tag ajouté</p>
             )}
         </div>
     );
