@@ -37,6 +37,8 @@ module.exports = {
         materialui: "var(--bg-text-materialui)",
         tailwind: "var(--bg-text-tailwind)",
         github: "var(--bg-text-github)",
+        docker: "var(--bg-text-docker)",
+        vscode: "var(--bg-text-vscode)",
       },
     },
   },

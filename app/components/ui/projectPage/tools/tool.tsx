@@ -1,4 +1,4 @@
-import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon } from "@/app/components/ui/icons";
+import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon } from "@/app/components/ui/icons";
 
 interface ToolProps {
     tech: string;
@@ -19,7 +19,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
                     <CssIcon className="w-8 h-8 z-0" /> <span className="text-css hidden group-hover:block">{tech}</span>
                 </>
             )}
-            {tech === "js" && (
+            {tech === "javascript" && (
                 <>
                     <JsIcon className="w-8 h-8 z-0" /> <span className="text-js hidden group-hover:block">{tech}</span>
                 </>
@@ -62,6 +62,21 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
             {tech === "next" && (
                 <>
                     <NextIcon className="w-8 h-8" /> <span className="text-next hidden group-hover:block">{tech}</span>
+                </>
+            )}
+            {tech === "docker" && (
+                <>
+                    <DockerIcon className="w-8 h-8" /> <span className="text-docker hidden group-hover:block">{tech}</span>
+                </>
+            )}
+            {tech === "github" && (
+                <>
+                    <GithubIcon className="w-8 h-8" /> <span className="text-github hidden group-hover:block">{tech}</span>
+                </>
+            )}
+            {tech === "vscode" && (
+                <>
+                    <VscodeIcon className="w-8 h-8" /> <span className="text-vscode hidden group-hover:block">{tech}</span>
                 </>
             )}
         </div>

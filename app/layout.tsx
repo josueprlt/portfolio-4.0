@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
+"use client"
+import { useState } from "react";
 import Head from "next/head";
 import Footer from "@/app/components/ui/footer/page";
 import localFont from "next/font/local";
 import "./globals.css";
+import LoadingScreen from "@/app/components/ui/LoadingScreen/page";
+import { metadata } from "./metada";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,17 +18,13 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Portfolio | Josué Perrault",
-  description: "Portfolio de Josué Perrault réalisé avec Next.js et Tailwindcss",
-  icons: "/favicon.ico",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [loading, setLoading] = useState(true);
+
   return (
     <html lang="en">
       <Head>
@@ -34,8 +33,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-        <Footer />
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+        {!loading && children}
+        {!loading && <Footer />}
       </body>
     </html>
   );

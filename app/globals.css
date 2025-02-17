@@ -27,6 +27,8 @@
   --bg-text-materialui: #007FFF;
   --bg-text-tailwind: #06B6D4;
   --bg-text-github: #181717;
+  --bg-text-docker: #2496ED;
+  --bg-text-vscode: #007ACC;
 }
 
 html {

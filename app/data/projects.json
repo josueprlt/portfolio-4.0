@@ -8,7 +8,8 @@
       "Dev Web",
       "html",
       "css",
-      "javascript"
+      "javascript",
+      "vscode"
     ],
     "description": "Dans le cadre personnel, le but était de retranscrire en html, css et javascript la template de la page qui nous était donnée par BenjaminCode.",
     "image": [
@@ -27,7 +28,8 @@
       "Dev Web",
       "html",
       "css",
-      "javascript"
+      "javascript",
+      "vscode"
     ],
     "description": "Dans le contexte scolaire, il m'a été demandé de créer un site OnePage en utilisant trois langages de programmation : le HTML, le CSS et le JavaScript. J'ai dû me familiariser avec un environnement de développement intégré tel que Visual Studio Code. Ce site n'est plus disponible.",
     "image": [
@@ -51,7 +53,8 @@
       "css",
       "javascript",
       "php",
-      "mysql"
+      "mysql",
+      "vscode"
     ],
     "description": "Dans le cadre scolaire, nous devions concevoir un site intégrant une base de données. La structure du projet était divisée en plusieurs parties nommées 'itérations'.",
     "image": [
@@ -80,7 +83,9 @@
       "Personnel",
       "Dev Web",
       "react",
-      "sass"
+      "sass",
+      "github",
+      "vscode"
     ],
     "description": "Personnellement, j'ai découvert une maquette de ce composant sur Internet. Cela m'a donné l'idée de l'intégrer en utilisant React et Sass.",
     "image": [
@@ -104,7 +109,8 @@
       "css",
       "javascript",
       "php",
-      "mysql"
+      "mysql",
+      "vscode"
     ],
     "description": "Mon ancien portfolio.",
     "image": [
