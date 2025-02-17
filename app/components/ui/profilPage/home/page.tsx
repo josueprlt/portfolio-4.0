@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
