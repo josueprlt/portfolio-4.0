@@ -26,17 +26,19 @@ export default function Home() {
         if (!linkRef.current) return;
 
         document.fonts.ready.then(() => {
-            gsap.from(linkRef.current, {
-                opacity: 0,
-                y: 50,
-                duration: 0.75,
-                ease: Power2.easeOut,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: linkRef.current,
-                    start: "top center",
-                },
-            });
+            gsap.fromTo(linkRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.75,
+                    ease: Power2.easeOut,
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: linkRef.current,
+                        start: "top center",
+                    },
+                });
         });
     }, []);
 
