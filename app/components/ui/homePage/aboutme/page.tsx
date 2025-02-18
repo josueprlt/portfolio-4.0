@@ -29,7 +29,7 @@ export default function AboutMe() {
 
     useEffect(() => {
         if (divRef.current && btnRef.current) {
-            const buttons = btnRef.current.querySelectorAll('a');
+            const buttons = btnRef.current.querySelectorAll('a, button');
             gsap.fromTo(buttons,
                 { opacity: 0, x: -25 },
                 {
@@ -81,6 +81,13 @@ export default function AboutMe() {
         }
     }, []);
 
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = '/pdf/cv.pdf';
+        link.download = 'Josue-Perrault-CV.pdf';
+        link.click();
+    };
+
     return (
         <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
             <Title className="text-center">A propos de moi</Title>
@@ -95,7 +102,7 @@ export default function AboutMe() {
                         />
 
                         <div ref={btnRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                            <Button href="/" theme="secondary">Télécharger mon CV</Button>
+                            <Button onClick={handleDownload} theme="secondary">Télécharger mon CV</Button>
                             <Button href="/profil" theme="primary">Voir plus</Button>
                         </div>
                     </div>

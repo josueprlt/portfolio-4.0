@@ -55,6 +55,13 @@ export default function AboutMe() {
         }
     }, []);
 
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = '/pdf/cv.pdf';
+        link.download = 'Josue-Perrault-CV.pdf';
+        link.click();
+    };
+
     return (
         <section className={`${DelaGothicOne.className} text-base text-justify md:text-4xl`}>
 
@@ -66,7 +73,7 @@ export default function AboutMe() {
                     />
 
                     <div ref={linkRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                        <Button href="/" theme="primary">Télécharger mon CV</Button>
+                        <Button onClick={handleDownload} theme="primary">Télécharger mon CV</Button>
                     </div>
                 </div>
                 <div className="w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full">
