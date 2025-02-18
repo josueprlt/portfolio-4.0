@@ -21,7 +21,7 @@ export default function Tags({ tags, onTagRemove }: TagsProps) {
     }, []);
 
     return (
-        <div ref={tagsRef} className='flex items-center overflow-auto mt-4 px-4 gap-2 h-14 bg-filter rounded-3xl md:h-16 md:mt-0 md:col-span-3'>
+        <div ref={tagsRef} className='flex items-center overflow-auto mt-4 px-4 gap-2 w-full h-14 bg-filter rounded-3xl md:h-16 md:mt-0 md:col-span-3'>
             {tags.length > 0 ? (
                 <>
                     {tags.map((tag, index) => (

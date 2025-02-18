@@ -120,7 +120,8 @@ export default function Home({ project }: HomeProps) {
                         className={`${DelaGothicOne.className} absolute flex flex-wrap-reverse gap-2 bottom-0 left-0 z-10 p-2 text-xs md:relative md:w-48 md:justify-end`}
                     >
                         {project.category.slice(0, numberOfItem).map((cat, index) => (
-                            <span
+                            <Link
+                                href='/filter'
                                 ref={(el) => {
                                     if (el) spanRefs.current[index] = el;
                                 }}
@@ -128,10 +129,10 @@ export default function Home({ project }: HomeProps) {
                                 className="bg-background text-foreground px-4 py-2 rounded-full"
                             >
                                 {cat}
-                            </span>
+                            </Link>
                         ))}
                         {remainingCount > 0 && (
-                            <div ref={spanRef2} className="bg-background text-foreground px-4 py-2 rounded-full">
+                            <Link href="/filter" ref={spanRef2} className="bg-background text-foreground px-4 py-2 rounded-full">
                                 <Tooltip
                                     content={project.category.slice(numberOfItem).join(", ")}
                                     className={`${DelaGothicOne.className} bg-background color-foreground text-xs`}
@@ -143,7 +144,7 @@ export default function Home({ project }: HomeProps) {
                                         + {remainingCount}
                                     </span>
                                 </Tooltip>
-                            </div>
+                            </Link>
                         )}
 
                     </div>

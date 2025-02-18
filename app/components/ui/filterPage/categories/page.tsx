@@ -40,12 +40,18 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
 
     useEffect(() => {
         if (CategoriesRef.current) {
-            gsap.fromTo(CategoriesRef.current, 
+            gsap.fromTo(CategoriesRef.current,
                 { opacity: 0, y: -20 },
                 { opacity: 1, y: 0, duration: 0.5, ease: Power1.easeOut, delay: 0.9 }
             );
         }
     }, []);
+    const [selectedDateLabel, setSelectedDateLabel] = useState("Dates");
+
+    const handleSortByDate = (order: 'asc' | 'desc') => {
+        setSelectedDateLabel(order === 'desc' ? "Les plus récents" : "Les moins récents");
+        onSortByDate(order);
+    };
 
     const handleCategoryClick = (categoryName: string) => {
         const newSelectedCategories = [...selectedCategories, categoryName];
@@ -107,17 +113,17 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
                     <DropdownTrigger>
                         <li className="flex items-center p-2 gap-2 cursor-pointer">
                             <CalendarIcon className="md:w-6 md:h-6" />
-                            <p className="font-sans font-bold md:text-xl">Dates</p>
+                            <p className="font-sans font-bold md:text-xl">{selectedDateLabel}</p>
                         </li>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Dates">
                         <>
-                            <DropdownItem onClick={() => onSortByDate('desc')}>
+                            <DropdownItem onClick={() => handleSortByDate('desc')}>
                                 <div className="my-1">
                                     <p>Les plus récents</p>
                                 </div>
                             </DropdownItem>
-                            <DropdownItem onClick={() => onSortByDate('asc')}>
+                            <DropdownItem onClick={() => handleSortByDate('asc')}>
                                 <div className="my-1">
                                     <p>Les moins récents</p>
                                 </div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, Power2 } from 'gsap';
 import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon, BoxArrowIcon } from '@/app/components/ui/icons';
+import Link from "next/link";
 
 interface Competence {
     id: number;
@@ -54,10 +55,10 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ competence }) => {
                 {competence.title === "github" && <GithubIcon className='w-32 h-32' />}
                 {competence.title === "vscode" && <VscodeIcon className='w-32 h-32' />}
             </div>
-            <a ref={linkRef} href="" className='absolute -bottom-10 flex gap-2 px-2 py-1 text-background bg-foreground rounded-full'>
+            <Link ref={linkRef} href="/filter" className='absolute -bottom-10 flex gap-2 px-2 py-1 text-background bg-foreground rounded-full'>
                 Voir projets associés
                 <BoxArrowIcon />
-            </a>
+            </Link>
         </div>
     );
 };

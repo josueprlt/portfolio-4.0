@@ -42,19 +42,20 @@ const Tag: React.FC<TagProps> = ({ name, onClick }) => {
 
     return (
         <button
-            className='relative flex items-center whitespace-nowrap p-[5px] pr-4 gap-2 border-2 border-foreground rounded-full z-10 overflow-hidden'
+            className='relative flex items-center whitespace-nowrap p-[5px] pr-4 gap-2 border-2 border-foreground rounded-full overflow-hidden min-w-max'
             onClick={onClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div className='relative w-[25px] h-[25px] bg-secondary rounded-full z-10'>
-                <CloseIcon className='md:w-[25px] md:h-[25px] z-10' />
+            <div className='relative bg-secondary rounded-full z-10'>
+                <CloseIcon className='w-[25px] h-[25px]' />
             </div>
             <div className='relative z-10'>
                 <p ref={textRef} className='font-sans font-bold md:text-xl'>{name}</p>
             </div>
             <div ref={divRef} className='absolute w-[25px] h-[25px] bg-secondary rounded-full z-0'></div>
         </button>
+
     );
 };
 
