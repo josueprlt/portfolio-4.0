@@ -40,13 +40,15 @@ export default function Modal({ project, currentIndex, setCurrentIndex, isOpen, 
                 <>
                     <ModalHeader className="flex flex-col gap-1">Image {currentIndex + 1}</ModalHeader>
                     <ModalBody>
-                        <Image
-                            width={5000}
-                            height={5000}
-                            src={project.image[currentIndex]}
-                            alt={`Modal Image ${currentIndex}`}
-                            className="w-full h-full object-cover"
-                        />
+                        <div className="w-full max-h-[500px] overflow-scroll">
+                            <Image
+                                width={5000}
+                                height={5000}
+                                src={project.image[currentIndex]}
+                                alt={`Modal Image ${currentIndex}`}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </ModalBody>
                     <ModalFooter className="flex justify-center">
                         <Pagination

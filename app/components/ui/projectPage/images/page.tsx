@@ -35,6 +35,7 @@ export default function Images({ project }: HomeProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const divRefs = useRef<HTMLDivElement[]>([]);
+    const imagesRefs = useRef<HTMLDivElement[]>([]);
 
     useEffect(() => {
         setProjet(project);
@@ -71,6 +72,16 @@ export default function Images({ project }: HomeProps) {
                     start: "top center",
                 },
             });
+
+            imagesRefs.current.forEach((img) => {
+                img.addEventListener("mouseenter", () => {
+                    gsap.to(img, { scale: 1.05, duration: 0.5, ease: Power2.easeInOut });
+                });
+
+                img.addEventListener("mouseleave", () => {
+                    gsap.to(img, { scale: 1, duration: 0.5, ease: Power2.easeInOut });
+                });
+            });
         });
     }, [projet]);
 
@@ -90,9 +101,10 @@ export default function Images({ project }: HomeProps) {
                         ref={(el) => divRefs.current[index] = el!}
                         key={index}
                         onClick={() => handleOpenModal(index)}
-                        className="w-full h-48 rounded-xl overflow-hidden cursor-pointer scale__elt"
+                        className="w-full h-48 rounded-xl overflow-hidden cursor-pointer"
                     >
                         <Image
+                            ref={(el) => imagesRefs.current[index] = el!}
                             width={5000}
                             height={5000}
                             src={img}

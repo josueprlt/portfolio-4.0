@@ -58,7 +58,7 @@ export default function Home() {
                 />
 
                 <div className="flex justify-center my-20" ref={linkRef}>
-                    <Button href="/#competences" theme="gradient">Voir mes projets</Button>
+                    <Button href="/#works" theme="gradient">Voir mes projets</Button>
                 </div>
             </section>
         </header>

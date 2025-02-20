@@ -41,37 +41,24 @@ body {
   background: var(--background);
 }
 
+
+/* Toggle style */
 .toggle-checkbox:checked+.toggle-label .toggle-span {
   transform: translateX(24px);
 }
 
+
+/* Clip path from title */
 .clip-path {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.linear-gradient-one {
-  background: linear-gradient(-135deg, transparent 0%, var(--bg-secondary) 100%);
+
+/* Filter from components projects */
+.img-toolbar,
+.border-toolbar {
+  filter: grayscale(100%);
 }
-
-.linear-gradient-two {
-  background: linear-gradient(-135deg, var(--bg-primary) 0%, transparent 100%);
-}
-
-.bg-gradient-text {
-  background: linear-gradient(to right, var(--bg-primary), var(--bg-secondary));
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-
-.scale__elt {
-  transition: transform 0.2s ease-in-out;
-}
-
-.scale__elt:hover {
-  transform: scale(1.1);
-}
-
 
 .img-toolbar,
 .border-toolbar {
@@ -79,12 +66,7 @@ body {
 }
 
 
-.img-toolbar,
-.border-toolbar {
-  filter: grayscale(100%);
-}
-
-
+/* Business card style */
 .card {
   font-weight: bold;
   box-shadow: 0 1px 5px #00000099;
