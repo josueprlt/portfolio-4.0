@@ -16,30 +16,34 @@ const DelaGothicOne = Dela_Gothic_One({
 
 export default function AboutMe() {
     const paraRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLImageElement>(null);
+    const imageRefs = useRef<HTMLImageElement[]>([]);
     const linkRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (imageRef.current) {
-            gsap.fromTo(
-                imageRef.current,
-                { filter: "grayscale(100%) blur(5px)" },
-                {
-                    filter: "grayscale(0%) blur(0px)",
-                    duration: 1,
-                    ease: Power2.easeOut,
-                    scrollTrigger: {
-                        trigger: imageRef.current,
-                        start: "top center",
-                    },
-                }
-            );
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (imageRefs.current.length > 0) {
+            imageRefs.current.forEach((image) => {
+                gsap.fromTo(
+                    image,
+                    { filter: "grayscale(100%) blur(5px)" },
+                    {
+                        filter: "grayscale(0%) blur(0px)",
+                        duration: 1,
+                        ease: Power2.easeOut,
+                        scrollTrigger: {
+                            trigger: image,
+                            start: "top center",
+                        },
+                    }
+                );
+            });
         }
 
         if (paraRef.current && linkRef.current) {
             gsap.fromTo(
                 linkRef.current,
-                { x:-25, opacity: 0 },
+                { x: -25, opacity: 0 },
                 {
                     delay: 1,
                     x: 0,
@@ -47,7 +51,7 @@ export default function AboutMe() {
                     duration: 1,
                     ease: Power2.easeOut,
                     scrollTrigger: {
-                        trigger: imageRef.current,
+                        trigger: paraRef.current,
                         start: "top center",
                     },
                 }
@@ -76,8 +80,9 @@ export default function AboutMe() {
                         <Button onClick={handleDownload} theme="primary">Télécharger mon CV</Button>
                     </div>
                 </div>
-                <div className="w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full">
-                    <Image ref={imageRef} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full object-cover" />
+                <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-[500px]">
+                    <Image ref={(el) => (imageRefs.current[0] = el)} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
+                    <Image ref={(el) => (imageRefs.current[1] = el)} width={1000} height={1000} src="/img/profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
                 </div>
             </div>
 

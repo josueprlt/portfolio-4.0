@@ -98,17 +98,15 @@ export default function Home() {
     }, []);
 
     const handleArrowMouseEnter = () => {
-        const tl = gsap.timeline();
-        tl.to(span1Ref.current, { y: -10, duration: 0.3, ease: Power2.easeOut })
-          .to(span2Ref.current, { x: 5, y: -5, duration: 0.3, ease: Power2.easeOut })
-          .to(span3Ref.current, { x: -5, y: -5, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(span1Ref.current, { height: 60, y: -10, duration: 0.3, ease: Power2.easeOut })
+        gsap.to(span2Ref.current, { height: 28, x: 5, y: -5, duration: 0.3, delay: .05, ease: Power2.easeOut })
+        gsap.to(span3Ref.current, { height: 28, x: -5, y: -5, duration: 0.3, delay: .05, ease: Power2.easeOut });
     };
 
     const handleArrowMouseLeave = () => {
-        const tl = gsap.timeline();
-        tl.to(span1Ref.current, { y: 0, duration: 0.3, ease: Power2.easeOut })
-          .to(span2Ref.current, { x: 0, y: 0, duration: 0.3, ease: Power2.easeOut })
-          .to(span3Ref.current, { x: 0, y: 0, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(span2Ref.current, { height: 32, x: 0, y: 0, duration: 0.3, ease: Power2.easeOut })
+        gsap.to(span3Ref.current, { height: 32, x: 0, y: 0, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(span1Ref.current, { height: 64, y: 0, duration: 0.3, delay: .05, ease: Power2.easeOut })
     };
 
     return (
@@ -127,7 +125,7 @@ export default function Home() {
                 <Link
                     href="#aboutme"
                     ref={arrowRef}
-                    className="relative w-16 flex justify-center"
+                    className="relative w-16 h-16 flex justify-center"
                     onMouseEnter={handleArrowMouseEnter}
                     onMouseLeave={handleArrowMouseLeave}
                 >

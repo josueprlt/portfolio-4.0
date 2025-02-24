@@ -29,6 +29,37 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
         { href: '/filter', label: 'Filtre' },
         { href: '/#contact', label: 'Contact' },
     ]);
+    const [arrayOfSocials, setArrayOfSocials] = useState([
+        { href: '/', icon: <WhatsappIcon className="w-10 h-10" /> },
+        { href: '/', icon: <LinkedinIcon className="w-10 h-10" /> },
+        { href: '/', icon: <InstagramIcon className="w-10 h-10" /> },
+    ]);
+
+    const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+    const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+    const iconRefs = useRef<(SVGSVGElement | null)[]>([]);
+    const spanRefs = useRef<(SVGTSpanElement | null)[]>([]);
+    const socialRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    const handleLinkMouseEnter = (index: number) => {
+        gsap.to(textRefs.current[index], { x: 10, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(iconRefs.current[index], { rotate: 45, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(spanRefs.current[index], { width: '100%', duration: 0.3, ease: Power2.easeOut });
+    };
+
+    const handleLinkMouseLeave = (index: number) => {
+        gsap.to(textRefs.current[index], { x: 0, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(iconRefs.current[index], { rotate: 0, duration: 0.3, ease: Power2.easeOut });
+        gsap.to(spanRefs.current[index], { width: '0%', duration: 0.3, ease: Power2.easeOut });
+    };
+
+    const handleSocialMouseEnter = (index: number) => {
+        gsap.to(socialRefs.current[index], { scale: 1.2, duration: 0.3, ease: Power2.easeOut });
+    };
+
+    const handleSocialMouseLeave = (index: number) => {
+        gsap.to(socialRefs.current[index], { scale: 1, duration: 0.3, ease: Power2.easeOut });
+    };
 
     return (
         <Drawer className="h-full rounded-se-none rounded-ee-none bg-background" backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -41,24 +72,34 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
                     <ul className={`${DelaGothicOne.className} flex flex-col gap-4 mt-8`}>
                         {arrayOfLinks.map((link, index) => (
                             <li key={index}>
-                                <Link href={link.href} className="flex flex-row justify-between items-center py-4 border-b border-foreground">
-                                    <p>{link.label}</p>
-                                    <ButtonArrowIcon className="w-4 h-4" />
+                                <Link
+                                    href={link.href}
+                                    className="relative flex flex-row justify-between items-center py-4"
+                                    onMouseEnter={() => handleLinkMouseEnter(index)}
+                                    onMouseLeave={() => handleLinkMouseLeave(index)}
+                                    ref={(el) => (linkRefs.current[index] = el)}
+                                >
+                                    <p ref={(el) => (textRefs.current[index] = el)}>{link.label}</p>
+                                    <ButtonArrowIcon ref={(el) => (iconRefs.current[index] = el)} className="w-4 h-4" />
+                                    <span ref={(el) => (spanRefs.current[index] = el)} className='absolute bottom-0 left-0 h-px bg-foreground'></span>
                                 </Link>
                             </li>
                         ))}
                     </ul>
                 </DrawerBody>
                 <DrawerFooter className="flex flex-row justify-start items-center gap-4">
-                    <Link href="#">
-                        <WhatsappIcon className="w-10 h-10" />
-                    </Link>
-                    <Link href="#">
-                        <LinkedinIcon className="w-10 h-10" />
-                    </Link>
-                    <Link href="#">
-                        <InstagramIcon className="w-10 h-10" />
-                    </Link>
+                    {arrayOfSocials.map((social, index) => (
+                        <Link
+                            key={index}
+                            href={social.href}
+                            onMouseEnter={() => handleSocialMouseEnter(index)}
+                            onMouseLeave={() => handleSocialMouseLeave(index)}
+                        >
+                            <div ref={(el) => (socialRefs.current[index] = el)}>
+                                {social.icon}
+                            </div>
+                        </Link>
+                    ))}
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>

@@ -25,7 +25,7 @@ export default function AboutMe() {
     const divRef = useRef<HTMLDivElement>(null);
     const visiteRef = useRef<HTMLParagraphElement>(null);
     const btnRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLImageElement>(null);
+    const imageRefs = useRef<HTMLImageElement[]>([]);
 
     useEffect(() => {
         if (divRef.current && btnRef.current) {
@@ -47,20 +47,22 @@ export default function AboutMe() {
             );
         }
 
-        if (imageRef.current) {
-            gsap.fromTo(
-                imageRef.current,
-                { filter: "grayscale(100%) blur(5px)" },
-                {
-                    filter: "grayscale(0%) blur(0px)",
-                    duration: 1,
-                    ease: Power2.easeOut,
-                    scrollTrigger: {
-                        trigger: imageRef.current,
-                        start: "top center",
-                    },
-                }
-            );
+        if (imageRefs.current.length > 0) {
+            imageRefs.current.forEach((image) => {
+                gsap.fromTo(
+                    image,
+                    { filter: "grayscale(100%) blur(5px)" },
+                    {
+                        filter: "grayscale(0%) blur(0px)",
+                        duration: 1,
+                        ease: Power2.easeOut,
+                        scrollTrigger: {
+                            trigger: image,
+                            start: "top center",
+                        },
+                    }
+                );
+            });
         }
 
         if (visiteRef.current) {
@@ -106,8 +108,9 @@ export default function AboutMe() {
                             <Button href="/profil" theme="primary">Voir plus</Button>
                         </div>
                     </div>
-                    <div className="w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full">
-                        <Image ref={imageRef} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full object-cover" />
+                    <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full md:max-h-[600px]">
+                        <Image ref={(el) => (imageRefs.current[0] = el)} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
+                        <Image ref={(el) => (imageRefs.current[1] = el)} width={1000} height={1000} src="/img/profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
                     </div>
                 </div>
 
