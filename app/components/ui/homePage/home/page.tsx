@@ -22,6 +22,9 @@ export default function Home() {
     const portfolioRef = useRef<HTMLHeadingElement>(null);
     const lineRef = useRef<HTMLSpanElement>(null);
     const yearRef = useRef<HTMLHeadingElement>(null);
+    const span1Ref = useRef<HTMLSpanElement>(null);
+    const span2Ref = useRef<HTMLSpanElement>(null);
+    const span3Ref = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
         const h1Element = h1Ref.current;
@@ -94,6 +97,20 @@ export default function Home() {
         }
     }, []);
 
+    const handleArrowMouseEnter = () => {
+        const tl = gsap.timeline();
+        tl.to(span1Ref.current, { y: -10, duration: 0.3, ease: Power2.easeOut })
+          .to(span2Ref.current, { x: 5, y: -5, duration: 0.3, ease: Power2.easeOut })
+          .to(span3Ref.current, { x: -5, y: -5, duration: 0.3, ease: Power2.easeOut });
+    };
+
+    const handleArrowMouseLeave = () => {
+        const tl = gsap.timeline();
+        tl.to(span1Ref.current, { y: 0, duration: 0.3, ease: Power2.easeOut })
+          .to(span2Ref.current, { x: 0, y: 0, duration: 0.3, ease: Power2.easeOut })
+          .to(span3Ref.current, { x: 0, y: 0, duration: 0.3, ease: Power2.easeOut });
+    };
+
     return (
         <header className={`${ClimateCrisis.className} flex flex-col justify-between h-screen p-4 md:p-8`}>
             <NavBar />
@@ -107,8 +124,16 @@ export default function Home() {
                     </h1>
                     <span ref={spanLinearRef} className="w-52 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full md:w-96 md:h-3"></span>
                 </div>
-                <Link href="#aboutme" ref={arrowRef}>
-                    <ArrowIcon className="cursor-pointer" />
+                <Link
+                    href="#aboutme"
+                    ref={arrowRef}
+                    className="relative w-16 flex justify-center"
+                    onMouseEnter={handleArrowMouseEnter}
+                    onMouseLeave={handleArrowMouseLeave}
+                >
+                    <span ref={span1Ref} className="block w-1.5 h-16 bg-foreground rounded-xl"></span>
+                    <span ref={span2Ref} className="absolute -bottom-[3.5px] right-[19px] w-1.5 h-8 bg-foreground rounded-xl rotate-45"></span>
+                    <span ref={span3Ref} className="absolute -bottom-[3.5px] left-[19px] w-1.5 h-8 bg-foreground rounded-xl -rotate-45"></span>
                 </Link>
             </section>
 
