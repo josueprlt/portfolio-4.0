@@ -15,23 +15,27 @@ const DelaGothicOne = Dela_Gothic_One({
 
 export default function ComponentMobile({ data }) {
     gsap.registerPlugin(ScrollTrigger);
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const sectionRefs = useRef<(HTMLElement | null)[]>([]);
     const socialRefs = useRef<(HTMLAnchorElement | null)[]>([]);
     const contactRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
-        if (sectionRef.current && contactRefs.current.length > 0 && socialRefs.current.length > 0) {
+        if (sectionRefs.current.length > 0 && contactRefs.current.length > 0 && socialRefs.current.length > 0) {
             const timelineContact = gsap.timeline({
                 scrollTrigger: {
-                    trigger: sectionRef.current,
+                    trigger: sectionRefs.current[0],
                     start: "top center",
                 },
             });
 
-            timelineContact.fromTo(sectionRef.current,
-                { opacity: 0 },
-                { opacity: 1, duration: 1, ease: Power2.easeOut }
-            );
+            sectionRefs.current.forEach((sectionRef) => {
+                if (sectionRef) {
+                    timelineContact.fromTo(sectionRef,
+                        { opacity: 0 },
+                        { opacity: 1, duration: 1, ease: Power2.easeOut }
+                    );
+                }
+            });
 
             contactRefs.current.forEach((contactRef, index) => {
                 if (contactRef) {
@@ -47,7 +51,7 @@ export default function ComponentMobile({ data }) {
                     timelineContact.fromTo(socialRef,
                         { opacity: 0, y: 50 },
                         { opacity: 1, y: 0, duration: 0.5, ease: Power2.easeOut },
-                        0.5 + index * 0.5);
+                        1.25 + index * 0.5);
                 }
             });
         }
@@ -55,7 +59,7 @@ export default function ComponentMobile({ data }) {
 
     return (
         <>
-            <section ref={sectionRef} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
+            <section ref={(el) => (sectionRefs.current[0] = el)} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
                 <div ref={(el) => (contactRefs.current[0] = el)} className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-1/2 rounded-2xl">
                     <PhoneIcon className="w-6 md:w-11 text-background" />
                     <p className="text-background">07 57 49 21 89</p>
@@ -66,7 +70,7 @@ export default function ComponentMobile({ data }) {
                 </div>
             </section>
 
-            <section ref={sectionRef} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-40 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl before:absolute before:top-1/2 before:w-full before:h-0.5 before:bg-foreground md:text-3xl`}>
+            <section ref={(el) => (sectionRefs.current[1] = el)} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-40 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl before:absolute before:top-1/2 before:w-full before:h-0.5 before:bg-foreground md:text-3xl`}>
                 {data.map((social, index) => (
                     <Link href={social.link} key={index} target="_blank" ref={(el) => (socialRefs.current[index] = el)} className={`absolute px-4 flex justify-center items-center gap-4 bg-background ${social.linkProperty} ${social.color}`}>
                         {social.icon}

@@ -68,12 +68,10 @@ export default function ComponentDesktop({ data }) {
 
             <div className="absolute -bottom-4 w-full flex justify-around items-center">
                 {data.map((social, index) => (
-                    <div key={index}>
-                        <Link href={social.link} target="_blank" ref={(el) => (socialRefs.current[index] = el)} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
-                            {social.icon}
-                            <p>{social.name}</p>
-                        </Link>
-                    </div>
+                    <Link href={social.link} key={index} target="_blank" ref={(el) => (socialRefs.current[index] = el)} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
+                        {social.icon}
+                        <p>{social.name}</p>
+                    </Link>
                 ))}
             </div>
         </section>
