@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap, Power2 } from 'gsap';
-import { ButtonArrowIcon } from '@/app/components/ui/icons';
+import { ButtonArrowIcon, LightGithubIcon } from '@/app/components/ui/icons';
 
 interface ButtonProps {
     href?: string;
-    theme: 'primary' | 'secondary' | 'gradient' | 'disabled';
+    theme: 'primary' | 'secondary' | 'gradient' | 'disabled' | 'github';
     children: React.ReactNode;
     onClick?: () => void;
 }
@@ -76,10 +76,24 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
         secondary: 'bg-background text-foreground',
         gradient: 'bg-gradient-to-r from-primary to-secondary text-background',
         disabled: 'bg-gradient-to-r from-primaryGray to-secondaryGray text-background cursor-not-allowed',
+        github: 'bg-github text-background',
     };
 
+    if (theme === "github") {
+        return (
+            <Link href={href} ref={linkRef} target='_blank' className={`relative ${themeClasses[theme]} flex items-center gap-3 text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
+                <LightGithubIcon className="w-6 h-6" />
+                <span className="relative z-30">{children}</span>
+                <div ref={divRef} className={`absolute ${"bg-background"} top-1 right-1 w-8 h-8 rounded-full md:top-[6px] md:right-[6px] md:w-10 md:h-10`}></div>
+                <div ref={arrowRef} className="absolute top-[14px] right-[14px] md:top-4 md:right-4">
+                    <ButtonArrowIcon fill={"#262330"} className="w-3 md:w-5" />
+                </div>
+            </Link>
+        );
+    }
+
     return href ? (
-        <Link href={href} ref={linkRef} className={`relative ${themeClasses[theme]} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
+        <Link href={href} ref={linkRef} target='_blank' className={`relative ${themeClasses[theme]} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
             <span className="relative z-30">{children}</span>
             <div ref={divRef} className={`absolute ${theme === "primary" || theme === "gradient" ? "bg-background" : "bg-foreground"} top-1 right-1 w-8 h-8 rounded-full md:top-[6px] md:right-[6px] md:w-10 md:h-10`}></div>
             <div ref={arrowRef} className="absolute top-[14px] right-[14px] md:top-4 md:right-4">
@@ -95,6 +109,7 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
             </div>
         </button>
     );
+
 };
 
 export default Button;

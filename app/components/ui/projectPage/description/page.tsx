@@ -67,11 +67,15 @@ export default function Description({ project }: HomeProps) {
                     className="text-justify md:text-4xl"
                 />
 
-                <div className='flex justify-center my-10 md:my-32' ref={linkRef}>
+                <div className='flex justify-center gap-10 my-10 md:my-32' ref={linkRef}>
                     {projet.link == null ? (
                         <Button href="" theme="disabled">Ce projet n'est pas disponible</Button>
                     ) : (
-                        <Button href={projet.link} theme="gradient">Visiter le projet</Button>)}
+                        <Button href={projet.link} theme="gradient">Visiter le projet</Button>
+                    )}
+                    {projet.github != null && (
+                        <Button href={projet.github} theme="github">Projet GitHub</Button>
+                    )}
                 </div>
             </div>
         </div>
