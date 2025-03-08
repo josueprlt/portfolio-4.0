@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/drawer";
-import { LogoIcon, ButtonArrowIcon, WhatsappIcon, LinkedinIcon, InstagramIcon } from "@/app/components/ui/icons";
+import { LogoIcon, ButtonArrowIcon, LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
 import { gsap, Power2 } from 'gsap';
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 
@@ -30,9 +30,9 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
         { href: '/#contact', label: 'Contact' },
     ]);
     const [arrayOfSocials, setArrayOfSocials] = useState([
-        { href: '/', icon: <WhatsappIcon className="w-10 h-10" /> },
-        { href: '/', icon: <LinkedinIcon className="w-10 h-10" /> },
-        { href: '/', icon: <InstagramIcon className="w-10 h-10" /> },
+        { href: 'https://github.com/josueprlt', icon: <GithubIcon className="w-10 h-10" /> },
+        { href: 'https://www.linkedin.com/in/josu%C3%A9-perrault-2a663a265', icon: <LinkedinIcon className="w-10 h-10" /> },
+        { href: 'https://gitlab.com/josueprlt', icon: <GitlabIcon className="w-10 h-10" /> },
     ]);
 
     const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -61,6 +61,12 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
         gsap.to(socialRefs.current[index], { scale: 1, duration: 0.3, ease: Power2.easeOut });
     };
 
+    const handleLinkClick = () => {
+        if (onOpenChange) {
+            onOpenChange(false);
+        }
+    };
+
     return (
         <Drawer className="h-full rounded-se-none rounded-ee-none bg-background" backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
             <DrawerContent className="p-5">
@@ -77,6 +83,7 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
                                     className="relative flex flex-row justify-between items-center py-4"
                                     onMouseEnter={() => handleLinkMouseEnter(index)}
                                     onMouseLeave={() => handleLinkMouseLeave(index)}
+                                    onClick={handleLinkClick}
                                     ref={(el) => (linkRefs.current[index] = el)}
                                 >
                                     <p ref={(el) => (textRefs.current[index] = el)}>{link.label}</p>
@@ -94,6 +101,8 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
                             href={social.href}
                             onMouseEnter={() => handleSocialMouseEnter(index)}
                             onMouseLeave={() => handleSocialMouseLeave(index)}
+                            onClick={handleLinkClick}
+                            target='_blank'
                         >
                             <div ref={(el) => (socialRefs.current[index] = el)}>
                                 {social.icon}

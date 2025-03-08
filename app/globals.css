@@ -12,10 +12,8 @@
   --bg-title-secondary: #E8DBCC;
   --bg-filter: #FFE7CA;
 
-  --bg-text-whatsapp: #25D366;
   --bg-text-linkedin: #0A66C2;
-  --bg-text-instagram: #E4405F;
-
+  
   --bg-text-html: #E34F26;
   --bg-text-css: #1572B6;
   --bg-text-js: #F7DF1E;
@@ -27,6 +25,7 @@
   --bg-text-materialui: #007FFF;
   --bg-text-tailwind: #06B6D4;
   --bg-text-github: #181717;
+  --bg-text-gitlab: #fc6d25;
   --bg-text-docker: #2496ED;
   --bg-text-vscode: #007ACC;
 }

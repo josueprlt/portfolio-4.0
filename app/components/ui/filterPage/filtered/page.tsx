@@ -34,10 +34,20 @@ export default function Filtered({ projects }: FilteredProps) {
     }, []);
 
     return (
-        <section ref={sectionRef} className='mt-10 flex flex-col gap-6 md:mt-20 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
-            {projects.map((project) => (
-                <Card key={project.id} title={project.title} href={`/project/${project.id}`} img={project.image[0]} />
-            ))}
-        </section>
+        <>
+            {projects.length > 0 ? (
+                <section ref={sectionRef} className='mt-10 flex flex-col gap-6 md:mt-20 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+                    {
+                        projects.map((project) => (
+                            <Card key={project.id} title={project.title} href={`/project/${project.id}`} img={project.image[0]} />
+                        ))
+                    }
+                </section>
+            ) : (
+                <section ref={sectionRef} className='mt-10 flex justify-center md:mt-20'>
+                    <h1 className='text-2xl font-bold'>Aucun projet ne correspond à votre recherche...</h1>
+                </section>
+            )}
+        </>
     );
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import { PhoneIcon, EmailIcon, WhatsappIcon, LinkedinIcon, InstagramIcon } from "@/app/components/ui/icons";
+import { PhoneIcon, EmailIcon, LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2, Circ } from "gsap";
@@ -26,13 +26,13 @@ export default function ContactMe() {
     const contactRefs = useRef<HTMLDivElement[]>([]);
     const [arrayOfSocialMedias, setArrayOfSocialMedias] = useState([
         {
-            name: 'Whatsapp',
-            icon: <WhatsappIcon className="w-6 md:w-9" />,
-            link: 'Whatsapp',
+            name: 'Github',
+            icon: <GithubIcon className="w-6 md:w-9" />,
+            link: 'https://github.com/josueprlt',
             linkTooltip: 'Josué Perrault',
             linkProperty: '-top-3 md:-top-5',
-            color: 'text-whatsapp',
-            bg: 'bg-whatsapp',
+            color: 'text-github',
+            bg: 'bg-github',
         },
         {
             name: 'LinkedIn',
@@ -44,13 +44,13 @@ export default function ContactMe() {
             bg: 'bg-linkedin',
         },
         {
-            name: 'Instagram',
-            icon: <InstagramIcon className="w-6 md:w-9" />,
-            link: 'Instagram',
+            name: 'Gitlab',
+            icon: <GitlabIcon className="w-6 md:w-9" />,
+            link: 'https://gitlab.com/josueprlt',
             linkTooltip: 'jos9671',
             linkProperty: '-bottom-3 md:-bottom-5',
-            color: 'text-instagram',
-            bg: 'bg-instagram',
+            color: 'text-gitlab',
+            bg: 'bg-gitlab',
         },
     ]);
 
@@ -74,14 +74,14 @@ export default function ContactMe() {
                 timelineContact.fromTo(contactRefs.current[i],
                     { scale: 0 },
                     { scale: 1, duration: 0.5, ease: Circ.easeOut },
-                i * 0.5 + 0.5);
+                    i * 0.5 + 0.5);
             });
 
             socialRefs.current.forEach((_, i) => {
-                timelineContact.fromTo(socialRefs.current[i], 
+                timelineContact.fromTo(socialRefs.current[i],
                     { opacity: 0, y: 50 },
                     { opacity: 1, y: 0, duration: 0.5, ease: Power2.easeOut },
-                i * 0.5 + 1.5);
+                    i * 0.5 + 1.5);
             });
         }
     }, []);
@@ -123,17 +123,19 @@ export default function ContactMe() {
 
                 <div className="absolute -bottom-4 w-full flex justify-around items-center">
                     {arrayOfSocialMedias.map((social, index) => (
-                        // <Tooltip
-                        //     key={index}
-                        //     content={social.linkTooltip}
-                        //     className={`${DelaGothicOne.className} ${social.bg} text-background text-md`}
-                        //     showArrow={true}
-                        // >
-                        // </Tooltip>
-                        <Link href={social.link} key={index} target="_blank" ref={(el) => socialRefs.current[index + 3] = el!} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
-                            {social.icon}
-                            <p>{social.name}</p>
-                        </Link>
+                        <>
+                            {/* <Tooltip
+                                key={index}
+                                content={social.linkTooltip}
+                                className={`${DelaGothicOne.className} ${social.bg} text-background text-md`}
+                                showArrow={true}
+                            >
+                            </Tooltip> */}
+                            <Link href={social.link} key={index} target="_blank" ref={(el) => socialRefs.current[index + 3] = el!} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
+                                {social.icon}
+                                <p>{social.name}</p>
+                            </Link>
+                        </>
                     ))}
                 </div>
             </section>

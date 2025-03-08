@@ -22,9 +22,7 @@ module.exports = {
         titleSecondary: "var(--bg-title-secondary)",
         filter: "var(--bg-filter)",
 
-        whatsapp: "var(--bg-text-whatsapp)",
         linkedin: "var(--bg-text-linkedin)",
-        instagram: "var(--bg-text-instagram)",
 
         html: "var(--bg-text-html)",
         css: "var(--bg-text-css)",
@@ -37,6 +35,7 @@ module.exports = {
         materialui: "var(--bg-text-materialui)",
         tailwind: "var(--bg-text-tailwind)",
         github: "var(--bg-text-github)",
+        gitlab: "var(--bg-text-gitlab)",
         docker: "var(--bg-text-docker)",
         vscode: "var(--bg-text-vscode)",
       },
