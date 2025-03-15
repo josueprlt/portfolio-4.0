@@ -100,7 +100,7 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
                 const footerRect = footer.getBoundingClientRect();
                 if (footerRect.top <= window.innerHeight) {
                     fixedDiv.style.position = 'absolute';
-                    fixedDiv.style.bottom = isMobile ? `340px` : '250px';
+                    fixedDiv.style.bottom = isMobile ? `365px` : '250px';
                 } else {
                     fixedDiv.style.position = 'fixed';
                     fixedDiv.style.bottom = `0`;

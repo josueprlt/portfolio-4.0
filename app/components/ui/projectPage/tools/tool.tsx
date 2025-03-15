@@ -57,7 +57,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
     return (
         <Link
             href="/filter"
-            className={`${className} w-[${defaultWidth}px] md:w-[${desktopWidth}px] relative group inline-flex items-center gap-2 outline p-2 md:p-4 rounded-lg`}
+            className={`${className} w-[48px] md:w-[64px] relative group inline-flex items-center gap-2 outline p-2 md:p-4 rounded-lg`}
             ref={linkRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
