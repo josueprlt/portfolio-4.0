@@ -25,12 +25,16 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             }
         );
 
-        const loadingTimeout = setTimeout(() => {
+        const handleLoad = () => {
             setIsLoading(false);
             onComplete();
-        }, 2000);
+        };
 
-        return () => clearTimeout(loadingTimeout);
+        window.addEventListener('load', handleLoad);
+
+        return () => {
+            window.removeEventListener('load', handleLoad);
+        };
     }, [onComplete]);
 
     if (!isLoading) return null;
