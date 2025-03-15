@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Challenge BenjaminCode",
-    "date": "2021-06-01",
+    "date": "2021-09-13",
     "category": [
       "Personnel",
       "Dev Web",
@@ -17,13 +17,12 @@
       "/BenjaminCode/projetfinis.png",
       "/BenjaminCode/template.png"
     ],
-    "link": "https:portfolio-test.fr",
-    "github": "https://github.com/josueprlt/portfolio-4.0"
+    "link": null
   },
   {
     "id": 2,
     "title": "Site OnePage",
-    "date": "2021-06-01",
+    "date": "2022-12-03",
     "category": [
       "Scolaire",
       "Dev Web",
@@ -46,7 +45,7 @@
   {
     "id": 3,
     "title": "Site de trailer de films",
-    "date": "2022-06-01",
+    "date": "2023-03-22",
     "category": [
       "Scolaire",
       "Dev Web",
@@ -79,7 +78,7 @@
   {
     "id": 4,
     "title": "Intégration composant vidéo",
-    "date": "2023-06-01",
+    "date": "2024-07-22",
     "category": [
       "Personnel",
       "Dev Web",
@@ -102,7 +101,7 @@
   {
     "id": 5,
     "title": "Ancien Portfolio Web",
-    "date": "2025-06-01",
+    "date": "2025-01-01",
     "category": [
       "Personnel",
       "Dev Web",
@@ -122,5 +121,71 @@
       "/Portfolio2023/portfolio5.png"
     ],
     "link": "https:portfolio-test.fr"
+  },
+  {
+    "id": 6,
+    "title": "Nouveau Portfolio Web",
+    "date": "2025-03-15",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "next",
+      "tailwind",
+      "github",
+      "vscode"
+    ],
+    "description": "Mon nouveau portfolio.",
+    "image": [
+      "/Portfolio2025/portfolio1.png",
+      "/Portfolio2025/portfolio2.png",
+      "/Portfolio2025/portfolio3.png",
+      "/Portfolio2025/portfolio4.png"
+    ],
+    "link": "https:portfolio-test.fr",
+    "github": "https://github.com/josueprlt/portfolio-4.0"
+  },
+  {
+    "id": 7,
+    "title": "Nouveau Portfolio Web",
+    "date": "2025-03-15",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "next",
+      "tailwind",
+      "github",
+      "vscode"
+    ],
+    "description": "Mon nouveau portfolio.",
+    "image": [
+      "/Portfolio2025/portfolio1.png",
+      "/Portfolio2025/portfolio2.png",
+      "/Portfolio2025/portfolio3.png",
+      "/Portfolio2025/portfolio4.png"
+    ],
+    "link": "https:portfolio-test.fr",
+    "github": "https://github.com/josueprlt/portfolio-4.0"
+  },
+  {
+    "id": 8,
+    "title": "Reproduction Monstercat Frontend Practice",
+    "date": "2024-12-20",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "react",
+      "tailwind",
+      "github",
+      "vscode"
+    ],
+    "description": "Mon nouveau portfolio.",
+    "image": [
+      "/Portfolio2025/portfolio1.png",
+      "/Portfolio2025/portfolio2.png",
+      "/Portfolio2025/portfolio3.png",
+      "/Portfolio2025/portfolio4.png"
+    ],
+    "link": "https:portfolio-test.fr",
+    "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
   }
 ]
