@@ -146,29 +146,7 @@
   },
   {
     "id": 7,
-    "title": "Nouveau Portfolio Web",
-    "date": "2025-03-15",
-    "category": [
-      "Personnel",
-      "Dev Web",
-      "next",
-      "tailwind",
-      "github",
-      "vscode"
-    ],
-    "description": "Mon nouveau portfolio.",
-    "image": [
-      "/Portfolio2025/portfolio1.png",
-      "/Portfolio2025/portfolio2.png",
-      "/Portfolio2025/portfolio3.png",
-      "/Portfolio2025/portfolio4.png"
-    ],
-    "link": "https:portfolio-test.fr",
-    "github": "https://github.com/josueprlt/portfolio-4.0"
-  },
-  {
-    "id": 8,
-    "title": "Reproduction Monstercat Frontend Practice",
+    "title": "Monstercat",
     "date": "2024-12-20",
     "category": [
       "Scolaire",
@@ -178,12 +156,42 @@
       "github",
       "vscode"
     ],
-    "description": "Mon nouveau portfolio.",
+    "description": "Reproduction Monstercat Frontend Practice.",
     "image": [
-      "/Portfolio2025/portfolio1.png",
-      "/Portfolio2025/portfolio2.png",
-      "/Portfolio2025/portfolio3.png",
-      "/Portfolio2025/portfolio4.png"
+      "/Monstercat/monstercat1.png",
+      "/Monstercat/monstercat2.png",
+      "/Monstercat/monstercat3.png",
+      "/Monstercat/monstercat4.png",
+      "/Monstercat/monstercat5.png",
+      "/Monstercat/monstercat6.png",
+      "/Monstercat/monstercat7.png"
+    ],
+    "link": "https:portfolio-test.fr",
+    "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
+  },
+  {
+    "id": 8,
+    "title": "Lagendary",
+    "date": "2024-11-23",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "next",
+      "tailwind",
+      "symfony",
+      "docker",
+      "github",
+      "vscode"
+    ],
+    "description": "Reproduction Monstercat Frontend Practice.",
+    "image": [
+      "/Monstercat/monstercat1.png",
+      "/Monstercat/monstercat2.png",
+      "/Monstercat/monstercat3.png",
+      "/Monstercat/monstercat4.png",
+      "/Monstercat/monstercat5.png",
+      "/Monstercat/monstercat6.png",
+      "/Monstercat/monstercat7.png"
     ],
     "link": "https:portfolio-test.fr",
     "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
