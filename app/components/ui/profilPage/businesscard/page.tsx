@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { LogoIcon, PhoneIcon, EmailIcon, LinkIcon, LocationIcon } from '@/app/components/ui/icons';
 import Image from 'next/image';
-import { gsap } from 'gsap';
+import { gsap, Power2 } from 'gsap';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -19,6 +19,14 @@ const ClimateCrisis = Climate_Crisis({
 export default function BusinessCard() {
     const cardRef = useRef(null);
     const glowRef = useRef(null);
+    const phoneRef = useRef<HTMLDivElement>(null);
+    const emailRef = useRef<HTMLDivElement>(null);
+    const linkRef = useRef<HTMLDivElement>(null);
+    const locationRef = useRef<HTMLDivElement>(null);
+    const phoneTextRef = useRef<HTMLParagraphElement>(null);
+    const emailTextRef = useRef<HTMLParagraphElement>(null);
+    const linkTextRef = useRef<HTMLParagraphElement>(null);
+    const locationTextRef = useRef<HTMLParagraphElement>(null);
     let bounds;
 
     useEffect(() => {
@@ -95,6 +103,57 @@ rgba(255, 255, 255, 0.16),
         };
     }, []);
 
+    useEffect(() => {
+        const phoneElement = phoneRef.current;
+        const emailElement = emailRef.current;
+        const linkElement = linkRef.current;
+        const locationElement = locationRef.current;
+
+        const handleClickText = (ref) => {
+            const isVisible = ref.current.style.width !== '0px';
+            gsap.to(ref.current, {
+                width: isVisible ? 0 : 'auto',
+                opacity: isVisible ? 0 : 1,
+                duration: 0.75,
+                ease: Power2.easeOut,
+            });
+        };
+
+        if (phoneElement) {
+            phoneElement.addEventListener("click", () => handleClickText(phoneTextRef));
+        }
+
+        if (emailElement) {
+            emailElement.addEventListener("click", () => handleClickText(emailTextRef));
+        }
+
+        if (linkElement) {
+            linkElement.addEventListener("click", () => handleClickText(linkTextRef));
+        }
+
+        if (locationElement) {
+            locationElement.addEventListener("click", () => handleClickText(locationTextRef));
+        }
+
+        return () => {
+            if (phoneElement) {
+                phoneElement.removeEventListener("click", () => handleClickText(phoneTextRef));
+            }
+
+            if (emailElement) {
+                emailElement.removeEventListener("click", () => handleClickText(emailTextRef));
+            }
+
+            if (linkElement) {
+                linkElement.removeEventListener("click", () => handleClickText(linkTextRef));
+            }
+
+            if (locationElement) {
+                locationElement.removeEventListener("click", () => handleClickText(locationTextRef));
+            }
+        };
+    }, []);
+
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
 
@@ -109,10 +168,22 @@ rgba(255, 255, 255, 0.16),
                 </div>
 
                 <div className='flex items-center flex-col gap-2'>
-                    <PhoneIcon className='w-6 h-6 text-primary' />
-                    <EmailIcon className='w-6 h-6 text-primary' />
-                    <LinkIcon className='w-6 h-6' />
-                    <LocationIcon className='w-6 h-6' />
+                    <div ref={phoneRef} className='flex flex-row gap-4 cursor-pointer'>
+                        <PhoneIcon className='w-6 h-6 text-primary' />
+                        <p ref={phoneTextRef} className='text-background w-0 overflow-hidden text-nowrap'>07 57 49 21 89</p>
+                    </div>
+                    <div ref={emailRef} className='flex flex-row gap-4 cursor-pointer'>
+                        <EmailIcon className='w-6 h-6 text-primary' />
+                        <p ref={emailTextRef} className='text-background w-0 overflow-hidden text-nowrap'>josue.perrault@etu.unilim.fr</p>
+                    </div>
+                    <div ref={linkRef} className='flex flex-row gap-4 cursor-pointer'>
+                        <LinkIcon className='w-6 h-6' />
+                        <p ref={linkTextRef} className='text-background w-0 overflow-hidden text-nowrap'>portfolio-josue.fr</p>
+                    </div>
+                    <div ref={locationRef} className='flex flex-row gap-4 cursor-pointer'>
+                        <LocationIcon className='w-6 h-6' />
+                        <p ref={locationTextRef} className='text-background w-0 overflow-hidden text-nowrap'>56430 Mauron</p>
+                    </div>
                 </div>
 
                 <div ref={glowRef} className="absolute inset-0 pointer-events-none"></div>
@@ -137,19 +208,19 @@ rgba(255, 255, 255, 0.16),
                     <ul className={`${DelaGothicOne.className} flex items-start flex-col gap-6 text-background text-xl`}>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <PhoneIcon className='w-9 h-9 text-primary' />
-                            <p>07 57 49 21 89</p>
+                            <p className='text-background'>07 57 49 21 89</p>
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <EmailIcon className='w-9 h-9 text-primary' />
-                            <p>portfolio-josue.fr</p>
+                            <p className='text-background'>josue.perrault@etu.unilim.fr</p>
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <LinkIcon className='w-9 h-9' />
-                            <p>josueperrault@etu.unilim.fr</p>
+                            <p className='text-background'>portfolio-josue.fr</p>
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <LocationIcon className='w-9 h-9' />
-                            <p>185 avenue Albert Thomas</p>
+                            <p className='text-background'>56430 Mauron</p>
                         </li>
                     </ul>
                 </div>

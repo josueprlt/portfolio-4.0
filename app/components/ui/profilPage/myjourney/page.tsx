@@ -90,7 +90,7 @@ export default function MyJourney() {
             <section className={`${DelaGothicOne.className} text-lg pt-14 md:pt-40 text-center`}>
                 <div ref={spansContainerRef} className="relative flex justify-center items-center flex-col">
                     <div ref={beforeRef} className="absolute -top-[31px] w-8 h-8 bg-foreground rounded-full"></div>
-                    <span className="journey-span block w-2 h-96 bg-foreground"></span>
+                    <span className="journey-span block w-2 h-52 bg-foreground md:h-96"></span>
                     {journeys.map((journey, index) => (
                         <div key={index} className="flex flex-col justify-center items-center">
                             <JourneyCard
@@ -101,7 +101,7 @@ export default function MyJourney() {
                                 imageAlt="Lycée La Mennais"
                                 position={isOdd(index)}
                             />
-                            <span className="journey-span block w-2 h-96 bg-foreground"></span>
+                            <span className="journey-span block w-2 h-52 bg-foreground md:h-96"></span>
                         </div>
                     ))}
                     <div ref={afterRef} className="absolute -bottom-[31px] w-8 h-8 bg-foreground rounded-full"></div>
