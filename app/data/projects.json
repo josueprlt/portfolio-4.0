@@ -228,5 +228,30 @@
       "/Coachella/wireframe.png"
     ],
     "link": "https://www.figma.com/design/EQNQfyIacn43dLgTcfJWPY/Gr07---SAE-302---Perrault-Plouseau-Demeerseman-Toutain?node-id=0-1&p=f&t=P5Il4lxMuQMnQu4a-0"
+  },
+  {
+    "id": 10,
+    "title": "Nuit du code MMI",
+    "date": "2025-01-09",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "html",
+      "css",
+      "javascript",
+      "vscode"
+    ],
+    "description": "La Nuit du Code s'est déroulée le 9 avril 2025. Nous étions un groupe de six étudiants, composé d'étudiants de deuxième et de troisième année du BUT MMI de Limoges. Nous disposions de 24 heures pour réaliser un petit jeu avec p5.play sur le thème de la sobriété numérique. Le projet consistait à livrer à la fois un jeu fonctionnel et une landing page. Nous avons choisi de créer un clicker game.",
+    "image": [
+      "/Nuitmmi/nuitmmi1.png",
+      "/Nuitmmi/nuitmmi2.png",
+      "/Nuitmmi/nuitmmi3.png",
+      "/Nuitmmi/nuitmmi4.png",
+      "/Nuitmmi/nuitmmi5.png",
+      "/Nuitmmi/nuitmmi6.png",
+      "/Nuitmmi/nuitmmi7.png"
+    ],
+    "link": null,
+    "github": "https://github.com/josueprlt/Project-Nuit-MMI/tree/It%C3%A9ration-5"
   }
 ]
