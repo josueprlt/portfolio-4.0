@@ -1,176 +1,6 @@
 [
   {
     "id": 1,
-    "title": "Challenge BenjaminCode",
-    "date": "2023-09-13",
-    "category": [
-      "Personnel",
-      "Dev Web",
-      "html",
-      "css",
-      "javascript",
-      "vscode"
-    ],
-    "description": "Dans le cadre personnel, le but était de retranscrire en html, css et javascript la template de la page qui nous était donnée par BenjaminCode.",
-    "image": [
-      "/BenjaminCode/projetaccueil.png",
-      "/BenjaminCode/projetfinis.png",
-      "/BenjaminCode/template.png"
-    ],
-    "link": null
-  },
-  {
-    "id": 2,
-    "title": "Site OnePage",
-    "date": "2022-12-03",
-    "category": [
-      "Scolaire",
-      "Dev Web",
-      "html",
-      "css",
-      "javascript",
-      "vscode"
-    ],
-    "description": "Dans le contexte scolaire, il m'a été demandé de créer un site OnePage en utilisant trois langages de programmation : le HTML, le CSS et le JavaScript. J'ai dû me familiariser avec un environnement de développement intégré tel que Visual Studio Code. Ce site n'est plus disponible.",
-    "image": [
-      "/SiteOnePage/screen2.png",
-      "/SiteOnePage/screen3.png",
-      "/SiteOnePage/screen1.png",
-      "/SiteOnePage/visual1.png",
-      "/SiteOnePage/visual2.png",
-      "/SiteOnePage/visual3.png"
-    ],
-    "link": null
-  },
-  {
-    "id": 3,
-    "title": "Site de trailer de films",
-    "date": "2023-03-22",
-    "category": [
-      "Scolaire",
-      "Dev Web",
-      "html",
-      "css",
-      "javascript",
-      "php",
-      "mysql",
-      "vscode"
-    ],
-    "description": "Dans le cadre scolaire, nous devions concevoir un site intégrant une base de données. La structure du projet était divisée en plusieurs parties nommées 'itérations'.",
-    "image": [
-      "/Sae203/website1.png",
-      "/Sae203/website2.png",
-      "/Sae203/website3.png",
-      "/Sae203/website4.png",
-      "/Sae203/website5.png",
-      "/Sae203/website6.png",
-      "/Sae203/website7.png",
-      "/Sae203/website8.png",
-      "/Sae203/website9.png",
-      "/Sae203/code1.png",
-      "/Sae203/code2.png",
-      "/Sae203/code3.png",
-      "/Sae203/code4.png",
-      "/Sae203/code5.png"
-    ],
-    "link": "https:portfolio-test.fr"
-  },
-  {
-    "id": 4,
-    "title": "Intégration composant vidéo",
-    "date": "2024-07-22",
-    "category": [
-      "Personnel",
-      "Dev Web",
-      "react",
-      "sass",
-      "github",
-      "vscode"
-    ],
-    "description": "Personnellement, j'ai découvert une maquette de ce composant sur Internet. Cela m'a donné l'idée de l'intégrer en utilisant React et Sass.",
-    "image": [
-      "/ComposantVideo/component-video-img-1.png",
-      "/ComposantVideo/component-video-img-2.png",
-      "/ComposantVideo/component-video-img-3.png",
-      "/ComposantVideo/component-video-img-4.png",
-      "/ComposantVideo/component-video-img-5.png",
-      "/ComposantVideo/component-video-img-6.png"
-    ],
-    "link": "https:portfolio-test.fr"
-  },
-  {
-    "id": 5,
-    "title": "Ancien Portfolio Web",
-    "date": "2023-06-01",
-    "category": [
-      "Personnel",
-      "Dev Web",
-      "html",
-      "css",
-      "javascript",
-      "php",
-      "mysql",
-      "vscode"
-    ],
-    "description": "Mon ancien portfolio.",
-    "image": [
-      "/Portfolio2023/portfolio1.png",
-      "/Portfolio2023/portfolio2.png",
-      "/Portfolio2023/portfolio3.png",
-      "/Portfolio2023/portfolio4.png",
-      "/Portfolio2023/portfolio5.png"
-    ],
-    "link": "https:portfolio-test.fr"
-  },
-  {
-    "id": 6,
-    "title": "Nouveau Portfolio Web",
-    "date": "2025-03-15",
-    "category": [
-      "Personnel",
-      "Dev Web",
-      "next",
-      "tailwind",
-      "github",
-      "vscode"
-    ],
-    "description": "Mon nouveau portfolio.",
-    "image": [
-      "/Portfolio2025/portfolio1.png",
-      "/Portfolio2025/portfolio2.png",
-      "/Portfolio2025/portfolio3.png",
-      "/Portfolio2025/portfolio4.png"
-    ],
-    "link": "https:portfolio-test.fr",
-    "github": "https://github.com/josueprlt/portfolio-4.0"
-  },
-  {
-    "id": 7,
-    "title": "Monstercat",
-    "date": "2024-12-20",
-    "category": [
-      "Scolaire",
-      "Dev Web",
-      "react",
-      "tailwind",
-      "github",
-      "vscode"
-    ],
-    "description": "Ce projet scolaire a été réalisé en solo. L’objectif était de reproduire le site Monstercat en suivant les consignes du site Frontend Practice. Il s’agissait d’un projet purement frontend, dont la mission était d’intégrer la maquette fournie. Les technologies utilisées sont ReactJS et TailwindCSS.",
-    "image": [
-      "/Monstercat/monstercat1.png",
-      "/Monstercat/monstercat2.png",
-      "/Monstercat/monstercat3.png",
-      "/Monstercat/monstercat4.png",
-      "/Monstercat/monstercat5.png",
-      "/Monstercat/monstercat6.png",
-      "/Monstercat/monstercat7.png"
-    ],
-    "link": "https:portfolio-test.fr",
-    "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
-  },
-  {
-    "id": 8,
     "title": "Lagendary",
     "date": "2024-11-23",
     "category": [
@@ -205,5 +35,198 @@
     ],
     "link": "https:portfolio-test.fr",
     "github": "https://github.com/josueprlt/Sae-501-GroupeC-clone"
+  },
+  {
+    "id": 2,
+    "title": "Monstercat",
+    "date": "2024-12-20",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "react",
+      "tailwind",
+      "github",
+      "vscode"
+    ],
+    "description": "Ce projet scolaire a été réalisé en solo. L’objectif était de reproduire le site Monstercat en suivant les consignes du site Frontend Practice. Il s’agissait d’un projet purement frontend, dont la mission était d’intégrer la maquette fournie. Les technologies utilisées sont ReactJS et TailwindCSS.",
+    "image": [
+      "/Monstercat/monstercat1.png",
+      "/Monstercat/monstercat2.png",
+      "/Monstercat/monstercat3.png",
+      "/Monstercat/monstercat4.png",
+      "/Monstercat/monstercat5.png",
+      "/Monstercat/monstercat6.png",
+      "/Monstercat/monstercat7.png"
+    ],
+    "link": "https:portfolio-test.fr",
+    "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
+  },
+  {
+    "id": 3,
+    "title": "Challenge BenjaminCode",
+    "date": "2023-09-13",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "html",
+      "css",
+      "javascript",
+      "vscode"
+    ],
+    "description": "Dans le cadre personnel, le but était de retranscrire en html, css et javascript la template de la page qui nous était donnée par BenjaminCode.",
+    "image": [
+      "/BenjaminCode/projetaccueil.png",
+      "/BenjaminCode/projetfinis.png",
+      "/BenjaminCode/template.png"
+    ],
+    "link": null
+  },
+  {
+    "id": 4,
+    "title": "Intégration composant vidéo",
+    "date": "2024-07-22",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "react",
+      "sass",
+      "github",
+      "vscode"
+    ],
+    "description": "Personnellement, j'ai découvert une maquette de ce composant sur Internet. Cela m'a donné l'idée de l'intégrer en utilisant React et Sass.",
+    "image": [
+      "/ComposantVideo/component-video-img-1.png",
+      "/ComposantVideo/component-video-img-2.png",
+      "/ComposantVideo/component-video-img-3.png",
+      "/ComposantVideo/component-video-img-4.png",
+      "/ComposantVideo/component-video-img-5.png",
+      "/ComposantVideo/component-video-img-6.png"
+    ],
+    "link": "https:portfolio-test.fr"
+  },
+  {
+    "id": 5,
+    "title": "Portfolio Web 2023-2024",
+    "date": "2023-06-01",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "html",
+      "css",
+      "javascript",
+      "php",
+      "mysql",
+      "vscode"
+    ],
+    "description": "Ceci est la première version de mon portfolio en ligne. Cependant, il ne reflétait plus mes compétences actuelles ni mon style. Il était donc temps de créer un nouveau portfolio, plus moderne et représentatif de mon évolution. Ce projet personnel a été réalisé dans le but de mettre en avant mes compétences et les projets que j'ai réalisés.",
+    "image": [
+      "/Portfolio2023/portfolio1.png",
+      "/Portfolio2023/portfolio2.png",
+      "/Portfolio2023/portfolio3.png",
+      "/Portfolio2023/portfolio4.png",
+      "/Portfolio2023/portfolio5.png"
+    ],
+    "link": "https:portfolio-test.fr"
+  },
+  {
+    "id": 6,
+    "title": "Site OnePage",
+    "date": "2022-12-03",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "html",
+      "css",
+      "javascript",
+      "vscode"
+    ],
+    "description": "Dans le contexte scolaire, il m'a été demandé de créer un site OnePage en utilisant trois langages de programmation : le HTML, le CSS et le JavaScript. J'ai dû me familiariser avec un environnement de développement intégré tel que Visual Studio Code. Ce site n'est plus disponible.",
+    "image": [
+      "/SiteOnePage/screen2.png",
+      "/SiteOnePage/screen3.png",
+      "/SiteOnePage/screen1.png",
+      "/SiteOnePage/visual1.png",
+      "/SiteOnePage/visual2.png",
+      "/SiteOnePage/visual3.png"
+    ],
+    "link": null
+  },
+  {
+    "id": 7,
+    "title": "Site de trailer de films",
+    "date": "2023-03-22",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "html",
+      "css",
+      "javascript",
+      "php",
+      "mysql",
+      "vscode"
+    ],
+    "description": "Dans le cadre scolaire, nous devions concevoir un site intégrant une base de données. La structure du projet était divisée en plusieurs parties nommées 'itérations'.",
+    "image": [
+      "/Sae203/website1.png",
+      "/Sae203/website2.png",
+      "/Sae203/website3.png",
+      "/Sae203/website4.png",
+      "/Sae203/website5.png",
+      "/Sae203/website6.png",
+      "/Sae203/website7.png",
+      "/Sae203/website8.png",
+      "/Sae203/website9.png",
+      "/Sae203/code1.png",
+      "/Sae203/code2.png",
+      "/Sae203/code3.png",
+      "/Sae203/code4.png",
+      "/Sae203/code5.png"
+    ],
+    "link": "https:portfolio-test.fr"
+  },
+  {
+    "id": 8,
+    "title": "Nouveau Portfolio Web",
+    "date": "2025-03-15",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "next",
+      "tailwind",
+      "github",
+      "vscode"
+    ],
+    "description": "Mon nouveau portfolio arbore un style plus moderne et soigné. Comme l’ancien, ce projet personnel a pour objectif de présenter mes compétences et mes réalisations. Cependant, cette nouvelle version se distingue par un design plus élégant et des fonctionnalités avancées, comme un filtre pour trier les projets. Ce portfolio a été développé avec Next.js et TailwindCSS.",
+    "image": [
+      "/Portfolio2025/portfolio1.png",
+      "/Portfolio2025/portfolio2.png",
+      "/Portfolio2025/portfolio3.png",
+      "/Portfolio2025/portfolio4.png"
+    ],
+    "link": "https:portfolio-test.fr",
+    "github": "https://github.com/josueprlt/portfolio-4.0"
+  },
+  {
+    "id": 9,
+    "title": "Coachella",
+    "date": "2024-01-07",
+    "category": [
+      "Scolaire",
+      "Crea",
+      "figma"
+    ],
+    "description": "Au cours de cette SAé, il était demandé de produire un prototype, un post Instagram ainsi qu'une vidéo de teaser pour l'évènement du concert Coachella.",
+    "image": [
+      "/Coachella/coachella.png",
+      "/Coachella/analyse.png",
+      "/Coachella/moodboard.png",
+      "/Coachella/prototype1.png",
+      "/Coachella/prototype2.png",
+      "/Coachella/prototype3.png",
+      "/Coachella/userflow.png",
+      "/Coachella/userprofil.png",
+      "/Coachella/wireframe.png"
+    ],
+    "link": "https://www.figma.com/design/EQNQfyIacn43dLgTcfJWPY/Gr07---SAE-302---Perrault-Plouseau-Demeerseman-Toutain?node-id=0-1&p=f&t=P5Il4lxMuQMnQu4a-0"
   }
 ]

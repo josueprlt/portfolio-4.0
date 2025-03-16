@@ -393,6 +393,15 @@ function TrelloIcon(props: SVGAttributes<SVGElement>) {
     );
 }
 
+function FigmaIcon(props: SVGAttributes<SVGElement>) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" {...props}>
+            <path d="M15.332 8.668a3.333 3.333 0 0 0 0-6.663H8.668a3.333 3.333 0 0 0 0 6.663 3.333 3.333 0 0 0 0 6.665 3.333 3.333 0 0 0 0 6.664A3.334 3.334 0 0 0 12 18.664V8.668h3.332z" fill="#A45EFE"></path>
+            <circle cx="15.332" cy="12" r="3.332" fill="#A45EFE"></circle>
+        </svg>
+    );
+}
+
 const LightGithubIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((props, ref) => {
     return (
         <svg ref={ref} width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -401,4 +410,4 @@ const LightGithubIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((pr
     );
 });
 
-export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, LinkedinIcon, BretagneIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, SymfonyIcon, TailwindIcon, NextIcon, MuiIcon, ReactIcon, BootstrapIcon, DockerIcon, GithubIcon, VscodeIcon, HalteresIcon, LinkIcon, LocationIcon, BoxArrowIcon, SearchIcon, CloseIcon, WrenchIcon, CadreIcon, CalendarIcon, BagIcon, PeopleIcon, GitlabIcon, LightGithubIcon, TrelloIcon };
+export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, LinkedinIcon, BretagneIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, SymfonyIcon, TailwindIcon, NextIcon, MuiIcon, ReactIcon, BootstrapIcon, DockerIcon, GithubIcon, VscodeIcon, HalteresIcon, LinkIcon, LocationIcon, BoxArrowIcon, SearchIcon, CloseIcon, WrenchIcon, CadreIcon, CalendarIcon, BagIcon, PeopleIcon, GitlabIcon, LightGithubIcon, TrelloIcon, FigmaIcon };
