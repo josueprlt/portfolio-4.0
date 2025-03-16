@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon } from "@/app/components/ui/icons";
+import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon, TrelloIcon } from "@/app/components/ui/icons";
 import Link from "next/link";
 
 interface ToolProps {
@@ -172,6 +172,14 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
                         <VscodeIcon ref={iconRef} className="absolute top-0 left-0 w-8 h-8 z-0" />
                     </div>
                     <span ref={textRef} className="text-vscode opacity-0">{tech}</span>
+                </>
+            )}
+            {tech === "trello" && (
+                <>
+                    <div className='relative w-[32px] h-[32px]'>
+                        <TrelloIcon ref={iconRef} className="absolute top-0 left-0 w-8 h-8 z-0" />
+                    </div>
+                    <span ref={textRef} className="text-docker opacity-0">{tech}</span>
                 </>
             )}
         </Link>

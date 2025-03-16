@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Challenge BenjaminCode",
-    "date": "2021-09-13",
+    "date": "2023-09-13",
     "category": [
       "Personnel",
       "Dev Web",
@@ -101,7 +101,7 @@
   {
     "id": 5,
     "title": "Ancien Portfolio Web",
-    "date": "2025-01-01",
+    "date": "2023-06-01",
     "category": [
       "Personnel",
       "Dev Web",
@@ -156,7 +156,7 @@
       "github",
       "vscode"
     ],
-    "description": "Reproduction Monstercat Frontend Practice.",
+    "description": "Ce projet scolaire a été réalisé en solo. L’objectif était de reproduire le site Monstercat en suivant les consignes du site Frontend Practice. Il s’agissait d’un projet purement frontend, dont la mission était d’intégrer la maquette fournie. Les technologies utilisées sont ReactJS et TailwindCSS.",
     "image": [
       "/Monstercat/monstercat1.png",
       "/Monstercat/monstercat2.png",
@@ -181,9 +181,10 @@
       "symfony",
       "docker",
       "github",
-      "vscode"
+      "vscode",
+      "trello"
     ],
-    "description": "Reproduction Monstercat Frontend Practice.",
+    "description": "Ce projet scolaire a été réalisé en groupe de cinq personnes. L'objectif principal était de développer une application web permettant de planifier des événements, de les rejoindre et de visualiser les événements à venir sous forme de calendrier. Nous avons travaillé de manière agile, en suivant des sprints, sur une période de plus de quatre semaines. En plus de ces fonctionnalités principales, l'application proposait la création de compte, la connexion des utilisateurs, ainsi qu'un espace backoffice réservé aux administrateurs.",
     "image": [
       "/Lagendary/lagendary1.png",
       "/Lagendary/lagendary2.png",
@@ -203,6 +204,6 @@
       "/Lagendary/lagendary16.png"
     ],
     "link": "https:portfolio-test.fr",
-    "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
+    "github": "https://github.com/josueprlt/Sae-501-GroupeC-clone"
   }
 ]
