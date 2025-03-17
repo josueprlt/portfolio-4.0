@@ -38,6 +38,7 @@ module.exports = {
         gitlab: "var(--bg-text-gitlab)",
         docker: "var(--bg-text-docker)",
         vscode: "var(--bg-text-vscode)",
+        trello: "var(--bg-text-docker)",
         figma: "var(--bg-text-figma)",
       },
     },
