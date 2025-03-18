@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon } from "@/app/components/ui/icons";
+import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon, FigmaIcon, TrelloIcon } from "@/app/components/ui/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 import { gsap, Power1 } from "gsap";
 
@@ -25,14 +25,18 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
             { name: "symfony", icon: <SymfonyIcon className="w-6 h-6" /> },
             { name: "docker", icon: <DockerIcon className="w-6 h-6" /> },
             { name: "github", icon: <GithubIcon className="w-6 h-6" /> },
-            { name: "vscode", icon: <VscodeIcon className="w-6 h-6" /> }
+            { name: "vscode", icon: <VscodeIcon className="w-6 h-6" /> },
+            { name: "figma", icon: <FigmaIcon className="w-6 h-6" /> },
+            { name: "trello", icon: <TrelloIcon className="w-6 h-6" /> },
         ]
     );
 
     const [cadres, setCadres] = useState(
         [
             { name: "Personnel", icon: <PeopleIcon className="w-6 h-6" /> },
-            { name: "Scolaire", icon: <BagIcon className="w-6 h-6" /> }
+            { name: "Scolaire", icon: <BagIcon className="w-6 h-6" /> },
+            { name: "Dev Web", icon: <BagIcon className="w-6 h-6" /> },
+            { name: "Crea", icon: <BagIcon className="w-6 h-6" /> }
         ]
     );
 
@@ -72,7 +76,7 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
                             <p className="font-sans font-bold md:text-xl">Outils</p>
                         </li>
                     </DropdownTrigger>
-                    <DropdownMenu aria-label="Outils">
+                    <DropdownMenu aria-label="Outils" className="h-80 overflow-auto">
                         <>
                             {tools.map((tool) => (
                                 !isCategorySelected(tool.name) && (

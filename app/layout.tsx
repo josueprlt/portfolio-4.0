@@ -46,19 +46,16 @@ export default function RootLayout({
   }, []);
 
   useEffect(() => {
-    gsap.to(sectionRef.current, {
-      y: -68,
-      duration: 0.5,
-      ease: "power2.out",
-    });
     if (isScrolled) {
       gsap.to(sectionRef.current, {
+        top: 0,
         y: 0,
         duration: 0.5,
         ease: "power2.out",
       });
     } else {
       gsap.to(sectionRef.current, {
+        top: 0,
         y: -68,
         duration: 0.5,
         ease: "power2.out",
@@ -79,7 +76,7 @@ export default function RootLayout({
           <>
             <section
               ref={sectionRef}
-              className={`fixed top-0 left-0 right-0 z-50 bg-background`}
+              className={`fixed -top-20 left-0 right-0 z-50 bg-background`}
             >
               <span
                 style={{ width: `${scrollWidth}%` }}
