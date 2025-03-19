@@ -57,6 +57,7 @@ export default function Modal({ project, currentIndex, setCurrentIndex, isOpen, 
                             total={project.image.length}
                             onChange={handlePageChange}
                             variant="light"
+                            color="secondary"
                             key={"#262330"}
                         />
                     </ModalFooter>

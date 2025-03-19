@@ -18,7 +18,7 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
             { name: "javascript", icon: <JsIcon className="w-6 h-6" /> },
             { name: "sass", icon: <SassIcon className="w-6 h-6" /> },
             { name: "php", icon: <PhpIcon className="w-6 h-6" /> },
-            { name: "tailwindcss", icon: <TailwindIcon className="w-6 h-6" /> },
+            { name: "tailwind", icon: <TailwindIcon className="w-6 h-6" /> },
             { name: "material ui", icon: <MuiIcon className="w-6 h-6" /> },
             { name: "react", icon: <ReactIcon className="w-6 h-6" /> },
             { name: "next", icon: <NextIcon className="w-6 h-6" /> },

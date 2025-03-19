@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { gsap, Power2 } from "gsap";
 import Card from "./card";
@@ -38,7 +38,7 @@ export default function Filtered({ projects }: FilteredProps) {
                     duration: 0.5,
                     ease: Power2.easeOut,
                     stagger: 0.25,
-                    delay: 1.25,
+                    delay: 0.5,  // Réduit le délai pour un rendu plus réactif
                 }
             );
         }
@@ -48,19 +48,32 @@ export default function Filtered({ projects }: FilteredProps) {
         <>
             {projects.length > 0 ? (
                 <>
-                    <section ref={sectionRef} className='mt-10 flex flex-col gap-6 md:mt-20 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
-                        {
-                            currentProjects.map((project) => (
-                                <Card key={project.id} title={project.title} href={`/project/${project.id}`} img={project.image[0]} className="card-element" />
-                            ))
-                        }
+                    <section
+                        ref={sectionRef}
+                        className='mt-10 flex flex-col gap-6 md:mt-20 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'
+                    >
+                        {currentProjects.map((project) => (
+                            <Card
+                                key={project.id}
+                                title={project.title}
+                                href={`/project/${project.id}`}
+                                img={project.image[0]}
+                            />
+                        ))}
                     </section>
-                    <Pagination
-                        initialPage={1}
-                        page={currentPage}
-                        total={Math.ceil(projects.length / projectsPerPage)}
-                        className="mt-10"
-                    />
+                    <div className="flex justify-center mt-20">
+                        <Pagination
+                            className="text-background"
+                            page={currentPage}
+                            total={Math.ceil(projects.length / projectsPerPage)}
+                            onChange={handlePageChange}
+                            variant="light"
+                            key={"#262330"}
+                            color="secondary"
+                        />
+                    </div>
+
+
                 </>
             ) : (
                 <section ref={sectionRef} className='mt-10 flex justify-center md:mt-20'>

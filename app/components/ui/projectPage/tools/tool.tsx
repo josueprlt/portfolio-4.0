@@ -9,22 +9,22 @@ interface ToolProps {
 }
 
 const iconMapping = {
-    html: { icon: HtmlIcon },
-    css: { icon: CssIcon },
-    javascript: { icon: JsIcon },
-    sass: { icon: SassIcon },
-    php: { icon: PhpIcon },
-    react: { icon: ReactIcon },
-    symfony: { icon: SymfonyIcon },
-    bootstrap: { icon: BootstrapIcon },
-    mui: { icon: MuiIcon },
-    tailwind: { icon: TailwindIcon },
-    next: { icon: NextIcon },
-    docker: { icon: DockerIcon },
-    github: { icon: GithubIcon },
-    vscode: { icon: VscodeIcon },
-    trello: { icon: TrelloIcon },
-    figma: { icon: FigmaIcon },
+    html: { icon: HtmlIcon, colorClass: 'text-html' },
+    css: { icon: CssIcon, colorClass: 'text-css' },
+    javascript: { icon: JsIcon, colorClass: 'text-javascript' },
+    sass: { icon: SassIcon, colorClass: 'text-sass' },
+    php: { icon: PhpIcon, colorClass: 'text-php' },
+    react: { icon: ReactIcon, colorClass: 'text-react' },
+    symfony: { icon: SymfonyIcon, colorClass: 'text-symfony' },
+    bootstrap: { icon: BootstrapIcon, colorClass: 'text-bootstrap' },
+    mui: { icon: MuiIcon, colorClass: 'text-mui' },
+    tailwind: { icon: TailwindIcon, colorClass: 'text-tailwind' },
+    next: { icon: NextIcon, colorClass: 'text-next' },
+    docker: { icon: DockerIcon, colorClass: 'text-docker' },
+    github: { icon: GithubIcon, colorClass: 'text-github' },
+    vscode: { icon: VscodeIcon, colorClass: 'text-vscode' },
+    trello: { icon: TrelloIcon, colorClass: 'text-trello' },
+    figma: { icon: FigmaIcon, colorClass: 'text-figma' },
 };
 
 const Tool: React.FC<ToolProps> = ({ tech, className }) => {
@@ -73,7 +73,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
         });
     };
 
-    const { icon: IconComponent, textClass } = iconMapping[tech] || {};
+    const { icon: IconComponent, colorClass } = iconMapping[tech] || {};
 
     return (
         <Link
@@ -88,7 +88,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
                     <div className='relative w-[32px] h-[32px]'>
                         <IconComponent ref={iconRef} className="absolute top-0 left-0 w-8 h-8 z-0" />
                     </div>
-                    <span ref={textRef} className={`text-${tech} opacity-0`}>{tech}</span>
+                    <span ref={textRef} className={`${colorClass} opacity-0`}>{tech}</span>
                 </>
             )}
         </Link>
