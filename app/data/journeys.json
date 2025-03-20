@@ -2,30 +2,23 @@
   {
     "id": 1,
     "date": "Septembre 2019",
-    "title": "Baccalauréat Technologique",
+    "title": "Lycée La Mennais",
     "description": "Après avoir obtenu mon brevet, j'ai choisi de poursuivre mes études au lycée La Mennais de Ploërmel.",
-    "image": "/img/lamennais.png"
-  },
-  {
-    "id": 1,
-    "date": "Juillet 2022",
-    "title": "Obtention du BAC Technologique",
-    "description": "Originaire de Bretagne, j'ai obtenu mon bac STI2D au lycée La Mennais de Ploërmel.",
-    "image": "/img/lamennais2.png"
+    "image": "/img/lamennais.jpg"
   },
   {
     "id": 2,
-    "date": "Septembre 2022",
-    "title": "BUT MMI",
-    "description": "Après avoir obtenu mon brevet, j'ai choisi de poursuivre mes études au lycée La Mennais de Ploërmel.",
-    "image": "/img/lamennais.png"
+    "date": "Juillet 2022",
+    "title": "Obtention du BAC Technologique",
+    "description": "Ayant choisi un bac technologique, j'intègre la filière STI2D et obtiens mon diplôme avec la mention assez bien en juillet 2022.",
+    "image": "/img/sti2d.jpg"
   },
   {
     "id": 3,
-    "date": "Septembre 2019",
-    "title": "Baccalauréat Technologique",
-    "description": "Après avoir obtenu mon BAC et souhaitant approfondir mes connaissances sur le web, je me suis inscrit à cette formation à Limoges.",
-    "image": "/img/mmi.png"
+    "date": "Septembre 2022",
+    "title": "BUT MMI",
+    "description": "Après l'obtention de mon bac STI2D, j'ai décidé de poursuivre mes études à l'Université de Limoges en intégrant le BUT MMI.",
+    "image": "/img/iut.webp"
   },
   {
     "id": 4,
@@ -39,6 +32,13 @@
     "date": "Juillet 2024",
     "title": "Obtention du DUT MMI",
     "description": "J’ai obtenu le DUT MMI à la fin de la deuxième année universitaire.",
-    "image": "/img/butmmi.png"
+    "image": "/img/dutmmi.jpg"
+  },
+  {
+    "id": 6,
+    "date": "Mars 2025",
+    "title": "Stage chez Eureden",
+    "description": "Ce stage se déroule du 3 mars au 20 juin 2025. Mon but est de rédiger et de mettre en place des cas tests, et par la suite de les automatisés avec des outils comme selenium. Ce stage doit durer 4 mois.",
+    "image": "/img/eureden.webp"
   }
 ]
