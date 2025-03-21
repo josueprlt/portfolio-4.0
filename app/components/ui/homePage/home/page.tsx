@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react";
-import { ArrowIcon } from "@/app/components/ui/icons";
 import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";

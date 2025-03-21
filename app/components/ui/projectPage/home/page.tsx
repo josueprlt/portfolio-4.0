@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
 import Image from "next/image";

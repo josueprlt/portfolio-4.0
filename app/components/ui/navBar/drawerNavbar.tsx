@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/drawer";
 import { LogoIcon, ButtonArrowIcon, LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
@@ -22,14 +22,14 @@ interface DrawerProps {
 }
 
 const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
-    const [arrayOfLinks, setArrayOfLinks] = useState([
+    const arrayOfLinks = useState([
         { href: '/', label: 'Accueil' },
         { href: '/profil', label: 'Mon Profil' },
         { href: '/#works', label: 'Mon Travail' },
         { href: '/filter', label: 'Filtre' },
         { href: '/#contact', label: 'Contact' },
     ]);
-    const [arrayOfSocials, setArrayOfSocials] = useState([
+    const arrayOfSocials = useState([
         { href: 'https://github.com/josueprlt', icon: <GithubIcon className="w-10 h-10" /> },
         { href: 'https://www.linkedin.com/in/josu%C3%A9-perrault-2a663a265', icon: <LinkedinIcon className="w-10 h-10" /> },
         { href: 'https://gitlab.com/josueprlt', icon: <GitlabIcon className="w-10 h-10" /> },

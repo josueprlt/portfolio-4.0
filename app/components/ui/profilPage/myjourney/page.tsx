@@ -19,7 +19,7 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 function isOdd(num: number) {
-    let result = num % 2;
+    const result = num % 2;
     if (result === 0) {
         return "right"
     } else {

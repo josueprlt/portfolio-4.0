@@ -1,32 +1,16 @@
 "use client"
+import { useState, useEffect, useCallback } from 'react';
 import Home from '@/app/components/ui/filterPage/home/page';
 import ResearchBar from '@/app/components/ui/filterPage/researchBar/page';
 import Tags from '@/app/components/ui/filterPage/tags/page';
 import Categories from '@/app/components/ui/filterPage/categories/page';
 import Filtered from '@/app/components/ui/filterPage/filtered/page';
 import projects from '@/app/data/projects.json';
-import { useState, useEffect } from 'react';
-
-interface Project {
-    id: string;
-    title: string;
-    category: string[];
-    date: string;
-    image: string[];
-}
-
-interface FilteredProps {
-    projects: Project[];
-}
 
 export default function Page() {
     const [filteredProjects, setFilteredProjects] = useState(projects);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
-    const handleProjectsFiltered = (filteredProjects: Project[]) => {
-        setFilteredProjects(filteredProjects);
-    };
 
     const handleCategoriesSelected = (categories: string[]) => {
         setSelectedCategories(categories);
@@ -37,7 +21,7 @@ export default function Page() {
         setSelectedCategories(newSelectedCategories);
     };
 
-    const filterProjects = () => {
+    const filterProjects = useCallback(() => {
         let filtered = projects;
 
         if (searchTerm) {
@@ -55,7 +39,7 @@ export default function Page() {
         }
 
         setFilteredProjects(filtered);
-    };
+    }, [searchTerm, selectedCategories]);
 
     const sortProjectsByDate = (order: 'asc' | 'desc') => {
         const sortedProjects = [...filteredProjects].sort((a, b) => {
@@ -68,7 +52,7 @@ export default function Page() {
 
     useEffect(() => {
         filterProjects();
-    }, [searchTerm, selectedCategories]);
+    }, [filterProjects]);
 
     return (
         <>

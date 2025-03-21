@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useRef } from 'react';
 import { gsap, Power2 } from 'gsap';
 import SplitType from "split-type";

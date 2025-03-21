@@ -17,8 +17,8 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 export default function BusinessCard() {
-    const cardRef = useRef(null);
-    const glowRef = useRef(null);
+    const cardRef = useRef<HTMLDivElement>(null);
+    const glowRef = useRef<HTMLDivElement>(null);
     const phoneRef = useRef<HTMLDivElement>(null);
     const emailRef = useRef<HTMLDivElement>(null);
     const linkRef = useRef<HTMLDivElement>(null);
@@ -27,12 +27,15 @@ export default function BusinessCard() {
     const emailTextRef = useRef<HTMLParagraphElement>(null);
     const linkTextRef = useRef<HTMLParagraphElement>(null);
     const locationTextRef = useRef<HTMLParagraphElement>(null);
-    let bounds;
+    const boundsRef = useRef<DOMRect | undefined>(undefined);
 
     useEffect(() => {
         const $card = cardRef.current;
 
-        function rotateToMouse(e) {
+        function rotateToMouse(e: MouseEvent) {
+            const bounds = boundsRef.current;
+            if (!bounds) return;
+
             const mouseX = e.clientX;
             const mouseY = e.clientY;
             const leftX = mouseX - bounds.x;
@@ -41,7 +44,6 @@ export default function BusinessCard() {
                 x: leftX - bounds.width / 2,
                 y: topY - bounds.height / 2
             }
-            const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
 
             gsap.to($card, {
                 scale: 1.04,
@@ -59,7 +61,7 @@ export default function BusinessCard() {
                             circle at
                             ${center.x * 1 + bounds.width / 2}px
                             ${center.y * 1 + bounds.height / 2}px,
-rgba(255, 255, 255, 0.16),
+                            rgba(255, 255, 255, 0.16),
                             #0000000f
                         )
                     `,
@@ -70,7 +72,7 @@ rgba(255, 255, 255, 0.16),
         }
 
         const handleMouseEnter = () => {
-            bounds = $card.getBoundingClientRect();
+            boundsRef.current = $card?.getBoundingClientRect();
             document.addEventListener('mousemove', rotateToMouse);
         };
 
@@ -93,12 +95,12 @@ rgba(255, 255, 255, 0.16),
             }
         };
 
-        $card.addEventListener('mouseenter', handleMouseEnter);
-        $card.addEventListener('mouseleave', handleMouseLeave);
+        $card?.addEventListener('mouseenter', handleMouseEnter);
+        $card?.addEventListener('mouseleave', handleMouseLeave);
 
         return () => {
-            $card.removeEventListener('mouseenter', handleMouseEnter);
-            $card.removeEventListener('mouseleave', handleMouseLeave);
+            $card?.removeEventListener('mouseenter', handleMouseEnter);
+            $card?.removeEventListener('mouseleave', handleMouseLeave);
             document.removeEventListener('mousemove', rotateToMouse);
         };
     }, []);
@@ -109,8 +111,8 @@ rgba(255, 255, 255, 0.16),
         const linkElement = linkRef.current;
         const locationElement = locationRef.current;
 
-        const handleClickText = (ref) => {
-            const isVisible = ref.current.style.width !== '0px';
+        const handleClickText = (ref: React.RefObject<HTMLParagraphElement>) => {
+            const isVisible = ref.current?.style.width !== '0px';
             gsap.to(ref.current, {
                 width: isVisible ? 0 : 'auto',
                 opacity: isVisible ? 0 : 1,

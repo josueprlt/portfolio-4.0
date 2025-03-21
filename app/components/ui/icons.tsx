@@ -14,6 +14,7 @@ const LogoIcon = forwardRef<SVGSVGElement, { fill?: string } & SVGAttributes<SVG
     );
 }
 );
+LogoIcon.displayName = 'LogoIcon';
 
 function ArrowIcon(props: SVGAttributes<SVGElement>) {
     return (
@@ -409,5 +410,6 @@ const LightGithubIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((pr
         </svg>
     );
 });
+LightGithubIcon.displayName = 'LightGithubIcon';
 
 export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, LinkedinIcon, BretagneIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, SymfonyIcon, TailwindIcon, NextIcon, MuiIcon, ReactIcon, BootstrapIcon, DockerIcon, GithubIcon, VscodeIcon, HalteresIcon, LinkIcon, LocationIcon, BoxArrowIcon, SearchIcon, CloseIcon, WrenchIcon, CadreIcon, CalendarIcon, BagIcon, PeopleIcon, GitlabIcon, LightGithubIcon, TrelloIcon, FigmaIcon };

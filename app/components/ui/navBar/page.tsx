@@ -4,19 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { LogoIcon } from "@/app/components/ui/icons";
 import Link from 'next/link';
 import { gsap, Power2 } from "gsap";
-import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import Drawer from './drawerNavbar';
-
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
-});
-
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
-});
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);

@@ -39,10 +39,10 @@ export default function Images({ project }: HomeProps) {
 
     useEffect(() => {
         setProjet(project);
-        window.innerWidth >= 768 && setVisibleImages(3);
-        window.innerWidth >= 1024 && setVisibleImages(4);
-        window.innerWidth >= 1280 && setVisibleImages(5);
-        window.innerWidth >= 1536 && setVisibleImages(6);
+        if (window.innerWidth >= 768) setVisibleImages(3);
+        if (window.innerWidth >= 1024) setVisibleImages(4);
+        if (window.innerWidth >= 1280) setVisibleImages(5);
+        if (window.innerWidth >= 1536) setVisibleImages(6);
     }, [project]);
 
     const handleLoadMore = () => {

@@ -69,7 +69,7 @@ export default function Description({ project }: HomeProps) {
 
                 <div className='flex justify-center gap-10 my-10 md:my-32' ref={linkRef}>
                     {projet.link == null ? (
-                        <Button href="" theme="disabled">Ce projet n'est pas disponible</Button>
+                        <Button href="" theme="disabled">Ce projet n&apos;est pas disponible</Button>
                     ) : (
                         <Button href={projet.link} theme="gradient">Visiter le projet</Button>
                     )}

@@ -5,7 +5,6 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    useDisclosure,
 } from "@heroui/modal";
 import { Pagination } from "@heroui/pagination";
 import Image from "next/image";

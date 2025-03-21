@@ -13,7 +13,7 @@ interface ResearchBarProps {
     onProjectsFiltered: (searchTerm: string) => void;
 }
 
-const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder, projects, onProjectsFiltered }) => {
+const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder, onProjectsFiltered }) => {
     const [inputValue, setInputValue] = useState('');
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const researchBarRef = useRef<HTMLDivElement>(null);

@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useRef, useState } from 'react';
 import Image from "next/image";
 import { gsap, Power2 } from 'gsap';
@@ -12,21 +13,21 @@ const DelaGothicOne = Dela_Gothic_One({
 });
 
 interface Projects {
-    id: BigInteger;
+    id: number;
     title: string;
     image: string[];
 }
 
 interface ProjectBarProps {
     id: string;
-    projects: Projects;
+    projects: Projects[];
 }
 
 const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
-    const [randomProjects, setRandomProjects] = useState([]);
-    const divRefs = useRef([]);
-    const spanRef = useRef<HTMLElement>(null);
-    const fixedDivRef = useRef<HTMLElement>(null);
+    const [randomProjects, setRandomProjects] = useState<Projects[]>([]);
+    const divRefs = useRef<HTMLDivElement[]>([]);
+    const spanRef = useRef<HTMLSpanElement>(null);
+    const fixedDivRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const getRandomProjects = () => {
@@ -36,7 +37,7 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
         };
 
         setRandomProjects(getRandomProjects());
-    }, [id]);
+    }, [id, projects]);
 
     useEffect(() => {
         const isMobile = window.innerWidth <= 768;
@@ -124,7 +125,7 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
                             key={index}
                             href={`/project/${proj.id}`}
                             className="backdrop-grayscale w-[110px] h-full opacity-50 img-toolbar"
-                            ref={el => divRefs.current[index] = el}
+                            ref={el => divRefs.current[index] = el!}
                         >
                             <Tooltip
                                 content={`${proj.title}`}

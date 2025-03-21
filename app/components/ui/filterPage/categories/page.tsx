@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon, FigmaIcon, TrelloIcon } from "@/app/components/ui/icons";
+import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon, FigmaIcon, TrelloIcon } from "@/app/components/ui/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 import { gsap, Power1 } from "gsap";
 
@@ -11,7 +11,7 @@ interface CategoriesProps {
 }
 
 export default function Categories({ selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
-    const [tools, setTools] = useState(
+    const tools = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
             { name: "css", icon: <CssIcon className="w-6 h-6" /> },
@@ -31,7 +31,7 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
         ]
     );
 
-    const [cadres, setCadres] = useState(
+    const cadres = useState(
         [
             { name: "Personnel", icon: <PeopleIcon className="w-6 h-6" /> },
             { name: "Scolaire", icon: <BagIcon className="w-6 h-6" /> },

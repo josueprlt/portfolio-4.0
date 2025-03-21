@@ -13,7 +13,7 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 export default function ContactMe() {
-    const [arrayOfSocialMedias, setArrayOfSocialMedias] = useState([
+    const arrayOfSocialMedias = useState([
         {
             name: 'Github',
             icon: <GithubIcon className="w-6 md:w-9" />,

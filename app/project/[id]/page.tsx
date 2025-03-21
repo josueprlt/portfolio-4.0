@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { use } from "react";
 import Home from '@/app/components/ui/projectPage/home/page';
 import Tools from "@/app/components/ui/projectPage/tools/page";

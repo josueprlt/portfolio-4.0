@@ -6,7 +6,6 @@ import Navbar from "@/app/components/ui/navBar/page";
 import localFont from "next/font/local";
 import "./globals.css";
 import LoadingScreen from "@/app/components/ui/LoadingScreen/page";
-import { metadata } from "./metada";
 import { gsap } from "gsap";
 
 const geistSans = localFont({

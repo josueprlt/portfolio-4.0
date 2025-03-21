@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Dela_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
 import Image from 'next/image';
