@@ -1,18 +1,15 @@
 "use client"
-
-import { useEffect, useState } from "react";
-import { ButtonArrowIcon } from '@/app/components/ui/icons';
-import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
-import Link from "next/link";
-
+import { useEffect, useState, useRef } from "react";
+import { Dela_Gothic_One } from 'next/font/google';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, Power2 } from "gsap";
+import Title from "@/app/components/ui/title/page";
+import Paragraph from "@/app/components/ui/paragraph/page";
+import Button from "@/app/components/ui/button/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
     weight: ['400'],
-});
-
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
 });
 
 interface Project {
@@ -30,11 +27,31 @@ interface HomeProps {
 }
 
 export default function Description({ project }: HomeProps) {
+    gsap.registerPlugin(ScrollTrigger);
     const [projet, setProjet] = useState<Project | null>(null);
+    const linkRef = useRef<HTMLElement[]>([]);
 
     useEffect(() => {
         setProjet(project);
     }, [project]);
+
+    useEffect(() => {
+        if (!projet || !linkRef.current) return;
+
+        document.fonts.ready.then(() => {
+            gsap.from(linkRef.current, {
+                opacity: 0,
+                y: 50,
+                duration: 0.75,
+                ease: Power2.easeOut,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: linkRef.current,
+                    start: "top center",
+                },
+            });
+        });
+    }, [projet]);
 
     if (!projet) {
         return <div>Loading...</div>;
@@ -42,26 +59,22 @@ export default function Description({ project }: HomeProps) {
 
     return (
         <div className="pt-10 md:pt-36">
-            <h2 className={`${ClimateCrisis.className} text-xl md:text-7xl`}>Description</h2>
+            <Title className="text-start">Description</Title>
 
             <div className={`${DelaGothicOne.className} mt-5 md:mt-10`}>
-                <p className="text-justify md:text-4xl">{projet.description}</p>
+                <Paragraph
+                    text={projet.description}
+                    className="text-justify md:text-4xl"
+                />
 
-                <div className='flex justify-center my-10 md:my-32'>
+                <div className='flex justify-center gap-10 my-10 md:my-32' ref={linkRef}>
                     {projet.link == null ? (
-                        <button className="relative bg-gradient-to-r from-primaryGray to-secondaryGray text-background px-3 py-2 rounded-full pr-12 cursor-not-allowed md:px-4 md:py-3 md:pr-14 md:text-xl">
-                            Ce projet n'est pas disponible
-                            <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
-                                <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
-                            </div>
-                        </button>
+                        <Button href="" theme="disabled">Ce projet n'est pas disponible</Button>
                     ) : (
-                        <Link href={projet.link} className="relative bg-gradient-to-r from-primary to-secondary text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14 md:text-xl">
-                            Accèder au projet
-                            <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
-                                <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
-                            </div>
-                        </Link>
+                        <Button href={projet.link} theme="gradient">Visiter le projet</Button>
+                    )}
+                    {projet.github != null && (
+                        <Button href={projet.github} theme="github">Projet GitHub</Button>
                     )}
                 </div>
             </div>

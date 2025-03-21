@@ -1,10 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { use } from "react";
 import Home from '@/app/components/ui/projectPage/home/page';
 import Tools from "@/app/components/ui/projectPage/tools/page";
 import Description from "@/app/components/ui/projectPage/description/page";
+import ProjectBar from "@/app/components/ui/projectPage/projectBar/page";
 import Images from "@/app/components/ui/projectPage/images/page";
 import projects from "@/app/data/projects.json";
 
@@ -20,6 +21,8 @@ export default function Page({ params }) {
     return (
         <>
             <Home project={project} />
+            <ProjectBar id={id} projects={projects} />
+
             <main className="px-4 md:px-8">
                 <Tools project={project} />
                 <Description project={project} />

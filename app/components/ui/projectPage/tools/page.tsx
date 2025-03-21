@@ -1,19 +1,15 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react";
-import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
-import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon } from '@/app/components/ui/icons';
+import { useEffect, useRef } from "react";
+import { gsap, Power2 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Dela_Gothic_One } from "next/font/google";
+import Title from "@/app/components/ui/title/page";
+import Tool from "./tool";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
-});
+const DelaGothicOne = Dela_Gothic_One({ subsets: ["latin"], weight: ["400"], display: "swap" });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
-});
+const technos = ["html", "css", "javascript", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next", "docker", "github", "vscode", "trello", "figma"];
 
 interface Project {
     id: number;
@@ -26,46 +22,46 @@ interface Project {
 }
 
 interface HomeProps {
-    project: Project;
+    project: Project | null;
 }
 
-const technos = ["html", "css", "js", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next"];
-
 export default function Tools({ project }: HomeProps) {
-    const [projet, setProjet] = useState<Project | null>(null);
-    const [filteredTechnos, setFilteredTechnos] = useState<string[]>([]);
+    gsap.registerPlugin(ScrollTrigger);
+    const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        if (project) {
-            setProjet(project);
-            const filtered = project.category.filter(cat => technos.includes(cat.toLowerCase()));
-            setFilteredTechnos(filtered);
+        if (sectionRef.current) {
+            const toolElements = sectionRef.current.querySelectorAll('.tool-element');
+            gsap.fromTo(toolElements,
+                { opacity: 0, x: 50 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.75,
+                    ease: Power2.easeOut,
+                    stagger: 0.25,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top center",
+                    },
+                }
+            );
         }
     }, [project]);
 
-    if (!projet) {
+    if (!project) {
         return <div>Loading...</div>;
     }
 
+    const filteredTechnos = project.category.filter((cat) => technos.includes(cat.toLowerCase()));
+
     return (
         <div className="pt-10 md:pt-30">
-            <h2 className={`${ClimateCrisis.className} text-xl md:text-7xl`}>Outils</h2>
+            <Title className="text-start">Outils</Title>
 
-            <section className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
+            <section ref={sectionRef} className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
                 {filteredTechnos.map((tech, index) => (
-                    <div key={index} className='w-max flex items-center gap-2 outline p-2 md:p-4 rounded-lg'>
-                        {tech === "html" && (<><HtmlIcon className='w-8 h-8' /> <span className="text-html">{tech}</span></>)}
-                        {tech === "css" && (<><CssIcon className='w-8 h-8' /> <span className="text-css">{tech}</span></>)}
-                        {tech === "js" && (<><JsIcon className='w-8 h-8' /> <span className="text-js">{tech}</span></>)}
-                        {tech === "sass" && (<><SassIcon className='w-8 h-8' /> <span className="text-sass">{tech}</span></>)}
-                        {tech === "php" && (<><PhpIcon className='w-8 h-8' /> <span className="text-php">{tech}</span></>)}
-                        {tech === "react" && (<><ReactIcon className='w-8 h-8' /> <span className="text-react">{tech}</span></>)}
-                        {tech === "symfony" && (<><SymfonyIcon className='w-8 h-8' /> <span className="text-symfony">{tech}</span></>)}
-                        {tech === "bootstrap" && (<><BootstrapIcon className='w-8 h-8' /> <span className="text-bootstrap">{tech}</span></>)}
-                        {tech === "mui" && (<><MuiIcon className='w-8 h-8' /> <span className="text-materialui">{tech}</span></>)}
-                        {tech === "tailwind" && (<><TailwindIcon className='w-8 h-8' /> <span className="text-tailwind">{tech}</span></>)}
-                        {tech === "next" && (<><NextIcon className='w-8 h-8' /> <span className="text-symfony">{tech}</span></>)}
-                    </div>
+                    <Tool key={index} tech={tech} className="tool-element" />
                 ))}
             </section>
         </div>

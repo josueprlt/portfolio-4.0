@@ -1,8 +1,13 @@
-import type { Metadata } from "next";
+"use client"
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Footer from "@/app/components/ui/footer/page";
+import Navbar from "@/app/components/ui/navBar/page";
 import localFont from "next/font/local";
 import "./globals.css";
+import LoadingScreen from "@/app/components/ui/LoadingScreen/page";
+import { metadata } from "./metada";
+import { gsap } from "gsap";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,27 +20,76 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Portfolio | Josué Perrault",
-  description: "Portfolio de Josué Perrault réalisé avec Next.js et Tailwindcss",
-  icons: "/favicon.ico",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [loading, setLoading] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      setIsScrolled(scrollTop > 75);
+      setScrollWidth(scrollPercent);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isScrolled) {
+      gsap.to(sectionRef.current, {
+        top: 0,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    } else {
+      gsap.to(sectionRef.current, {
+        top: 0,
+        y: -68,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    }
+  }, [isScrolled]);
+
   return (
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
       >
-        {children}
-        <Footer />
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+        {!loading && (
+          <>
+            <section
+              ref={sectionRef}
+              className={`fixed -top-20 left-0 right-0 z-50 bg-background`}
+            >
+              <span
+                style={{ width: `${scrollWidth}%` }}
+                className="block h-1 bg-gradient-to-r from-primary to-secondary"
+              ></span>
+              <div className="px-4 py-1 md:px-8 md:py-2">
+                <Navbar />
+              </div>
+            </section>
+            {children}
+            <Footer />
+          </>
+        )}
       </body>
     </html>
   );

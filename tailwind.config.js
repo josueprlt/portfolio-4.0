@@ -1,12 +1,14 @@
+const {heroui} = require('@heroui/theme');
+const {nextui} = require('@nextui-org/theme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "// Or if using `src` directory:\\\\n    \\\\\\\"./src/**/*.{js,ts,jsx,tsx,mdx}\\\\\\\"",
+    "./node_modules/@nextui-org/theme/dist/components/(button|popover|ripple|spinner).js",
+    "./node_modules/@heroui/theme/dist/components/(modal|pagination).js"
   ],
   theme: {
     extend: {
@@ -18,10 +20,9 @@ module.exports = {
         primaryGray: "var(--bg-primary-gray)",
         secondaryGray: "var(--bg-secondary-gray)",
         titleSecondary: "var(--bg-title-secondary)",
+        filter: "var(--bg-filter)",
 
-        whatsapp: "var(--bg-text-whatsapp)",
         linkedin: "var(--bg-text-linkedin)",
-        instagram: "var(--bg-text-instagram)",
 
         html: "var(--bg-text-html)",
         css: "var(--bg-text-css)",
@@ -34,8 +35,13 @@ module.exports = {
         materialui: "var(--bg-text-materialui)",
         tailwind: "var(--bg-text-tailwind)",
         github: "var(--bg-text-github)",
+        gitlab: "var(--bg-text-gitlab)",
+        docker: "var(--bg-text-docker)",
+        vscode: "var(--bg-text-vscode)",
+        trello: "var(--bg-text-docker)",
+        figma: "var(--bg-text-figma)",
       },
     },
   },
-  plugins: [],
+  plugins: [nextui(),heroui()],
 }

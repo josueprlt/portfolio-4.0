@@ -1,7 +1,11 @@
-import NavBar from "@/app/components/ui/navBar/page";
-import { ButtonArrowIcon } from '@/app/components/ui/icons';
+"use client"
+import { useEffect, useRef } from "react";
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
-import Image from 'next/image';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, Power2 } from "gsap";
+import NavBar from "@/app/components/ui/navBar/page";
+import Button from "@/app/components/ui/button/page";
+import Paragraph from "@/app/components/ui/paragraph/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -15,21 +19,46 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 export default function Home() {
+    gsap.registerPlugin(ScrollTrigger);
+    const linkRef = useRef<HTMLElement[]>([]);
+
+    useEffect(() => {
+        if (!linkRef.current) return;
+
+        document.fonts.ready.then(() => {
+            gsap.fromTo(linkRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.75,
+                    ease: Power2.easeOut,
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: linkRef.current,
+                        start: "top center",
+                    },
+                });
+        });
+    }, []);
+
     return (
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 md:pb-0`}>
             <NavBar />
 
             <section className={`${DelaGothicOne.className} mt-20 md:px-10`}>
-                <p className="md:text-4xl text-justify">Je suis actuellement en 3ème année d’un BUT MMI (Métiers du Multimédia et de l'Internet), en route pour devenir <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">développeur web</span> et toujours curieux de découvrir de nouvelles technologies !</p>
-                <p className="mt-8 text-sm md:text-3xl md:mt-16 text-justify">Je navigue entre les lignes de code et les pixels, jonglant avec le front et le back pour créer des expériences qui ont du sens et qui captivent.</p>
+                <Paragraph
+                    text="Je suis actuellement en 3ème année d’un BUT MMI (Métiers du Multimédia et de l'Internet), en route pour devenir développeur web et toujours curieux de découvrir de nouvelles technologies !"
+                    highlightedText="développeur web"
+                    className="md:text-4xl text-justify"
+                />
+                <Paragraph
+                    text="Je navigue entre les lignes de code et les pixels, jonglant avec le front et le back pour créer des expériences qui ont du sens et qui captivent."
+                    className="mt-8 text-sm md:text-3xl md:mt-16 text-justify"
+                />
 
-                <div className="flex justify-center my-20">
-                    <button className="relative bg-gradient-to-r from-primary to-secondary text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14 md:text-xl">
-                        Voir mes projets
-                        <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
-                            <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
-                        </div>
-                    </button>
+                <div className="flex justify-center my-20" ref={linkRef}>
+                    <Button href="/filter" theme="gradient">Voir mes projets</Button>
                 </div>
             </section>
         </header>

@@ -1,7 +1,13 @@
-import { ButtonArrowIcon } from "@/app/components/ui/icons";
+"use client"
+
+import { useEffect, useRef } from "react";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import Image from 'next/image';
-import Link from 'next/link';
+import { gsap, Power2 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Title from "@/app/components/ui/title/page";
+import Paragraph from "@/app/components/ui/paragraph/page";
+import Button from "@/app/components/ui/button/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -15,41 +21,110 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 export default function AboutMe() {
+    gsap.registerPlugin(ScrollTrigger);
+    const divRef = useRef<HTMLDivElement>(null);
+    const visiteRef = useRef<HTMLParagraphElement>(null);
+    const btnRef = useRef<HTMLDivElement>(null);
+    const imageRefs = useRef<HTMLImageElement[]>([]);
+
+    useEffect(() => {
+        if (divRef.current && btnRef.current) {
+            const buttons = btnRef.current.querySelectorAll('a, button');
+            gsap.fromTo(buttons,
+                { opacity: 0, x: -25 },
+                {
+                    delay: 1.25,
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    stagger: 0.5,
+                    scrollTrigger: {
+                        trigger: divRef.current,
+                        start: "top center",
+                    },
+                }
+            );
+        }
+
+        if (imageRefs.current.length > 0) {
+            imageRefs.current.forEach((image) => {
+                gsap.fromTo(
+                    image,
+                    { filter: "grayscale(100%) blur(5px)" },
+                    {
+                        filter: "grayscale(0%) blur(0px)",
+                        duration: 1,
+                        ease: Power2.easeOut,
+                        scrollTrigger: {
+                            trigger: image,
+                            start: "top center",
+                        },
+                    }
+                );
+            });
+        }
+
+        if (visiteRef.current) {
+            gsap.from(
+                visiteRef.current,
+                {
+                    y: 100,
+                    opacity: 0,
+                    scale: 0.5,
+                    duration: 1,
+                    ease: Power2.easeOut,
+                    scrollTrigger: {
+                        trigger: visiteRef.current,
+                        start: "top center",
+                    },
+                }
+            );
+        }
+    }, []);
+
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = '/pdf/cv.pdf';
+        link.download = 'Josue-Perrault-CV.pdf';
+        link.click();
+    };
+
     return (
-        <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <h2 className="text-xl text-center relative z-10 md:text-7xl">A propos de moi</h2>
-            {/* <span className="absolute -top-1 left-0 -z-1 text-3xl text-titleSecondary">A propos de moi</span> */}
+        <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
+            <Title className="text-center">A propos de moi</Title>
 
             <section className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
 
-                <div className="md:grid md:grid-cols-2 md:gap-24">
+                <div ref={divRef} className="md:grid md:grid-cols-2 md:gap-24">
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
-                        <p>Je m'appelle <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Josué Perrault</span>, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges.</p>
+                        <Paragraph
+                            text="Je m'appelle Josué Perrault, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges."
+                            highlightedText="Josué Perrault"
+                        />
 
-                        <div className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                            <button className="relative bg-background text-foreground px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
-                                Télécharger mon CV
-                                <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-foreground md:top-[6px] md:right-[6px] md:w-10 md:h-10">
-                                    <ButtonArrowIcon fill="#FEEFDD" className="w-3 md:w-5" />
-                                </div>
-                            </button>
-                            <Link href="/profil" className="relative bg-foreground text-background px-3 py-2 rounded-full pr-12 md:px-4 md:py-3 md:pr-14">
-                                Voir plus
-                                <div className="absolute top-1 right-1 w-8 h-8 rounded-full flex justify-center items-center bg-background md:top-[6px] md:right-[6px] md:w-10 md:h-10">
-                                    <ButtonArrowIcon fill="#262330" className="w-3 md:w-5" />
-                                </div>
-                            </Link>
+                        <div ref={btnRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
+                            <Button onClick={handleDownload} theme="secondary">Télécharger mon CV</Button>
+                            <Button href="/profil" theme="primary">Voir plus</Button>
                         </div>
                     </div>
-                    <div className="w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full">
-                        <Image width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="w-full h-full object-cover" />
+                    <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full md:max-h-[600px]">
+                        <Image ref={(el) => (imageRefs.current[0] = el)} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
+                        <Image ref={(el) => (imageRefs.current[1] = el)} width={1000} height={1000} src="/img/profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
                     </div>
                 </div>
 
                 <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                     <div className="md:order-2 mt-10 md:mt-0 md:text-right">
-                        <p>Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail.</p>
-                        <p className="mt-6">Agréable visite !</p>
+                        <Paragraph
+                            text="Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail."
+                            className="text-end"
+                        />
+                        <Paragraph
+                            text="Agréable visite !"
+                            highlightedText="Agréable visite !"
+                            className="mt-10 text-right"
+                        />
                     </div>
 
                     <div className="md:order-1 relative h-72 mt-5 md:mt-0 md:h-full">

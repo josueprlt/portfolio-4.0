@@ -10,11 +10,10 @@
   --bg-primary-gray: #6c6c6c;
   --bg-secondary-gray: #b2b2b2;
   --bg-title-secondary: #E8DBCC;
+  --bg-filter: #FFE7CA;
 
-  --bg-text-whatsapp: #25D366;
   --bg-text-linkedin: #0A66C2;
-  --bg-text-instagram: #E4405F;
-
+  
   --bg-text-html: #E34F26;
   --bg-text-css: #1572B6;
   --bg-text-js: #F7DF1E;
@@ -26,26 +25,62 @@
   --bg-text-materialui: #007FFF;
   --bg-text-tailwind: #06B6D4;
   --bg-text-github: #181717;
+  --bg-text-gitlab: #fc6d25;
+  --bg-text-docker: #2496ED;
+  --bg-text-vscode: #007ACC;
+  --bg-text-figma: #A45EFE;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  position: relative;
   color: var(--foreground);
   background: var(--background);
 }
 
+
+/* Toggle style */
 .toggle-checkbox:checked+.toggle-label .toggle-span {
   transform: translateX(24px);
 }
 
-/* styles/globals.css */
-.perspective-1000 {
-  perspective: 1000px;
+
+/* Clip path from title */
+.clip-path {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.hover\\:rotate-y-12:hover {
-  transform: rotateY(12deg);
+
+/* Filter from components projects */
+.img-toolbar,
+.border-toolbar {
+  filter: grayscale(100%);
 }
 
-.hover\\:rotate-x-6:hover {
-  transform: rotateX(6deg);
+.img-toolbar,
+.border-toolbar {
+  filter: grayscale(100%);
+}
+
+
+/* Business card style */
+.card {
+  font-weight: bold;
+  box-shadow: 0 1px 5px #00000099;
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+}
+
+.card:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #00000044;
+}
+
+.card .glow {
+  background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);
 }

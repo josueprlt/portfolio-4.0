@@ -3,16 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf .next",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/drawer": "^2.2.8",
+    "@heroui/dropdown": "^2.3.10",
+    "@heroui/modal": "^2.2.7",
+    "@heroui/pagination": "^2.2.8",
+    "@heroui/system": "^2.4.6",
+    "@heroui/theme": "^2.4.5",
     "@next/font": "^14.2.15",
+    "@nextui-org/button": "^2.2.9",
+    "@nextui-org/system": "^2.4.6",
+    "@nextui-org/theme": "^2.4.5",
+    "@nextui-org/tooltip": "^2.2.7",
+    "framer-motion": "^11.17.0",
+    "gsap": "^3.12.5",
     "next": "^15.0.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "split-type": "^0.3.4"
   },
   "devDependencies": {
     "@types/node": "^20",
