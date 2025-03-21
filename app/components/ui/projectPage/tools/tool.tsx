@@ -11,7 +11,7 @@ interface ToolProps {
 const iconMapping = {
     html: { icon: HtmlIcon, colorClass: 'text-html' },
     css: { icon: CssIcon, colorClass: 'text-css' },
-    javascript: { icon: JsIcon, colorClass: 'text-javascript' },
+    javascript: { icon: JsIcon, colorClass: 'text-js' },
     sass: { icon: SassIcon, colorClass: 'text-sass' },
     php: { icon: PhpIcon, colorClass: 'text-php' },
     react: { icon: ReactIcon, colorClass: 'text-react' },
