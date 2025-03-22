@@ -46,19 +46,23 @@ export default function RootLayout({
 
   useEffect(() => {
     if (isScrolled) {
-      gsap.to(sectionRef.current, {
-        top: 0,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      });
+      if (sectionRef.current) {
+        gsap.to(sectionRef.current, {
+          top: 0,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
     } else {
-      gsap.to(sectionRef.current, {
-        top: 0,
-        y: -68,
-        duration: 0.5,
-        ease: "power2.out",
-      });
+      if (sectionRef.current) {
+        gsap.to(sectionRef.current, {
+          top: 0,
+          y: -68,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
     }
   }, [isScrolled]);
 

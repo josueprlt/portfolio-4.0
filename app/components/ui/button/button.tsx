@@ -28,19 +28,23 @@ const Button: React.FC<ButtonProps> = ({ href = '#', theme, children, onClick })
         const linkElement = linkRef.current;
 
         if (theme !== "disabled") {
-            gsap.to(iconRef.current, {
-                fill: '#FEEFDD',
-                duration: 0,
-            });
+            if (iconRef.current) {
+                gsap.to(iconRef.current, {
+                    fill: '#FEEFDD',
+                    duration: 0,
+                });
+            }
 
             const handleMouseEnter = () => {
                 const outlineColor = theme === 'gradient' ? '#FF4000' : theme === 'primary' ? '#262330' : theme === 'github' ? '#181717' : 'transparent';
 
-                gsap.to(divRef.current, {
-                    scale: 15,
-                    duration: 0.75,
-                    ease: Power2.easeOut,
-                });
+                if (divRef.current) {
+                    gsap.to(divRef.current, {
+                        scale: 15,
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                }
 
                 if (linkRef.current) {
                     gsap.to(linkRef.current, {
@@ -50,24 +54,30 @@ const Button: React.FC<ButtonProps> = ({ href = '#', theme, children, onClick })
                         ease: Power2.easeIn,
                     });
                 }
-                gsap.to(arrowRef.current, {
-                    rotate: '45deg',
-                    duration: 0.5,
-                    ease: Power2.easeOut,
-                });
-                gsap.to(iconRef.current, {
-                    fill: '#262330',
-                    duration: 0.75,
-                    ease: Power2.easeOut,
-                });
+                if (arrowRef.current) {
+                    gsap.to(arrowRef.current, {
+                        rotate: '45deg',
+                        duration: 0.5,
+                        ease: Power2.easeOut,
+                    });
+                }
+                if (iconRef.current) {
+                    gsap.to(iconRef.current, {
+                        fill: '#262330',
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                }
             };
 
             const handleMouseLeave = () => {
-                gsap.to(divRef.current, {
-                    scale: 1,
-                    duration: 0.75,
-                    ease: Power2.easeOut,
-                });
+                if (divRef.current) {
+                    gsap.to(divRef.current, {
+                        scale: 1,
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                }
                 if (linkRef.current) {
                     gsap.to(linkRef.current, {
                         color: linkRef.current.classList.contains('text-background') ? '#FEEFDD' : '#262330',
@@ -76,16 +86,20 @@ const Button: React.FC<ButtonProps> = ({ href = '#', theme, children, onClick })
                         ease: Power2.easeOut,
                     });
                 }
-                gsap.to(arrowRef.current, {
-                    rotate: '0deg',
-                    duration: 0.5,
-                    ease: Power2.easeOut,
-                });
-                gsap.to(iconRef.current, {
-                    fill: '#FEEFDD',
-                    duration: 0.75,
-                    ease: Power2.easeOut,
-                });
+                if (arrowRef.current) {
+                    gsap.to(arrowRef.current, {
+                        rotate: '0deg',
+                        duration: 0.5,
+                        ease: Power2.easeOut,
+                    });
+                }
+                if (iconRef.current) {
+                    gsap.to(iconRef.current, {
+                        fill: '#FEEFDD',
+                        duration: 0.75,
+                        ease: Power2.easeOut,
+                    });
+                }
             };
 
             if (linkElement) {

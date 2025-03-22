@@ -26,6 +26,7 @@ export default function AboutMe() {
     const visiteRef = useRef<HTMLParagraphElement>(null);
     const btnRef = useRef<HTMLDivElement>(null);
     const imageRefs = useRef<HTMLImageElement[]>([]);
+    const spanRefs = useRef<HTMLSpanElement[]>([]);
 
     useEffect(() => {
         if (divRef.current && btnRef.current) {
@@ -81,6 +82,25 @@ export default function AboutMe() {
                 }
             );
         }
+
+        if (spanRefs.current.length > 0) {
+            gsap.to(spanRefs.current[0], {
+                scale: 0.8,
+                duration: 1,
+                repeat: -1,
+                delay: 0,
+                yoyo: true,
+                ease: Power2.easeInOut,
+            });
+            gsap.to(spanRefs.current[1], {
+                scale: 0.8,
+                duration: 1,
+                repeat: -1,
+                delay: 1,
+                yoyo: true,
+                ease: Power2.easeInOut,
+            });
+        }
     }, []);
 
     const handleDownload = () => {
@@ -128,8 +148,8 @@ export default function AboutMe() {
                     </div>
 
                     <div className="md:order-1 relative h-72 mt-5 md:mt-0 md:h-full">
-                        <span className="absolute bottom-0 left-0 w-52 h-52 bg-gradient-to-b from-primary to-secondary rounded-full md:bottom-10 md:left-10"></span>
-                        <span className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-t from-primary to-secondary rounded-full md:top-10 md:right-10"></span>
+                        <span ref={(el) => { if (el) spanRefs.current[0] = el }} className="absolute bottom-0 left-0 w-52 h-52 bg-gradient-to-b from-primary to-secondary rounded-full md:bottom-10 md:left-10"></span>
+                        <span ref={(el) => { if (el) spanRefs.current[1] = el }} className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-t from-primary to-secondary rounded-full md:top-10 md:right-10"></span>
                     </div>
                 </div>
             </section>
