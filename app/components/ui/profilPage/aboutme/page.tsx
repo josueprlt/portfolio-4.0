@@ -4,8 +4,8 @@ import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HalteresIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One } from 'next/font/google';
-import Paragraph from "@/app/components/ui/paragraph/page";
-import Button from "@/app/components/ui/button/page";
+import Paragraph from "@/app/components/ui/paragraph/paragraph";
+import Button from "@/app/components/ui/button/button";
 import Image from 'next/image';
 
 const DelaGothicOne = Dela_Gothic_One({

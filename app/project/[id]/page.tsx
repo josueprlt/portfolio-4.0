@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { use } from "react";
-import Home from '@/app/components/ui/projectPage/home/page';
-import Tools from "@/app/components/ui/projectPage/tools/page";
-import Description from "@/app/components/ui/projectPage/description/page";
-import ProjectBar from "@/app/components/ui/projectPage/projectBar/page";
-import Images from "@/app/components/ui/projectPage/images/page";
+import Home from '@/app/components/ui/projectPage/home/home';
+import Tools from "@/app/components/ui/projectPage/tools/tools";
+import Description from "@/app/components/ui/projectPage/description/description";
+import ProjectBar from "@/app/components/ui/projectPage/projectBar/projectBar";
+import Images from "@/app/components/ui/projectPage/images/images";
 import projects from "@/app/data/projects.json";
 
 export default function Page({ params }) {

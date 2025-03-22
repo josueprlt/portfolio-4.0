@@ -1,7 +1,7 @@
-import Home from '@/app/components/ui/projectPage/home/page';
-import Tools from "@/app/components/ui/projectPage/tools/page";
-import Description from "@/app/components/ui/projectPage/description/page";
-import Images from "@/app/components/ui/projectPage/images/page";
+import Home from '@/app/components/ui/projectPage/home/home';
+import Tools from "@/app/components/ui/projectPage/tools/tools";
+import Description from "@/app/components/ui/projectPage/description/description";
+import Images from "@/app/components/ui/projectPage/images/images";
 
 export default function Page() {
     return (

@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Title from '@/app/components/ui/title/page';
+import Title from '@/app/components/ui/title/title';
 import JourneyCard from './JourneyCard';
 import journeys from '@/app/data/journeys.json';
 

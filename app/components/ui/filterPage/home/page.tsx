@@ -1,7 +1,7 @@
 "use client"
 import { Climate_Crisis } from 'next/font/google';
 import NavBar from "@/app/components/ui/navBar/page";
-import Title from "@/app/components/ui/title/page";
+import Title from "@/app/components/ui/title/title";
 
 const ClimateCrisis = Climate_Crisis({
     subsets: ['latin'],

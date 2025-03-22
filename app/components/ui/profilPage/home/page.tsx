@@ -4,8 +4,8 @@ import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import NavBar from "@/app/components/ui/navBar/page";
-import Button from "@/app/components/ui/button/page";
-import Paragraph from "@/app/components/ui/paragraph/page";
+import Button from "@/app/components/ui/button/button";
+import Paragraph from "@/app/components/ui/paragraph/paragraph";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],

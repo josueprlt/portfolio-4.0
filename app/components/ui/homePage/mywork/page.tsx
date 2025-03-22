@@ -3,8 +3,8 @@ import { useEffect, useRef } from "react";
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Title from "@/app/components/ui/title/page";
-import Button from "@/app/components/ui/button/page";
+import Title from "@/app/components/ui/title/title";
+import Button from "@/app/components/ui/button/button";
 import projects from "@/app/data/projects.json";
 import ProjectList from "./projectList";
 

@@ -3,9 +3,9 @@ import { useEffect, useState, useRef } from "react";
 import { Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
-import Title from "@/app/components/ui/title/page";
-import Paragraph from "@/app/components/ui/paragraph/page";
-import Button from "@/app/components/ui/button/page";
+import Title from "@/app/components/ui/title/title";
+import Paragraph from "@/app/components/ui/paragraph/paragraph";
+import Button from "@/app/components/ui/button/button";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],

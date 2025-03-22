@@ -11,7 +11,7 @@ interface CategoriesProps {
 }
 
 export default function Categories({ selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
-    const tools = useState(
+    const [tools] = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
             { name: "css", icon: <CssIcon className="w-6 h-6" /> },
@@ -31,7 +31,7 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
         ]
     );
 
-    const cadres = useState(
+    const [cadres] = useState(
         [
             { name: "Personnel", icon: <PeopleIcon className="w-6 h-6" /> },
             { name: "Scolaire", icon: <BagIcon className="w-6 h-6" /> },
@@ -122,12 +122,12 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Dates">
                         <>
-                            <DropdownItem onClick={() => handleSortByDate('desc')}>
+                            <DropdownItem onClick={() => handleSortByDate('desc')} key={0}>
                                 <div className="my-1">
                                     <p>Les plus récents</p>
                                 </div>
                             </DropdownItem>
-                            <DropdownItem onClick={() => handleSortByDate('asc')}>
+                            <DropdownItem onClick={() => handleSortByDate('asc')} key={1}>
                                 <div className="my-1">
                                     <p>Les moins récents</p>
                                 </div>

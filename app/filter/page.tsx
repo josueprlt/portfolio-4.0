@@ -1,10 +1,10 @@
 "use client"
 import { useState, useEffect, useCallback } from 'react';
 import Home from '@/app/components/ui/filterPage/home/page';
-import ResearchBar from '@/app/components/ui/filterPage/researchBar/page';
-import Tags from '@/app/components/ui/filterPage/tags/page';
-import Categories from '@/app/components/ui/filterPage/categories/page';
-import Filtered from '@/app/components/ui/filterPage/filtered/page';
+import ResearchBar from '@/app/components/ui/filterPage/researchBar/researchBar';
+import Tags from '@/app/components/ui/filterPage/tags/tags';
+import Categories from '@/app/components/ui/filterPage/categories/categories';
+import Filtered from '@/app/components/ui/filterPage/filtered/filtered';
 import projects from '@/app/data/projects.json';
 
 export default function Page() {

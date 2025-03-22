@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
 import { Climate_Crisis } from 'next/font/google';
-import Title from "@/app/components/ui/title/page";
+import Title from "@/app/components/ui/title/title";
 import ComponentDesktop from "./componentDesktop";
 import ComponentMobile from "./componentMobile";
 

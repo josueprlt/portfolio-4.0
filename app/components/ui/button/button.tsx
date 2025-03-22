@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap, Power2 } from 'gsap';
@@ -17,7 +18,7 @@ interface ButtonProps {
     onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ href = '#', theme, children, onClick }) => {
     const linkRef = useRef<HTMLElement>(null);
     const divRef = useRef<HTMLDivElement>(null);
     const arrowRef = useRef<HTMLDivElement>(null);
@@ -40,12 +41,15 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
                     duration: 0.75,
                     ease: Power2.easeOut,
                 });
-                gsap.to(linkRef.current, {
-                    color: linkRef.current.classList.contains('text-background') ? '#262330' : '#FEEFDD',
-                    outline: `2px solid ${outlineColor}`,
-                    duration: 0.5,
-                    ease: Power2.easeIn,
-                });
+
+                if (linkRef.current) {
+                    gsap.to(linkRef.current, {
+                        color: linkRef.current.classList.contains('text-background') ? '#262330' : '#FEEFDD',
+                        outline: `2px solid ${outlineColor}`,
+                        duration: 0.5,
+                        ease: Power2.easeIn,
+                    });
+                }
                 gsap.to(arrowRef.current, {
                     rotate: '45deg',
                     duration: 0.5,
@@ -64,12 +68,14 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
                     duration: 0.75,
                     ease: Power2.easeOut,
                 });
-                gsap.to(linkRef.current, {
-                    color: linkRef.current.classList.contains('text-background') ? '#FEEFDD' : '#262330',
-                    outline: '0px',
-                    duration: 0.5,
-                    ease: Power2.easeOut,
-                });
+                if (linkRef.current) {
+                    gsap.to(linkRef.current, {
+                        color: linkRef.current.classList.contains('text-background') ? '#FEEFDD' : '#262330',
+                        outline: '0px',
+                        duration: 0.5,
+                        ease: Power2.easeOut,
+                    });
+                }
                 gsap.to(arrowRef.current, {
                     rotate: '0deg',
                     duration: 0.5,
@@ -104,7 +110,7 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
 
     if (theme === "github") {
         return (
-            <Link href={href} ref={linkRef} target='_blank' className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} flex items-center gap-3 text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
+            <Link href={href} ref={linkRef as React.RefObject<HTMLAnchorElement>} target='_blank' className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} flex items-center gap-3 text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
                 <LightGithubIcon ref={iconRef} className="w-6 h-6 z-10" />
                 <span className="relative z-30">{children}</span>
                 <div ref={divRef} className={`absolute ${"bg-background"} top-1 right-1 w-8 h-8 rounded-full md:top-[6px] md:right-[6px] md:w-10 md:h-10`}></div>
@@ -116,7 +122,7 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
     }
 
     return href ? (
-        <Link href={href} ref={linkRef} className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
+        <Link href={href} ref={linkRef as React.RefObject<HTMLAnchorElement>} className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
             <span className="relative z-30">{children}</span>
             <div ref={divRef} className={`absolute ${theme === "primary" || theme === "gradient" ? "bg-background" : "bg-foreground"} top-1 right-1 w-8 h-8 rounded-full md:top-[6px] md:right-[6px] md:w-10 md:h-10`}></div>
             <div ref={arrowRef} className="absolute top-[14px] right-[14px] md:top-4 md:right-4">
@@ -124,7 +130,7 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
             </div>
         </Link>
     ) : (
-        <button onClick={onClick} ref={linkRef} className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
+        <button onClick={onClick} ref={linkRef as React.RefObject<HTMLButtonElement>} className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
             <span className="relative z-30">{children}</span>
             <div ref={divRef} className={`absolute ${theme === "primary" || theme === "gradient" ? "bg-background" : "bg-foreground"} top-1 right-1 w-8 h-8 rounded-full md:top-[6px] md:right-[6px] md:w-10 md:h-10`}></div>
             <div ref={arrowRef} className="absolute top-[14px] right-[14px] md:top-4 md:right-4">

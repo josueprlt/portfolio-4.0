@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import competences from '@/app/data/competences.json';
-import Title from '@/app/components/ui/title/page';
+import Title from '@/app/components/ui/title/title';
 import CompetenceCard from './CompetenceCard';
 import { gsap, Power2 } from 'gsap';
 

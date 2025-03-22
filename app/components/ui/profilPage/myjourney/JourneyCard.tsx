@@ -3,7 +3,7 @@ import { gsap, Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { Dela_Gothic_One } from 'next/font/google';
-import Button from '@/app/components/ui/button/page'
+import Button from '@/app/components/ui/button/button'
 import {
     Modal as HeroModal,
     ModalContent,
