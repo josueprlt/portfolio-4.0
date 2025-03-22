@@ -1,4 +1,4 @@
-# Portfolio - Next.js & TailwindCSS
+# Portfolio 4.0 2025 - By Josué Perrault
 
 Ce projet est un portfolio personnel développé avec Next.js et TailwindCSS. Il permet de présenter mes projets, mes compétences et de partager mes informations de contact.
 
