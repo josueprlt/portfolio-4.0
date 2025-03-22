@@ -5,10 +5,21 @@ import ResearchBar from '@/app/components/ui/filterPage/researchBar/researchBar'
 import Tags from '@/app/components/ui/filterPage/tags/tags';
 import Categories from '@/app/components/ui/filterPage/categories/categories';
 import Filtered from '@/app/components/ui/filterPage/filtered/filtered';
-import projects from '@/app/data/projects.json';
+import projectsData from '@/app/data/projects.json';
+
+interface Project {
+    id: number; // Assurez-vous que le type correspond à celui dans votre fichier JSON
+    title: string;
+    date: string;
+    category: string[];
+    description: string;
+    image: string[];
+    link: string | null;
+    github?: string;
+}
 
 export default function Page() {
-    const [filteredProjects, setFilteredProjects] = useState(projects);
+    const [filteredProjects, setFilteredProjects] = useState<Project[]>(projectsData as Project[]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
@@ -22,7 +33,7 @@ export default function Page() {
     };
 
     const filterProjects = useCallback(() => {
-        let filtered = projects;
+        let filtered = projectsData as Project[];
 
         if (searchTerm) {
             filtered = filtered.filter(project =>
@@ -60,7 +71,7 @@ export default function Page() {
             <main className='px-4 md:px-8'>
                 <div className='md:grid md:gap-9 md:grid-cols-5'>
                     <ResearchBar
-                        projects={projects}
+                        projects={projectsData as Project[]}
                         placeholder='Recherchez...'
                         onProjectsFiltered={(searchTerm) => setSearchTerm(searchTerm)}
                     />

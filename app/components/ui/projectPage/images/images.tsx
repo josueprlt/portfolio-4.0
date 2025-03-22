@@ -25,7 +25,7 @@ interface Project {
 }
 
 interface HomeProps {
-    project: Project;
+    project: Project | null;
 }
 
 export default function Images({ project }: HomeProps) {
@@ -98,13 +98,13 @@ export default function Images({ project }: HomeProps) {
             >
                 {projet.image.slice(0, visibleImages).map((img, index) => (
                     <div
-                        ref={(el) => divRefs.current[index] = el!}
+                        ref={(el) => { if (el) divRefs.current[index] = el! }}
                         key={index}
                         onClick={() => handleOpenModal(index)}
                         className="w-full h-48 rounded-xl overflow-hidden cursor-pointer"
                     >
                         <Image
-                            ref={(el) => imagesRefs.current[index] = el!}
+                            ref={(el) => { if (el) imagesRefs.current[index] = el! }}
                             width={5000}
                             height={5000}
                             src={img}

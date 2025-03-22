@@ -20,7 +20,7 @@ const ClimateCrisis = Climate_Crisis({
 
 export default function Home() {
     gsap.registerPlugin(ScrollTrigger);
-    const linkRef = useRef<HTMLElement[]>([]);
+    const linkRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!linkRef.current) return;

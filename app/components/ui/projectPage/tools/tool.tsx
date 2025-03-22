@@ -72,8 +72,14 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
             ease: "power2.out",
         });
     };
+    
+    const iconData = iconMapping[tech as keyof typeof iconMapping];
 
-    const { icon: IconComponent, colorClass } = iconMapping[tech] || {};
+    if (!iconData) {
+        return null;
+    }
+
+    const { icon: IconComponent, colorClass } = iconData;
 
     return (
         <Link

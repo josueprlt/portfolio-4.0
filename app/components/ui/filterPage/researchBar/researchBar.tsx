@@ -81,7 +81,7 @@ const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder, onProjectsFilter
                     background: 'none'
                 }}
             />
-            <div ref={closeRef} className='rounded-full bg-secondary cursor-pointer' onClick={handleClearInput} style={{ opacity: 0, x: -30 }}>
+            <div ref={closeRef} className='rounded-full bg-secondary cursor-pointer' onClick={handleClearInput} style={{ opacity: 0 }}>
                 <CloseIcon
                     className='w-4 h-4 md:w-8 md:h-8'
                 />

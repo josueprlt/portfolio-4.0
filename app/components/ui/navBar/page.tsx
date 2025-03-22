@@ -9,10 +9,10 @@ import Drawer from './drawerNavbar';
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
-    const logoIconRef = useRef<HTMLAnchorElement>(null);
+    const logoIconRef = useRef<SVGSVGElement>(null);
     const divNavbarRef = useRef<HTMLDivElement>(null);
 
-    const onOpenChange = (open) => {
+    const onOpenChange = (open: boolean) => {
         setIsOpen(open);
     };
 

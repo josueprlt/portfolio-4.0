@@ -13,7 +13,19 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-export default function ComponentDesktop({ data }) {
+interface Social {
+    link: string;
+    color: string;
+    linkProperty: string;
+    icon: React.ReactNode;
+    name: string;
+}
+
+interface ComponentDesktopProps {
+    data: Social[];
+}
+
+export default function ComponentDesktop({ data }: ComponentDesktopProps) {
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLDivElement>(null);
     const socialRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -55,11 +67,11 @@ export default function ComponentDesktop({ data }) {
 
     return (
         <section ref={sectionRef} className={`${DelaGothicOne.className} hidden xl:grid relative h-80 grid grid-cols-2 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl text-3xl`}>
-            <div ref={(el) => (contactRefs.current[0] = el)} className="flex justify-center items-center h-48 gap-6 rounded-2xl">
+            <div ref={(el) => { if (el) contactRefs.current[0] = el }} className="flex justify-center items-center h-48 gap-6 rounded-2xl">
                 <EmailIcon className="w-11" />
                 <p className="text-foreground">josue.perrault@etu.unilim.fr</p>
             </div>
-            <div ref={(el) => (contactRefs.current[1] = el)} className="relative bg-gradient-to-r from-primary to-secondary h-48 rounded-2xl">
+            <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="relative bg-gradient-to-r from-primary to-secondary h-48 rounded-2xl">
                 <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center gap-6">
                     <PhoneIcon className="w-11 text-background" />
                     <p className="text-background">07 57 49 21 89</p>
@@ -68,7 +80,7 @@ export default function ComponentDesktop({ data }) {
 
             <div className="absolute -bottom-4 w-full flex justify-around items-center">
                 {data.map((social, index) => (
-                    <Link href={social.link} key={index} target="_blank" ref={(el) => (socialRefs.current[index] = el)} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
+                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
                         {social.icon}
                         <p>{social.name}</p>
                     </Link>

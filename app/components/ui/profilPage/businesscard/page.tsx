@@ -111,14 +111,16 @@ export default function BusinessCard() {
         const linkElement = linkRef.current;
         const locationElement = locationRef.current;
 
-        const handleClickText = (ref: React.RefObject<HTMLParagraphElement>) => {
-            const isVisible = ref.current?.style.width !== '0px';
-            gsap.to(ref.current, {
-                width: isVisible ? 0 : 'auto',
-                opacity: isVisible ? 0 : 1,
-                duration: 0.75,
-                ease: Power2.easeOut,
-            });
+        const handleClickText = (ref: React.RefObject<HTMLParagraphElement | null>) => {
+            if (ref.current) {
+                const isVisible = ref.current.style.width !== '0px';
+                gsap.to(ref.current, {
+                    width: isVisible ? 0 : 'auto',
+                    opacity: isVisible ? 0 : 1,
+                    duration: 0.75,
+                    ease: Power2.easeOut,
+                });
+            }
         };
 
         if (phoneElement) {

@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/drawer";
@@ -22,14 +24,14 @@ interface DrawerProps {
 }
 
 const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
-    const arrayOfLinks = useState([
+    const [arrayOfLinks] = useState([
         { href: '/', label: 'Accueil' },
         { href: '/profil', label: 'Mon Profil' },
         { href: '/#works', label: 'Mon Travail' },
         { href: '/filter', label: 'Filtre' },
         { href: '/#contact', label: 'Contact' },
     ]);
-    const arrayOfSocials = useState([
+    const [arrayOfSocials] = useState([
         { href: 'https://github.com/josueprlt', icon: <GithubIcon className="w-10 h-10" /> },
         { href: 'https://www.linkedin.com/in/josu%C3%A9-perrault-2a663a265', icon: <LinkedinIcon className="w-10 h-10" /> },
         { href: 'https://gitlab.com/josueprlt', icon: <GitlabIcon className="w-10 h-10" /> },
@@ -38,7 +40,7 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
     const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
     const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
     const iconRefs = useRef<(SVGSVGElement | null)[]>([]);
-    const spanRefs = useRef<(SVGTSpanElement | null)[]>([]);
+    const spanRefs = useRef<(HTMLSpanElement | null)[]>([]);
     const socialRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     const handleLinkMouseEnter = (index: number) => {
@@ -84,11 +86,11 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
                                     onMouseEnter={() => handleLinkMouseEnter(index)}
                                     onMouseLeave={() => handleLinkMouseLeave(index)}
                                     onClick={handleLinkClick}
-                                    ref={(el) => (linkRefs.current[index] = el)}
+                                    ref={(el) => { if (el) linkRefs.current[index] = el }}
                                 >
-                                    <p ref={(el) => (textRefs.current[index] = el)}>{link.label}</p>
-                                    <ButtonArrowIcon ref={(el) => (iconRefs.current[index] = el)} className="w-4 h-4" />
-                                    <span ref={(el) => (spanRefs.current[index] = el)} className='absolute bottom-0 left-0 h-px bg-foreground'></span>
+                                    <p ref={(el) => { if (el) textRefs.current[index] = el }}>{link.label}</p>
+                                    <ButtonArrowIcon ref={(el) => { if (el) iconRefs.current[index] = el }} className="w-4 h-4" />
+                                    <span ref={(el) => { if (el) spanRefs.current[index] = el }} className='absolute bottom-0 left-0 h-px bg-foreground'></span>
                                 </Link>
                             </li>
                         ))}
@@ -104,7 +106,7 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
                             onClick={handleLinkClick}
                             target='_blank'
                         >
-                            <div ref={(el) => (socialRefs.current[index] = el)}>
+                            <div ref={(el) => { if (el) socialRefs.current[index] = el }}>
                                 {social.icon}
                             </div>
                         </Link>

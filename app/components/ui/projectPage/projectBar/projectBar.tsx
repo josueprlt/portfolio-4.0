@@ -25,7 +25,7 @@ interface ProjectBarProps {
 
 const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
     const [randomProjects, setRandomProjects] = useState<Projects[]>([]);
-    const divRefs = useRef<HTMLDivElement[]>([]);
+    const divRefs = useRef<HTMLAnchorElement[]>([]);
     const spanRef = useRef<HTMLSpanElement>(null);
     const fixedDivRef = useRef<HTMLDivElement>(null);
 
@@ -125,7 +125,7 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
                             key={index}
                             href={`/project/${proj.id}`}
                             className="backdrop-grayscale w-[110px] h-full opacity-50 img-toolbar"
-                            ref={el => divRefs.current[index] = el!}
+                            ref={el => { if (el) divRefs.current[index] = el! }}
                         >
                             <Tooltip
                                 content={`${proj.title}`}

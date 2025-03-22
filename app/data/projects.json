@@ -79,7 +79,8 @@
       "/BenjaminCode/projetfinis.png",
       "/BenjaminCode/template.png"
     ],
-    "link": null
+    "link": null,
+    "github": null
   },
   {
     "id": 4,
@@ -102,7 +103,8 @@
       "/ComposantVideo/component-video-img-5.png",
       "/ComposantVideo/component-video-img-6.png"
     ],
-    "link": "https:portfolio-test.fr"
+    "link": "https:portfolio-test.fr",
+    "github": null
   },
   {
     "id": 5,
@@ -126,7 +128,8 @@
       "/Portfolio2023/portfolio4.png",
       "/Portfolio2023/portfolio5.png"
     ],
-    "link": "https:portfolio-test.fr"
+    "link": "https:portfolio-test.fr",
+    "github": null
   },
   {
     "id": 6,
@@ -149,7 +152,8 @@
       "/SiteOnePage/visual2.png",
       "/SiteOnePage/visual3.png"
     ],
-    "link": null
+    "link": null,
+    "github": null
   },
   {
     "id": 7,
@@ -182,7 +186,8 @@
       "/Sae203/code4.png",
       "/Sae203/code5.png"
     ],
-    "link": "https:portfolio-test.fr"
+    "link": "https:portfolio-test.fr",
+    "github": null
   },
   {
     "id": 8,
@@ -227,7 +232,8 @@
       "/Coachella/userprofil.png",
       "/Coachella/wireframe.png"
     ],
-    "link": "https://www.figma.com/design/EQNQfyIacn43dLgTcfJWPY/Gr07---SAE-302---Perrault-Plouseau-Demeerseman-Toutain?node-id=0-1&p=f&t=P5Il4lxMuQMnQu4a-0"
+    "link": "https://www.figma.com/design/EQNQfyIacn43dLgTcfJWPY/Gr07---SAE-302---Perrault-Plouseau-Demeerseman-Toutain?node-id=0-1&p=f&t=P5Il4lxMuQMnQu4a-0",
+    "github": null
   },
   {
     "id": 10,

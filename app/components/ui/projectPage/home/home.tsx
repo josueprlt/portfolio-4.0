@@ -39,9 +39,9 @@ export default function Home({ project }: HomeProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const spanRefs = useRef<HTMLSpanElement[]>([]);
-    const spanRef2 = useRef<HTMLSpanElement>(null);
+    const spanRef2 = useRef<HTMLAnchorElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
-    const retourRef = useRef<HTMLLinkElement>(null);
+    const retourRef = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
         if (document.fonts) {

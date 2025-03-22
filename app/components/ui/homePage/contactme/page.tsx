@@ -12,8 +12,18 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
+interface Social {
+    name: string;
+    icon: React.ReactNode;
+    link: string;
+    linkTooltip: string;
+    linkProperty: string;
+    color: string;
+    bg: string;
+}
+
 export default function ContactMe() {
-    const arrayOfSocialMedias = useState([
+    const [arrayOfSocialMedias] = useState<Social[]>([
         {
             name: 'Github',
             icon: <GithubIcon className="w-6 md:w-9" />,

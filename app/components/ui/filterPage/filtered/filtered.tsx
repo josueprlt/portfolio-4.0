@@ -5,9 +5,14 @@ import Card from "./card";
 import { Pagination } from "@heroui/pagination";
 
 interface Project {
-    id: string;
+    id: number;
     title: string;
+    date: string;
+    category: string[];
+    description: string;
     image: string[];
+    link: string | null;
+    github?: string;
 }
 
 interface FilteredProps {
@@ -72,8 +77,6 @@ export default function Filtered({ projects }: FilteredProps) {
                             color="secondary"
                         />
                     </div>
-
-
                 </>
             ) : (
                 <section ref={sectionRef} className='mt-10 flex justify-center md:mt-20'>

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
@@ -20,23 +20,19 @@ interface Project {
     description: string;
     image: string[];
     link: string | null;
+    github: string | null;
 }
 
-interface HomeProps {
-    project: Project;
+interface DescriptionProps {
+    project: Project | null;
 }
 
-export default function Description({ project }: HomeProps) {
+export default function Description({ project }: DescriptionProps) {
     gsap.registerPlugin(ScrollTrigger);
-    const [projet, setProjet] = useState<Project | null>(null);
-    const linkRef = useRef<HTMLElement[]>([]);
+    const linkRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        setProjet(project);
-    }, [project]);
-
-    useEffect(() => {
-        if (!projet || !linkRef.current) return;
+        if (!project || !linkRef.current) return;
 
         document.fonts.ready.then(() => {
             gsap.from(linkRef.current, {
@@ -51,9 +47,9 @@ export default function Description({ project }: HomeProps) {
                 },
             });
         });
-    }, [projet]);
+    }, [project]);
 
-    if (!projet) {
+    if (!project) {
         return <div>Loading...</div>;
     }
 
@@ -63,18 +59,18 @@ export default function Description({ project }: HomeProps) {
 
             <div className={`${DelaGothicOne.className} mt-5 md:mt-10`}>
                 <Paragraph
-                    text={projet.description}
+                    text={project.description}
                     className="text-justify md:text-4xl"
                 />
 
                 <div className='flex justify-center gap-10 my-10 md:my-32' ref={linkRef}>
-                    {projet.link == null ? (
+                    {project.link == null ? (
                         <Button href="" theme="disabled">Ce projet n&apos;est pas disponible</Button>
                     ) : (
-                        <Button href={projet.link} theme="gradient">Visiter le projet</Button>
+                        <Button href={project.link} theme="gradient">Visiter le projet</Button>
                     )}
-                    {projet.github != null && (
-                        <Button href={projet.github} theme="github">Projet GitHub</Button>
+                    {project.github != null && (
+                        <Button href={project.github} theme="github">Projet GitHub</Button>
                     )}
                 </div>
             </div>
