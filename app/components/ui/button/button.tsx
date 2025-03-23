@@ -18,7 +18,7 @@ interface ButtonProps {
     onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ href = '#', theme, children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
     const linkRef = useRef<HTMLElement>(null);
     const divRef = useRef<HTMLDivElement>(null);
     const arrowRef = useRef<HTMLDivElement>(null);
@@ -124,7 +124,7 @@ const Button: React.FC<ButtonProps> = ({ href = '#', theme, children, onClick })
 
     if (theme === "github") {
         return (
-            <Link href={href} ref={linkRef as React.RefObject<HTMLAnchorElement>} target='_blank' className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} flex items-center gap-3 text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
+            <Link href={href || '#'} ref={linkRef as React.RefObject<HTMLAnchorElement>} target='_blank' className={`relative ${themeClasses[theme]} ${DelaGothicOne.className} flex items-center gap-3 text-base px-3 py-2 rounded-full pr-12 overflow-hidden md:px-4 md:py-3 md:pr-14 md:text-xl`}>
                 <LightGithubIcon ref={iconRef} className="w-6 h-6 z-10" />
                 <span className="relative z-30">{children}</span>
                 <div ref={divRef} className={`absolute ${"bg-background"} top-1 right-1 w-8 h-8 rounded-full md:top-[6px] md:right-[6px] md:w-10 md:h-10`}></div>

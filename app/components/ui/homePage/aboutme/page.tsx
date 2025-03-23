@@ -103,13 +103,6 @@ export default function AboutMe() {
         }
     }, []);
 
-    const handleDownload = () => {
-        const link = document.createElement('a');
-        link.href = '/pdf/cv.pdf';
-        link.download = 'Josue-Perrault-CV.pdf';
-        link.click();
-    };
-
     return (
         <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
             <Title className="text-center">A propos de moi</Title>
@@ -119,12 +112,12 @@ export default function AboutMe() {
                 <div ref={divRef} className="md:grid md:grid-cols-2 md:gap-24">
                     <div className="md:flex md:flex-col md:justify-between md:text-left">
                         <Paragraph
-                            text="Je m'appelle Josué Perrault, j'ai 20 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges."
+                            text="Je m'appelle Josué Perrault, j'ai 21 ans et je suis actuellement étudiant en 3ème année d'un BUT MMI (Métiers du Multimédia et de l'Internet) à l'IUT de Limoges."
                             highlightedText="Josué Perrault"
                         />
 
                         <div ref={btnRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                            <Button onClick={handleDownload} theme="secondary">Télécharger mon CV</Button>
+                            <Button href="/pdf/CV.pdf" theme="secondary">Télécharger mon CV</Button>
                             <Button href="/profil" theme="primary">Voir plus</Button>
                         </div>
                     </div>
@@ -137,7 +130,7 @@ export default function AboutMe() {
                 <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                     <div className="md:order-2 mt-10 md:mt-0 md:text-right">
                         <Paragraph
-                            text="Ce portfolio a pour but de rassembler tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail."
+                            text="Ce portfolio rassemble tous mes projets personnels et scolaires, tout en offrant une expérience utilisateur fluide et agréable. Vous y découvrirez des exemples concrets de mon travail."
                             className="text-end"
                         />
                         <Paragraph
