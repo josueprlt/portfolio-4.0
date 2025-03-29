@@ -6,7 +6,6 @@ import { HalteresIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One } from 'next/font/google';
 import Paragraph from "@/app/components/ui/paragraph/paragraph";
 import Button from "@/app/components/ui/button/button";
-import Image from 'next/image';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -74,8 +73,8 @@ export default function AboutMe() {
                     </div>
                 </div>
                 <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-[500px]">
-                    <Image ref={(el) => { if (el) imageRefs.current[0] = el }} width={1000} height={1000} src="/img/paysage.png" alt="Description of the image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
-                    <Image ref={(el) => { if (el) imageRefs.current[1] = el }} width={1000} height={1000} src="/img/profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
+                    <img ref={(el) => { if (el) imageRefs.current[0] = el }} src="/img/paysage.png" alt="Description of the image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
+                    <img ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
                 </div>
             </div>
 

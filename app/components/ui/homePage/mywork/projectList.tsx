@@ -3,7 +3,6 @@ import { ButtonArrowIcon } from "@/app/components/ui/icons";
 import { gsap, Power2, Power3, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import Image from "next/image";
 
 interface Project {
     id: number;
@@ -126,10 +125,8 @@ const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
                 <div ref={arrowIconRef} className="z-10 p-0 rounded-full bg-background">
                     <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
                 </div>
-                <Image
+                <img
                     ref={imgRef}
-                    width={1000}
-                    height={1000}
                     alt="image de test"
                     src={project.image[0]}
                     className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0"

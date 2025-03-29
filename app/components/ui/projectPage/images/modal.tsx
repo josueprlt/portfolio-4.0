@@ -7,7 +7,6 @@ import {
     ModalFooter,
 } from "@heroui/modal";
 import { Pagination } from "@heroui/pagination";
-import Image from "next/image";
 
 interface Project {
     image: string[];
@@ -40,9 +39,7 @@ export default function Modal({ project, currentIndex, setCurrentIndex, isOpen, 
                     <ModalHeader className="flex flex-col gap-1">Image {currentIndex + 1}</ModalHeader>
                     <ModalBody>
                         <div className="w-full max-h-[500px] overflow-scroll">
-                            <Image
-                                width={5000}
-                                height={5000}
+                            <img
                                 src={project.image[currentIndex]}
                                 alt={`Modal Image ${currentIndex}`}
                                 className="w-full h-full object-cover"

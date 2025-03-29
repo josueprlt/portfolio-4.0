@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Dela_Gothic_One } from "next/font/google";
-import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import Button from "@/app/components/ui/button/button";
@@ -103,10 +102,8 @@ export default function Images({ project }: HomeProps) {
                         onClick={() => handleOpenModal(index)}
                         className="w-full h-48 rounded-xl overflow-hidden cursor-pointer"
                     >
-                        <Image
+                        <img
                             ref={(el) => { if (el) imagesRefs.current[index] = el! }}
-                            width={5000}
-                            height={5000}
                             src={img}
                             alt={`Image ${index}`}
                             className="w-full h-full object-cover"

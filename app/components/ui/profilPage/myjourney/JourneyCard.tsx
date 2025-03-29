@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap, Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
 import { Dela_Gothic_One } from 'next/font/google';
 import Button from '@/app/components/ui/button/button'
 import {
@@ -121,7 +120,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                         <p ref={descriptionRef} className="font-sans pt-5">{description}</p>
 
                         <div ref={imageRef} className="absolute w-full left-0 -top-52 flex flex-col items-center lg:-top-64 xl:-top-80 2xl:-top-96">
-                            <Image src={imageSrc} alt={imageAlt} width={5000} height={5000} className="w-full h-56 object-cover rounded-lg" />
+                            <img src={imageSrc} alt={imageAlt} className="w-full h-56 object-cover rounded-lg" />
                             <span ref={beforeRef} className="block w-px h-4 bg-foreground"></span>
                         </div>
                     </div>
@@ -136,7 +135,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ date, title, description, ima
                     </ModalHeader>
                     <ModalBody>
                         <p>{description}</p>
-                        <Image src={imageSrc} alt={imageAlt} width={5000} height={5000} className="w-full h-full object-cover rounded-lg mt-4" />
+                        <img src={imageSrc} alt={imageAlt} className="w-full h-full object-cover rounded-lg mt-4" />
                     </ModalBody>
                     <ModalFooter>
                         <Button theme='primary' onClick={onClose}>Close</Button>

@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useRef, useState } from 'react';
-import Image from "next/image";
 import { gsap, Power2 } from 'gsap';
 import Link from 'next/link';
 import { Tooltip } from "@nextui-org/tooltip";
@@ -132,9 +131,7 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
                                 className={`${DelaGothicOne.className} bg-foreground text-background text-xs`}
                                 showArrow={true}
                             >
-                                <Image
-                                    width={1000}
-                                    height={1000}
+                                <img
                                     src={proj.image[0]}
                                     alt={`Image ${index}`}
                                     className="w-full h-full object-cover"

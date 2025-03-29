@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
-import Image from "next/image";
 import { Tooltip } from "@nextui-org/tooltip";
 import { gsap, Power2 } from "gsap";
 import { ArrowIcon } from '@/app/components/ui/icons';
@@ -150,10 +149,8 @@ export default function Home({ project }: HomeProps) {
                     </div>
                 </div>
 
-                <Image
+                <img
                     ref={imageRef}
-                    width={5000}
-                    height={5000}
                     src={project.image[0]}
                     alt="Description of the image"
                     className="w-full h-full absolute top-0 left-0 z-0 object-cover"

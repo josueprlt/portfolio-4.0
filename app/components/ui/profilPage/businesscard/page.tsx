@@ -2,7 +2,6 @@
 import { useEffect, useRef } from 'react';
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { LogoIcon, PhoneIcon, EmailIcon, LinkIcon, LocationIcon } from '@/app/components/ui/icons';
-import Image from 'next/image';
 import { gsap, Power2 } from 'gsap';
 
 const DelaGothicOne = Dela_Gothic_One({
@@ -168,7 +167,7 @@ export default function BusinessCard() {
                 </div>
 
                 <div className='w-48 h-48 flex justify-center items-center bg-background rounded-full overflow-hidden'>
-                    <Image src="/img/profil.png" alt="Image de profil" width={182} height={245} />
+                    <img src="/img/profil.png" alt="Image de profil" className='w-[182px] h-[245px]' />
                 </div>
 
                 <div className='flex items-center flex-col gap-2'>
@@ -207,7 +206,7 @@ export default function BusinessCard() {
 
                 <div className='flex flex-row justify-between lg:justify-around items-center px-10 py-5'>
                     <div className='w-56 h-56 flex justify-center items-center bg-background rounded-full overflow-hidden'>
-                        <Image src="/img/profil.png" alt="Image de profil" width={182} height={245} />
+                        <img src="/img/profil.png" alt="Image de profil" className='w-[182px] h-[245px]' />
                     </div>
                     <ul className={`${DelaGothicOne.className} flex items-start flex-col gap-6 text-background text-xl`}>
                         <li className='flex justify-center items-center flex-row gap-2'>

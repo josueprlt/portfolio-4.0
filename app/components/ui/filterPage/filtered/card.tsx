@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { Dela_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
-import Image from 'next/image';
 import { gsap, Power2 } from 'gsap';
 
 const DelaGothicOne = Dela_Gothic_One({
@@ -58,7 +57,7 @@ const Card: React.FC<CardProps> = ({ img, title, href }) => {
         >
             <Link href={href} className="w-full h-full">
                 <div className='h-40 rounded-b-3xl md:h-56 overflow-hidden'>
-                    <Image ref={imageRef} width={1000} height={1000} src={img} alt={`Image du projet ${title}`} className='w-full h-full object-cover' />
+                    <img ref={imageRef} src={img} alt={`Image du projet ${title}`} className='w-full h-full object-cover' />
                 </div>
                 <p ref={textRef} className={`${DelaGothicOne.className} h-auto p-4 text-xl md:p-6 md:text-2xl`}>{truncateText(title)}</p>
             </Link>
