@@ -73,8 +73,7 @@ export default function AboutMe() {
                     </div>
                 </div>
                 <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-[500px]">
-                    <img ref={(el) => { if (el) imageRefs.current[0] = el }} src="/img/paysage.png" alt="Description of the image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
-                    <img ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
+                    <img ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/avatar-profil.webp" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
                 </div>
             </div>
 
