@@ -63,9 +63,9 @@ export default function Description({ project }: DescriptionProps) {
                     className="text-justify md:text-4xl"
                 />
 
-                <div className='flex justify-center gap-10 my-10 md:my-32' ref={linkRef}>
+                <div className='flex justify-center flex-wrap gap-10 my-10 md:my-32' ref={linkRef}>
                     {project.link == null ? (
-                        <Button href="" theme="disabled">Ce projet n&apos;est pas disponible</Button>
+                        <Button href="" theme="disabled">Projet pas disponible</Button>
                     ) : (
                         <Button href={project.link} theme="gradient">Visiter le projet</Button>
                     )}

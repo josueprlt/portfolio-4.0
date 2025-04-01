@@ -77,7 +77,7 @@ export default function ComponentMobile({ data }: ComponentMobileProps) {
                     <p className="text-background">07 57 49 21 89</p>
                 </div>
                 <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="flex justify-center h-1/2 items-center gap-6 rounded-2xl">
-                    <EmailIcon className="w-6 md:w-11" />
+                    <EmailIcon className="w-6 md:w-11 hidden sm:block" />
                     <p className="text-foreground">josue.perrault@etu.unilim.fr</p>
                 </div>
             </section>
