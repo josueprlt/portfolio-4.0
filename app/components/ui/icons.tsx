@@ -446,4 +446,32 @@ const LightGithubIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((pr
 });
 LightGithubIcon.displayName = 'LightGithubIcon';
 
-export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, LinkedinIcon, BretagneIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, SymfonyIcon, TailwindIcon, NextIcon, MuiIcon, ReactIcon, BootstrapIcon, DockerIcon, GithubIcon, VscodeIcon, HalteresIcon, LinkIcon, LocationIcon, BoxArrowIcon, SearchIcon, CloseIcon, WrenchIcon, CadreIcon, CalendarIcon, BagIcon, PeopleIcon, GitlabIcon, LightGithubIcon, TrelloIcon, FigmaIcon };
+const DevIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((props, ref) => {
+    return (
+        <svg ref={ref} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" {...props}>
+            <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
+        </svg>
+    );
+});
+DevIcon.displayName = 'DevIcon';
+
+const VRIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((props, ref) => {
+    return (
+        <svg ref={ref} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" {...props}>
+            <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248" />
+            <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8" />
+        </svg>
+    );
+});
+VRIcon.displayName = 'VRIcon';
+
+const CreaIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>((props, ref) => {
+    return (
+        <svg ref={ref} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" {...props}>
+            <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.1 6.1 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.1 8.1 0 0 1-3.078.132 4 4 0 0 1-.562-.135 1.4 1.4 0 0 1-.466-.247.7.7 0 0 1-.204-.288.62.62 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896q.19.012.348.048c.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04" />
+        </svg>
+    );
+});
+CreaIcon.displayName = 'CreaIcon';
+
+export { LogoIcon, ArrowIcon, ButtonArrowIcon, PhoneIcon, EmailIcon, LinkedinIcon, BretagneIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, SymfonyIcon, TailwindIcon, NextIcon, MuiIcon, ReactIcon, BootstrapIcon, DockerIcon, GithubIcon, VscodeIcon, HalteresIcon, LinkIcon, LocationIcon, BoxArrowIcon, SearchIcon, CloseIcon, WrenchIcon, CadreIcon, CalendarIcon, BagIcon, PeopleIcon, GitlabIcon, LightGithubIcon, TrelloIcon, FigmaIcon, DevIcon, VRIcon, CreaIcon };

@@ -63,6 +63,69 @@
   },
   {
     "id": 3,
+    "title": "Editeur VR",
+    "date": "2024-11-04",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "vr",
+      "html",
+      "css",
+      "javascript",
+      "github",
+      "vscode"
+    ],
+    "description": "Ce projet scolaire a été réalisé en binôme. L’objectif était de développer une application web style Uptale, permettant à tout utilisateur de créer ses propres visites en réalité virtuelle. Il était possible d’ajouter des éléments interactifs dans la scène, tels que des portes, des messages ou encore des images. Le projet a été développé en HTML, CSS et JavaScript, en utilisant la librairie A-Frame.",
+    "image": [
+      "/Sae501-VR/interface1.png",
+      "/Sae501-VR/interface2.png",
+      "/Sae501-VR/interface3.png",
+      "/Sae501-VR/interface4.png",
+      "/Sae501-VR/interface5.png",
+      "/Sae501-VR/interface6.png",
+      "/Sae501-VR/interface7.png",
+      "/Sae501-VR/interface8.png"
+    ],
+    "link": "https://portfolio-josue.fr/Sae-501-VR/src/",
+    "github": "https://github.com/josueprlt/Sae501-Uptale-VR"
+  },
+  {
+    "id": 4,
+    "title": "HellCleaner VR",
+    "date": "2024-02-23",
+    "category": [
+      "Scolaire",
+      "Dev Web",
+      "vr",
+      "html",
+      "css",
+      "javascript",
+      "github",
+      "vscode"
+    ],
+    "description": "Ce projet scolaire a été réalisé en trinôme. L’objectif était de concevoir un mini-jeu en réalité virtuelle sur le thème de la pollution et du recyclage. Le joueur pouvait se déplacer en VR ou de manière classique dans une ville où des déchets étaient dispersés. L’objectif du jeu était de collecter tous les déchets, placés aléatoirement sur la carte. Le projet a été développé en HTML, CSS et JavaScript, à l’aide de la bibliothèque A-Frame.",
+    "image": [
+      "/Sae402-VR/city1.png",
+      "/Sae402-VR/city2.png",
+      "/Sae402-VR/city3.png",
+      "/Sae402-VR/city4.png",
+      "/Sae402-VR/city5.png",
+      "/Sae402-VR/city6.png",
+      "/Sae402-VR/city7.png",
+      "/Sae402-VR/city8.png",
+      "/Sae402-VR/city9.png",
+      "/Sae402-VR/city10.png",
+      "/Sae402-VR/city11.png",
+      "/Sae402-VR/city12.png",
+      "/Sae402-VR/city13.png",
+      "/Sae402-VR/city14.png",
+      "/Sae402-VR/city15.png"
+    ],
+    "link": "https://portfolio-josue.fr/Sae-402-VR/",
+    "github": "https://github.com/josueprlt/Sae402-HellCleaner-VR"
+  },
+  {
+    "id": 5,
     "title": "Challenge BenjaminCode",
     "date": "2023-09-13",
     "category": [
@@ -83,7 +146,7 @@
     "github": null
   },
   {
-    "id": 4,
+    "id": 6,
     "title": "Intégration composant vidéo",
     "date": "2024-07-22",
     "category": [
@@ -107,7 +170,7 @@
     "github": null
   },
   {
-    "id": 5,
+    "id": 7,
     "title": "Portfolio Web 2023-2024",
     "date": "2023-06-01",
     "category": [
@@ -132,7 +195,7 @@
     "github": null
   },
   {
-    "id": 6,
+    "id": 8,
     "title": "Site OnePage",
     "date": "2022-12-03",
     "category": [
@@ -156,7 +219,7 @@
     "github": null
   },
   {
-    "id": 7,
+    "id": 9,
     "title": "Site de trailer de films",
     "date": "2023-03-22",
     "category": [
@@ -190,7 +253,7 @@
     "github": null
   },
   {
-    "id": 8,
+    "id": 10,
     "title": "Nouveau Portfolio Web",
     "date": "2025-03-15",
     "category": [
@@ -212,7 +275,7 @@
     "github": "https://github.com/josueprlt/portfolio-4.0/tree/V8"
   },
   {
-    "id": 9,
+    "id": 11,
     "title": "Coachella",
     "date": "2024-01-07",
     "category": [
@@ -236,7 +299,7 @@
     "github": null
   },
   {
-    "id": 10,
+    "id": 12,
     "title": "Nuit du code MMI",
     "date": "2025-01-09",
     "category": [
