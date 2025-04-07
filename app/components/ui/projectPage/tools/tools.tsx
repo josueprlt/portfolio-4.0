@@ -33,10 +33,10 @@ export default function Tools({ project }: HomeProps) {
         if (sectionRef.current) {
             const toolElements = sectionRef.current.querySelectorAll('.tool-element');
             gsap.fromTo(toolElements,
-                { opacity: 0, x: 50 },
+                { opacity: 0, y: -50 },
                 {
                     opacity: 1,
-                    x: 0,
+                    y: 0,
                     duration: 0.75,
                     ease: Power2.easeOut,
                     stagger: 0.25,

@@ -15,7 +15,8 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             },
         });
 
-        tl.fromTo(loadingRef.current,
+        tl.fromTo(
+            loadingRef.current,
             { rotate: 0 },
             {
                 rotate: 360,
@@ -30,10 +31,16 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             onComplete();
         };
 
-        window.addEventListener('load', handleLoad);
+        window.addEventListener("load", handleLoad);
+
+        const timeout = setTimeout(() => {
+            setIsLoading(false);
+            onComplete();
+        }, 4000);
 
         return () => {
-            window.removeEventListener('load', handleLoad);
+            window.removeEventListener("load", handleLoad);
+            clearTimeout(timeout); // Nettoyer le timeout
         };
     }, [onComplete]);
 
