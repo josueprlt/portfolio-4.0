@@ -36,6 +36,7 @@ export default function RootLayout({
       const scrollPercent = (scrollTop / docHeight) * 100;
       setIsScrolled(scrollTop > 75);
       setScrollWidth(scrollPercent);
+
     };
 
     window.addEventListener("scroll", handleScroll);
