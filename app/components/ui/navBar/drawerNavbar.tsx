@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/drawer";
 import { LogoIcon, ButtonArrowIcon, LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
@@ -19,17 +19,18 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 interface DrawerProps {
+    lang?: string;
     onOpenChange?: (open: boolean) => void;
     isOpen?: boolean;
 }
 
-const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
+const DrawerNavbar: React.FC<DrawerProps> = ({ lang, onOpenChange, isOpen }) => {
     const [arrayOfLinks] = useState([
-        { href: '/', label: 'Accueil' },
-        { href: '/profil', label: 'Mon Profil' },
-        { href: '/#works', label: 'Mon Travail' },
-        { href: '/filter', label: 'Filtre' },
-        { href: '/#contact', label: 'Contact' },
+        { href: '/', labelFr: 'Accueil', labelEn: 'Home' },
+        { href: '/profil', labelFr: 'Mon Profil', labelEn: 'My Profile' },
+        { href: '/#works', labelFr: 'Mon Travail', labelEn: 'My Work' },
+        { href: '/filter', labelFr: 'Filtre', labelEn: 'Filter' },
+        { href: '/#contact', labelFr: 'Contact', labelEn: 'Contact' },
     ]);
     const [arrayOfSocials] = useState([
         { href: 'https://github.com/josueprlt', icon: <GithubIcon className="w-10 h-10" /> },
@@ -88,7 +89,10 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ onOpenChange, isOpen }) => {
                                     onClick={handleLinkClick}
                                     ref={(el) => { if (el) linkRefs.current[index] = el }}
                                 >
-                                    <p ref={(el) => { if (el) textRefs.current[index] = el }}>{link.label}</p>
+                                    <p ref={(el) => { if (el) textRefs.current[index] = el }}>
+                                        {lang === 'fr' && link.labelFr}
+                                        {lang === 'en' && link.labelEn}
+                                    </p>
                                     <ButtonArrowIcon ref={(el) => { if (el) iconRefs.current[index] = el }} className="w-4 h-4" />
                                     <span ref={(el) => { if (el) spanRefs.current[index] = el }} className='absolute bottom-0 left-0 h-px bg-foreground'></span>
                                 </Link>

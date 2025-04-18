@@ -6,7 +6,11 @@ import Link from 'next/link';
 import { gsap, Power2 } from "gsap";
 import Drawer from './drawerNavbar';
 
-export default function NavBar() {
+interface NavbarProps {
+    lang: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ lang }) => {
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
     const logoIconRef = useRef<SVGSVGElement>(null);
@@ -89,7 +93,9 @@ export default function NavBar() {
                 <span className="block w-5 h-1 bg-foreground rounded-full"></span>
             </div>
 
-            <Drawer isOpen={isOpen} onOpenChange={onOpenChange} />
+            <Drawer lang={lang} isOpen={isOpen} onOpenChange={onOpenChange} />
         </nav>
     );
 }
+
+export default Navbar;

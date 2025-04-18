@@ -22,7 +22,11 @@ interface Social {
     bg: string;
 }
 
-export default function ContactMe() {
+interface ContactMeProps {
+    lang: string;
+}
+
+const ContactMe: React.FC<ContactMeProps> = ({ lang }) => {
     const [arrayOfSocialMedias] = useState<Social[]>([
         {
             name: 'Github',
@@ -55,10 +59,15 @@ export default function ContactMe() {
 
     return (
         <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="contact">
-            <Title className="text-center">Contactez moi</Title>
+            <Title className="text-center">
+                {lang === 'fr' && 'Contactez moi'}
+                {lang === 'en' && 'Contact me'}
+            </Title>
 
             <ComponentMobile data={arrayOfSocialMedias} />
             <ComponentDesktop data={arrayOfSocialMedias} />
         </div>
     );
 }
+
+export default ContactMe;

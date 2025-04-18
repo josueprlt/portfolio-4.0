@@ -28,17 +28,21 @@ export default function RootLayout({
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollWidth, setScrollWidth] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-
+  const [language, setLanguage] = useState("fr");
+  
   useEffect(() => {
+    const savedLanguage = localStorage.getItem("lang") || "fr";
+    setLanguage(savedLanguage);
+
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
       setIsScrolled(scrollTop > 75);
       setScrollWidth(scrollPercent);
-
+      
     };
-
+    
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -87,7 +91,7 @@ export default function RootLayout({
                 className="block h-1 bg-gradient-to-r from-primary to-secondary"
               ></span>
               <div className="px-4 py-1 md:px-8 md:py-2">
-                <Navbar />
+                <Navbar lang={language} />
               </div>
             </section>
             {children}

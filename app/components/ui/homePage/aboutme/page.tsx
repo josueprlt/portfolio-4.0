@@ -19,7 +19,11 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-export default function AboutMe() {
+interface AboutMeProps {
+    lang: string;
+}
+
+const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
     gsap.registerPlugin(ScrollTrigger);
     const divRef = useRef<HTMLDivElement>(null);
     const visiteRef = useRef<HTMLParagraphElement>(null);
@@ -104,7 +108,10 @@ export default function AboutMe() {
 
     return (
         <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
-            <Title className="text-center">A propos de moi</Title>
+            <Title className="text-center">
+                {lang === 'fr' && 'À propos de moi'}
+                {lang === 'en' && 'About me'}
+            </Title>
 
             <section className={`${DelaGothicOne.className} text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
 
@@ -116,8 +123,14 @@ export default function AboutMe() {
                         />
 
                         <div ref={btnRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                            <Button href="/pdf/CV.pdf" theme="secondary">Télécharger mon CV</Button>
-                            <Button href="/profil" theme="primary">Voir plus</Button>
+                            <Button href="/pdf/CV.pdf" theme="secondary">
+                                {lang === 'fr' && 'Télécharger mon CV'}
+                                {lang === 'en' && 'Download my CV'}
+                            </Button>
+                            <Button href="/profil" theme="primary">
+                                {lang === 'fr' && 'Voir plus'}
+                                {lang === 'en' && 'See more'}
+                            </Button>
                         </div>
                     </div>
                     <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full md:max-h-[600px]">
@@ -147,3 +160,5 @@ export default function AboutMe() {
         </div>
     );
 }
+
+export default AboutMe;

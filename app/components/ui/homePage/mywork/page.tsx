@@ -19,7 +19,11 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-export default function MyWork() {
+interface MyWorkProps {
+    lang: string;
+}
+
+const MyWork: React.FC<MyWorkProps> = ({ lang }) => {
     gsap.registerPlugin(ScrollTrigger);
     const btnRef = useRef<HTMLDivElement>(null);
 
@@ -43,7 +47,10 @@ export default function MyWork() {
 
     return (
         <div className={`${ClimateCrisis.className} relative mt-20 md:mt-60`} id="works">
-            <Title className="text-center">Mon travail</Title>
+            <Title className="text-center">
+                {lang === 'fr' && 'Mon travail'}
+                {lang === 'en' && 'My work'}
+            </Title>
 
             <ul id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.slice(0, 5).map((project, index) => (
@@ -51,8 +58,13 @@ export default function MyWork() {
                 ))}
             </ul>
             <div ref={btnRef} className={`${DelaGothicOne.className} flex justify-center mt-24`}>
-                <Button theme='primary' href='/filter'>Voir Plus</Button>
+                <Button theme='primary' href='/filter'>
+                    {lang === 'fr' && 'Voir Plus'}
+                    {lang === 'en' && 'See more'}
+                </Button>
             </div>
         </div>
     );
 }
+
+export default MyWork;

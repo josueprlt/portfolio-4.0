@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BretagneIcon } from "@/app/components/ui/icons";
 import { Dela_Gothic_One } from 'next/font/google';
 import Link from "next/link";
@@ -10,6 +11,21 @@ const DelaGothicOne = Dela_Gothic_One({
 });
 
 export default function Footer() {
+
+    const [language, setLanguage] = useState("fr");
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLanguage(savedLanguage);
+    }, []);
+
+    const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedLanguage = e.target.value;
+        setLanguage(selectedLanguage);
+        localStorage.setItem("lang", selectedLanguage);
+        window.location.reload();
+    };
+
     return (
         <footer className={`${DelaGothicOne.className} mt-20 md:mt-60 bg-foreground px-4 py-5 md:px-8 md:py-8`}>
 
@@ -18,11 +34,21 @@ export default function Footer() {
                     {/* <input type="checkbox" className="toggle-checkbox hidden" id="toggle" />
                     <label htmlFor="toggle" className="toggle-label block w-14 h-8 rounded-full bg-background cursor-pointer relative">
                         <span className="toggle-span absolute left-1 top-1 w-6 h-6 rounded-full bg-foreground transition-transform duration-300 ease-in-out"></span>
-                    </label>
-                    <select name="lang" id="lang" className="block w-40 mt-1 bg-background text-foreground border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        <option value="fr" className="bg-white text-foreground">Français</option>
-                        <option value="en" className="bg-white text-foreground">English</option>
-                    </select> */}
+                    </label> */}
+                    <select
+                        name="lang"
+                        id="lang"
+                        value={language}
+                        onChange={handleLanguageChange}
+                        className="block w-40 mt-1 bg-background text-foreground border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    >
+                        <option value="fr" className="bg-white text-foreground">
+                            Français
+                        </option>
+                        <option value="en" className="bg-white text-foreground">
+                            English
+                        </option>
+                    </select>
                     <BretagneIcon className="w-10 md:w-28" />
                 </div>
 

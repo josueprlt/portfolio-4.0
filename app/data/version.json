@@ -1,6 +1,9 @@
 {
   "creator": "Josué PERRAULT",
-  "version": 0.8,
+  "creatorEn": "Josue PERRAULT",
+  "version": 1.0,
   "right": "Portfolio © 2025 - Tous droits réservés.",
-  "tools": "Site développé avec NEXTJS et TAILWIND"
+  "rightEn": "Portfolio © 2025 – All rights reserved.",
+  "tools": "Site développé avec NEXTJS et TAILWIND",
+  "toolsEn": "Site developed with NEXTJS and TAILWIND"
 }

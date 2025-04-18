@@ -11,7 +11,11 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-export default function Home() {
+interface HomeProps {
+    lang: string;
+}
+
+const Home: React.FC<HomeProps> = ({ lang }) => {
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const spanFirstnameRef = useRef<HTMLSpanElement>(null);
     const spanNameRef = useRef<HTMLSpanElement>(null);
@@ -110,7 +114,7 @@ export default function Home() {
 
     return (
         <header className={`${ClimateCrisis.className} flex flex-col justify-between h-screen p-4 md:p-8`}>
-            <NavBar />
+            <NavBar lang={lang} />
 
             <section className="flex flex-col justify-center items-center gap-16">
                 <div className="flex items-center flex-col gap-7">
@@ -142,3 +146,5 @@ export default function Home() {
         </header>
     );
 }
+
+export default Home;
