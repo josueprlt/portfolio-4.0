@@ -47,10 +47,8 @@ const MyWork: React.FC<MyWorkProps> = ({ lang }) => {
 
     return (
         <div className={`${ClimateCrisis.className} relative mt-20 md:mt-60`} id="works">
-            <Title className="text-center">
-                {lang === 'fr' && 'Mon travail'}
-                {lang === 'en' && 'My work'}
-            </Title>
+            {lang === 'fr' && <Title className="text-center">Mon travail</Title>}
+            {lang === 'en' && <Title className="text-center">My work</Title>}
 
             <ul id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.slice(0, 5).map((project, index) => (

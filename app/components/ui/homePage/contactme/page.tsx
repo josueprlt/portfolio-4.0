@@ -59,10 +59,8 @@ const ContactMe: React.FC<ContactMeProps> = ({ lang }) => {
 
     return (
         <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="contact">
-            <Title className="text-center">
-                {lang === 'fr' && 'Contactez moi'}
-                {lang === 'en' && 'Contact me'}
-            </Title>
+            {lang === 'fr' && <Title className="text-center">Contactez moi</Title>}
+            {lang === 'en' && <Title className="text-center">Contact me</Title>}
 
             <ComponentMobile data={arrayOfSocialMedias} />
             <ComponentDesktop data={arrayOfSocialMedias} />
