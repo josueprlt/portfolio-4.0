@@ -13,7 +13,11 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-export default function AboutMe() {
+interface AboutMeProps {
+    lang: string;
+}
+
+const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
     const paraRef = useRef<HTMLDivElement>(null);
     const imageRefs = useRef<HTMLImageElement[]>([]);
     const linkRef = useRef<HTMLDivElement>(null);
@@ -64,12 +68,18 @@ export default function AboutMe() {
             <div className="md:grid md:grid-cols-2 md:gap-24">
                 <div ref={paraRef} className="md:flex md:flex-col md:justify-between md:text-left">
                     <Paragraph
+                        lang={lang}
+                        textEn="Constantly seeking new challenges, I’m passionate about coding — and about immersive worlds like those found in video games."
+                        highlightedTextEn="passionate about coding"
                         text="En perpétuelle quête de défis, je suis un passionné de code, mais aussi d’univers captivants comme ceux des jeux vidéo."
                         highlightedText="passionné de code"
                     />
 
                     <div ref={linkRef} className="pt-14 flex flex-wrap justify-center items-center gap-4 md:text-xl md:justify-start md:gap-6">
-                        <Button href="/pdf/CV.pdf" theme="primary">Télécharger mon CV</Button>
+                        <Button href="/pdf/CV.pdf" theme="primary">
+                            {lang === 'fr' && 'Télécharger mon CV'}
+                            {lang === 'en' && 'Download my CV'}
+                        </Button>
                     </div>
                 </div>
                 <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-[500px]">
@@ -80,6 +90,8 @@ export default function AboutMe() {
             <div className="md:grid md:grid-cols-2 md:gap-12 md:grid-areas mt-24">
                 <div className="md:order-2 mt-10 md:mt-0 md:text-right">
                     <Paragraph
+                        lang={lang}
+                        textEn="And when I’m neither behind my keyboard nor exploring new concepts, I often spend time at the gym, enjoying the personal challenge that weight training brings."
                         text="Et quand je ne suis ni derrière mon clavier ni en train d’explorer de nouveaux concepts, je passe souvent du temps à la salle, appréciant le défi personnel que la musculation apporte."
                     />
                 </div>
@@ -91,3 +103,5 @@ export default function AboutMe() {
         </section>
     );
 }
+
+export default AboutMe;

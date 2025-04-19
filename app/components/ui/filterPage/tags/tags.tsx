@@ -4,11 +4,12 @@ import Tag from "./tag";
 import { gsap, Power1 } from 'gsap';
 
 interface TagsProps {
+    lang: string;
     tags: string[];
     onTagRemove: (tag: string) => void;
 }
 
-export default function Tags({ tags, onTagRemove }: TagsProps) {
+export default function Tags({ lang, tags, onTagRemove }: TagsProps) {
     const tagsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -29,7 +30,10 @@ export default function Tags({ tags, onTagRemove }: TagsProps) {
                     ))}
                 </>
             ) : (
-                <p className="text-sans text-base font-bold pl-2 text-secondaryGray italic md:text-xl md:pl-4">Aucun tag ajouté</p>
+                <p className="text-sans text-base font-bold pl-2 text-secondaryGray italic md:text-xl md:pl-4">
+                    {lang === 'fr' && "Aucun tag ajouté"}
+                    {lang === 'en' && "No tag added"}
+                </p>
             )}
         </div>
     );

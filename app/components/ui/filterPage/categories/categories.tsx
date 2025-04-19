@@ -5,12 +5,13 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/d
 import { gsap, Power1 } from "gsap";
 
 interface CategoriesProps {
+    lang: string,
     selectedCategories: string[];
     onCategoriesSelected: (selectedCategories: string[]) => void;
     onSortByDate: (order: 'asc' | 'desc') => void;
 }
 
-export default function Categories({ selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
+export default function Categories({ lang, selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
     const [tools] = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
@@ -74,7 +75,10 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
                     <DropdownTrigger>
                         <li className="flex items-center p-2 gap-2 cursor-pointer">
                             <WrenchIcon className="md:w-6 md:h-6" />
-                            <p className="font-sans font-bold md:text-xl">Outils</p>
+                            <p className="font-sans font-bold md:text-xl">
+                                {lang === 'fr' && "Outils"}
+                                {lang === 'en' && "Tools"}
+                            </p>
                         </li>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Outils" className="h-80 overflow-auto">
@@ -96,7 +100,10 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
                     <DropdownTrigger>
                         <li className="flex items-center p-2 gap-2 cursor-pointer">
                             <CadreIcon className="md:w-6 md:h-6" />
-                            <p className="font-sans font-bold md:text-xl">Cadres</p>
+                            <p className="font-sans font-bold md:text-xl">
+                                {lang === 'fr' && "Cadres"}
+                                {lang === 'en' && "Executives"}
+                            </p>
                         </li>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Cadres">
@@ -125,12 +132,16 @@ export default function Categories({ selectedCategories, onCategoriesSelected, o
                         <>
                             <DropdownItem onClick={() => handleSortByDate('desc')} key={0}>
                                 <div className="my-1">
-                                    <p>Les plus récents</p>
+                                    {lang === 'fr' && "Les plus récents"}
+                                    {lang === 'en' && "Most recents"}
                                 </div>
                             </DropdownItem>
                             <DropdownItem onClick={() => handleSortByDate('asc')} key={1}>
                                 <div className="my-1">
-                                    <p>Les moins récents</p>
+                                    <p>
+                                        {lang === 'fr' && "Les moins récents"}
+                                        {lang === 'en' && "Least recents"}
+                                    </p>
                                 </div>
                             </DropdownItem>
                         </>

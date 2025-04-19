@@ -10,12 +10,14 @@ const DelaGothicOne = Dela_Gothic_One({
 });
 
 interface CardProps {
+    lang: string;
     img: string;
     title: string;
+    titleEn: string;
     href: string;
 }
 
-const Card: React.FC<CardProps> = ({ img, title, href }) => {
+const Card: React.FC<CardProps> = ({ lang, img, title, titleEn, href }) => {
     const imageRef = useRef<HTMLImageElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
     
@@ -59,7 +61,10 @@ const Card: React.FC<CardProps> = ({ img, title, href }) => {
                 <div className='h-40 rounded-b-3xl md:h-56 overflow-hidden'>
                     <img ref={imageRef} src={img} alt={`Image du projet ${title}`} className='w-full h-full object-cover' />
                 </div>
-                <p ref={textRef} className={`${DelaGothicOne.className} h-auto p-4 text-xl md:p-6 md:text-2xl`}>{truncateText(title)}</p>
+                <p ref={textRef} className={`${DelaGothicOne.className} h-auto p-4 text-xl md:p-6 md:text-2xl`}>
+                    {lang === 'fr' && truncateText(title)}
+                    {lang === 'en' && truncateText(titleEn)}
+                </p>
             </Link>
         </div>
     );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
 import { Tooltip } from "@nextui-org/tooltip";
@@ -22,9 +22,11 @@ const ClimateCrisis = Climate_Crisis({
 interface Project {
     id: number;
     title: string;
+    titleEn: string;
     date: string;
     category: string[];
     description: string;
+    descriptionEn: string;
     image: string[];
     link: string | null;
 }
@@ -34,6 +36,7 @@ interface HomeProps {
 }
 
 export default function Home({ project }: HomeProps) {
+    const [lang, setLang] = useState("fr");
     const numberOfItem = 2;
     const sectionRef = useRef<HTMLDivElement>(null);
     const h1Ref = useRef<HTMLHeadingElement>(null);
@@ -41,6 +44,11 @@ export default function Home({ project }: HomeProps) {
     const spanRef2 = useRef<HTMLAnchorElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const retourRef = useRef<HTMLAnchorElement>(null);
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLang(savedLanguage);
+    }, []);
 
     useEffect(() => {
         if (document.fonts) {
@@ -97,7 +105,7 @@ export default function Home({ project }: HomeProps) {
 
     return (
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8`}>
-            <NavBar />
+            <NavBar lang={lang} />
 
             <section
                 ref={sectionRef}
@@ -112,7 +120,8 @@ export default function Home({ project }: HomeProps) {
                         ref={h1Ref}
                         className="relative z-10 text-background text-4xl text-center md:text-7xl md:text-left"
                     >
-                        {project.title}
+                        {lang === 'fr' && project.title}
+                        {lang === 'en' && project.titleEn}
                     </h1>
 
                     <div

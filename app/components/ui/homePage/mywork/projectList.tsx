@@ -7,14 +7,16 @@ import Link from "next/link";
 interface Project {
     id: number;
     title: string;
+    titleEn: string;
     image: string[];
 }
 
 interface ProjectListProps {
+    lang: string;
     project: Project;
 }
 
-const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
+const ProjectList: React.FC<ProjectListProps> = ({ lang, project }) => {
     gsap.registerPlugin(ScrollTrigger);
     const liRef = useRef<HTMLLIElement>(null);
     const arrowIconRef = useRef<HTMLDivElement>(null);
@@ -121,7 +123,10 @@ const ProjectList: React.FC<ProjectListProps> = ({ project }) => {
     return (
         <li ref={liRef} className="relative flex justify-between items-center cursor-pointer overflow-hidden">
             <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
-                <p ref={textRef} className="z-10 p-0 rounded-full bg-background">{project.title}</p>
+                <p ref={textRef} className="z-10 p-0 rounded-full bg-background">
+                    {lang === "fr" && project.title}
+                    {lang === "en" && project.titleEn}
+                </p>
                 <div ref={arrowIconRef} className="z-10 p-0 rounded-full bg-background">
                     <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
                 </div>

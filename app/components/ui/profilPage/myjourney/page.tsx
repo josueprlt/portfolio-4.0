@@ -27,7 +27,11 @@ function isOdd(num: number) {
     }
 }
 
-export default function MyJourney() {
+interface MyJourneyProps {
+    lang: string;
+}
+
+const MyJourney: React.FC<MyJourneyProps> = ({ lang }) => {
     gsap.registerPlugin(ScrollTrigger);
     const spansContainerRef = useRef<HTMLDivElement>(null);
     const beforeRef = useRef<HTMLDivElement>(null);
@@ -85,7 +89,8 @@ export default function MyJourney() {
 
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <Title className='text-center'>Mon Parcours</Title>
+            {lang === 'fr' && <Title className='text-center'>Mon Parcours</Title>}
+            {lang === 'en' && <Title className='text-center'>My Experience</Title>}
 
             <section className={`${DelaGothicOne.className} text-lg pt-14 md:pt-40 text-center`}>
                 <div ref={spansContainerRef} className="relative flex justify-center items-center flex-col">
@@ -94,11 +99,15 @@ export default function MyJourney() {
                     {journeys.map((journey, index) => (
                         <div key={index} className="flex flex-col justify-center items-center">
                             <JourneyCard
+                                lang={lang}
                                 date={journey.date}
+                                dateEn={journey.dateEn}
                                 title={journey.title}
+                                titleEn={journey.titleEn}
                                 description={journey.description}
+                                descriptionEn={journey.descriptionEn}
                                 imageSrc={journey.image}
-                                imageAlt="Lycée La Mennais"
+                                imageAlt="image experience"
                                 position={isOdd(index)}
                             />
                             <span className="journey-span block w-2 h-52 bg-foreground md:h-96"></span>
@@ -110,3 +119,5 @@ export default function MyJourney() {
         </div>
     );
 }
+
+export default MyJourney;

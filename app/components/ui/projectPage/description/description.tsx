@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
@@ -15,9 +15,11 @@ const DelaGothicOne = Dela_Gothic_One({
 interface Project {
     id: number;
     title: string;
+    titleEn: string;
     date: string;
     category: string[];
     description: string;
+    descriptionEn: string;
     image: string[];
     link: string | null;
     github: string | null;
@@ -30,6 +32,12 @@ interface DescriptionProps {
 export default function Description({ project }: DescriptionProps) {
     gsap.registerPlugin(ScrollTrigger);
     const linkRef = useRef<HTMLDivElement>(null);
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLang(savedLanguage);
+    }, []);
 
     useEffect(() => {
         if (!project || !linkRef.current) return;
@@ -59,18 +67,29 @@ export default function Description({ project }: DescriptionProps) {
 
             <div className={`${DelaGothicOne.className} mt-5 md:mt-10`}>
                 <Paragraph
+                    lang={lang}
+                    textEn={project.descriptionEn}
                     text={project.description}
                     className="text-justify md:text-4xl"
                 />
 
                 <div className='flex justify-center flex-wrap gap-10 my-10 md:my-32' ref={linkRef}>
                     {project.link == null ? (
-                        <Button href="" theme="disabled">Projet pas disponible</Button>
+                        <Button href="" theme="disabled">
+                            {lang === 'fr' && "Project pas disponible"}
+                            {lang === 'en' && "Project not available"}
+                        </Button>
                     ) : (
-                        <Button href={project.link} theme="gradient">Visiter le projet</Button>
+                        <Button href={project.link} theme="gradient">
+                            {lang === 'fr' && "Visiter le projet"}
+                            {lang === 'en' && "Visit Project"}
+                        </Button>
                     )}
                     {project.github != null && (
-                        <Button href={project.github} theme="github">Projet GitHub</Button>
+                        <Button href={project.github} theme="github">
+                            {lang === 'fr' && "Projet GitHub"}
+                            {lang === 'en' && "GitHub project"}
+                        </Button>
                     )}
                 </div>
             </div>

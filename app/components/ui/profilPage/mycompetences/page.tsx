@@ -18,7 +18,11 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-export default function MyJourney() {
+interface MyCompetencesProps {
+    lang: string;
+}
+
+const MyCompetences: React.FC<MyCompetencesProps> = ({ lang }) => {
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -44,13 +48,16 @@ export default function MyJourney() {
 
     return (
         <div className={`${ClimateCrisis.className} pt-20 md:pt-60`}>
-            <Title className='text-center'>Mes compétences</Title>
+            {lang === 'fr' && <Title className='text-center'>Mes compétences</Title>}
+            {lang === 'en' && <Title className='text-center'>My competences</Title>}
 
             <section ref={sectionRef} className={`${DelaGothicOne.className} flex flex-col gap-4 pt-14 md:pt-40 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6`}>
                 {competences.map((competence, index) => (
-                    <CompetenceCard key={index} competence={competence} />
+                    <CompetenceCard lang={lang} key={index} competence={competence} />
                 ))}
             </section>
         </div>
     );
 }
+
+export default MyCompetences;

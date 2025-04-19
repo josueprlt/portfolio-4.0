@@ -29,12 +29,18 @@ interface HomeProps {
 
 export default function Images({ project }: HomeProps) {
     gsap.registerPlugin(ScrollTrigger);
+    const [lang, setLang] = useState("fr");
     const [projet, setProjet] = useState<Project | null>(null);
     const [visibleImages, setVisibleImages] = useState<number>(2);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const divRefs = useRef<HTMLDivElement[]>([]);
     const imagesRefs = useRef<HTMLDivElement[]>([]);
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLang(savedLanguage);
+    }, []);
 
     useEffect(() => {
         setProjet(project);
@@ -114,7 +120,10 @@ export default function Images({ project }: HomeProps) {
 
             {visibleImages < projet.image.length && (
                 <div className={`${DelaGothicOne.className} flex justify-center mt-4 md:mt-16`}>
-                    <Button onClick={handleLoadMore} theme="primary">Voir plus</Button>
+                    <Button onClick={handleLoadMore} theme="primary">
+                        {lang === "fr" && "Voir plus"}
+                        {lang === "en" && "See more"}
+                    </Button>
                 </div>
             )}
 

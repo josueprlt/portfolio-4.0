@@ -14,6 +14,7 @@ const DelaGothicOne = Dela_Gothic_One({
 interface Projects {
     id: number;
     title: string;
+    titleEn: string;
     image: string[];
 }
 
@@ -23,10 +24,16 @@ interface ProjectBarProps {
 }
 
 const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
+    const [lang, setLang] = useState("fr");
     const [randomProjects, setRandomProjects] = useState<Projects[]>([]);
     const divRefs = useRef<HTMLAnchorElement[]>([]);
     const spanRef = useRef<HTMLSpanElement>(null);
     const fixedDivRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLang(savedLanguage);
+    }, []);
 
     useEffect(() => {
         const getRandomProjects = () => {
@@ -127,7 +134,7 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
                             ref={el => { if (el) divRefs.current[index] = el! }}
                         >
                             <Tooltip
-                                content={`${proj.title}`}
+                                content={lang === 'en' ? proj.titleEn : proj.title}
                                 className={`${DelaGothicOne.className} bg-foreground text-background text-xs`}
                                 showArrow={true}
                             >

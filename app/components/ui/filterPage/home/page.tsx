@@ -8,13 +8,20 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-export default function Home() {
+interface HomeProps {
+    lang: string;
+}
+
+const Home: React.FC<HomeProps> = ({ lang }) => {
 
     return (
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 md:pb-0`}>
-            <NavBar />
+            <NavBar lang={lang} />
 
-            <Title className='mt-2 text-center md:mb-10'>Projects</Title>
+            {lang === 'fr' && <Title className='mt-2 text-center md:mb-10'>Projets</Title>}
+            {lang === 'en' && <Title className='mt-2 text-center md:mb-10'>Projects</Title>}
         </header>
     );
 }
+
+export default Home;

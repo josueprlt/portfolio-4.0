@@ -16,9 +16,8 @@ export async function generateStaticParams(): Promise<Params[]> {
     }));
 }
 
-export default async function Page({ params }: { params: Promise<Params> }) {
-    const resolvedParams = await params; // Résolution de la promesse
-    const { id } = resolvedParams;
+export default function Page({ params }: { params: Params }) {
+    const { id } = params;
     const project = projects.find((project) => project.id === parseInt(id));
 
     if (!project) {

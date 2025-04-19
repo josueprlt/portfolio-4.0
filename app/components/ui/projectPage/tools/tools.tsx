@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dela_Gothic_One } from "next/font/google";
@@ -26,8 +26,14 @@ interface HomeProps {
 }
 
 export default function Tools({ project }: HomeProps) {
+    const [lang, setLang] = useState("fr");
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLang(savedLanguage);
+    }, []);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -57,7 +63,8 @@ export default function Tools({ project }: HomeProps) {
 
     return (
         <div className="pt-10 md:pt-30">
-            <Title className="text-start">Outils</Title>
+            {lang === 'fr' && <Title className="text-start">Outils</Title>}
+            {lang === 'en' && <Title className="text-start">Tools</Title>}
 
             <section ref={sectionRef} className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
                 {filteredTechnos.map((tech, index) => (

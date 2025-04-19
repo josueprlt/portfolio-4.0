@@ -15,7 +15,11 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-export default function BusinessCard() {
+interface BusinessCardProps {
+    lang: string;
+}
+
+const BusinessCard: React.FC<BusinessCardProps> = ({ lang }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const glowRef = useRef<HTMLDivElement>(null);
     const phoneRef = useRef<HTMLDivElement>(null);
@@ -162,8 +166,14 @@ export default function BusinessCard() {
 
             <section ref={cardRef} className="max-w-96 mx-auto flex items-center flex-col gap-10 pt-10 bg-foreground rounded-lg drop-shadow shadow-lg overflow-hidden md:hidden">
                 <div className='flex items-center flex-col gap-2'>
-                    <p className='text-2xl text-background'>PERRAULT Josué</p>
-                    <p className='text-xl text-secondary'>Développeur Web</p>
+                    <p className='text-2xl text-background'>
+                        {lang === 'fr' && "PERRAULT Josué"}
+                        {lang === 'en' && "PERRAULT Josue"}
+                    </p>
+                    <p className='text-xl text-secondary'>
+                        {lang === 'fr' && "Développeur Web"}
+                        {lang === 'en' && "Web Developer"}
+                    </p>
                 </div>
 
                 <div className='w-48 h-48 flex justify-center items-center bg-background rounded-full overflow-hidden'>
@@ -181,7 +191,7 @@ export default function BusinessCard() {
                     </div>
                     <div ref={linkRef} className='flex flex-row gap-4 cursor-pointer'>
                         <LinkIcon className='w-6 h-6' />
-                        <p ref={linkTextRef} className='text-background w-0 overflow-hidden text-nowrap'>portfolio-josue.fr</p>
+                        <p ref={linkTextRef} className='text-background w-0 overflow-hidden text-nowrap'>portfolio-josue.com</p>
                     </div>
                     <div ref={locationRef} className='flex flex-row gap-4 cursor-pointer'>
                         <LocationIcon className='w-6 h-6' />
@@ -196,8 +206,14 @@ export default function BusinessCard() {
             <section ref={cardRef} className='relative hidden md:flex w-full pt-10 flex-col gap-10 bg-foreground rounded-xl shadow-lg overflow-hidden max-w-[994px] mx-auto'>
                 <div className='flex justify-between w-full px-10'>
                     <div>
-                        <p className='text-2xl text-background mb-5'>PERRAULT Josué</p>
-                        <p className='text-xl text-secondary'>Développeur Web</p>
+                        <p className='text-2xl text-background mb-5'>
+                            {lang === 'fr' && "PERRAULT Josué"}
+                            {lang === 'en' && "PERRAULT Josue"}
+                        </p>
+                        <p className='text-xl text-secondary'>
+                            {lang === 'fr' && "Développeur Web"}
+                            {lang === 'en' && "Web Developer"}
+                        </p>
                     </div>
                     <div>
                         <LogoIcon className='text-background' />
@@ -219,7 +235,7 @@ export default function BusinessCard() {
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <LinkIcon className='w-9 h-9' />
-                            <p className='text-background'>portfolio-josue.fr</p>
+                            <p className='text-background'>portfolio-josue.com</p>
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <LocationIcon className='w-9 h-9' />
@@ -234,3 +250,5 @@ export default function BusinessCard() {
         </div>
     );
 }
+
+export default BusinessCard;

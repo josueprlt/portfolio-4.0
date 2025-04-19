@@ -7,6 +7,7 @@ import { Pagination } from "@heroui/pagination";
 interface Project {
     id: number;
     title: string;
+    titleEn: string;
     date: string;
     category: string[];
     description: string;
@@ -16,10 +17,11 @@ interface Project {
 }
 
 interface FilteredProps {
+    lang: string;
     projects: Project[];
 }
 
-export default function Filtered({ projects }: FilteredProps) {
+export default function Filtered({ lang, projects }: FilteredProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const projectsPerPage = 9;
@@ -59,8 +61,10 @@ export default function Filtered({ projects }: FilteredProps) {
                     >
                         {currentProjects.map((project) => (
                             <Card
+                                lang={lang}
                                 key={project.id}
                                 title={project.title}
+                                titleEn={project.titleEn}
                                 href={`/project/${project.id}`}
                                 img={project.image[0]}
                             />

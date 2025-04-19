@@ -8,7 +8,7 @@ import Filtered from '@/app/components/ui/filterPage/filtered/filtered';
 import projectsData from '@/app/data/projects.json';
 
 interface Project {
-    id: number; // Assurez-vous que le type correspond à celui dans votre fichier JSON
+    id: number;
     title: string;
     date: string;
     category: string[];
@@ -19,6 +19,7 @@ interface Project {
 }
 
 export default function Page() {
+    const [language, setLanguage] = useState("fr");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>(projectsData as Project[]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -65,24 +66,32 @@ export default function Page() {
         filterProjects();
     }, [filterProjects]);
 
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("lang") || "fr";
+        setLanguage(savedLanguage);
+    }, []);
+
     return (
         <>
-            <Home />
+            <Home lang={language} />
             <main className='px-4 md:px-8'>
                 <div className='md:grid md:gap-9 md:grid-cols-5'>
                     <ResearchBar
+                        lang={language}
                         projects={projectsData as Project[]}
                         placeholder='Recherchez...'
+                        placeholderEn='Search...'
                         onProjectsFiltered={(searchTerm) => setSearchTerm(searchTerm)}
                     />
-                    <Tags tags={selectedCategories} onTagRemove={handleTagRemove} />
+                    <Tags lang={language} tags={selectedCategories} onTagRemove={handleTagRemove} />
                 </div>
                 <Categories
+                    lang={language}
                     selectedCategories={selectedCategories}
                     onCategoriesSelected={handleCategoriesSelected}
                     onSortByDate={sortProjectsByDate}
                 />
-                <Filtered projects={filteredProjects} />
+                <Filtered lang={language} projects={filteredProjects} />
             </main>
         </>
     );

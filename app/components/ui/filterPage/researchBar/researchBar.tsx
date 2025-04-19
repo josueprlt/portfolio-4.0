@@ -8,12 +8,14 @@ interface Project {
 }
 
 interface ResearchBarProps {
+    lang: string;
     placeholder: string;
+    placeholderEn: string;
     projects: Project[];
     onProjectsFiltered: (searchTerm: string) => void;
 }
 
-const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder, onProjectsFiltered }) => {
+const ResearchBar: React.FC<ResearchBarProps> = ({ lang, placeholder, placeholderEn, onProjectsFiltered }) => {
     const [inputValue, setInputValue] = useState('');
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const researchBarRef = useRef<HTMLDivElement>(null);
@@ -69,7 +71,7 @@ const ResearchBar: React.FC<ResearchBarProps> = ({ placeholder, onProjectsFilter
             <SearchIcon className='w-4 h-4 md:w-8 md:h-8' />
             <input
                 type="text"
-                placeholder={placeholder}
+                placeholder={lang === 'en' ? placeholderEn : placeholder}
                 value={inputValue}
                 onChange={handleInputChange}
                 className='w-full h-full font-sans font-bold text-base placeholder:text-base placeholder:text-secondaryGray md:placeholder:text-xl md:text-xl'

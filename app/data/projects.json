@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "Lagendary",
+    "titleEn": "Lagendary",
     "date": "2024-11-23",
     "category": [
       "Scolaire",
@@ -15,6 +16,7 @@
       "trello"
     ],
     "description": "Ce projet scolaire a été réalisé en groupe de cinq personnes. L'objectif principal était de développer une application web permettant de planifier des événements, de les rejoindre et de visualiser les événements à venir sous forme de calendrier. Nous avons travaillé de manière agile, en suivant des sprints, sur une période de plus de quatre semaines. En plus de ces fonctionnalités principales, l'application proposait la création de compte, la connexion des utilisateurs, ainsi qu'un espace backoffice réservé aux administrateurs.",
+    "descriptionEn": "This school project was carried out in a group of five people. The main objective was to develop a web application that allows users to plan events, join them, and view upcoming events in a calendar format. We worked in an agile manner, following sprints, over a period of more than four weeks. In addition to these main features, the application offered account creation, user login, and a back office space reserved for administrators.",
     "image": [
       "/Lagendary/lagendary1.png",
       "/Lagendary/lagendary2.png",
@@ -39,6 +41,7 @@
   {
     "id": 2,
     "title": "Monstercat",
+    "titleEn": "Monstercat",
     "date": "2024-12-20",
     "category": [
       "Scolaire",
@@ -49,6 +52,7 @@
       "vscode"
     ],
     "description": "Ce projet scolaire a été réalisé en solo. L’objectif était de reproduire le site Monstercat en suivant les consignes du site Frontend Practice. Il s’agissait d’un projet purement frontend, dont la mission était d’intégrer la maquette fournie. Les technologies utilisées sont ReactJS et TailwindCSS.",
+    "descriptionEn": "This school project was carried out individually. The objective was to reproduce the Monstercat website by following the guidelines of the Frontend Practice site. It was a purely frontend project, with the mission of integrating the provided mockup. The technologies used are ReactJS and TailwindCSS.",
     "image": [
       "/Monstercat/monstercat1.png",
       "/Monstercat/monstercat2.png",
@@ -64,6 +68,7 @@
   {
     "id": 3,
     "title": "Editeur VR",
+    "titleEn": "VR Editor",
     "date": "2024-11-04",
     "category": [
       "Scolaire",
@@ -76,6 +81,7 @@
       "vscode"
     ],
     "description": "Ce projet scolaire a été réalisé en binôme. L’objectif était de développer une application web style Uptale, permettant à tout utilisateur de créer ses propres visites en réalité virtuelle. Il était possible d’ajouter des éléments interactifs dans la scène, tels que des portes, des messages ou encore des images. Le projet a été développé en HTML, CSS et JavaScript, en utilisant la librairie A-Frame.",
+    "descriptionEn": "This school project was carried out in pairs. The objective was to develop a web application similar to Uptale, allowing any user to create their own virtual reality tours. It was possible to add interactive elements in the scene, such as doors, messages, or images. The project was developed using HTML, CSS, and JavaScript, utilizing the A-Frame library.",
     "image": [
       "/Sae501-VR/interface1.png",
       "/Sae501-VR/interface2.png",
@@ -92,6 +98,7 @@
   {
     "id": 4,
     "title": "HellCleaner VR",
+    "titleEn": "HellCleaner VR",
     "date": "2024-02-23",
     "category": [
       "Scolaire",
@@ -104,6 +111,7 @@
       "vscode"
     ],
     "description": "Ce projet scolaire a été réalisé en trinôme. L’objectif était de concevoir un mini-jeu en réalité virtuelle sur le thème de la pollution et du recyclage. Le joueur pouvait se déplacer en VR ou de manière classique dans une ville où des déchets étaient dispersés. L’objectif du jeu était de collecter tous les déchets, placés aléatoirement sur la carte. Le projet a été développé en HTML, CSS et JavaScript, à l’aide de la bibliothèque A-Frame.",
+    "descriptionEn": "This school project was carried out in a group of three. The objective was to design a mini-game in virtual reality on the theme of pollution and recycling. The player could move in VR or in a classic way in a city where waste was scattered. The goal of the game was to collect all the waste, placed randomly on the map. The project was developed using HTML, CSS, and JavaScript, using the A-Frame library.",
     "image": [
       "/Sae402-VR/city1.png",
       "/Sae402-VR/city2.png",
@@ -127,6 +135,7 @@
   {
     "id": 5,
     "title": "Challenge BenjaminCode",
+    "titleEn": "BenjaminCode Challenge",
     "date": "2023-09-13",
     "category": [
       "Personnel",
@@ -137,6 +146,7 @@
       "vscode"
     ],
     "description": "Dans le cadre personnel, le but était de retranscrire en html, css et javascript la template de la page qui nous était donnée par BenjaminCode.",
+    "descriptionEn": "In a personal context, the goal was to transcribe in HTML, CSS, and JavaScript the template of the page that was given to us by BenjaminCode.",
     "image": [
       "/BenjaminCode/projetaccueil.png",
       "/BenjaminCode/projetfinis.png",
@@ -148,6 +158,7 @@
   {
     "id": 6,
     "title": "Intégration composant vidéo",
+    "titleEn": "Video Component Integration",
     "date": "2024-07-22",
     "category": [
       "Personnel",
@@ -158,6 +169,7 @@
       "vscode"
     ],
     "description": "Personnellement, j'ai découvert une maquette de ce composant sur Internet. Cela m'a donné l'idée de l'intégrer en utilisant React et Sass.",
+    "descriptionEn": "Personally, I discovered a mockup of this component on the Internet. This gave me the idea to integrate it using React and Sass.",
     "image": [
       "/ComposantVideo/component-video-img-1.png",
       "/ComposantVideo/component-video-img-2.png",
@@ -172,6 +184,7 @@
   {
     "id": 7,
     "title": "Portfolio Web 2023-2024",
+    "titleEn": "Web Portfolio 2023-2024",
     "date": "2023-06-01",
     "category": [
       "Personnel",
@@ -184,6 +197,7 @@
       "vscode"
     ],
     "description": "Ceci est la première version de mon portfolio en ligne. Cependant, il ne reflétait plus mes compétences actuelles ni mon style. Il était donc temps de créer un nouveau portfolio, plus moderne et représentatif de mon évolution. Ce projet personnel a été réalisé dans le but de mettre en avant mes compétences et les projets que j'ai réalisés.",
+    "descriptionEn": "This is the first version of my online portfolio. However, it no longer reflected my current skills or my style. It was therefore time to create a new portfolio, more modern and representative of my evolution. This personal project was created to showcase my skills and the projects I have completed.",
     "image": [
       "/Portfolio2023/portfolio1.png",
       "/Portfolio2023/portfolio2.png",
@@ -197,6 +211,7 @@
   {
     "id": 8,
     "title": "Site OnePage",
+    "titleEn": "OnePage Site",
     "date": "2022-12-03",
     "category": [
       "Scolaire",
@@ -207,6 +222,7 @@
       "vscode"
     ],
     "description": "Dans le contexte scolaire, il m'a été demandé de créer un site OnePage en utilisant trois langages de programmation : le HTML, le CSS et le JavaScript. J'ai dû me familiariser avec un environnement de développement intégré tel que Visual Studio Code. Ce site n'est plus disponible.",
+    "descriptionEn": "In the school context, I was asked to create a OnePage site using three programming languages: HTML, CSS, and JavaScript. I had to familiarize myself with an integrated development environment such as Visual Studio Code. This site is no longer available.",
     "image": [
       "/SiteOnePage/screen2.png",
       "/SiteOnePage/screen3.png",
@@ -221,6 +237,7 @@
   {
     "id": 9,
     "title": "Site de trailer de films",
+    "titleEn": "Movie Trailer Site",
     "date": "2023-03-22",
     "category": [
       "Scolaire",
@@ -233,6 +250,7 @@
       "vscode"
     ],
     "description": "Dans le cadre scolaire, nous devions concevoir un site intégrant une base de données. La structure du projet était divisée en plusieurs parties nommées 'itérations'.",
+    "descriptionEn": "In the school context, we had to design a site that integrates a database. The structure of the project was divided into several parts called 'iterations'.",
     "image": [
       "/Sae203/website1.png",
       "/Sae203/website2.png",
@@ -255,6 +273,7 @@
   {
     "id": 10,
     "title": "Nouveau Portfolio Web",
+    "titleEn": "New Web Portfolio",
     "date": "2025-03-15",
     "category": [
       "Personnel",
@@ -265,6 +284,7 @@
       "vscode"
     ],
     "description": "Mon nouveau portfolio arbore un style plus moderne et soigné. Comme l’ancien, ce projet personnel a pour objectif de présenter mes compétences et mes réalisations. Cependant, cette nouvelle version se distingue par un design plus élégant et des fonctionnalités avancées, comme un filtre pour trier les projets. Ce portfolio a été développé avec Next.js et TailwindCSS.",
+    "descriptionEn": "My new portfolio features a more modern and polished style. Like the previous one, this personal project aims to showcase my skills and achievements. However, this new version stands out with a more elegant design and advanced features, such as a filter to sort projects. This portfolio was developed with Next.js and TailwindCSS.",
     "image": [
       "/Portfolio2025/portfolio1.png",
       "/Portfolio2025/portfolio2.png",
@@ -277,6 +297,7 @@
   {
     "id": 11,
     "title": "Coachella",
+    "titleEn": "Coachella",
     "date": "2024-01-07",
     "category": [
       "Scolaire",
@@ -284,6 +305,7 @@
       "figma"
     ],
     "description": "Au cours de cette SAé, il était demandé de produire un prototype, un post Instagram ainsi qu'une vidéo de teaser pour l'évènement du concert Coachella.",
+    "descriptionEn": "During this SAé, we were asked to produce a prototype, an Instagram post, and a teaser video for the Coachella concert event.",
     "image": [
       "/Coachella/coachella.png",
       "/Coachella/analyse.png",
@@ -301,6 +323,7 @@
   {
     "id": 12,
     "title": "Nuit du code MMI",
+    "titleEn": "Night of Code MMI",
     "date": "2025-01-09",
     "category": [
       "Scolaire",
@@ -311,6 +334,7 @@
       "vscode"
     ],
     "description": "La Nuit du Code s'est déroulée le 9 avril 2025. Nous étions un groupe de six étudiants, composé d'étudiants de deuxième et de troisième année du BUT MMI de Limoges. Nous disposions de 24 heures pour réaliser un petit jeu avec p5.play sur le thème de la sobriété numérique. Le projet consistait à livrer à la fois un jeu fonctionnel et une landing page. Nous avons choisi de créer un clicker game.",
+    "descriptionEn": "The Night of Code took place on April 9, 2025. We were a group of six students, composed of second and third-year students from the MMI BUT in Limoges. We had 24 hours to create a small game with p5.play on the theme of digital sobriety. The project consisted of delivering both a functional game and a landing page. We chose to create a clicker game.",
     "image": [
       "/Nuitmmi/nuitmmi1.png",
       "/Nuitmmi/nuitmmi2.png",

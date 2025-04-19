@@ -9,10 +9,11 @@ interface Competence {
 }
 
 interface CompetenceCardProps {
+    lang: string;
     competence: Competence;
 }
 
-const CompetenceCard: React.FC<CompetenceCardProps> = ({ competence }) => {
+const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, competence }) => {
     const iconRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
     const linkRef = useRef<HTMLAnchorElement>(null);
@@ -25,8 +26,8 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ competence }) => {
 
             const tl = gsap.timeline({ paused: true });
             tl.to(iconRef.current, { scale: 0.5, duration: 0.3, ease: Power2.easeOut }, 0)
-              .to(titleRef.current, { y: 50, duration: 0.3, ease: Power2.easeOut }, 0)
-              .to(linkRef.current, { y: -50, duration: 0.3, ease: Power2.easeOut }, 0);
+                .to(titleRef.current, { y: 50, duration: 0.3, ease: Power2.easeOut }, 0)
+                .to(linkRef.current, { y: -50, duration: 0.3, ease: Power2.easeOut }, 0);
 
             const card = iconRef.current.closest('.competence-element');
             if (card) {
@@ -57,8 +58,9 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ competence }) => {
                 {competence.title === "trello" && <TrelloIcon className='w-32 h-32' />}
                 {competence.title === "figma" && <FigmaIcon className='w-32 h-32' />}
             </div>
-            <Link ref={linkRef} href="/filter" className='absolute -bottom-10 flex gap-2 px-2 py-1 text-background bg-foreground rounded-full'>
-                Voir projets associés
+            <Link ref={linkRef} href="/filter" className='absolute -bottom-10 text-sm flex items-center gap-2 px-2 py-1 text-background bg-foreground rounded-full'>
+                {lang === 'fr' && 'Voir projets associés'}
+                {lang === 'en' && 'See related projects'}
                 <BoxArrowIcon />
             </Link>
         </div>
