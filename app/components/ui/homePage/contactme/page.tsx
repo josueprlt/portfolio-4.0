@@ -24,9 +24,10 @@ interface Social {
 
 interface ContactMeProps {
     lang: string;
+    colorMode: string;
 }
 
-const ContactMe: React.FC<ContactMeProps> = ({ lang }) => {
+const ContactMe: React.FC<ContactMeProps> = ({ lang, colorMode }) => {
     const [arrayOfSocialMedias] = useState<Social[]>([
         {
             name: 'Github',
@@ -58,12 +59,12 @@ const ContactMe: React.FC<ContactMeProps> = ({ lang }) => {
     ]);
 
     return (
-        <div className={`${ClimateCrisis.className} mt-20 md:mt-60`} id="contact">
+        <div className={`${ClimateCrisis.className} mt-20 md:mt-60 pb-20 md:pb-60`} id="contact">
             {lang === 'fr' && <Title className="text-center">Contactez moi</Title>}
             {lang === 'en' && <Title className="text-center">Contact me</Title>}
 
-            <ComponentMobile data={arrayOfSocialMedias} />
-            <ComponentDesktop data={arrayOfSocialMedias} />
+            <ComponentMobile data={arrayOfSocialMedias} colorMode={colorMode} />
+            <ComponentDesktop data={arrayOfSocialMedias} colorMode={colorMode} />
         </div>
     );
 }

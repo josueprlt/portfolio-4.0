@@ -13,10 +13,11 @@ interface Project {
 
 interface ProjectListProps {
     lang: string;
+    colorMode: string;
     project: Project;
 }
 
-const ProjectList: React.FC<ProjectListProps> = ({ lang, project }) => {
+const ProjectList: React.FC<ProjectListProps> = ({ lang, colorMode, project }) => {
     gsap.registerPlugin(ScrollTrigger);
     const liRef = useRef<HTMLLIElement>(null);
     const arrowIconRef = useRef<HTMLDivElement>(null);
@@ -123,12 +124,12 @@ const ProjectList: React.FC<ProjectListProps> = ({ lang, project }) => {
     return (
         <li ref={liRef} className="relative flex justify-between items-center cursor-pointer overflow-hidden">
             <Link href={`/project/${project.id}`} className="flex justify-between items-center w-full py-5 px-5 md:py-10">
-                <p ref={textRef} className="z-10 p-0 rounded-full bg-background">
+                <p ref={textRef} className={`z-10 p-0 rounded-full ${colorMode === "light" && "bg-background"} ${colorMode === "dark" && "bg-foreground"}`}>
                     {lang === "fr" && project.title}
                     {lang === "en" && project.titleEn}
                 </p>
-                <div ref={arrowIconRef} className="z-10 p-0 rounded-full bg-background">
-                    <ButtonArrowIcon fill="#262330" className="w-4 h-4 md:w-7 md:h-7" />
+                <div ref={arrowIconRef} className={`z-10 p-0 rounded-full ${colorMode === "light" && "bg-background"} ${colorMode === "dark" && "bg-foreground"}`}>
+                    <ButtonArrowIcon fill={colorMode === 'light' ? '#262330' : '#FEEFDD'} className="w-4 h-4 md:w-7 md:h-7" />
                 </div>
                 <img
                     ref={imgRef}
@@ -136,7 +137,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ lang, project }) => {
                     src={project.image[0]}
                     className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0"
                 />
-                <span ref={lineRef} className="absolute bottom-0 left-0 block w-full h-0.5 bg-foreground z-10"></span>
+                <span ref={lineRef} className={`absolute bottom-0 left-0 block w-full h-0.5 z-10 ${colorMode === "light" && "bg-foreground"} ${colorMode === "dark" && "bg-background"}`}></span>
             </Link>
         </li>
     );

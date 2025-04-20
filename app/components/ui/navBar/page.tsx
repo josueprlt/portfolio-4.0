@@ -8,9 +8,10 @@ import Drawer from './drawerNavbar';
 
 interface NavbarProps {
     lang: string;
+    colorMode: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ lang }) => {
+const Navbar: React.FC<NavbarProps> = ({ lang, colorMode }) => {
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
     const logoIconRef = useRef<SVGSVGElement>(null);
@@ -61,8 +62,10 @@ const Navbar: React.FC<NavbarProps> = ({ lang }) => {
                     duration: 0.75,
                     ease: Power2.easeOut,
                 });
+                console.log(colorMode);
+                
                 gsap.to(logoIcon.querySelector('path'), {
-                    fill: 'currentColor',
+                    fill: colorMode === 'dark' ? '#FEEFDD' : '#262330',
                     duration: 0.75,
                     ease: Power2.easeOut,
                 });
@@ -76,24 +79,24 @@ const Navbar: React.FC<NavbarProps> = ({ lang }) => {
                 linkElement.removeEventListener("mouseleave", handleMouseLeave);
             };
         }
-    }, []);
+    }, [colorMode]);
 
     return (
         <nav className="flex justify-between items-center">
             <Link href="/" ref={linkRef} className="relative flex justify-center items-center p-2">
-                <LogoIcon ref={logoIconRef} className="relative w-8 h-8 z-20" />
+                <LogoIcon ref={logoIconRef} fill={colorMode === 'light' ? '#262330' : '#FEEFDD'} className="relative w-8 h-8 z-20" />
             </Link>
             <div
                 ref={divNavbarRef}
                 className="flex justify-center items-end flex-col gap-2 h-full cursor-pointer"
                 onClick={() => onOpenChange(true)}
             >
-                <span className="block w-12 h-1 bg-foreground rounded-full"></span>
-                <span className="block w-8 h-1 bg-foreground rounded-full"></span>
-                <span className="block w-5 h-1 bg-foreground rounded-full"></span>
+                <span className={`block w-12 h-1 rounded-full ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
+                <span className={`block w-8 h-1 rounded-full ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
+                <span className={`block w-5 h-1 rounded-full ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
             </div>
 
-            <Drawer lang={lang} isOpen={isOpen} onOpenChange={onOpenChange} />
+            <Drawer lang={lang} colorMode={colorMode} isOpen={isOpen} onOpenChange={onOpenChange} />
         </nav>
     );
 }

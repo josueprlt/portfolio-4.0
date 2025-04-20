@@ -23,9 +23,10 @@ interface Social {
 
 interface ComponentMobileProps {
     data: Social[];
+    colorMode: string;
 }
 
-export default function ComponentMobile({ data }: ComponentMobileProps) {
+export default function ComponentMobile({ data, colorMode }: ComponentMobileProps) {
     gsap.registerPlugin(ScrollTrigger);
     const sectionRefs = useRef<(HTMLElement | null)[]>([]);
     const socialRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -71,20 +72,20 @@ export default function ComponentMobile({ data }: ComponentMobileProps) {
 
     return (
         <>
-            <section ref={(el) => { if (el) sectionRefs.current[0] = el }} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl md:text-3xl`}>
+            <section ref={(el) => { if (el) sectionRefs.current[0] = el }} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 rounded-2xl md:text-3xl ${colorMode === 'light' && 'outline-foreground'} ${colorMode === 'dark' && 'outline-background'}`}>
                 <div ref={(el) => { if (el) contactRefs.current[0] = el }} className="absolute top-0 left-0 flex justify-center items-center gap-6 bg-gradient-to-r from-primary to-secondary w-full h-1/2 rounded-2xl">
                     <PhoneIcon className="w-6 md:w-11 text-background" />
                     <p className="text-background">07 57 49 21 89</p>
                 </div>
                 <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="flex justify-center h-1/2 items-center gap-6 rounded-2xl">
                     <EmailIcon className="w-6 md:w-11 hidden sm:block" />
-                    <p className="text-foreground">josue.perrault@etu.unilim.fr</p>
+                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josue.perrault@etu.unilim.fr</p>
                 </div>
             </section>
 
-            <section ref={(el) => { if (el) sectionRefs.current[1] = el }} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-40 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl before:absolute before:top-1/2 before:w-full before:h-0.5 before:bg-foreground md:text-3xl`}>
+            <section ref={(el) => { if (el) sectionRefs.current[1] = el }} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-40 mt-14 md:mt-40 outline outline-2 -outline-offset-2 rounded-2xl before:absolute before:top-1/2 before:w-full before:h-0.5 md:text-3xl ${colorMode === 'light' && 'outline-foreground before:bg-foreground'} ${colorMode === 'dark' && 'outline-background before:bg-background'}`}>
                 {data.map((social, index) => (
-                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`absolute px-4 flex justify-center items-center gap-4 bg-background ${social.linkProperty} ${social.color}`}>
+                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`absolute px-4 flex justify-center items-center gap-4 ${social.linkProperty} ${social.color} ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
                         {social.icon}
                         <p>{social.name}</p>
                     </Link>

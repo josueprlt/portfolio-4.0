@@ -2,7 +2,7 @@ import { forwardRef, SVGAttributes } from "react";
 
 const LogoIcon = forwardRef<SVGSVGElement, { fill?: string } & SVGAttributes<SVGElement>>(({ fill = 'currentColor', ...props }, ref) => {
     return (
-        <svg ref={ref} width="24" height="31" viewBox="0 0 24 31" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg ref={ref} width="24" height="31" viewBox="0 0 24 31" fill={fill} xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
                 <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#226CE0" />

@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import Head from "next/head";
 import Footer from "@/app/components/ui/footer/page";
 import Navbar from "@/app/components/ui/navBar/page";
@@ -29,11 +29,17 @@ export default function RootLayout({
   const [scrollWidth, setScrollWidth] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const [language, setLanguage] = useState("fr");
-  
+  const [colorMode, setColorMode] = useState("light");
+
   useEffect(() => {
     const savedLanguage = localStorage.getItem("lang") || "fr";
     setLanguage(savedLanguage);
 
+    const savedColorMode = localStorage.getItem("color-mode") || "light";
+    setColorMode(savedColorMode);
+  }, [colorMode]);
+  
+  useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -84,14 +90,14 @@ export default function RootLayout({
           <>
             <section
               ref={sectionRef}
-              className={`fixed -top-20 left-0 right-0 z-50 bg-background`}
+              className={`fixed -top-20 left-0 right-0 z-50 ${colorMode === "light" && 'bg-background'} ${colorMode === "dark" && 'bg-foreground'}`}
             >
               <span
                 style={{ width: `${scrollWidth}%` }}
                 className="block h-1 bg-gradient-to-r from-primary to-secondary"
               ></span>
               <div className="px-4 py-1 md:px-8 md:py-2">
-                <Navbar lang={language} />
+                <Navbar lang={language} colorMode={colorMode} />
               </div>
             </section>
             {children}

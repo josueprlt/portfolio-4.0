@@ -23,9 +23,10 @@ interface Social {
 
 interface ComponentDesktopProps {
     data: Social[];
+    colorMode: string;
 }
 
-export default function ComponentDesktop({ data }: ComponentDesktopProps) {
+export default function ComponentDesktop({ data, colorMode }: ComponentDesktopProps) {
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLDivElement>(null);
     const socialRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -66,10 +67,10 @@ export default function ComponentDesktop({ data }: ComponentDesktopProps) {
     }, []);
 
     return (
-        <section ref={sectionRef} className={`${DelaGothicOne.className} hidden xl:grid relative h-80 grid grid-cols-2 mt-14 md:mt-40 outline outline-2 -outline-offset-2 outline-foreground rounded-2xl text-3xl`}>
+        <section ref={sectionRef} className={`${DelaGothicOne.className} hidden xl:grid relative h-80 grid grid-cols-2 mt-14 md:mt-40 outline outline-2 -outline-offset-2 rounded-2xl text-3xl ${colorMode === 'light' && 'outline-foreground'} ${colorMode === 'dark' && 'outline-background'}`}>
             <div ref={(el) => { if (el) contactRefs.current[0] = el }} className="flex justify-center items-center h-48 gap-6 rounded-2xl">
                 <EmailIcon className="w-11" />
-                <p className="text-foreground">josue.perrault@etu.unilim.fr</p>
+                <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josue.perrault@etu.unilim.fr</p>
             </div>
             <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="relative bg-gradient-to-r from-primary to-secondary h-48 rounded-2xl">
                 <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center gap-6">
@@ -80,7 +81,7 @@ export default function ComponentDesktop({ data }: ComponentDesktopProps) {
 
             <div className="absolute -bottom-4 w-full flex justify-around items-center">
                 {data.map((social, index) => (
-                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl`}>
+                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
                         {social.icon}
                         <p>{social.name}</p>
                     </Link>

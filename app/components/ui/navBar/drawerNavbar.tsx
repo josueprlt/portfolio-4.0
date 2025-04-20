@@ -19,12 +19,13 @@ const ClimateCrisis = Climate_Crisis({
 });
 
 interface DrawerProps {
-    lang?: string;
+    lang: string;
+    colorMode: string;
     onOpenChange?: (open: boolean) => void;
     isOpen?: boolean;
 }
 
-const DrawerNavbar: React.FC<DrawerProps> = ({ lang, onOpenChange, isOpen }) => {
+const DrawerNavbar: React.FC<DrawerProps> = ({ lang, colorMode, onOpenChange, isOpen }) => {
     const [arrayOfLinks] = useState([
         { href: '/', labelFr: 'Accueil', labelEn: 'Home' },
         { href: '/profil', labelFr: 'Mon Profil', labelEn: 'My Profile' },
@@ -71,7 +72,7 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, onOpenChange, isOpen }) => 
     };
 
     return (
-        <Drawer className="h-full rounded-se-none rounded-ee-none bg-background" backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Drawer className={`h-full rounded-se-none rounded-ee-none ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`} backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
             <DrawerContent className="p-5">
                 <DrawerHeader className="flex flex-row items-right gap-4">
                     <LogoIcon className="relative w-6 h-6 z-20" />
@@ -94,7 +95,7 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, onOpenChange, isOpen }) => 
                                         {lang === 'en' && link.labelEn}
                                     </p>
                                     <ButtonArrowIcon ref={(el) => { if (el) iconRefs.current[index] = el }} className="w-4 h-4" />
-                                    <span ref={(el) => { if (el) spanRefs.current[index] = el }} className='absolute bottom-0 left-0 h-px bg-foreground'></span>
+                                    <span ref={(el) => { if (el) spanRefs.current[index] = el }} className={`absolute bottom-0 left-0 h-px ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                                 </Link>
                             </li>
                         ))}

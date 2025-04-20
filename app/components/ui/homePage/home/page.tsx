@@ -13,9 +13,10 @@ const ClimateCrisis = Climate_Crisis({
 
 interface HomeProps {
     lang: string;
+    colorMode: string;
 }
 
-const Home: React.FC<HomeProps> = ({ lang }) => {
+const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const spanFirstnameRef = useRef<HTMLSpanElement>(null);
     const spanNameRef = useRef<HTMLSpanElement>(null);
@@ -113,12 +114,12 @@ const Home: React.FC<HomeProps> = ({ lang }) => {
     };
 
     return (
-        <header className={`${ClimateCrisis.className} flex flex-col justify-between h-screen p-4 md:p-8`}>
-            <NavBar lang={lang} />
+        <header className={`${ClimateCrisis.className} flex flex-col justify-between h-screen p-4 md:p-8 ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
+            <NavBar lang={lang} colorMode={colorMode} />
 
             <section className="flex flex-col justify-center items-center gap-16">
                 <div className="flex items-center flex-col gap-7">
-                    <h1 ref={h1Ref} className="text-3xl flex justify-center items-center flex-wrap gap-2 text-center md:gap-4 md:text-7xl">
+                    <h1 ref={h1Ref} className={`text-3xl flex justify-center items-center flex-wrap gap-2 text-center md:gap-4 md:text-7xl ${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>
                         <span ref={spanFirstnameRef} className="animate-span">Josué</span>
                         <span ref={hiddenSpanRef} className="hidden-span w-0 h-0 rounded-full bg-gradient-to-b from-primary to-secondary"></span>
                         <span ref={spanNameRef} className="animate-span">Perrault</span>
@@ -132,16 +133,16 @@ const Home: React.FC<HomeProps> = ({ lang }) => {
                     onMouseEnter={handleArrowMouseEnter}
                     onMouseLeave={handleArrowMouseLeave}
                 >
-                    <span ref={span1Ref} className="block w-1.5 h-16 bg-foreground rounded-xl"></span>
-                    <span ref={span2Ref} className="absolute -bottom-[3.5px] right-[19px] w-1.5 h-8 bg-foreground rounded-xl rotate-45"></span>
-                    <span ref={span3Ref} className="absolute -bottom-[3.5px] left-[19px] w-1.5 h-8 bg-foreground rounded-xl -rotate-45"></span>
+                    <span ref={span1Ref} className={`block w-1.5 h-16 rounded-xl ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
+                    <span ref={span2Ref} className={`absolute -bottom-[3.5px] right-[19px] w-1.5 h-8 rounded-xl rotate-45 ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
+                    <span ref={span3Ref} className={`absolute -bottom-[3.5px] left-[19px] w-1.5 h-8 rounded-xl -rotate-45 ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                 </Link>
             </section>
 
-            <section className="flex justify-left items-center gap-3">
+            <section className={`flex justify-left items-center gap-3 ${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>
                 <h2 ref={portfolioRef} className="text-xl md:text-4xl">Portfolio</h2>
-                <span ref={lineRef} className="w-full h-px bg-foreground translate-y-[7px] md:translate-y-[13px]"></span>
-                <h2 ref={yearRef} className="flex items-center gap-2 text-xl before:block before:w-2 before:h-2 before:bg-foreground before:rounded-full before:translate-y-[5px] md:text-4xl md:before:w-4 md:before:h-4 md:before:translate-y-[6px]">2025</h2>
+                <span ref={lineRef} className={`w-full h-px translate-y-[7px] md:translate-y-[13px] ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
+                <h2 ref={yearRef} className={`flex items-center gap-2 text-xl before:block before:w-2 before:h-2 ${colorMode === 'light' && 'before:bg-foreground'} ${colorMode === 'dark' && 'before:bg-background'} before:rounded-full before:translate-y-[5px] md:text-4xl md:before:w-4 md:before:h-4 md:before:translate-y-[6px]`}>2025</h2>
             </section>
         </header>
     );

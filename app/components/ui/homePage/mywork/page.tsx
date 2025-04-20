@@ -21,9 +21,10 @@ const DelaGothicOne = Dela_Gothic_One({
 
 interface MyWorkProps {
     lang: string;
+    colorMode: string;
 }
 
-const MyWork: React.FC<MyWorkProps> = ({ lang }) => {
+const MyWork: React.FC<MyWorkProps> = ({ lang, colorMode }) => {
     gsap.registerPlugin(ScrollTrigger);
     const btnRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +53,7 @@ const MyWork: React.FC<MyWorkProps> = ({ lang }) => {
 
             <ul id="ul-list" className={`${DelaGothicOne.className} relative text-base text-justify pt-14 md:pt-40 md:text-4xl`}>
                 {projects.slice(0, 5).map((project, index) => (
-                    <ProjectList lang={lang} project={project} key={index} />
+                    <ProjectList lang={lang} colorMode={colorMode} project={project} key={index} />
                 ))}
             </ul>
             <div ref={btnRef} className={`${DelaGothicOne.className} flex justify-center mt-24`}>

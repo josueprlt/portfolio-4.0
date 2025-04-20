@@ -71,9 +71,9 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
     if (!isLoading) return null;
 
     return (
-        <div className="w-full h-screen flex items-center justify-center bg-background">
+        <div className={`w-full h-screen flex items-center justify-center bg-background`}>
             <div ref={loadingRef}>
-                <LogoIcon className="w-10 h-10" />
+                <LogoIcon fill="" className="w-10 h-10" />
             </div>
         </div>
     );

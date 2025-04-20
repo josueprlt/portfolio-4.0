@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({ href, theme, children, onClick }) => {
             }
 
             const handleMouseEnter = () => {
-                const outlineColor = theme === 'gradient' ? '#FF4000' : theme === 'primary' ? '#262330' : theme === 'github' ? '#181717' : 'transparent';
+                const outlineColor = theme === 'gradient' ? '#FF4000' : theme === 'primary' ? '#262330' : theme === 'github' ? '#181717' : theme === 'secondary' ? '#FEEFDD' : 'transparent';
 
                 if (divRef.current) {
                     gsap.to(divRef.current, {

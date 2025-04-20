@@ -21,9 +21,10 @@ const ClimateCrisis = Climate_Crisis({
 
 interface AboutMeProps {
     lang: string;
+    colorMode: string;
 }
 
-const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
+const AboutMe: React.FC<AboutMeProps> = ({ lang, colorMode }) => {
     gsap.registerPlugin(ScrollTrigger);
     const divRef = useRef<HTMLDivElement>(null);
     const visiteRef = useRef<HTMLParagraphElement>(null);
@@ -107,7 +108,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
     }, []);
 
     return (
-        <div className={`${ClimateCrisis.className} pt-10 mt-10 md:pt-30 md:mt-30`} id="aboutme">
+        <div className={`${ClimateCrisis.className} pt-20 md:pt-60 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-ground'}`} id="aboutme">
             {lang === 'fr' && <Title className="text-center">À propos de moi</Title>}
             {lang === 'en' && <Title className="text-center">About me</Title>}
 
