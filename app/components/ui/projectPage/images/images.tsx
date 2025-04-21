@@ -30,6 +30,7 @@ interface HomeProps {
 export default function Images({ project }: HomeProps) {
     gsap.registerPlugin(ScrollTrigger);
     const [lang, setLang] = useState("fr");
+    const [colorMode, setColorMode] = useState("light");
     const [projet, setProjet] = useState<Project | null>(null);
     const [visibleImages, setVisibleImages] = useState<number>(2);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -40,7 +41,10 @@ export default function Images({ project }: HomeProps) {
     useEffect(() => {
         const savedLanguage = localStorage.getItem("lang") || "fr";
         setLang(savedLanguage);
-    }, []);
+
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+    }, [colorMode]);
 
     useEffect(() => {
         setProjet(project);
@@ -95,7 +99,7 @@ export default function Images({ project }: HomeProps) {
     }
 
     return (
-        <div className="mb-28 md:mb-0">
+        <div className={`px-4 md:px-8 mb-28 md:mb-0 pb-20 md:pb-60 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
             <Title className="text-start">Images</Title>
 
             <section

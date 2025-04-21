@@ -29,9 +29,10 @@ function isOdd(num: number) {
 
 interface MyJourneyProps {
     lang: string;
+    colorMode: string;
 }
 
-const MyJourney: React.FC<MyJourneyProps> = ({ lang }) => {
+const MyJourney: React.FC<MyJourneyProps> = ({ lang, colorMode }) => {
     gsap.registerPlugin(ScrollTrigger);
     const spansContainerRef = useRef<HTMLDivElement>(null);
     const beforeRef = useRef<HTMLDivElement>(null);
@@ -94,12 +95,13 @@ const MyJourney: React.FC<MyJourneyProps> = ({ lang }) => {
 
             <section className={`${DelaGothicOne.className} text-lg pt-14 md:pt-40 text-center`}>
                 <div ref={spansContainerRef} className="relative flex justify-center items-center flex-col">
-                    <div ref={beforeRef} className="absolute -top-[31px] w-8 h-8 bg-foreground rounded-full"></div>
-                    <span className="journey-span block w-2 h-52 bg-foreground md:h-96"></span>
+                    <div ref={beforeRef} className={`absolute -top-[31px] w-8 h-8 rounded-full ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></div>
+                    <span className={`journey-span block w-2 h-52 md:h-96 ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                     {journeys.map((journey, index) => (
                         <div key={index} className="flex flex-col justify-center items-center">
                             <JourneyCard
                                 lang={lang}
+                                colorMode={colorMode}
                                 date={journey.date}
                                 dateEn={journey.dateEn}
                                 title={journey.title}
@@ -110,10 +112,10 @@ const MyJourney: React.FC<MyJourneyProps> = ({ lang }) => {
                                 imageAlt="image experience"
                                 position={isOdd(index)}
                             />
-                            <span className="journey-span block w-2 h-52 bg-foreground md:h-96"></span>
+                            <span className={`journey-span block w-2 h-52 md:h-96 ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                         </div>
                     ))}
-                    <div ref={afterRef} className="absolute -bottom-[31px] w-8 h-8 bg-foreground rounded-full"></div>
+                    <div ref={afterRef} className={`absolute -bottom-[31px] w-8 h-8 rounded-full ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></div>
                 </div>
             </section>
         </div>

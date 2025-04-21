@@ -6,12 +6,13 @@ import { gsap, Power1 } from "gsap";
 
 interface CategoriesProps {
     lang: string,
+    colorMode: string,
     selectedCategories: string[];
     onCategoriesSelected: (selectedCategories: string[]) => void;
     onSortByDate: (order: 'asc' | 'desc') => void;
 }
 
-export default function Categories({ lang, selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
+export default function Categories({ lang, colorMode, selectedCategories, onCategoriesSelected, onSortByDate }: CategoriesProps) {
     const [tools] = useState(
         [
             { name: "html", icon: <HtmlIcon className="w-6 h-6" /> },
@@ -69,12 +70,12 @@ export default function Categories({ lang, selectedCategories, onCategoriesSelec
     };
 
     return (
-        <div ref={CategoriesRef} className='flex items-center overflow-auto mt-4 px-4 gap-2 h-14 bg-filter rounded-3xl md:h-16 md:mt-9'>
+        <div ref={CategoriesRef} className={`flex items-center overflow-auto mt-4 px-4 gap-2 h-14 rounded-3xl md:h-16 md:mt-9 ${colorMode === 'light' && 'bg-filter'} ${colorMode === 'dark' && 'bg-[#1F1D27]'}`}>
             <ul className="w-full flex justify-around">
                 <Dropdown>
                     <DropdownTrigger>
                         <li className="flex items-center p-2 gap-2 cursor-pointer">
-                            <WrenchIcon className="md:w-6 md:h-6" />
+                            <WrenchIcon fill={colorMode === 'light' ? '#262330' : '#feefdd'} className="md:w-6 md:h-6" />
                             <p className="font-sans font-bold md:text-xl">
                                 {lang === 'fr' && "Outils"}
                                 {lang === 'en' && "Tools"}
@@ -99,7 +100,7 @@ export default function Categories({ lang, selectedCategories, onCategoriesSelec
                 <Dropdown>
                     <DropdownTrigger>
                         <li className="flex items-center p-2 gap-2 cursor-pointer">
-                            <CadreIcon className="md:w-6 md:h-6" />
+                            <CadreIcon fill={colorMode === 'light' ? '#262330' : '#feefdd'} className="md:w-6 md:h-6" />
                             <p className="font-sans font-bold md:text-xl">
                                 {lang === 'fr' && "Cadres"}
                                 {lang === 'en' && "Executives"}
@@ -124,7 +125,7 @@ export default function Categories({ lang, selectedCategories, onCategoriesSelec
                 <Dropdown>
                     <DropdownTrigger>
                         <li className="flex items-center p-2 gap-2 cursor-pointer">
-                            <CalendarIcon className="md:w-6 md:h-6" />
+                            <CalendarIcon fill={colorMode === 'light' ? '#262330' : '#feefdd'} className="md:w-6 md:h-6" />
                             <p className="font-sans font-bold md:text-xl">{selectedDateLabel}</p>
                         </li>
                     </DropdownTrigger>

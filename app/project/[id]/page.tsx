@@ -29,7 +29,7 @@ export default function Page({ params }: { params: Params }) {
             <Home project={project} />
             <ProjectBar id={id} projects={projects} />
 
-            <main className="px-4 md:px-8">
+            <main>
                 <Tools project={project} />
                 <Description project={project} />
                 <Images project={project} />

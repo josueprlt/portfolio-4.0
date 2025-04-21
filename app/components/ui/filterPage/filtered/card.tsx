@@ -11,13 +11,14 @@ const DelaGothicOne = Dela_Gothic_One({
 
 interface CardProps {
     lang: string;
+    colorMode: string;
     img: string;
     title: string;
     titleEn: string;
     href: string;
 }
 
-const Card: React.FC<CardProps> = ({ lang, img, title, titleEn, href }) => {
+const Card: React.FC<CardProps> = ({ lang, colorMode, img, title, titleEn, href }) => {
     const imageRef = useRef<HTMLImageElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
     
@@ -55,7 +56,7 @@ const Card: React.FC<CardProps> = ({ lang, img, title, titleEn, href }) => {
         <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className='w-full rounded-3xl border-2 border-foreground overflow-hidden card-element'
+            className={`w-full rounded-3xl border-2 overflow-hidden card-element ${colorMode === 'light' && 'border-foreground'} ${colorMode === 'dark' && 'border-background'}`}
         >
             <Link href={href} className="w-full h-full">
                 <div className='h-40 rounded-b-3xl md:h-56 overflow-hidden'>

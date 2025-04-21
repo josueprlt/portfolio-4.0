@@ -5,11 +5,12 @@ import { gsap, Power1 } from 'gsap';
 
 interface TagsProps {
     lang: string;
+    colorMode: string;
     tags: string[];
     onTagRemove: (tag: string) => void;
 }
 
-export default function Tags({ lang, tags, onTagRemove }: TagsProps) {
+export default function Tags({ lang,colorMode, tags, onTagRemove }: TagsProps) {
     const tagsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -22,11 +23,11 @@ export default function Tags({ lang, tags, onTagRemove }: TagsProps) {
     }, []);
 
     return (
-        <div ref={tagsRef} className='flex items-center overflow-auto mt-4 px-4 gap-2 w-full h-14 bg-filter rounded-3xl md:h-16 md:mt-0 md:col-span-3'>
+        <div ref={tagsRef} className={`flex items-center overflow-auto mt-4 px-4 gap-2 w-full h-14 rounded-3xl md:h-16 md:mt-0 md:col-span-3 ${colorMode === 'light' && 'bg-filter'} ${colorMode === 'dark' && 'bg-[#1F1D27]'}`}>
             {tags.length > 0 ? (
                 <>
                     {tags.map((tag, index) => (
-                        <Tag key={index} name={tag} onClick={() => onTagRemove(tag)} />
+                        <Tag key={index} colorMode={colorMode} name={tag} onClick={() => onTagRemove(tag)} />
                     ))}
                 </>
             ) : (

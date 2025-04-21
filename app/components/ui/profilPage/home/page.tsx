@@ -20,9 +20,10 @@ const ClimateCrisis = Climate_Crisis({
 
 interface HomeProps {
     lang: string;
+    colorMode: string;
 }
 
-const Home: React.FC<HomeProps> = ({ lang }) => {
+const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
     gsap.registerPlugin(ScrollTrigger);
     const linkRef = useRef<HTMLDivElement>(null);
 
@@ -47,8 +48,8 @@ const Home: React.FC<HomeProps> = ({ lang }) => {
     }, []);
 
     return (
-        <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 md:pb-0`}>
-            <NavBar lang={lang} />
+        <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 md:pb-0 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
+            <NavBar lang={lang} colorMode={colorMode} />
 
             <section className={`${DelaGothicOne.className} mt-20 md:px-10`}>
                 <Paragraph

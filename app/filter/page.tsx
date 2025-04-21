@@ -20,6 +20,7 @@ interface Project {
 
 export default function Page() {
     const [language, setLanguage] = useState("fr");
+    const [colorMode, setColorMode] = useState("light");
     const [filteredProjects, setFilteredProjects] = useState<Project[]>(projectsData as Project[]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -69,29 +70,34 @@ export default function Page() {
     useEffect(() => {
         const savedLanguage = localStorage.getItem("lang") || "fr";
         setLanguage(savedLanguage);
-    }, []);
+
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+    }, [colorMode]);
 
     return (
         <>
-            <Home lang={language} />
-            <main className='px-4 md:px-8'>
+            <Home lang={language} colorMode={colorMode} />
+            <main className={`px-4 md:px-8 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
                 <div className='md:grid md:gap-9 md:grid-cols-5'>
                     <ResearchBar
                         lang={language}
+                        colorMode={colorMode}
                         projects={projectsData as Project[]}
                         placeholder='Recherchez...'
                         placeholderEn='Search...'
                         onProjectsFiltered={(searchTerm) => setSearchTerm(searchTerm)}
                     />
-                    <Tags lang={language} tags={selectedCategories} onTagRemove={handleTagRemove} />
+                    <Tags lang={language} colorMode={colorMode} tags={selectedCategories} onTagRemove={handleTagRemove} />
                 </div>
                 <Categories
                     lang={language}
+                    colorMode={colorMode}
                     selectedCategories={selectedCategories}
                     onCategoriesSelected={handleCategoriesSelected}
                     onSortByDate={sortProjectsByDate}
                 />
-                <Filtered lang={language} projects={filteredProjects} />
+                <Filtered lang={language} colorMode={colorMode} projects={filteredProjects} />
             </main>
         </>
     );

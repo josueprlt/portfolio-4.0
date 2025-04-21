@@ -27,13 +27,17 @@ interface HomeProps {
 
 export default function Tools({ project }: HomeProps) {
     const [lang, setLang] = useState("fr");
+    const [colorMode, setColorMode] = useState("light");
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("lang") || "fr";
         setLang(savedLanguage);
-    }, []);
+
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+    }, [colorMode]);
 
     useEffect(() => {
         if (sectionRef.current) {
@@ -62,7 +66,7 @@ export default function Tools({ project }: HomeProps) {
     const filteredTechnos = project.category.filter((cat) => technos.includes(cat.toLowerCase()));
 
     return (
-        <div className="pt-10 md:pt-30">
+        <div className={`px-4 md:px-8 pt-10 md:pt-30 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
             {lang === 'fr' && <Title className="text-start">Outils</Title>}
             {lang === 'en' && <Title className="text-start">Tools</Title>}
 

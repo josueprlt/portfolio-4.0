@@ -37,6 +37,7 @@ interface HomeProps {
 
 export default function Home({ project }: HomeProps) {
     const [lang, setLang] = useState("fr");
+    const [colorMode, setColorMode] = useState("light");
     const numberOfItem = 2;
     const sectionRef = useRef<HTMLDivElement>(null);
     const h1Ref = useRef<HTMLHeadingElement>(null);
@@ -48,7 +49,10 @@ export default function Home({ project }: HomeProps) {
     useEffect(() => {
         const savedLanguage = localStorage.getItem("lang") || "fr";
         setLang(savedLanguage);
-    }, []);
+
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+    }, [colorMode]);
 
     useEffect(() => {
         if (document.fonts) {
@@ -104,8 +108,8 @@ export default function Home({ project }: HomeProps) {
     const remainingCount = project.category.length - numberOfItem;
 
     return (
-        <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8`}>
-            <NavBar lang={lang} />
+        <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 ${colorMode === "light" && "bg-background"} ${colorMode === "dark" && "bg-foreground"}`}>
+            <NavBar lang={lang} colorMode={colorMode} />
 
             <section
                 ref={sectionRef}

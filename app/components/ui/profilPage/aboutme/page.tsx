@@ -15,9 +15,10 @@ const DelaGothicOne = Dela_Gothic_One({
 
 interface AboutMeProps {
     lang: string;
+    colorMode: string;
 }
 
-const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
+const AboutMe: React.FC<AboutMeProps> = ({ lang, colorMode }) => {
     const paraRef = useRef<HTMLDivElement>(null);
     const imageRefs = useRef<HTMLImageElement[]>([]);
     const linkRef = useRef<HTMLDivElement>(null);
@@ -97,7 +98,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ lang }) => {
                 </div>
 
                 <div className="md:order-1 flex justify-center items-center relative h-72 mt-14 md:mt-0 md:h-full">
-                    <HalteresIcon className="max-h-56" />
+                    <HalteresIcon fill={colorMode === 'light' ? '#262330' : '#FEEFDD'} className="max-h-56" />
                 </div>
             </div>
         </section>

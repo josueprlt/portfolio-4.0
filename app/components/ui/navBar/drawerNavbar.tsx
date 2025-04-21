@@ -6,6 +6,8 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@
 import { LogoIcon, ButtonArrowIcon, LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
 import { gsap, Power2 } from 'gsap';
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
+import ColorSelector from "@/app/components/ui/colorSelector/page";
+import LangSelector from "@/app/components/ui/langSelector/page";
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -102,20 +104,26 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, colorMode, onOpenChange, is
                     </ul>
                 </DrawerBody>
                 <DrawerFooter className="flex flex-row justify-start items-center gap-4">
-                    {arrayOfSocials.map((social, index) => (
-                        <Link
-                            key={index}
-                            href={social.href}
-                            onMouseEnter={() => handleSocialMouseEnter(index)}
-                            onMouseLeave={() => handleSocialMouseLeave(index)}
-                            onClick={handleLinkClick}
-                            target='_blank'
-                        >
-                            <div ref={(el) => { if (el) socialRefs.current[index] = el }}>
-                                {social.icon}
-                            </div>
-                        </Link>
-                    ))}
+                    <div>
+                        <LangSelector lang={lang} />
+                        <ColorSelector lang={lang} />
+                    </div>
+                    <div className='flex flex-row gap-4'>
+                        {arrayOfSocials.map((social, index) => (
+                            <Link
+                                key={index}
+                                href={social.href}
+                                onMouseEnter={() => handleSocialMouseEnter(index)}
+                                onMouseLeave={() => handleSocialMouseLeave(index)}
+                                onClick={handleLinkClick}
+                                target='_blank'
+                            >
+                                <div ref={(el) => { if (el) socialRefs.current[index] = el }}>
+                                    {social.icon}
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>

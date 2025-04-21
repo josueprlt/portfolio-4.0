@@ -20,6 +20,7 @@ const DelaGothicOne = Dela_Gothic_One({
 
 interface JourneyCardProps {
     lang: string;
+    colorMode: string;
     date: string;
     dateEn: string;
     title: string;
@@ -31,7 +32,7 @@ interface JourneyCardProps {
     position: 'left' | 'right';
 }
 
-const JourneyCard: React.FC<JourneyCardProps> = ({ lang, date, dateEn, title, titleEn, description, descriptionEn, imageSrc, imageAlt, position }) => {
+const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn, title, titleEn, description, descriptionEn, imageSrc, imageAlt, position }) => {
     gsap.registerPlugin(ScrollTrigger);
     const isLeft = position === 'left';
 
@@ -115,13 +116,13 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, date, dateEn, title, ti
 
     return (
         <>
-            <div ref={dateRef} className="relative px-2 py-1 md:px-6 md:py-4 rounded-full text-background bg-foreground md:cursor-default cursor-pointer" onClick={handleClick}>
+            <div ref={dateRef} className={`relative px-2 py-1 md:px-6 md:py-4 rounded-full md:cursor-default cursor-pointer ${colorMode === 'light' && 'bg-foreground text-background'} ${colorMode === 'dark' && 'bg-background text-foreground'}`} onClick={handleClick}>
                 <p>
                     {lang === 'fr' && date}
                     {lang === 'en' && dateEn}
                 </p>
-                <div className={`hidden md:absolute md:flex md:flex-row ${isLeft ? 'md:-left-[270px]' : 'md:-right-[270px]'} ${isLeft ? 'md:text-end' : 'md:text-start'} md:w-64 md:text-foreground lg:w-80 ${isLeft ? 'lg:-left-[350px]' : 'lg:-right-[350px]'} xl:w-96 ${isLeft ? 'xl:-left-[475px]' : 'xl:-right-[475px]'} 2xl:w-[500px] ${isLeft ? '2xl:-left-[600px]' : '2xl:-right-[600px]'}`}>
-                    <span ref={spanRef} className={`absolute ${isLeft ? 'right-0' : ''} w-1 bg-gradient-to-b from-primary to-secondary h-full bg-foreground rounded-lg`}></span>
+                <div className={`hidden md:absolute md:flex md:flex-row ${isLeft ? 'md:-left-[270px]' : 'md:-right-[270px]'} ${isLeft ? 'md:text-end' : 'md:text-start'} md:w-64 lg:w-80 ${isLeft ? 'lg:-left-[350px]' : 'lg:-right-[350px]'} xl:w-96 ${isLeft ? 'xl:-left-[475px]' : 'xl:-right-[475px]'} 2xl:w-[500px] ${isLeft ? '2xl:-left-[600px]' : '2xl:-right-[600px]'} ${colorMode === 'light' && 'md:text-foreground'} ${colorMode === 'dark' && 'md:text-background'}`}>
+                    <span ref={spanRef} className={`absolute ${isLeft ? 'right-0' : ''} w-1 bg-gradient-to-b from-primary to-secondary h-full rounded-lg ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                     <div className={`relative ${isLeft ? 'pr-4' : 'pl-4'}`}>
                         <h3 ref={titleRef}>
                             {lang === 'fr' && title}
@@ -134,18 +135,18 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, date, dateEn, title, ti
 
                         <div ref={imageRef} className="absolute w-full left-0 -top-64 flex flex-col items-center">
                             <img src={imageSrc} alt={imageAlt} className="w-full h-56 object-cover rounded-lg" />
-                            <span ref={beforeRef} className="block w-px h-4 bg-foreground"></span>
+                            <span ref={beforeRef} className={`block w-px h-4 ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <HeroModal isOpen={isOpen} onClose={onClose} className='bg-background'>
+            <HeroModal isOpen={isOpen} onClose={onClose} className={`${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
                 <ModalContent>
                     <ModalHeader className={`${DelaGothicOne.className} flex flex-col`}>
                         {lang === 'fr' && title}
                         {lang === 'en' && titleEn}
-                        <span className={`block w-full h-0.5 mt-4 bg-gradient-to-l from-primary to-secondary bg-foreground rounded-lg`}></span>
+                        <span className={`block w-full h-0.5 mt-4 bg-gradient-to-l from-primary to-secondary rounded-lg ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                     </ModalHeader>
                     <ModalBody>
                         <p>

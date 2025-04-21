@@ -33,11 +33,15 @@ export default function Description({ project }: DescriptionProps) {
     gsap.registerPlugin(ScrollTrigger);
     const linkRef = useRef<HTMLDivElement>(null);
     const [lang, setLang] = useState("fr");
+    const [colorMode, setColorMode] = useState("light");
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("lang") || "fr";
         setLang(savedLanguage);
-    }, []);
+
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+    }, [colorMode]);
 
     useEffect(() => {
         if (!project || !linkRef.current) return;
@@ -62,7 +66,7 @@ export default function Description({ project }: DescriptionProps) {
     }
 
     return (
-        <div className="pt-10 md:pt-36">
+        <div className={`px-4 md:px-8 pt-10 md:pt-36 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
             <Title className="text-start">Description</Title>
 
             <div className={`${DelaGothicOne.className} mt-5 md:mt-10`}>
@@ -73,7 +77,7 @@ export default function Description({ project }: DescriptionProps) {
                     className="text-justify md:text-4xl"
                 />
 
-                <div className='flex justify-center flex-wrap gap-10 my-10 md:my-32' ref={linkRef}>
+                <div className={`flex justify-center flex-wrap gap-10 py-10 md:py-32 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`} ref={linkRef}>
                     {project.link == null ? (
                         <Button href="" theme="disabled">
                             {lang === 'fr' && "Project pas disponible"}

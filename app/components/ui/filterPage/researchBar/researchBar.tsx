@@ -9,13 +9,14 @@ interface Project {
 
 interface ResearchBarProps {
     lang: string;
+    colorMode: string;
     placeholder: string;
     placeholderEn: string;
     projects: Project[];
     onProjectsFiltered: (searchTerm: string) => void;
 }
 
-const ResearchBar: React.FC<ResearchBarProps> = ({ lang, placeholder, placeholderEn, onProjectsFiltered }) => {
+const ResearchBar: React.FC<ResearchBarProps> = ({ lang, colorMode, placeholder, placeholderEn, onProjectsFiltered }) => {
     const [inputValue, setInputValue] = useState('');
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const researchBarRef = useRef<HTMLDivElement>(null);
@@ -67,8 +68,8 @@ const ResearchBar: React.FC<ResearchBarProps> = ({ lang, placeholder, placeholde
     }, [inputValue]);
 
     return (
-        <div ref={researchBarRef} className='flex items-center px-4 gap-4 h-14 border-2 border-foreground rounded-3xl md:h-16 md:col-span-2'>
-            <SearchIcon className='w-4 h-4 md:w-8 md:h-8' />
+        <div ref={researchBarRef} className={`flex items-center px-4 gap-4 h-14 border-2 rounded-3xl md:h-16 md:col-span-2 ${colorMode === 'light' && 'border-foreground'} ${colorMode === 'dark' && 'border-background'}`}>
+            <SearchIcon fill={colorMode === 'light' ? '#262330' : '#feefdd'} className='w-4 h-4 md:w-8 md:h-8' />
             <input
                 type="text"
                 placeholder={lang === 'en' ? placeholderEn : placeholder}

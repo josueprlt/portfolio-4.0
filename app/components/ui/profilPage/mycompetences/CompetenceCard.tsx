@@ -10,10 +10,11 @@ interface Competence {
 
 interface CompetenceCardProps {
     lang: string;
+    colorMode: string;
     competence: Competence;
 }
 
-const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, competence }) => {
+const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, colorMode, competence }) => {
     const iconRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
     const linkRef = useRef<HTMLAnchorElement>(null);
@@ -38,7 +39,7 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, competence }) => 
     }, []);
 
     return (
-        <div key={competence.id} className='competence-element relative w-full h-48 flex justify-center items-center rounded-xl border border-2 border-foreground overflow-hidden'>
+        <div key={competence.id} className={`competence-element relative w-full h-48 flex justify-center items-center rounded-xl border border-2 overflow-hidden ${colorMode === 'light' && 'border-foreground'} ${colorMode === 'dark' && 'border-background'}`}>
             <p ref={titleRef} className='absolute -top-10 text-xl capitalize'>{competence.title}</p>
             <div ref={iconRef}>
                 {competence.title === "html" && <HtmlIcon className='w-32 h-32' />}
@@ -58,10 +59,10 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, competence }) => 
                 {competence.title === "trello" && <TrelloIcon className='w-32 h-32' />}
                 {competence.title === "figma" && <FigmaIcon className='w-32 h-32' />}
             </div>
-            <Link ref={linkRef} href="/filter" className='absolute -bottom-10 text-sm flex items-center gap-2 px-2 py-1 text-background bg-foreground rounded-full'>
+            <Link ref={linkRef} href="/filter" className={`absolute -bottom-10 text-sm flex items-center gap-2 px-2 py-1 rounded-full ${colorMode === 'light' && 'text-background bg-foreground'} ${colorMode === 'dark' && 'text-foreground bg-background'}`}>
                 {lang === 'fr' && 'Voir projets associés'}
                 {lang === 'en' && 'See related projects'}
-                <BoxArrowIcon />
+                <BoxArrowIcon fill={colorMode === 'light' ? '#FEEFDD' : '#262330'} />
             </Link>
         </div>
     );

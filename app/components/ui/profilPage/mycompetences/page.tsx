@@ -20,9 +20,10 @@ const ClimateCrisis = Climate_Crisis({
 
 interface MyCompetencesProps {
     lang: string;
+    colorMode: string;
 }
 
-const MyCompetences: React.FC<MyCompetencesProps> = ({ lang }) => {
+const MyCompetences: React.FC<MyCompetencesProps> = ({ lang, colorMode }) => {
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -53,7 +54,7 @@ const MyCompetences: React.FC<MyCompetencesProps> = ({ lang }) => {
 
             <section ref={sectionRef} className={`${DelaGothicOne.className} flex flex-col gap-4 pt-14 md:pt-40 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6`}>
                 {competences.map((competence, index) => (
-                    <CompetenceCard lang={lang} key={index} competence={competence} />
+                    <CompetenceCard lang={lang} colorMode={colorMode} key={index} competence={competence} />
                 ))}
             </section>
         </div>

@@ -4,10 +4,11 @@ import { CloseIcon } from '@/app/components/ui/icons';
 
 interface TagProps {
     name: string;
+    colorMode: string;
     onClick: () => void;
 }
 
-const Tag: React.FC<TagProps> = ({ name, onClick }) => {
+const Tag: React.FC<TagProps> = ({ name, colorMode, onClick }) => {
     const divRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
 
@@ -34,7 +35,7 @@ const Tag: React.FC<TagProps> = ({ name, onClick }) => {
             ease: Power2.easeOut,
         });
         gsap.to(textRef.current, {
-            color: '#262330',
+            color: colorMode === 'light' ? '#262330' : '#FEEFDD',
             duration: 0.3,
             ease: Power2.easeOut,
         });
@@ -42,7 +43,7 @@ const Tag: React.FC<TagProps> = ({ name, onClick }) => {
 
     return (
         <button
-            className='relative flex items-center whitespace-nowrap p-[5px] pr-4 gap-2 border-2 border-foreground rounded-full overflow-hidden min-w-max'
+            className={`relative flex items-center whitespace-nowrap p-[5px] pr-4 gap-2 border-2 rounded-full overflow-hidden min-w-max ${colorMode === 'light' && 'border-foreground'} ${colorMode === 'dark' && 'border-background'}`}
             onClick={onClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
