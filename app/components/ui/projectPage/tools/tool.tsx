@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { ReactNode, ComponentType, useRef } from 'react';
 import { gsap } from 'gsap';
 import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon, TrelloIcon, FigmaIcon } from "@/app/components/ui/icons";
 import Link from "next/link";
@@ -6,28 +6,34 @@ import Link from "next/link";
 interface ToolProps {
     tech: string;
     className: string;
+    colorMode: string;
 }
 
-const iconMapping = {
-    html: { icon: HtmlIcon, colorClass: 'text-html' },
-    css: { icon: CssIcon, colorClass: 'text-css' },
-    javascript: { icon: JsIcon, colorClass: 'text-js' },
-    sass: { icon: SassIcon, colorClass: 'text-sass' },
-    php: { icon: PhpIcon, colorClass: 'text-php' },
-    react: { icon: ReactIcon, colorClass: 'text-react' },
-    symfony: { icon: SymfonyIcon, colorClass: 'text-symfony' },
-    bootstrap: { icon: BootstrapIcon, colorClass: 'text-bootstrap' },
-    mui: { icon: MuiIcon, colorClass: 'text-mui' },
-    tailwind: { icon: TailwindIcon, colorClass: 'text-tailwind' },
-    next: { icon: NextIcon, colorClass: 'text-next' },
-    docker: { icon: DockerIcon, colorClass: 'text-docker' },
-    github: { icon: GithubIcon, colorClass: 'text-github' },
-    vscode: { icon: VscodeIcon, colorClass: 'text-vscode' },
-    trello: { icon: TrelloIcon, colorClass: 'text-trello' },
-    figma: { icon: FigmaIcon, colorClass: 'text-figma' },
-};
+interface IconData {
+    icon: ComponentType<any>; // Only React components
+    colorClass: string;
+}
 
-const Tool: React.FC<ToolProps> = ({ tech, className }) => {
+const Tool: React.FC<ToolProps> = ({ tech, className, colorMode }) => {
+    const iconMapping: Record<string, IconData> = {
+        html: { icon: HtmlIcon, colorClass: 'text-html' },
+        css: { icon: CssIcon, colorClass: 'text-css' },
+        javascript: { icon: JsIcon, colorClass: 'text-js' },
+        sass: { icon: SassIcon, colorClass: 'text-sass' },
+        php: { icon: PhpIcon, colorClass: 'text-php' },
+        react: { icon: ReactIcon, colorClass: 'text-react' },
+        symfony: { icon: SymfonyIcon, colorClass: colorMode === 'dark' ? 'text-background' : 'text-symfony' },
+        bootstrap: { icon: BootstrapIcon, colorClass: 'text-bootstrap' },
+        mui: { icon: MuiIcon, colorClass: 'text-mui' },
+        tailwind: { icon: TailwindIcon, colorClass: 'text-tailwind' },
+        next: { icon: NextIcon, colorClass: colorMode === 'dark' ? 'text-background' : 'text-next' },
+        docker: { icon: DockerIcon, colorClass: 'text-docker' },
+        github: { icon: GithubIcon, colorClass: colorMode === 'dark' ? 'text-background' : 'text-github' }, // Pass props later
+        vscode: { icon: VscodeIcon, colorClass: 'text-vscode' },
+        trello: { icon: TrelloIcon, colorClass: 'text-trello' },
+        figma: { icon: FigmaIcon, colorClass: 'text-figma' },
+    };
+
     const linkRef = useRef<HTMLAnchorElement>(null);
     const iconRef = useRef<SVGSVGElement>(null);
     const textRef = useRef<HTMLSpanElement>(null);
@@ -72,7 +78,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
             ease: "power2.out",
         });
     };
-    
+
     const iconData = iconMapping[tech as keyof typeof iconMapping];
 
     if (!iconData) {
@@ -91,8 +97,14 @@ const Tool: React.FC<ToolProps> = ({ tech, className }) => {
         >
             {IconComponent && (
                 <>
-                    <div className='relative w-[32px] h-[32px]'>
-                        <IconComponent ref={iconRef} className="absolute top-0 left-0 w-8 h-8 z-0" />
+                    <div className="relative w-[32px] h-[32px]">
+                        <IconComponent
+                            ref={iconRef}
+                            className="absolute top-0 left-0 w-8 h-8 z-0"
+                            {...(tech === 'github' && { fill: colorMode === 'dark' ? '#FEEFDD' : '#181717' })}
+                            {...(tech === 'next' && { fill: colorMode === 'dark' ? '#FEEFDD' : '#181717' })}
+                            {...(tech === 'symfony' && { fill: colorMode === 'dark' ? '#FEEFDD' : 'black' })}
+                        />
                     </div>
                     <span ref={textRef} className={`${colorClass} opacity-0`}>{tech}</span>
                 </>

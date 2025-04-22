@@ -29,9 +29,10 @@ export default function Footer() {
 
             <div className="text-center md:flex md:flex-row-reverse md:text-start md:justify-between">
                 <div className="flex flex-col items-center text-background md:gap-16 md:items-end">
-
-                    <LangSelector lang={lang} />
-                    <ColorSelector lang={lang} />
+                    <div className="flex items-center flex-col gap-4 mb-4 md:items-end">
+                        <LangSelector lang={lang} />
+                        <ColorSelector lang={lang} />
+                    </div>
 
                     <BretagneIcon className="w-10 md:w-28" />
                 </div>

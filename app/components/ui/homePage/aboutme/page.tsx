@@ -108,7 +108,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ lang, colorMode }) => {
     }, []);
 
     return (
-        <div className={`${ClimateCrisis.className} pt-20 md:pt-60 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-ground'}`} id="aboutme">
+        <div className={`${ClimateCrisis.className} mt-10 pt-10 md:mt-32 md:pt-[64px] ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-ground'}`} id="aboutme">
             {lang === 'fr' && <Title className="text-center">À propos de moi</Title>}
             {lang === 'en' && <Title className="text-center">About me</Title>}
 

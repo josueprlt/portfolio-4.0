@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
+import { Dela_Gothic_One } from 'next/font/google';
+import { SunIcon, MoonIcon } from '@/app/components/ui/icons';
 
 const DelaGothicOne = Dela_Gothic_One({
     subsets: ['latin'],
@@ -29,22 +30,28 @@ const ColorSelector: React.FC<colorSelectorProps> = ({ lang }) => {
     };
 
     return (
-        <select
-            name="lang"
-            id="lang"
-            value={colorMode}
-            onChange={handleColorModeChange}
-            className={`${DelaGothicOne.className} block w-40 mt-1 bg-background text-foreground border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50`}
-        >
-            <option value="light" className="bg-white text-foreground">
-                {lang === 'fr' && 'Clair'}
-                {lang === 'en' && 'Light'}
-            </option>
-            <option value="dark" className="bg-white text-foreground">
-                {lang === 'fr' && 'Foncé'}
-                {lang === 'en' && 'Dark'}
-            </option>
-        </select>
+        <div className="relative">
+            <div className="absolute top-[14px] left-[14px] rounded-full overflow-hidden">
+                {colorMode === 'light' && <SunIcon />}
+                {colorMode === 'dark' && <MoonIcon />}
+            </div>
+            <select
+                name="lang"
+                id="lang"
+                value={colorMode}
+                onChange={handleColorModeChange}
+                className={`${DelaGothicOne.className} block pr-3 py-2 pl-10 bg-background text-foreground border-2 border-foreground rounded-full`}
+            >
+                <option value="light" className="bg-white text-foreground">
+                    {lang === 'fr' && 'Clair'}
+                    {lang === 'en' && 'Light'}
+                </option>
+                <option value="dark" className="bg-white text-foreground">
+                    {lang === 'fr' && 'Foncé'}
+                    {lang === 'en' && 'Dark'}
+                </option>
+            </select>
+        </div>
     );
 }
 

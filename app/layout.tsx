@@ -83,7 +83,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}
       >
         {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
         {!loading && (

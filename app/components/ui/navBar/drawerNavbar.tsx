@@ -35,10 +35,10 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, colorMode, onOpenChange, is
         { href: '/filter', labelFr: 'Filtre', labelEn: 'Filter' },
         { href: '/#contact', labelFr: 'Contact', labelEn: 'Contact' },
     ]);
-    const [arrayOfSocials] = useState([
-        { href: 'https://github.com/josueprlt', icon: <GithubIcon className="w-10 h-10" /> },
-        { href: 'https://www.linkedin.com/in/josu%C3%A9-perrault-2a663a265', icon: <LinkedinIcon className="w-10 h-10" /> },
-        { href: 'https://gitlab.com/josueprlt', icon: <GitlabIcon className="w-10 h-10" /> },
+    const [arrayOfSocials, setArrayOfSocials] = useState([
+        { href: 'https://github.com/josueprlt', name: 'Github', icon: <GithubIcon className="w-10 h-10" fill={colorMode === 'dark' ? '#FEEFDD' : '#171818'} /> },
+        { href: 'https://www.linkedin.com/in/josu%C3%A9-perrault-2a663a265', name: 'Linkedin', icon: <LinkedinIcon className="w-10 h-10" /> },
+        { href: 'https://gitlab.com/josueprlt', name: 'Gitlab', icon: <GitlabIcon className="w-10 h-10" /> },
     ]);
 
     const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -73,6 +73,20 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, colorMode, onOpenChange, is
         }
     };
 
+    useEffect(() => {
+        setArrayOfSocials((prev) =>
+          prev.map((social) => {
+            if (social.name === "Github") {
+              return {
+                ...social,
+                icon: <GithubIcon className="w-6 md:w-9" fill={colorMode === "dark" ? "#FEEFDD" : "#262330"} />,
+              };
+            }
+            return social;
+          })
+        );
+      }, [colorMode]);
+
     return (
         <Drawer className={`h-full rounded-se-none rounded-ee-none ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`} backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
             <DrawerContent className="p-5">
@@ -103,8 +117,8 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, colorMode, onOpenChange, is
                         ))}
                     </ul>
                 </DrawerBody>
-                <DrawerFooter className="flex flex-row justify-start items-center gap-4">
-                    <div>
+                <DrawerFooter className="flex flex-col justify-start items-start gap-16">
+                    <div className='flex flex-col gap-4'>
                         <LangSelector lang={lang} />
                         <ColorSelector lang={lang} />
                     </div>

@@ -72,7 +72,7 @@ export default function Tools({ project }: HomeProps) {
 
             <section ref={sectionRef} className={`${DelaGothicOne.className} mt-5 flex flex-wrap gap-4 md:mt-10`}>
                 {filteredTechnos.map((tech, index) => (
-                    <Tool key={index} tech={tech} className="tool-element" />
+                    <Tool key={index} tech={tech} className="tool-element" colorMode={colorMode} />
                 ))}
             </section>
         </div>

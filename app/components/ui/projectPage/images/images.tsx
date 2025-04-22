@@ -99,7 +99,7 @@ export default function Images({ project }: HomeProps) {
     }
 
     return (
-        <div className={`px-4 md:px-8 mb-28 md:mb-0 pb-20 md:pb-60 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
+        <div className={`px-4 md:px-8 md:mb-0 pb-28 md:pb-60 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
             <Title className="text-start">Images</Title>
 
             <section

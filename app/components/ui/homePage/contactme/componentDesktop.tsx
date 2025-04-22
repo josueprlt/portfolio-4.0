@@ -16,6 +16,7 @@ const DelaGothicOne = Dela_Gothic_One({
 interface Social {
     link: string;
     color: string;
+    colorDark?: string;
     linkProperty: string;
     icon: React.ReactNode;
     name: string;
@@ -81,7 +82,7 @@ export default function ComponentDesktop({ data, colorMode }: ComponentDesktopPr
 
             <div className="absolute -bottom-4 w-full flex justify-around items-center">
                 {data.map((social, index) => (
-                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`${social.color} ${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
+                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`${social.linkProperty} px-4 flex justify-center items-center gap-4 bg-background text-3xl ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && social.colorDark ? social.colorDark : social.color} ${colorMode === 'dark' && 'bg-foreground'}`}>
                         {social.icon}
                         <p>{social.name}</p>
                     </Link>

@@ -16,6 +16,7 @@ const DelaGothicOne = Dela_Gothic_One({
 interface Social {
     link: string;
     color: string;
+    colorDark?: string;
     linkProperty: string;
     icon: React.ReactNode;
     name: string;
@@ -69,7 +70,7 @@ export default function ComponentMobile({ data, colorMode }: ComponentMobileProp
             });
         }
     }, []);
-
+    
     return (
         <>
             <section ref={(el) => { if (el) sectionRefs.current[0] = el }} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-52 mt-14 md:mt-40 outline outline-2 -outline-offset-2 rounded-2xl md:text-3xl ${colorMode === 'light' && 'outline-foreground'} ${colorMode === 'dark' && 'outline-background'}`}>
@@ -85,7 +86,15 @@ export default function ComponentMobile({ data, colorMode }: ComponentMobileProp
 
             <section ref={(el) => { if (el) sectionRefs.current[1] = el }} className={`${DelaGothicOne.className} block xl:hidden relative flex justify-center items-end h-40 mt-14 md:mt-40 outline outline-2 -outline-offset-2 rounded-2xl before:absolute before:top-1/2 before:w-full before:h-0.5 md:text-3xl ${colorMode === 'light' && 'outline-foreground before:bg-foreground'} ${colorMode === 'dark' && 'outline-background before:bg-background'}`}>
                 {data.map((social, index) => (
-                    <Link href={social.link} key={index} target="_blank" ref={(el) => { if (el) socialRefs.current[index] = el }} className={`absolute px-4 flex justify-center items-center gap-4 ${social.linkProperty} ${social.color} ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
+                    <Link
+                        href={social.link}
+                        key={index}
+                        target="_blank"
+                        ref={(el) => {
+                            if (el) socialRefs.current[index] = el;
+                        }}
+                        className={`absolute px-4 flex justify-center items-center gap-4 ${social.linkProperty} ${colorMode === 'dark' && social.colorDark ? social.colorDark : social.color} ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}
+                    >
                         {social.icon}
                         <p>{social.name}</p>
                     </Link>
