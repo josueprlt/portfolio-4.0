@@ -39,7 +39,7 @@ const LangSelector: React.FC<langSelectorProps> = ({ lang }) => {
                 id="lang"
                 value={lang}
                 onChange={handleLanguageChange}
-                className={`${DelaGothicOne.className} block pr-3 py-2 pl-12 bg-background text-foreground border-2 border-foreground rounded-full shadow-sm`}
+                className={`${DelaGothicOne.className} block pr-3 py-2 pl-12 bg-background text-foreground border-2 border-foreground rounded-full shadow-sm cursor-pointer`}
             >
                 <option value="fr" className="bg-white text-foreground">
                     {lang === 'fr' && 'Français'}

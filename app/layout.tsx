@@ -85,7 +85,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} relative antialiased ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}
       >
-        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} colorMode={colorMode} />}
         {!loading && (
           <>
             <section

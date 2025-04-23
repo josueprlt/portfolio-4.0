@@ -40,7 +40,7 @@ const ColorSelector: React.FC<colorSelectorProps> = ({ lang }) => {
                 id="lang"
                 value={colorMode}
                 onChange={handleColorModeChange}
-                className={`${DelaGothicOne.className} block pr-3 py-2 pl-10 bg-background text-foreground border-2 border-foreground rounded-full`}
+                className={`${DelaGothicOne.className} block pr-3 py-2 pl-10 bg-background text-foreground border-2 border-foreground rounded-full cursor-pointer`}
             >
                 <option value="light" className="bg-white text-foreground">
                     {lang === 'fr' && 'Clair'}

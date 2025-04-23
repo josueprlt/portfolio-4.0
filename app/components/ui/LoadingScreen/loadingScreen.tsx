@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, Power2 } from "gsap";
 import { LogoIcon } from "@/app/components/ui/icons";
 
-export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
+export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComplete: () => void; colorMode: string }) {
     const loadingRef = useRef<HTMLDivElement>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
@@ -67,13 +67,11 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             clearTimeout(timeout); // Nettoyer le timeout
         };
     }, [onComplete, isMobile]);
-
-    if (!isLoading) return null;
-
+    
     return (
-        <div className={`w-full h-screen flex items-center justify-center bg-background`}>
+        <div className={`w-full h-screen flex items-center justify-center ${colorMode === "dark" && "bg-foreground"} ${colorMode === "light" && "bg-background"}`}>
             <div ref={loadingRef}>
-                <LogoIcon fill="" className="w-10 h-10" />
+                <LogoIcon fill={colorMode === 'light' ? '#262330' : '#FEEFDD'} className="w-10 h-10" />
             </div>
         </div>
     );

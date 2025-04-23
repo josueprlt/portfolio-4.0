@@ -78,7 +78,7 @@ export default function Page() {
     return (
         <>
             <Home lang={language} colorMode={colorMode} />
-            <main className={`px-4 md:px-8 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
+            <main id='main_filter' className={`px-4 md:px-8 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
                 <div className='md:grid md:gap-9 md:grid-cols-5'>
                     <ResearchBar
                         lang={language}

@@ -13,6 +13,7 @@ interface Project {
 }
 
 interface ModalProps {
+    colorMode: string;
     project: Project;
     currentIndex: number;
     setCurrentIndex: (index: number) => void;
@@ -20,7 +21,7 @@ interface ModalProps {
     onClose: () => void;
 }
 
-export default function Modal({ project, currentIndex, setCurrentIndex, isOpen, onClose }: ModalProps) {
+export default function Modal({ colorMode, project, currentIndex, setCurrentIndex, isOpen, onClose }: ModalProps) {
     const [currentPage, setCurrentPage] = useState<number>(currentIndex + 1);
 
     useEffect(() => {
@@ -33,10 +34,10 @@ export default function Modal({ project, currentIndex, setCurrentIndex, isOpen, 
     };
 
     return (
-        <HeroModal isOpen={isOpen} onOpenChange={(isOpen) => !isOpen && onClose()} size="5xl" backdrop="blur" className="bg-background">
+        <HeroModal isOpen={isOpen} onOpenChange={(isOpen) => !isOpen && onClose()} size="5xl" backdrop="blur" className={`${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
             <ModalContent>
                 <>
-                    <ModalHeader className="flex flex-col gap-1">Image {currentIndex + 1}</ModalHeader>
+                    <ModalHeader className={`flex flex-col gap-1 ${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>Image {currentIndex + 1}</ModalHeader>
                     <ModalBody>
                         <div className="w-full max-h-[500px] overflow-scroll">
                             <img
@@ -48,7 +49,7 @@ export default function Modal({ project, currentIndex, setCurrentIndex, isOpen, 
                     </ModalBody>
                     <ModalFooter className="flex justify-center">
                         <Pagination
-                            className="text-background"
+                            className="bg-background rounded-2xl"
                             page={currentPage}
                             total={project.image.length}
                             onChange={handlePageChange}

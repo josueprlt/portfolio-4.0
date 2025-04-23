@@ -28,6 +28,10 @@ export default function Filtered({ lang, colorMode, projects }: FilteredProps) {
     const projectsPerPage = 9;
 
     const handlePageChange = (page: number) => {
+        const mainElement = document.getElementById('main_filter');
+        if (mainElement) {
+            mainElement.scrollIntoView({ behavior: 'smooth' });
+        }
         setCurrentPage(page);
     };
 
@@ -74,7 +78,7 @@ export default function Filtered({ lang, colorMode, projects }: FilteredProps) {
                     </section>
                     <div className="flex justify-center mt-20 pb-20 md:pb-60">
                         <Pagination
-                            className="text-background [&>*]:text-background"
+                            className="bg-background rounded-2xl"
                             page={currentPage}
                             total={Math.ceil(projects.length / projectsPerPage)}
                             onChange={handlePageChange}
