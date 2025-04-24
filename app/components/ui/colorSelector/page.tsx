@@ -10,11 +10,7 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-interface colorSelectorProps {
-    lang: string;
-}
-
-const ColorSelector: React.FC<colorSelectorProps> = ({ lang }) => {
+const ColorSelector = ({ lang }: { lang: string; }) => {
     const [colorMode, setColorMode] = useState("light");
 
     useEffect(() => {

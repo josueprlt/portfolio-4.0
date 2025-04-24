@@ -19,7 +19,7 @@ const LangSelector: React.FC<langSelectorProps> = ({ lang }) => {
     useEffect(() => {
         const savedLanguage = localStorage.getItem("lang") || "fr";
         setLangSelect(savedLanguage);
-    }, []);
+    }, [langSelect]);
 
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedLanguage = e.target.value;

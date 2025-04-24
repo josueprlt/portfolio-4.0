@@ -5,7 +5,6 @@ import { LogoIcon } from "@/app/components/ui/icons";
 
 export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComplete: () => void; colorMode: string }) {
     const loadingRef = useRef<HTMLDivElement>(null);
-    const [isLoading, setIsLoading] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
 
     // Détecter si l'utilisateur est sur un appareil mobile
@@ -24,7 +23,6 @@ export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComp
     useEffect(() => {
         // Si mobile, désactiver immédiatement le loader
         if (isMobile) {
-            setIsLoading(false);
             onComplete();
             return;
         }
@@ -32,7 +30,6 @@ export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComp
         // Animation GSAP pour le logo
         const tl = gsap.timeline({
             onComplete: () => {
-                setIsLoading(false);
                 onComplete();
             },
         });
@@ -50,7 +47,6 @@ export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComp
 
         // Gestion de l'événement 'load'
         const handleLoad = () => {
-            setIsLoading(false);
             onComplete();
         };
 
@@ -58,7 +54,6 @@ export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComp
 
         // Fallback timeout pour désactiver le loader après 10 secondes
         const timeout = setTimeout(() => {
-            setIsLoading(false);
             onComplete();
         }, 10000); // 10 secondes
 

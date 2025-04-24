@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useRef, use } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Footer from "@/app/components/ui/footer/page";
 import Navbar from "@/app/components/ui/navBar/page";
