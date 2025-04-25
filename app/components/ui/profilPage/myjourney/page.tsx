@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,16 +27,21 @@ function isOdd(num: number) {
     }
 }
 
-interface MyJourneyProps {
-    lang: string;
-    colorMode: string;
-}
-
-const MyJourney: React.FC<MyJourneyProps> = ({ lang, colorMode }) => {
+const MyJourney = () => {
     gsap.registerPlugin(ScrollTrigger);
     const spansContainerRef = useRef<HTMLDivElement>(null);
     const beforeRef = useRef<HTMLDivElement>(null);
     const afterRef = useRef<HTMLDivElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         if (spansContainerRef.current) {

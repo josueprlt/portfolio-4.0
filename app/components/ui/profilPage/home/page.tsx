@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
@@ -18,14 +18,19 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-interface HomeProps {
-    lang: string;
-    colorMode: string;
-}
-
-const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
+const Home = () => {
     gsap.registerPlugin(ScrollTrigger);
     const linkRef = useRef<HTMLDivElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         if (!linkRef.current) return;
@@ -49,7 +54,7 @@ const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
 
     return (
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 md:pb-0 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`}>
-            <NavBar lang={lang} colorMode={colorMode} />
+            <NavBar />
 
             <section className={`${DelaGothicOne.className} mt-20 md:px-10`}>
                 <Paragraph

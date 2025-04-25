@@ -1,4 +1,4 @@
-import { ComponentType, useRef } from 'react';
+import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon, TrelloIcon, FigmaIcon } from "@/app/components/ui/icons";
 import Link from "next/link";
@@ -10,7 +10,7 @@ interface ToolProps {
 }
 
 interface IconData {
-    icon: ComponentType<object>;
+    icon: React.ForwardRefExoticComponent<React.SVGProps<SVGSVGElement> & React.RefAttributes<SVGSVGElement>>;
     colorClass: string;
 }
 

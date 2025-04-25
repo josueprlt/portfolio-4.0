@@ -6,16 +6,21 @@ import Link from 'next/link';
 import { gsap, Power2 } from "gsap";
 import Drawer from './drawerNavbar';
 
-interface NavbarProps {
-    lang: string;
-    colorMode: string;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ lang, colorMode }) => {
+const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
     const logoIconRef = useRef<SVGSVGElement>(null);
     const divNavbarRef = useRef<HTMLDivElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     const onOpenChange = (open: boolean) => {
         setIsOpen(open);
@@ -63,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, colorMode }) => {
                     ease: Power2.easeOut,
                 });
                 console.log(colorMode);
-                
+
                 gsap.to(logoIcon.querySelector('path'), {
                     fill: colorMode === 'dark' ? '#FEEFDD' : '#262330',
                     duration: 0.75,

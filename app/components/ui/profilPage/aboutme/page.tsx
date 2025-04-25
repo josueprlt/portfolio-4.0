@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HalteresIcon } from "@/app/components/ui/icons";
@@ -13,15 +13,20 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-interface AboutMeProps {
-    lang: string;
-    colorMode: string;
-}
-
-const AboutMe: React.FC<AboutMeProps> = ({ lang, colorMode }) => {
+const AboutMe = () => {
     const paraRef = useRef<HTMLDivElement>(null);
     const imageRefs = useRef<HTMLImageElement[]>([]);
     const linkRef = useRef<HTMLDivElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);

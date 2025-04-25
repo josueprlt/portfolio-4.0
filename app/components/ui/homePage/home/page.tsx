@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
 import { Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";
@@ -11,12 +11,7 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-interface HomeProps {
-    lang: string;
-    colorMode: string;
-}
-
-const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
+const Home = () => {
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const spanFirstnameRef = useRef<HTMLSpanElement>(null);
     const spanNameRef = useRef<HTMLSpanElement>(null);
@@ -29,6 +24,16 @@ const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
     const span1Ref = useRef<HTMLSpanElement>(null);
     const span2Ref = useRef<HTMLSpanElement>(null);
     const span3Ref = useRef<HTMLSpanElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         const h1Element = h1Ref.current;
@@ -115,7 +120,7 @@ const Home: React.FC<HomeProps> = ({ lang, colorMode }) => {
 
     return (
         <header className={`${ClimateCrisis.className} flex flex-col justify-between h-screen p-4 md:p-8 ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
-            <NavBar lang={lang} colorMode={colorMode} />
+            <NavBar />
 
             <section className="flex flex-col justify-center items-center gap-16">
                 <div className="flex items-center flex-col gap-7">

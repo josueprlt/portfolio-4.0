@@ -10,13 +10,17 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-const ColorSelector = ({ lang }: { lang: string; }) => {
+const ColorSelector = () => {
     const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
 
     useEffect(() => {
         const savedColorMode = localStorage.getItem("color-mode") || "light";
         setColorMode(savedColorMode);
-    }, [colorMode]);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     const handleColorModeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedColor = e.target.value;

@@ -23,12 +23,18 @@ interface Social {
   bg: string;
 }
 
-interface ContactMeProps {
-  lang: string;
-  colorMode: string;
-}
+const ContactMe = () => {
+  const [colorMode, setColorMode] = useState("light");
+  const [lang, setLang] = useState("fr");
 
-const ContactMe: React.FC<ContactMeProps> = ({ lang, colorMode }) => {
+  useEffect(() => {
+    const savedColorMode = localStorage.getItem("color-mode") || "light";
+    setColorMode(savedColorMode);
+
+    const savedLang = localStorage.getItem("lang") || "fr";
+    setLang(savedLang);
+  }, [colorMode, lang]);
+
   const [arrayOfSocialMedias, setArrayOfSocialMedias] = useState<Social[]>([
     {
       name: "Github",

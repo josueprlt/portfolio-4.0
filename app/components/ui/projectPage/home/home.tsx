@@ -109,7 +109,7 @@ export default function Home({ project }: HomeProps) {
 
     return (
         <header className={`${ClimateCrisis.className} flex flex-col p-4 md:p-8 ${colorMode === "light" && "bg-background"} ${colorMode === "dark" && "bg-foreground"}`}>
-            <NavBar lang={lang} colorMode={colorMode} />
+            <NavBar />
 
             <section
                 ref={sectionRef}

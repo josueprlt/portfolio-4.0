@@ -119,8 +119,8 @@ const DrawerNavbar: React.FC<DrawerProps> = ({ lang, colorMode, onOpenChange, is
                 </DrawerBody>
                 <DrawerFooter className="flex flex-col justify-start items-start gap-16">
                     <div className='flex flex-col gap-4'>
-                        <LangSelector lang={lang} />
-                        <ColorSelector lang={lang} />
+                        <LangSelector />
+                        <ColorSelector />
                     </div>
                     <div className='flex flex-row gap-4'>
                         {arrayOfSocials.map((social, index) => (

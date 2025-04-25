@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,12 +19,9 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-interface AboutMeProps {
-    lang: string;
-    colorMode: string;
-}
-
-const AboutMe: React.FC<AboutMeProps> = ({ lang, colorMode }) => {
+const AboutMe = () => {
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
     gsap.registerPlugin(ScrollTrigger);
     const divRef = useRef<HTMLDivElement>(null);
     const visiteRef = useRef<HTMLParagraphElement>(null);
@@ -106,6 +103,14 @@ const AboutMe: React.FC<AboutMeProps> = ({ lang, colorMode }) => {
             });
         }
     }, []);
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     return (
         <div className={`${ClimateCrisis.className} mt-10 pt-10 md:mt-32 md:pt-[64px] ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-ground'}`} id="aboutme">

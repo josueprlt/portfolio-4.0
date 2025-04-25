@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { LogoIcon, PhoneIcon, EmailIcon, LinkIcon, LocationIcon } from '@/app/components/ui/icons';
 import { gsap, Power2 } from 'gsap';
@@ -15,12 +15,7 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-interface BusinessCardProps {
-    lang: string;
-    colorMode: string;
-}
-
-const BusinessCard: React.FC<BusinessCardProps> = ({ lang, colorMode }) => {
+const BusinessCard = () => {
     const cardRef = useRef<HTMLDivElement>(null);
     const glowRef = useRef<HTMLDivElement>(null);
     const phoneRef = useRef<HTMLDivElement>(null);
@@ -32,6 +27,16 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ lang, colorMode }) => {
     const linkTextRef = useRef<HTMLParagraphElement>(null);
     const locationTextRef = useRef<HTMLParagraphElement>(null);
     const boundsRef = useRef<DOMRect | undefined>(undefined);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         const $card = cardRef.current;

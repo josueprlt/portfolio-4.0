@@ -9,21 +9,21 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-interface langSelectorProps {
-    lang: string;
-}
-
-const LangSelector: React.FC<langSelectorProps> = ({ lang }) => {
-    const [langSelect, setLangSelect] = useState("fr");
+const LangSelector = () => {
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
 
     useEffect(() => {
-        const savedLanguage = localStorage.getItem("lang") || "fr";
-        setLangSelect(savedLanguage);
-    }, [langSelect]);
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedLanguage = e.target.value;
-        setLangSelect(selectedLanguage);
+        setLang(selectedLanguage);
         localStorage.setItem("lang", selectedLanguage);
         window.location.reload();
     };

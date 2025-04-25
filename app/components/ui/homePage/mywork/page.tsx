@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,14 +19,19 @@ const DelaGothicOne = Dela_Gothic_One({
     display: 'swap',
 });
 
-interface MyWorkProps {
-    lang: string;
-    colorMode: string;
-}
-
-const MyWork: React.FC<MyWorkProps> = ({ lang, colorMode }) => {
+const MyWork = () => {
     gsap.registerPlugin(ScrollTrigger);
     const btnRef = useRef<HTMLDivElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         if (btnRef.current) {

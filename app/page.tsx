@@ -6,23 +6,20 @@ import MyWork from '@/app/components/ui/homePage/mywork/page';
 import ContactMe from '@/app/components/ui/homePage/contactme/page';
 
 export default function Page() {
-  const [language, setLanguage] = useState("fr");
   const [colorMode, setColorMode] = useState("light");
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("lang") || "fr";
-    setLanguage(savedLanguage);
-
     const savedColorMode = localStorage.getItem("color-mode") || "light";
     setColorMode(savedColorMode);
-  }, []);
+  }, [colorMode]);
+
   return (
     <>
-      <Home lang={language} colorMode={colorMode} />
+      <Home />
       <main className={`px-4 md:px-8 ${colorMode === "light" && 'bg-background text-foreground'} ${colorMode === "dark" && 'bg-foreground text-background'}`}>
-        <AboutMe lang={language} colorMode={colorMode} />
-        <MyWork lang={language} colorMode={colorMode} />
-        <ContactMe lang={language} colorMode={colorMode} />
+        <AboutMe />
+        <MyWork />
+        <ContactMe />
       </main>
     </>
   );

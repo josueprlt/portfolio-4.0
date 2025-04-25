@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import competences from '@/app/data/competences.json';
@@ -18,14 +18,19 @@ const ClimateCrisis = Climate_Crisis({
     display: 'swap',
 });
 
-interface MyCompetencesProps {
-    lang: string;
-    colorMode: string;
-}
-
-const MyCompetences: React.FC<MyCompetencesProps> = ({ lang, colorMode }) => {
+const MyCompetences = () => {
     gsap.registerPlugin(ScrollTrigger);
     const sectionRef = useRef<HTMLElement>(null);
+    const [colorMode, setColorMode] = useState("light");
+    const [lang, setLang] = useState("fr");
+
+    useEffect(() => {
+        const savedColorMode = localStorage.getItem("color-mode") || "light";
+        setColorMode(savedColorMode);
+
+        const savedLang = localStorage.getItem("lang") || "fr";
+        setLang(savedLang);
+    }, [colorMode, lang]);
 
     useEffect(() => {
         if (sectionRef.current) {
