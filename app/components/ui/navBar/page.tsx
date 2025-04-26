@@ -67,7 +67,6 @@ const Navbar = () => {
                     duration: 0.75,
                     ease: Power2.easeOut,
                 });
-                console.log(colorMode);
 
                 gsap.to(logoIcon.querySelector('path'), {
                     fill: colorMode === 'dark' ? '#FEEFDD' : '#262330',

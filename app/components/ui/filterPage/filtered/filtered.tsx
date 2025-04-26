@@ -25,7 +25,15 @@ interface FilteredProps {
 export default function Filtered({ lang, colorMode, projects }: FilteredProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const projectsPerPage = 9;
+    const [projectsPerPage, setProjectsPerPage] = useState(9);
+
+    useEffect(() => {
+        if (window.innerWidth < 768) setProjectsPerPage(4);
+        if (window.innerWidth >= 768) setProjectsPerPage(6);
+        if (window.innerWidth >= 1024) setProjectsPerPage(9);
+        if (window.innerWidth >= 1280) setProjectsPerPage(9);
+        if (window.innerWidth >= 1536) setProjectsPerPage(15);
+    }, []);
 
     const handlePageChange = (page: number) => {
         const mainElement = document.getElementById('main_filter');
@@ -62,7 +70,7 @@ export default function Filtered({ lang, colorMode, projects }: FilteredProps) {
                 <>
                     <section
                         ref={sectionRef}
-                        className='mt-10 flex flex-col gap-6 md:mt-20 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'
+                        className='mt-10 flex flex-col gap-6 md:mt-20 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-5'
                     >
                         {currentProjects.map((project) => (
                             <Card

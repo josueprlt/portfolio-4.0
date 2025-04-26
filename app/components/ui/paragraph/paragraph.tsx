@@ -39,7 +39,7 @@ const Paragraph: React.FC<ParagraphProps> = ({
         },
       });
     }
-  }, []);
+  }, [lang]);
 
   const renderText = (text: string, highlightedText?: string) => {
     if (highlightedText) {

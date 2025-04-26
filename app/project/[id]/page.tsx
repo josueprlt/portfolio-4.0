@@ -16,8 +16,9 @@ export async function generateStaticParams(): Promise<Params[]> {
     }));
 }
 
-export default function Page({ params }: { params: Params }) {
-    const { id } = params;
+export default async function Page({ params }: { params: Promise<Params> }) {
+    const resolvedParams = await params; // Résolution de la promesse
+    const { id } = resolvedParams;
     const project = projects.find((project) => project.id === parseInt(id));
 
     if (!project) {
@@ -29,7 +30,7 @@ export default function Page({ params }: { params: Params }) {
             <Home project={project} />
             <ProjectBar id={id} projects={projects} />
 
-            <main>
+            <main className="px-4 md:px-8">
                 <Tools project={project} />
                 <Description project={project} />
                 <Images project={project} />

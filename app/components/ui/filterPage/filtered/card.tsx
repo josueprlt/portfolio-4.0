@@ -48,10 +48,6 @@ const Card: React.FC<CardProps> = ({ lang, colorMode, img, title, titleEn, href 
         });
     };
 
-    const truncateText = (text: string, maxLength: number = 15) => {
-        return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
-    };
-
     return (
         <div
             onMouseEnter={handleMouseEnter}
@@ -62,9 +58,9 @@ const Card: React.FC<CardProps> = ({ lang, colorMode, img, title, titleEn, href 
                 <div className='h-40 rounded-b-3xl md:h-56 overflow-hidden'>
                     <img ref={imageRef} src={img} alt={`Image du projet ${title}`} className='w-full h-full object-cover' />
                 </div>
-                <p ref={textRef} className={`${DelaGothicOne.className} h-auto p-4 text-xl md:p-6 md:text-2xl`}>
-                    {lang === 'fr' && truncateText(title)}
-                    {lang === 'en' && truncateText(titleEn)}
+                <p ref={textRef} className={`${DelaGothicOne.className} h-auto p-4 text-xl truncate md:p-6 md:text-2xl`}>
+                    {lang === 'fr' && title}
+                    {lang === 'en' && titleEn}
                 </p>
             </Link>
         </div>
