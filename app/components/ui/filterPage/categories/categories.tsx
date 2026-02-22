@@ -1,6 +1,31 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { WrenchIcon, CadreIcon, CalendarIcon, HtmlIcon, CssIcon, JsIcon, SassIcon, DockerIcon, PhpIcon, ReactIcon, SymfonyIcon, VscodeIcon, MuiIcon, TailwindIcon, NextIcon, GithubIcon, BagIcon, PeopleIcon, FigmaIcon, TrelloIcon, DevIcon, VRIcon, CreaIcon } from "@/app/components/ui/icons";
+import {
+    WrenchIcon,
+    CadreIcon,
+    CalendarIcon,
+    HtmlIcon,
+    CssIcon,
+    JsIcon,
+    SassIcon,
+    DockerIcon,
+    PhpIcon,
+    ReactIcon,
+    SymfonyIcon,
+    VscodeIcon,
+    MuiIcon,
+    TailwindIcon,
+    NextIcon,
+    GithubIcon,
+    BagIcon,
+    PeopleIcon,
+    FigmaIcon,
+    TrelloIcon,
+    DevIcon,
+    VRIcon,
+    CreaIcon,
+    WebStormIcon
+} from "@/app/components/ui/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 import { gsap, Power1 } from "gsap";
 
@@ -30,6 +55,7 @@ export default function Categories({ lang, colorMode, selectedCategories, onCate
             { name: "vscode", icon: <VscodeIcon className="w-6 h-6" /> },
             { name: "figma", icon: <FigmaIcon className="w-6 h-6" /> },
             { name: "trello", icon: <TrelloIcon className="w-6 h-6" /> },
+            { name: "webstorm", icon: <WebStormIcon className="w-6 h-6" /> },
         ]
     );
 

@@ -1,6 +1,24 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon, TrelloIcon, FigmaIcon } from "@/app/components/ui/icons";
+import {
+    HtmlIcon,
+    CssIcon,
+    JsIcon,
+    SassIcon,
+    PhpIcon,
+    ReactIcon,
+    SymfonyIcon,
+    BootstrapIcon,
+    MuiIcon,
+    TailwindIcon,
+    NextIcon,
+    DockerIcon,
+    GithubIcon,
+    VscodeIcon,
+    TrelloIcon,
+    FigmaIcon,
+    WebStormIcon
+} from "@/app/components/ui/icons";
 import Link from "next/link";
 
 interface ToolProps {
@@ -32,6 +50,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className, colorMode }) => {
         vscode: { icon: VscodeIcon, colorClass: 'text-vscode' },
         trello: { icon: TrelloIcon, colorClass: 'text-trello' },
         figma: { icon: FigmaIcon, colorClass: 'text-figma' },
+        webstorm: { icon: WebStormIcon, colorClass: 'text-webstorm' },
     };
 
     const linkRef = useRef<HTMLAnchorElement>(null);

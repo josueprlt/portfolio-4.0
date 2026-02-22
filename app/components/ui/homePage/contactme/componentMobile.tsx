@@ -80,7 +80,7 @@ export default function ComponentMobile({ data, colorMode }: ComponentMobileProp
                 </div>
                 <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="flex justify-center h-1/2 items-center gap-6 rounded-2xl">
                     <EmailIcon className="w-6 md:w-11 hidden sm:block" />
-                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josue.perrault@etu.unilim.fr</p>
+                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josueperrault56@gmail.com</p>
                 </div>
             </section>
 

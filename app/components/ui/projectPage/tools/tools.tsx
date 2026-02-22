@@ -9,7 +9,7 @@ import Tool from "./tool";
 
 const DelaGothicOne = Dela_Gothic_One({ subsets: ["latin"], weight: ["400"], display: "swap" });
 
-const technos = ["html", "css", "javascript", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next", "docker", "github", "vscode", "trello", "figma"];
+const technos = ["html", "css", "javascript", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next", "docker", "github", "vscode", "trello", "figma", "webstorm"];
 
 interface Project {
     id: number;

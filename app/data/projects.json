@@ -1,6 +1,32 @@
 [
   {
     "id": 1,
+    "title": "App de Météo",
+    "titleEn": "Weather app",
+    "date": "2025-11-10",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "react",
+      "tailwind",
+      "symfony",
+      "github",
+      "webstorm"
+    ],
+    "description": "Cette application a vu le jour grâce à la proposition de projet de Frontend Mentor. L'objectif principal était de développer une application web permettant de prendre connaissance de la météo, de pouvoir rechercher une ville, et d'autres. C'est un projet que j'ai lancé sur mon temps libre. Je suis globalement content de ce que j'ai produit. Il y aura potentiellement des améliorations d'interface et autres si l'envie me prend.",
+    "descriptionEn": "This application came about thanks to a project proposal from Frontend Mentor. The main objective was to develop a web application that would provide weather information, allow users to search for a city, and more. It's a project I started in my free time. I'm generally happy with what I've produced. There will potentially be interface improvements and other enhancements if I feel like it.",
+    "image": [
+      "/WeatherApp/interface1.png",
+      "/WeatherApp/interface2.png",
+      "/WeatherApp/interface3.png",
+      "/WeatherApp/interface4.png",
+      "/WeatherApp/interface5.png"
+    ],
+    "link": "https://josueprlt.github.io/weather-app-main/",
+    "github": "https://github.com/josueprlt/weather-app-main"
+  },
+  {
+    "id": 2,
     "title": "Lagendary",
     "titleEn": "Lagendary",
     "date": "2024-11-23",
@@ -39,7 +65,7 @@
     "github": "https://github.com/josueprlt/Sae-501-GroupeC-clone"
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Monstercat",
     "titleEn": "Monstercat",
     "date": "2024-12-20",
@@ -66,7 +92,7 @@
     "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Editeur VR",
     "titleEn": "VR Editor",
     "date": "2024-11-04",
@@ -92,11 +118,11 @@
       "/Sae501-VR/interface7.png",
       "/Sae501-VR/interface8.png"
     ],
-    "link": "https://portfolio-josue.fr/Sae-501-VR/src/",
+    "link": null,
     "github": "https://github.com/josueprlt/Sae501-Uptale-VR"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "HellCleaner VR",
     "titleEn": "HellCleaner VR",
     "date": "2024-02-23",
@@ -129,11 +155,11 @@
       "/Sae402-VR/city14.png",
       "/Sae402-VR/city15.png"
     ],
-    "link": "https://portfolio-josue.fr/Sae-402-VR/",
+    "link": null,
     "github": "https://github.com/josueprlt/Sae402-HellCleaner-VR"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Challenge BenjaminCode",
     "titleEn": "BenjaminCode Challenge",
     "date": "2023-09-13",
@@ -152,11 +178,11 @@
       "/BenjaminCode/projetfinis.png",
       "/BenjaminCode/template.png"
     ],
-    "link": "https://portfolio-josue.fr/ProjectBenjaminCode/index.html",
+    "link": null,
     "github": null
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Intégration composant vidéo",
     "titleEn": "Video Component Integration",
     "date": "2024-07-22",
@@ -182,7 +208,7 @@
     "github": null
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "Portfolio Web 2023-2024",
     "titleEn": "Web Portfolio 2023-2024",
     "date": "2023-06-01",
@@ -205,11 +231,11 @@
       "/Portfolio2023/portfolio4.png",
       "/Portfolio2023/portfolio5.png"
     ],
-    "link": "https://portfolio-josue.fr",
+    "link": null,
     "github": null
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "Site OnePage",
     "titleEn": "OnePage Site",
     "date": "2022-12-03",
@@ -235,7 +261,7 @@
     "github": null
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "Site de trailer de films",
     "titleEn": "Movie Trailer Site",
     "date": "2023-03-22",
@@ -271,7 +297,7 @@
     "github": null
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "Nouveau Portfolio Web",
     "titleEn": "New Web Portfolio",
     "date": "2025-03-15",
@@ -295,7 +321,7 @@
     "github": "https://github.com/josueprlt/portfolio-4.0/tree/V8"
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "Coachella",
     "titleEn": "Coachella",
     "date": "2024-01-07",
@@ -321,7 +347,7 @@
     "github": null
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "Nuit du code MMI",
     "titleEn": "Night of Code MMI",
     "date": "2025-01-09",
@@ -344,7 +370,7 @@
       "/Nuitmmi/nuitmmi6.png",
       "/Nuitmmi/nuitmmi7.png"
     ],
-    "link": "https://portfolio-josue.fr/ProjetNuitMMI/",
+    "link": null,
     "github": "https://github.com/josueprlt/Project-Nuit-MMI/tree/It%C3%A9ration-5"
   }
 ]

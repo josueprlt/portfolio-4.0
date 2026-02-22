@@ -58,5 +58,25 @@
     "description": "Ce stage se déroule du 3 mars au 20 juin 2025. Mon but est de rédiger et de mettre en place des cas tests, et par la suite de les automatisés avec des outils comme selenium. Ce stage doit durer 4 mois.",
     "descriptionEn": "This internship takes place from March 3 to June 20, 2025. My goal is to write and implement test cases, and then automate them with tools like Selenium. This internship is supposed to last 4 months.",
     "image": "/img/eureden.webp"
+  },
+  {
+    "id": 7,
+    "date": "Octobre 2025",
+    "dateEn": "October 2025",
+    "title": "Master Ingénierie du Web",
+    "titleEn": "Master's Degree in Web Engineering",
+    "description": "Après avoir réalisé mes 3 années de BUT MMI à Limoges, je choisis de me rapprocher de la Bretagne et je me lance dans un Master Ingénierie du Web à l'ESGI Rennes.",
+    "descriptionEn": "After completing my 3 years of BUT MMI in Limoges, I chose to move closer to Brittany and embarked on a Master's degree in Web Engineering at ESGI Rennes.",
+    "image": "/img/esgi.jpg"
+  },
+  {
+    "id": 7,
+    "date": "Octobre 2025",
+    "dateEn": "October 2025",
+    "title": "Alternance chez Eureden",
+    "titleEn": "Apprenticeship at Eureden",
+    "description": "J'ai pu continuer à travailler avec Eureden par la suite avec un contrat d'alternance sur 2 ans. Je continue mon travail sur la mise en place de tests automatisés avec Selenium. Et je viens apporter mon aide sur le développement de différentes tâches de BUILD.",
+    "descriptionEn": "I was able to continue working with Eureden afterward through a two-year apprenticeship contract. I'm continuing my work on setting up automated tests with Selenium. And I'm now assisting with the development of various BUILD tasks.",
+    "image": "/img/eureden-alternance.webp"
   }
 ]
