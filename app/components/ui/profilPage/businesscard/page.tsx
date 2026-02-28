@@ -1,18 +1,18 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { LogoIcon, PhoneIcon, EmailIcon, LinkIcon, LocationIcon } from '@/app/components/ui/icons';
 import { gsap, Power2 } from 'gsap';
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const BusinessCard = () => {
@@ -183,7 +183,7 @@ const BusinessCard = () => {
                 </div>
 
                 <div className={`relative w-48 h-48 flex justify-center items-center rounded-full overflow-hidden ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}>
-                    <img src="/img/image-profil.png" alt="Image de profil" className="absolute inset-0 w-full h-full object-cover object-center"/>
+                    <Image src="/img/image-profil.png" alt="Image de profil" width={500} height={500} className="absolute inset-0 w-full h-full object-cover object-center"/>
                 </div>
 
                 <div className='flex items-center flex-col gap-2'>
@@ -228,7 +228,7 @@ const BusinessCard = () => {
 
                 <div className='flex flex-row justify-between lg:justify-around items-center px-10 py-5'>
                     <div className="relative w-56 h-56 rounded-full overflow-hidden">
-                        <img src="/img/image-profil.png" alt="Image de profil" className="absolute inset-0 w-full h-full object-cover object-center"/>
+                        <Image src="/img/image-profil.png" alt="Image de profil" width={500} height={500} className="absolute inset-0 w-full h-full object-cover object-center"/>
                     </div>
                     <ul className={`${DelaGothicOne.className} flex items-start flex-col gap-6 text-xl ${colorMode === 'light' && 'text-background'} ${colorMode === 'dark' && 'text-foreground'}`}>
                         <li className='flex justify-center items-center flex-row gap-2'>

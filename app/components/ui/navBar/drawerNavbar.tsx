@@ -5,19 +5,18 @@ import Link from 'next/link';
 import { Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/drawer";
 import { LogoIcon, ButtonArrowIcon, LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
 import { gsap, Power2 } from 'gsap';
-import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import ColorSelector from "@/app/components/ui/colorSelector/page";
 import LangSelector from "@/app/components/ui/langSelector/page";
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 interface DrawerProps {

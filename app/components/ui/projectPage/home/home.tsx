@@ -2,20 +2,20 @@
 
 import { useState, useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
-import { Climate_Crisis, Dela_Gothic_One } from "next/font/google";
 import { Tooltip } from "@nextui-org/tooltip";
 import { gsap, Power2 } from "gsap";
 import { ArrowIcon } from '@/app/components/ui/icons';
 import Link from 'next/link';
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ["latin"],
-    weight: ["400"],
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
     display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ["latin"],
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
     display: "swap",
 });
 
@@ -162,9 +162,10 @@ export default function Home({ project }: HomeProps) {
                     </div>
                 </div>
 
-                <img
+                <Image
                     ref={imageRef}
                     src={project.image[0]}
+                    width={500} height={500}
                     alt="Description of the image"
                     className="w-full h-full absolute top-0 left-0 z-0 object-cover"
                 />

@@ -1,11 +1,12 @@
 "use client"
 import { useEffect, useRef } from 'react';
 import { gsap, Power2 } from 'gsap';
-import { Climate_Crisis } from 'next/font/google';
 import SplitType from "split-type";
+import localFont from "next/font/local";
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
+const ClimateCrisis = localFont({
+    src: "../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 interface TitleProps {

@@ -1,12 +1,12 @@
 "use client"
 import { useEffect, useState } from "react";
-import { Climate_Crisis } from 'next/font/google';
 import NavBar from "@/app/components/ui/navBar/page";
 import Title from "@/app/components/ui/title/title";
+import localFont from "next/font/local";
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const Home = () => {

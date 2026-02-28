@@ -1,12 +1,12 @@
 import { useRef } from 'react';
-import { Dela_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
 import { gsap, Power2 } from 'gsap';
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface CardProps {
@@ -56,7 +56,7 @@ const Card: React.FC<CardProps> = ({ lang, colorMode, img, title, titleEn, href 
         >
             <Link href={href} className="w-full h-full">
                 <div className='h-40 rounded-b-3xl md:h-56 overflow-hidden'>
-                    <img ref={imageRef} src={img} alt={`Image du projet ${title}`} className='w-full h-full object-cover' />
+                    <Image ref={imageRef} src={img} alt={`Image du projet ${title}`} width={500} height={500} className='w-full h-full object-cover' />
                 </div>
                 <p ref={textRef} className={`${DelaGothicOne.className} h-auto p-4 text-xl truncate md:p-6 md:text-2xl`}>
                     {lang === 'fr' && title}

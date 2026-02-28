@@ -1,21 +1,20 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import competences from '@/app/data/competences.json';
 import Title from '@/app/components/ui/title/title';
 import CompetenceCard from './CompetenceCard';
 import { gsap, Power2 } from 'gsap';
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const MyCompetences = () => {

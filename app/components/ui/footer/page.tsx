@@ -1,16 +1,15 @@
 "use client"
 import { useState, useEffect } from "react";
 import { BretagneIcon } from "@/app/components/ui/icons";
-import { Dela_Gothic_One } from 'next/font/google';
 import Link from "next/link";
 import information from "@/app/data/version.json";
 import ColorSelector from "@/app/components/ui/colorSelector/page";
 import LangSelector from "@/app/components/ui/langSelector/page";
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 export default function Footer() {
@@ -39,9 +38,9 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 text-background mt-10 md:justify-between md:items-start md:mt-0 md:gap-8">
-                    <Link href="https://portfolio-josue.fr/competences/vitrine/index.html" className="underline">
-                        {lang === 'fr' && 'Portfolio de compétences'}
-                        {lang === 'en' && 'Skills portfolio'}
+                    <Link href="https://www.linkedin.com/in/josué-perrault-2a663a265" target={"_blank"} className="underline">
+                        {lang === 'fr' && 'Mon profil LinkedIn'}
+                        {lang === 'en' && 'My LinkedIn profile'}
                     </Link>
                     <p>
                         {lang === 'fr' && information.tools}

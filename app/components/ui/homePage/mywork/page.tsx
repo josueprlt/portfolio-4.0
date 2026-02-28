@@ -1,22 +1,21 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Title from "@/app/components/ui/title/title";
 import Button from "@/app/components/ui/button/button";
 import projects from "@/app/data/projects.json";
 import ProjectList from "./projectList";
+import localFont from "next/font/local";
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const MyWork = () => {

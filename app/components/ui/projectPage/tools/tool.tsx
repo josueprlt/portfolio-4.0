@@ -123,6 +123,7 @@ const Tool: React.FC<ToolProps> = ({ tech, className, colorMode }) => {
                             {...(tech === 'github' && { fill: colorMode === 'dark' ? '#FEEFDD' : '#181717' })}
                             {...(tech === 'next' && { fill: colorMode === 'dark' ? '#FEEFDD' : '#181717' })}
                             {...(tech === 'symfony' && { fill: colorMode === 'dark' ? '#FEEFDD' : 'black' })}
+                            {...(tech === 'webstorm' && { fill: colorMode === 'dark' ? '#FEEFDD' : 'black' })}
                         />
                     </div>
                     <span ref={textRef} className={`${colorClass} opacity-0`}>{tech}</span>

@@ -3,11 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Dela_Gothic_One } from "next/font/google";
 import Title from "@/app/components/ui/title/title";
 import Tool from "./tool";
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({ subsets: ["latin"], weight: ["400"], display: "swap" });
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
+});
 
 const technos = ["html", "css", "javascript", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next", "docker", "github", "vscode", "trello", "figma", "webstorm"];
 

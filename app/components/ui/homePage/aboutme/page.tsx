@@ -1,22 +1,22 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Title from "@/app/components/ui/title/title";
 import Paragraph from "@/app/components/ui/paragraph/paragraph";
 import Button from "@/app/components/ui/button/button";
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const AboutMe = () => {
@@ -141,7 +141,7 @@ const AboutMe = () => {
                         </div>
                     </div>
                     <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-full md:max-h-[600px]">
-                        <img ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/image-profil.png" alt="Description of the image" className="relative w-full h-full object-cover z-10" />
+                        <Image ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/image-profil.png" alt="Description of the image" width={500} height={500} className="relative w-full h-full object-cover z-10" />
                     </div>
                 </div>
 

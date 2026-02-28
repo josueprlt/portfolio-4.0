@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
-import { Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";
 import Link from "next/link";
+import localFont from "next/font/local";
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const Home = () => {

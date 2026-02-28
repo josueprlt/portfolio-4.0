@@ -3,12 +3,11 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap, Power2 } from 'gsap';
 import { ButtonArrowIcon, LightGithubIcon } from '@/app/components/ui/icons';
-import { Dela_Gothic_One } from 'next/font/google';
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface ButtonProps {

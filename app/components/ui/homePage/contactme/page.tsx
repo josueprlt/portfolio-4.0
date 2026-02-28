@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { LinkedinIcon, GithubIcon, GitlabIcon } from "@/app/components/ui/icons";
-import { Climate_Crisis } from "next/font/google";
 import Title from "@/app/components/ui/title/title";
 import ComponentDesktop from "./componentDesktop";
 import ComponentMobile from "./componentMobile";
+import localFont from "next/font/local";
 
-const ClimateCrisis = Climate_Crisis({
-  subsets: ["latin"],
+const ClimateCrisis = localFont({
+  src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
   display: "swap",
 });
 
