@@ -24,7 +24,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build
 
       - name: Deploy to Production Branch
