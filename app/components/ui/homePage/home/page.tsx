@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import NavBar from "@/app/components/ui/navBar/page";
-import { Climate_Crisis } from 'next/font/google';
 import { gsap, Power2, Circ } from "gsap";
 import Link from "next/link";
+import localFont from "next/font/local";
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const Home = () => {
@@ -147,7 +147,7 @@ const Home = () => {
             <section className={`flex justify-left items-center gap-3 ${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>
                 <h2 ref={portfolioRef} className="text-xl md:text-4xl">Portfolio</h2>
                 <span ref={lineRef} className={`w-full h-px translate-y-[7px] md:translate-y-[13px] ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
-                <h2 ref={yearRef} className={`flex items-center gap-2 text-xl before:block before:w-2 before:h-2 ${colorMode === 'light' && 'before:bg-foreground'} ${colorMode === 'dark' && 'before:bg-background'} before:rounded-full before:translate-y-[5px] md:text-4xl md:before:w-4 md:before:h-4 md:before:translate-y-[6px]`}>2025</h2>
+                <h2 ref={yearRef} className={`flex items-center gap-2 text-xl before:block before:w-2 before:h-2 ${colorMode === 'light' && 'before:bg-foreground'} ${colorMode === 'dark' && 'before:bg-background'} before:rounded-full before:translate-y-[5px] md:text-4xl md:before:w-4 md:before:h-4 md:before:translate-y-[6px]`}>2026</h2>
             </section>
         </header>
     );

@@ -1,13 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { Dela_Gothic_One } from 'next/font/google';
 import { SunIcon, MoonIcon } from '@/app/components/ui/icons';
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 const ColorSelector = () => {

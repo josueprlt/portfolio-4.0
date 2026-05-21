@@ -1,15 +1,15 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import Title from "@/app/components/ui/title/title";
 import Paragraph from "@/app/components/ui/paragraph/paragraph";
 import Button from "@/app/components/ui/button/button";
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface Project {
@@ -80,7 +80,7 @@ export default function Description({ project }: DescriptionProps) {
                 <div className={`flex justify-center flex-wrap gap-10 py-10 md:py-32 ${colorMode === 'light' && 'bg-background text-foreground'} ${colorMode === 'dark' && 'bg-foreground text-background'}`} ref={linkRef}>
                     {project.link == null ? (
                         <Button href="" theme="disabled">
-                            {lang === 'fr' && "Project pas disponible"}
+                            {lang === 'fr' && "Projet pas disponible"}
                             {lang === 'en' && "Project not available"}
                         </Button>
                     ) : (

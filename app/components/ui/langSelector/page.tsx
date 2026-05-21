@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { Dela_Gothic_One } from 'next/font/google';
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 const LangSelector = () => {
@@ -31,8 +31,8 @@ const LangSelector = () => {
     return (
         <div className="relative">
             <div className="absolute top-[2.5px] left-[2.5px] rounded-full overflow-hidden">
-                {lang === 'fr' && <img src="/./img/français.png" className="w-[40px] h-[40px]" alt="Drapeau français" />}
-                {lang === 'en' && <img src="/./img/anglais.png" className="w-[40px] h-[40px]" alt="Drapeau anglais" />}
+                {lang === 'fr' && <Image src="/./img/français.png" width={500} height={500} className="w-[40px] h-[40px]" alt="Drapeau français" />}
+                {lang === 'en' && <Image src="/./img/anglais.png" width={500} height={500} className="w-[40px] h-[40px]" alt="Drapeau anglais" />}
             </div>
             <select
                 name="lang"

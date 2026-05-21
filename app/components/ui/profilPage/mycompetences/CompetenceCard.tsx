@@ -1,6 +1,25 @@
 import { useEffect, useRef } from 'react';
 import { gsap, Power2 } from 'gsap';
-import { HtmlIcon, CssIcon, JsIcon, SassIcon, PhpIcon, ReactIcon, SymfonyIcon, BootstrapIcon, MuiIcon, TailwindIcon, NextIcon, DockerIcon, GithubIcon, VscodeIcon, BoxArrowIcon, TrelloIcon, FigmaIcon } from '@/app/components/ui/icons';
+import {
+    HtmlIcon,
+    CssIcon,
+    JsIcon,
+    SassIcon,
+    PhpIcon,
+    ReactIcon,
+    SymfonyIcon,
+    BootstrapIcon,
+    MuiIcon,
+    TailwindIcon,
+    NextIcon,
+    DockerIcon,
+    GithubIcon,
+    VscodeIcon,
+    BoxArrowIcon,
+    TrelloIcon,
+    FigmaIcon,
+    WebStormIcon
+} from '@/app/components/ui/icons';
 import Link from "next/link";
 
 interface Competence {
@@ -48,16 +67,17 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, colorMode, compet
                 {competence.title === "sass" && <SassIcon className='w-32 h-32' />}
                 {competence.title === "php" && <PhpIcon className='w-32 h-32' />}
                 {competence.title === "react" && <ReactIcon className='w-32 h-32' />}
-                {competence.title === "symfony" && <SymfonyIcon className='w-32 h-32' />}
+                {competence.title === "symfony" && <SymfonyIcon className='w-32 h-32' fill={colorMode === 'dark' ? '#FEEFDD': undefined} />}
                 {competence.title === "bootstrap" && <BootstrapIcon className='w-32 h-32' />}
                 {competence.title === "materialui" && <MuiIcon className='w-32 h-32' />}
                 {competence.title === "tailwindcss" && <TailwindIcon className='w-32 h-32' />}
-                {competence.title === "nextjs" && <NextIcon className='w-32 h-32' />}
+                {competence.title === "nextjs" && <NextIcon className='w-32 h-32' fill={colorMode === 'dark' ? '#FEEFDD': undefined} />}
                 {competence.title === "docker" && <DockerIcon className='w-32 h-32' />}
-                {competence.title === "github" && <GithubIcon className='w-32 h-32' />}
+                {competence.title === "github" && <GithubIcon className='w-32 h-32' fill={colorMode === 'dark' ? '#FEEFDD': undefined} />}
                 {competence.title === "vscode" && <VscodeIcon className='w-32 h-32' />}
                 {competence.title === "trello" && <TrelloIcon className='w-32 h-32' />}
                 {competence.title === "figma" && <FigmaIcon className='w-32 h-32' />}
+                {competence.title === "webstorm" && <WebStormIcon className='w-32 h-32' fill={colorMode === 'dark' ? '#FEEFDD': undefined} />}
             </div>
             <Link ref={linkRef} href="/filter" className={`absolute -bottom-10 text-sm flex items-center gap-2 px-2 py-1 rounded-full ${colorMode === 'light' && 'text-background bg-foreground'} ${colorMode === 'dark' && 'text-foreground bg-background'}`}>
                 {lang === 'fr' && 'Voir projets associés'}

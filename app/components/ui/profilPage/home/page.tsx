@@ -1,21 +1,20 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { Climate_Crisis, Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import NavBar from "@/app/components/ui/navBar/page";
 import Button from "@/app/components/ui/button/button";
 import Paragraph from "@/app/components/ui/paragraph/paragraph";
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 const Home = () => {
@@ -59,9 +58,9 @@ const Home = () => {
             <section className={`${DelaGothicOne.className} mt-20 md:px-10`}>
                 <Paragraph
                     lang={lang}
-                    textEn="I’m currently in my third year of a Bachelor's in Multimedia and Internet Professions (BUT MMI), on my way to becoming a web developer and always curious to explore new technologies !"
+                    textEn="I’m currently in my 4th year student in a Master's program in Web Engineering (IW), on my way to becoming a web developer and always curious to explore new technologies !"
                     highlightedTextEn="web developer"
-                    text="Je suis actuellement en 3ème année d’un BUT MMI (Métiers du Multimédia et de l'Internet), en route pour devenir développeur web et toujours curieux de découvrir de nouvelles technologies !"
+                    text="Je suis actuellement en 4ème année d’un Master IW (Ingénierie du Web), en route pour devenir développeur web et toujours curieux de découvrir de nouvelles technologies !"
                     highlightedText="développeur web"
                     className="md:text-4xl text-justify"
                 />

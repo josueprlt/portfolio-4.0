@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap, Power2 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Dela_Gothic_One } from 'next/font/google';
 import Button from '@/app/components/ui/button/button'
 import {
     Modal as HeroModal,
@@ -11,11 +10,12 @@ import {
     ModalFooter,
     useDisclosure,
 } from "@heroui/modal";
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface JourneyCardProps {
@@ -134,7 +134,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                         </p>
 
                         <div ref={imageRef} className="absolute w-full left-0 -top-64 flex flex-col items-center">
-                            <img src={imageSrc} alt={imageAlt} className="w-full h-56 object-cover rounded-lg" />
+                            <Image src={imageSrc} alt={imageAlt} width={500} height={500} className="w-full h-56 object-cover rounded-lg" />
                             <span ref={beforeRef} className={`block w-px h-4 ${colorMode === 'light' && 'bg-foreground'} ${colorMode === 'dark' && 'bg-background'}`}></span>
                         </div>
                     </div>
@@ -153,7 +153,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                             {lang === 'fr' && description}
                             {lang === 'en' && descriptionEn}
                         </p>
-                        <img src={imageSrc} alt={imageAlt} className="w-full h-full object-cover rounded-lg mt-4" />
+                        <Image src={imageSrc} alt={imageAlt} width={500} height={500} className="w-full h-full object-cover rounded-lg mt-4" />
                     </ModalBody>
                     <ModalFooter>
                         <Button theme='primary' onClick={onClose}>

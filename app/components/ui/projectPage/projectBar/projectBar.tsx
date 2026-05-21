@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap, Power2 } from 'gsap';
 import Link from 'next/link';
 import { Tooltip } from "@nextui-org/tooltip";
-import { Dela_Gothic_One } from "next/font/google";
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ["latin"],
-    weight: ["400"],
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
     display: "swap",
 });
 
@@ -138,9 +138,10 @@ const ProjectBar: React.FC<ProjectBarProps> = ({ id, projects }) => {
                                 className={`${DelaGothicOne.className} bg-foreground text-background text-xs`}
                                 showArrow={true}
                             >
-                                <img
+                                <Image
                                     src={proj.image[0]}
                                     alt={`Image ${index}`}
+                                    width={500} height={500}
                                     className="w-full h-full object-cover"
                                 />
                             </Tooltip>

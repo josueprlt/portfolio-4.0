@@ -2,15 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import { PhoneIcon, EmailIcon } from "@/app/components/ui/icons";
-import { Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2, Circ } from "gsap";
 import Link from 'next/link';
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface Social {
@@ -80,7 +79,7 @@ export default function ComponentMobile({ data, colorMode }: ComponentMobileProp
                 </div>
                 <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="flex justify-center h-1/2 items-center gap-6 rounded-2xl">
                     <EmailIcon className="w-6 md:w-11 hidden sm:block" />
-                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josue.perrault@etu.unilim.fr</p>
+                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josueperrault56@gmail.com</p>
                 </div>
             </section>
 

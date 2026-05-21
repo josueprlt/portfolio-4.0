@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Dela_Gothic_One } from "next/font/google";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2 } from "gsap";
 import Button from "@/app/components/ui/button/button";
 import Title from "@/app/components/ui/title/title";
 import Modal from "./modal";
+import localFont from "next/font/local";
+import Image from "next/image";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ["latin"],
-    weight: ["400"],
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface Project {
@@ -112,10 +113,11 @@ export default function Images({ project }: HomeProps) {
                         onClick={() => handleOpenModal(index)}
                         className="w-full h-48 rounded-xl overflow-hidden cursor-pointer"
                     >
-                        <img
+                        <Image
                             ref={(el) => { if (el) imagesRefs.current[index] = el! }}
                             src={img}
                             alt={`Image ${index}`}
+                            width={500} height={500}
                             className="w-full h-full object-cover"
                         />
                     </div>

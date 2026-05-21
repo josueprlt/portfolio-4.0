@@ -1,21 +1,20 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { Dela_Gothic_One, Climate_Crisis } from 'next/font/google';
 import { gsap, Power2 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Title from '@/app/components/ui/title/title';
 import JourneyCard from './JourneyCard';
 import journeys from '@/app/data/journeys.json';
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
-const ClimateCrisis = Climate_Crisis({
-    subsets: ['latin'],
-    display: 'swap',
+const ClimateCrisis = localFont({
+    src: "../../../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf",
+    display: "swap",
 });
 
 function isOdd(num: number) {

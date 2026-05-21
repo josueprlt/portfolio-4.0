@@ -3,6 +3,7 @@ import { ButtonArrowIcon } from "@/app/components/ui/icons";
 import { gsap, Power2, Power3, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Project {
     id: number;
@@ -131,10 +132,11 @@ const ProjectList: React.FC<ProjectListProps> = ({ lang, colorMode, project }) =
                 <div ref={arrowIconRef} className={`z-10 p-0 rounded-full ${colorMode === "light" && "bg-background"} ${colorMode === "dark" && "bg-foreground"}`}>
                     <ButtonArrowIcon fill={colorMode === 'light' ? '#262330' : '#FEEFDD'} className="w-4 h-4 md:w-7 md:h-7" />
                 </div>
-                <img
+                <Image
                     ref={imgRef}
                     alt="image de test"
                     src={project.image[0]}
+                    width={500} height={500}
                     className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0"
                 />
                 <span ref={lineRef} className={`absolute bottom-0 left-0 block w-full h-0.5 z-10 ${colorMode === "light" && "bg-foreground"} ${colorMode === "dark" && "bg-background"}`}></span>

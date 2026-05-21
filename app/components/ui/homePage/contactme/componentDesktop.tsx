@@ -2,15 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import { PhoneIcon, EmailIcon } from "@/app/components/ui/icons";
-import { Dela_Gothic_One } from 'next/font/google';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap, Power2, Circ } from "gsap";
 import Link from 'next/link';
+import localFont from "next/font/local";
 
-const DelaGothicOne = Dela_Gothic_One({
-    subsets: ['latin'],
-    weight: ['400'],
-    display: 'swap',
+const DelaGothicOne = localFont({
+    src: "../../../../fonts/DelaGothicOne-Regular.ttf",
+    display: "swap",
 });
 
 interface Social {
@@ -71,7 +70,7 @@ export default function ComponentDesktop({ data, colorMode }: ComponentDesktopPr
         <section ref={sectionRef} className={`${DelaGothicOne.className} hidden xl:grid relative h-80 grid grid-cols-2 mt-14 md:mt-40 outline outline-2 -outline-offset-2 rounded-2xl text-3xl ${colorMode === 'light' && 'outline-foreground'} ${colorMode === 'dark' && 'outline-background'}`}>
             <div ref={(el) => { if (el) contactRefs.current[0] = el }} className="flex justify-center items-center h-48 gap-6 rounded-2xl">
                 <EmailIcon className="w-11" />
-                <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josue.perrault@etu.unilim.fr</p>
+                <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josueperrault56@gmail.com</p>
             </div>
             <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="relative bg-gradient-to-r from-primary to-secondary h-48 rounded-2xl">
                 <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center gap-6">
