@@ -40,6 +40,8 @@ module.exports = {
         vscode: "var(--bg-text-vscode)",
         trello: "var(--bg-text-docker)",
         figma: "var(--bg-text-figma)",
+        vue: "var(--bg-text-vue)",
+        nuxt: "var(--bg-text-nuxt)",
       },
     },
   },

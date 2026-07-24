@@ -45,7 +45,7 @@ const Home = () => {
                     stagger: 0.1,
                     scrollTrigger: {
                         trigger: linkRef.current,
-                        start: "top center",
+                        start: "top bottom",
                     },
                 });
         });

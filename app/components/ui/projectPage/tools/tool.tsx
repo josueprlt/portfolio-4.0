@@ -17,7 +17,9 @@ import {
     VscodeIcon,
     TrelloIcon,
     FigmaIcon,
-    WebStormIcon
+    WebStormIcon,
+    VueIcon,
+    NuxtIcon
 } from "@/app/components/ui/icons";
 import Link from "next/link";
 
@@ -50,7 +52,9 @@ const Tool: React.FC<ToolProps> = ({ tech, className, colorMode }) => {
         vscode: { icon: VscodeIcon, colorClass: 'text-vscode' },
         trello: { icon: TrelloIcon, colorClass: 'text-trello' },
         figma: { icon: FigmaIcon, colorClass: 'text-figma' },
-        webstorm: { icon: WebStormIcon, colorClass: 'text-webstorm' },
+        webstorm: { icon: WebStormIcon, colorClass: colorMode === 'dark' ? 'text-background' : 'text-symfony' },
+        vue: { icon: VueIcon, colorClass: 'text-vue' },
+        nuxt: { icon: NuxtIcon, colorClass: 'text-nuxt' },
     };
 
     const linkRef = useRef<HTMLAnchorElement>(null);

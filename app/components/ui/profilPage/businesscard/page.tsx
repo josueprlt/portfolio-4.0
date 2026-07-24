@@ -237,7 +237,7 @@ const BusinessCard = () => {
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <EmailIcon className='w-9 h-9 text-primary' />
-                            <p className={`${colorMode === 'light' && 'text-background'} ${colorMode === 'dark' && 'text-foreground'}`}>josueperrault56@gmail.com</p>
+                            <p className={`${colorMode === 'light' && 'text-background'} ${colorMode === 'dark' && 'text-foreground'}`}>joprlt56@gmail.com</p>
                         </li>
                         <li className='flex justify-center items-center flex-row gap-2'>
                             <LinkIcon className='w-9 h-9' />

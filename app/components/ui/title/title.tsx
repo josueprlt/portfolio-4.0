@@ -29,7 +29,7 @@ const Title: React.FC<TitleProps> = ({ children, className }) => {
                 stagger: 0.1,
                 scrollTrigger: {
                     trigger: titleElement,
-                    start: "top center",
+                    start: "top bottom",
                 },
             });
         }

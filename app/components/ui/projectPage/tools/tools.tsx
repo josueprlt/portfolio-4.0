@@ -12,7 +12,7 @@ const DelaGothicOne = localFont({
     display: "swap",
 });
 
-const technos = ["html", "css", "javascript", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next", "docker", "github", "vscode", "trello", "figma", "webstorm"];
+const technos = ["html", "css", "javascript", "sass", "php", "react", "symfony", "bootstrap", "mui", "tailwind", "next", "docker", "github", "vscode", "trello", "figma", "webstorm", "vue", "nuxt"];
 
 interface Project {
     id: number;
@@ -55,7 +55,7 @@ export default function Tools({ project }: HomeProps) {
                     stagger: 0.25,
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: "top center",
+                        start: "top bottom",
                     },
                 }
             );

@@ -89,7 +89,7 @@ const AboutMe = () => {
                     </div>
                 </div>
                 <div className="relative w-full h-96 rounded-xl overflow-hidden mt-14 md:mt-0 md:h-[500px]">
-                    <Image ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/image-profil.png" alt="Description of the image" width={500} height={500} className="relative w-full h-full object-cover z-10" />
+                    <Image ref={(el) => { if (el) imageRefs.current[1] = el }} src="/img/image-profil.png" alt="Photo de profil de Josué Perrault - Développeur Web" width={500} height={500} className="relative w-full h-full object-cover z-10" />
                 </div>
             </div>
 

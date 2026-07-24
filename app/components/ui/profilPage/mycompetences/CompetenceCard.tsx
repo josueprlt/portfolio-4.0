@@ -18,7 +18,9 @@ import {
     BoxArrowIcon,
     TrelloIcon,
     FigmaIcon,
-    WebStormIcon
+    WebStormIcon,
+    VueIcon,
+    NuxtIcon
 } from '@/app/components/ui/icons';
 import Link from "next/link";
 
@@ -78,6 +80,8 @@ const CompetenceCard: React.FC<CompetenceCardProps> = ({ lang, colorMode, compet
                 {competence.title === "trello" && <TrelloIcon className='w-32 h-32' />}
                 {competence.title === "figma" && <FigmaIcon className='w-32 h-32' />}
                 {competence.title === "webstorm" && <WebStormIcon className='w-32 h-32' fill={colorMode === 'dark' ? '#FEEFDD': undefined} />}
+                {competence.title === "vue" && <VueIcon className='w-32 h-32' />}
+                {competence.title === "nuxt" && <NuxtIcon className='w-32 h-32' />}
             </div>
             <Link ref={linkRef} href="/filter" className={`absolute -bottom-10 text-sm flex items-center gap-2 px-2 py-1 rounded-full ${colorMode === 'light' && 'text-background bg-foreground'} ${colorMode === 'dark' && 'text-foreground bg-background'}`}>
                 {lang === 'fr' && 'Voir projets associés'}

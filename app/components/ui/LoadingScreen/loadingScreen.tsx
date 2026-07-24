@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { gsap, Power2 } from "gsap";
+import { gsap } from "gsap";
 import { LogoIcon } from "@/app/components/ui/icons";
 
 export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComplete: () => void; colorMode: string }) {
@@ -9,62 +9,51 @@ export default function LoadingScreen({ onComplete, colorMode="dark" }: { onComp
 
     // Détecter si l'utilisateur est sur un appareil mobile
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768); // Considérer <768px comme mobile
-        };
-
-        handleResize(); // Vérifier au chargement
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
         window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     useEffect(() => {
-        // Si mobile, désactiver immédiatement le loader
         if (isMobile) {
             onComplete();
             return;
         }
 
-        // Animation GSAP pour le logo
-        const tl = gsap.timeline({
-            onComplete: () => {
-                onComplete();
-            },
-        });
-
-        tl.fromTo(
+        const animation = gsap.fromTo(
             loadingRef.current,
             { rotate: 0 },
             {
                 rotate: 360,
                 duration: 0.75,
-                ease: Power2.easeInOut,
+                ease: "power2.inOut",
                 repeat: -1,
             }
         );
 
-        // Gestion de l'événement 'load'
-        const handleLoad = () => {
+        const finishLoading = () => {
             onComplete();
         };
+        let timeout: NodeJS.Timeout;
 
-        window.addEventListener("load", handleLoad);
-
-        // Fallback timeout pour désactiver le loader après 10 secondes
-        const timeout = setTimeout(() => {
-            onComplete();
-        }, 10000); // 10 secondes
+        if (document.readyState === "complete") {
+            timeout = setTimeout(finishLoading, 800);
+        } else {
+            window.addEventListener("load", finishLoading);
+            timeout = setTimeout(finishLoading, 3000);
+        }
 
         return () => {
-            window.removeEventListener("load", handleLoad);
-            clearTimeout(timeout); // Nettoyer le timeout
+            window.removeEventListener("load", finishLoading);
+            clearTimeout(timeout);
+            animation.kill();
         };
-    }, [onComplete, isMobile]);
-    
+    }, [isMobile, onComplete]);
+
     return (
-        <div className={`w-full h-screen flex items-center justify-center ${colorMode === "dark" && "bg-foreground"} ${colorMode === "light" && "bg-background"}`}>
+        <div
+            className={`w-full h-screen flex items-center justify-center ${colorMode === "dark" ? "bg-foreground" : "bg-background"}`}>
             <div ref={loadingRef}>
                 <LogoIcon fill={colorMode === 'light' ? '#262330' : '#FEEFDD'} className="w-10 h-10" />
             </div>

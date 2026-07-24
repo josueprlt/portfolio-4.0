@@ -54,7 +54,7 @@ const MyJourney = () => {
                         ease: Power2.easeOut,
                         scrollTrigger: {
                             trigger: span,
-                            start: "center center",
+                            start: "center 75%",
                         },
                     }
                 );
@@ -70,7 +70,7 @@ const MyJourney = () => {
                     ease: Power2.easeOut,
                     scrollTrigger: {
                         trigger: beforeRef.current,
-                        start: "center center",
+                        start: "center 75%",
                     },
                 }
             );
@@ -85,7 +85,7 @@ const MyJourney = () => {
                     ease: Power2.easeOut,
                     scrollTrigger: {
                         trigger: afterRef.current,
-                        start: "center center",
+                        start: "center 75%",
                     },
                 }
             );

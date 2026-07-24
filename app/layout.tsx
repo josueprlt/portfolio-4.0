@@ -1,12 +1,7 @@
-"use client"
-import { useState, useEffect, useRef } from "react";
-import Head from "next/head";
-import Footer from "@/app/components/ui/footer/page";
-import Navbar from "@/app/components/ui/navBar/page";
-import localFont from "next/font/local";
 import "./globals.css";
-import LoadingScreen from "@/app/components/ui/LoadingScreen/loadingScreen";
-import { gsap } from "gsap";
+import localFont from "next/font/local";
+import { metadata } from "./metadata";
+export { metadata };
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,87 +14,39 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Josué Perrault",
+  jobTitle: "Développeur Web & Étudiant à l'ESGI Rennes en Ingénierie du Web",
+  url: "https://portfolio-josue.com",
+  sameAs: [
+    "https://github.com/josueprlt",
+    "https://www.linkedin.com/in/josué-perrault-2a663a265/"
+  ],
+  knowsAbout: ["Web Development", "React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"],
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "ESGI Rennes"
+  }
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const [loading, setLoading] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollWidth, setScrollWidth] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [colorMode, setColorMode] = useState("light");
-
-  useEffect(() => {
-    const savedColorMode = localStorage.getItem("color-mode") || "light";
-    setColorMode(savedColorMode);
-  }, [colorMode]);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      setIsScrolled(scrollTop > 75);
-      setScrollWidth(scrollPercent);
-      
-    };
-    
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isScrolled) {
-      if (sectionRef.current) {
-        gsap.to(sectionRef.current, {
-          top: 0,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      }
-    } else {
-      if (sectionRef.current) {
-        gsap.to(sectionRef.current, {
-          top: 0,
-          y: -68,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      }
-    }
-  }, [isScrolled]);
-
+}) {
   return (
-    <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} relative antialiased ${colorMode === 'light' && 'bg-background'} ${colorMode === 'dark' && 'bg-foreground'}`}
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
+        suppressHydrationWarning
       >
-        {loading && <LoadingScreen onComplete={() => setLoading(false)} colorMode={colorMode} />}
-        {!loading && (
-          <>
-            <section
-              ref={sectionRef}
-              className={`fixed -top-20 left-0 right-0 z-50 ${colorMode === "light" && 'bg-background'} ${colorMode === "dark" && 'bg-foreground'}`}
-            >
-              <span
-                style={{ width: `${scrollWidth}%` }}
-                className="block h-1 bg-gradient-to-r from-primary to-secondary"
-              ></span>
-              <div className="px-4 py-1 md:px-8 md:py-2">
-                <Navbar />
-              </div>
-            </section>
-            {children}
-            <Footer />
-          </>
-        )}
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );

@@ -37,7 +37,7 @@ export default function ComponentMobile({ data, colorMode }: ComponentMobileProp
             const timelineContact = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRefs.current[0],
-                    start: "top center",
+                    start: "top 75%",
                 },
             });
 
@@ -79,7 +79,7 @@ export default function ComponentMobile({ data, colorMode }: ComponentMobileProp
                 </div>
                 <div ref={(el) => { if (el) contactRefs.current[1] = el }} className="flex justify-center h-1/2 items-center gap-6 rounded-2xl">
                     <EmailIcon className="w-6 md:w-11 hidden sm:block" />
-                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>josueperrault56@gmail.com</p>
+                    <p className={`${colorMode === 'light' && 'text-foreground'} ${colorMode === 'dark' && 'text-background'}`}>joprlt56@gmail.com</p>
                 </div>
             </section>
 
