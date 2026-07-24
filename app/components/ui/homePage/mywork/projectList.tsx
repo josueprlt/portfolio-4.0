@@ -134,7 +134,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ lang, colorMode, project }) =
                 </div>
                 <Image
                     ref={imgRef}
-                    alt="image de test"
+                    alt={`Aperçu du projet ${project.title}`}
                     src={project.image[0]}
                     width={500} height={500}
                     className="absolute top-0 right-0 w-full h-full object-cover z-0 opacity-0"

@@ -1,7 +1,7 @@
-"use client"
 import "./globals.css";
 import localFont from "next/font/local";
-import {useEffect, useState} from "react";
+import { metadata } from "./metadata";
+export { metadata };
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,24 +14,39 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Josué Perrault",
+  jobTitle: "Développeur Web & Étudiant à l'ESGI Rennes en Ingénierie du Web",
+  url: "https://portfolio-josue.com",
+  sameAs: [
+    "https://github.com/josueprlt",
+    "https://www.linkedin.com/in/josué-perrault-2a663a265/"
+  ],
+  knowsAbout: ["Web Development", "React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"],
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "ESGI Rennes"
+  }
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [colorMode, setColorMode] = useState("light");
-
-  useEffect(() => {
-    const savedColorMode = localStorage.getItem("color-mode") || "light";
-    setColorMode(savedColorMode);
-  }, []);
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${colorMode === "light" ? "bg-background" : "bg-foreground"} relative antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
         suppressHydrationWarning
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
