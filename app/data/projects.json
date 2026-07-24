@@ -1,6 +1,33 @@
 [
   {
     "id": 1,
+    "title": "App vitesse de frappe",
+    "titleEn": "Typing speed test app",
+    "date": "2026-07-05",
+    "category": [
+      "Personnel",
+      "Dev Web",
+      "vue",
+      "nuxt",
+      "tailwind",
+      "github",
+      "webstorm"
+    ],
+    "description": "Cette application a vu le jour grâce à la proposition de projet de Frontend Mentor. L'objectif principal était de développer une application web permettant de taper des textes aléatoires pour améliorer sa vitesse de frappe. J'ai apporté des fonctionnalités en plus telles qu'un mode Sandbox pour s'entraîner, ainsi que des quêtes à réaliser. C'est un projet que j'ai lancé sur mon temps libre. Je suis globalement content de ce que j'ai produit. Il y aura potentiellement des améliorations d'interface et autres si l'envie me prend.",
+    "descriptionEn": "This application was created based on a project proposal from Frontend Mentor. The main goal was to develop a web app for typing random text to improve typing speed. I added extra features, such as a practice \"Sandbox\" mode and specific quests to complete. I built this project in my spare time, and overall, I am happy with the result. I might make UI or other improvements down the line if the mood strikes.",
+    "image": [
+      "/TypingSpeedTest/typing-speed-test-1.png",
+      "/TypingSpeedTest/typing-speed-test-2.png",
+      "/TypingSpeedTest/typing-speed-test-3.png",
+      "/TypingSpeedTest/typing-speed-test-4.png",
+      "/TypingSpeedTest/typing-speed-test-5.png",
+      "/TypingSpeedTest/typing-speed-test-6.png"
+    ],
+    "link": "https://my-typing-speed-test.netlify.app",
+    "github": "https://github.com/josueprlt/typing-speed-test"
+  },
+  {
+    "id": 2,
     "title": "App de Météo",
     "titleEn": "Weather app",
     "date": "2025-11-10",
@@ -25,7 +52,7 @@
     "github": "https://github.com/josueprlt/weather-app-main"
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Lagendary",
     "titleEn": "Lagendary",
     "date": "2024-11-23",
@@ -64,7 +91,7 @@
     "github": "https://github.com/josueprlt/Sae-501-GroupeC-clone"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Monstercat",
     "titleEn": "Monstercat",
     "date": "2024-12-20",
@@ -91,7 +118,7 @@
     "github": "https://github.com/josueprlt/BUT3_Dev_24_front_website"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Editeur VR",
     "titleEn": "VR Editor",
     "date": "2024-11-04",
@@ -121,7 +148,7 @@
     "github": "https://github.com/josueprlt/Sae501-Uptale-VR"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "HellCleaner VR",
     "titleEn": "HellCleaner VR",
     "date": "2024-02-23",
@@ -158,7 +185,7 @@
     "github": "https://github.com/josueprlt/Sae402-HellCleaner-VR"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Challenge BenjaminCode",
     "titleEn": "BenjaminCode Challenge",
     "date": "2023-09-13",
@@ -181,7 +208,7 @@
     "github": null
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "Intégration composant vidéo",
     "titleEn": "Video Component Integration",
     "date": "2024-07-22",
@@ -207,7 +234,7 @@
     "github": null
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "Portfolio Web 2023-2024",
     "titleEn": "Web Portfolio 2023-2024",
     "date": "2023-06-01",
@@ -234,7 +261,7 @@
     "github": null
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "Site OnePage",
     "titleEn": "OnePage Site",
     "date": "2022-12-03",
@@ -260,7 +287,7 @@
     "github": null
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "Site de trailer de films",
     "titleEn": "Movie Trailer Site",
     "date": "2023-03-22",
@@ -296,7 +323,7 @@
     "github": null
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "Nouveau Portfolio Web",
     "titleEn": "New Web Portfolio",
     "date": "2025-03-15",
@@ -320,7 +347,7 @@
     "github": "https://github.com/josueprlt/portfolio-4.0/tree/V8"
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "Coachella",
     "titleEn": "Coachella",
     "date": "2024-01-07",
@@ -346,7 +373,7 @@
     "github": null
   },
   {
-    "id": 13,
+    "id": 14,
     "title": "Nuit du code MMI",
     "titleEn": "Night of Code MMI",
     "date": "2025-01-09",

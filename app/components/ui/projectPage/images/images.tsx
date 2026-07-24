@@ -79,7 +79,7 @@ export default function Images({ project }: HomeProps) {
                 stagger: 0.25,
                 scrollTrigger: {
                     trigger: divRefs.current,
-                    start: "top center",
+                    start: "top bottom",
                 },
             });
 

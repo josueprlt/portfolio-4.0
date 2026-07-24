@@ -35,7 +35,7 @@ const Paragraph: React.FC<ParagraphProps> = ({
         stagger: 0.1,
         scrollTrigger: {
           trigger: paragraphElement,
-          start: "top center",
+          start: "top 75%",
         },
       });
     }

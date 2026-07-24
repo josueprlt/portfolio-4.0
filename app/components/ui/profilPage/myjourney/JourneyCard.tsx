@@ -58,7 +58,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                 { opacity: 0 },
                 {
                     opacity: 1,
-                    duration: 0.75,
+                    duration: 0.37,
                     ease: Power2.easeOut,
                 }
             );
@@ -68,7 +68,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                 {
                     opacity: 1,
                     scale: 1,
-                    duration: 0.75,
+                    duration: 0.37,
                     ease: Power2.easeOut,
                 },
                 "-=0.25"
@@ -79,7 +79,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 0.75,
+                    duration: 0.37,
                     ease: Power2.easeOut,
                 },
                 "-=0"
@@ -89,7 +89,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                 { scaleY: 0, transformOrigin: "top" },
                 {
                     scaleY: 1,
-                    duration: 1,
+                    duration: 0.5,
                     ease: Power2.easeOut,
                 },
                 "-=0.25"
@@ -100,7 +100,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ lang, colorMode, date, dateEn
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 0.75,
+                    duration: 0.37,
                     ease: Power2.easeOut,
                 },
                 "-=0.25"

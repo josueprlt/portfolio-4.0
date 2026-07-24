@@ -24,7 +24,7 @@ import {
     DevIcon,
     VRIcon,
     CreaIcon,
-    WebStormIcon
+    WebStormIcon, VueIcon, NuxtIcon
 } from "@/app/components/ui/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 import { gsap, Power1 } from "gsap";
@@ -56,6 +56,8 @@ export default function Categories({ lang, colorMode, selectedCategories, onCate
             { name: "figma", icon: <FigmaIcon className="w-6 h-6" /> },
             { name: "trello", icon: <TrelloIcon className="w-6 h-6" /> },
             { name: "webstorm", icon: <WebStormIcon className="w-6 h-6" /> },
+            { name: "vue", icon: <VueIcon className="w-6 h-6" /> },
+            { name: "nuxt", icon: <NuxtIcon className="w-6 h-6" /> },
         ]
     );
 

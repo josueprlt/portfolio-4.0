@@ -66,5 +66,13 @@
   {
     "id": 17,
     "title": "webstorm"
+  },
+  {
+    "id": 18,
+    "title": "vue"
+  },
+  {
+    "id": 19,
+    "title": "nuxt"
   }
 ]

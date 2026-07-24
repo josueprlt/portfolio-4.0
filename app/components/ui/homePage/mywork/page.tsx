@@ -43,7 +43,7 @@ const MyWork = () => {
                     ease: Power2.easeOut,
                     scrollTrigger: {
                         trigger: btnRef.current,
-                        start: "top center",
+                        start: "top bottom",
                     },
                 }
             );

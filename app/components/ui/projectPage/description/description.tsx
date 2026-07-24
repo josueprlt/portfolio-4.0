@@ -55,7 +55,7 @@ export default function Description({ project }: DescriptionProps) {
                 stagger: 0.1,
                 scrollTrigger: {
                     trigger: linkRef.current,
-                    start: "top center",
+                    start: "top bottom",
                 },
             });
         });

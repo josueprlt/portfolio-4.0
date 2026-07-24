@@ -95,7 +95,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ lang, colorMode, project }) =
             const timelineLi = gsap.timeline({
                 scrollTrigger: {
                     trigger: liElement,
-                    start: "top center",
+                    start: "top 90%",
                 },
                 onComplete: () => setIsAnimating(false),
             });
